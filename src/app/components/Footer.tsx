@@ -1,18 +1,24 @@
+"use client";
 import Image from "next/image";
-import Link from "next/link";
 import { Github, Twitter, Linkedin, Instagram, Clock } from "lucide-react";
 
 export default function Footer() {
+  const handleLinkClick = (href: string) => {
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <footer className="w-full bg-main border-t border-btn/30 pt-16 pb-6 px-4 md:px-16 relative z-10 text-main">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
         {/* Logo & Description */}
         <div className="flex flex-col gap-4">
           <div className="flex items-center gap-3 mb-2">
-            <div className="w-12 h-12 bg-btn rounded-xl flex items-center justify-center relative">
-              <Image src="/a.png" alt="Logo" fill className="object-cover rounded-xl" />
+            <div className="flex items-center justify-center relative">
+              <Image src="/Logo.svg" alt="Logo" width={20} height={20} className="w-20 h-20" />
             </div>
-            <span className="text-3xl font-black tracking-tight">LOGO.</span>
           </div>
           <p className="text-sec text-sm leading-relaxed max-w-xs">
             Need a modern, fast website? We build custom websites with clean design and scalable tech. From idea to launch stress-free.
@@ -36,10 +42,10 @@ export default function Footer() {
         <div>
           <h3 className="text-lg mb-3">Quick Links</h3>
           <ul className="flex flex-col gap-2 text-sec text-sm">
-            <li><Link href="/">Home</Link></li>
-            <li><Link href="/">Stack</Link></li>
-            <li><Link href="/">Services</Link></li>
-            <li><Link href="/">About</Link></li>
+            <li><a onClick={() => handleLinkClick('#home')} className="hover:text-special transition cursor-pointer">Home</a></li>
+            <li><a onClick={() => handleLinkClick('#process')} className="hover:text-special transition cursor-pointer">Process</a></li>
+            <li><a onClick={() => handleLinkClick('#services')} className="hover:text-special transition cursor-pointer">Services</a></li>
+            <li><a onClick={() => handleLinkClick('#stack')} className="hover:text-special transition cursor-pointer">Stack</a></li>
           </ul>
         </div>
         {/* Contact */}

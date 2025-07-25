@@ -4,10 +4,10 @@ import { Menu, X } from "lucide-react";
 import Image from "next/image";
 
 const navLinks = [
-  { name: "Home", href: "/home" },
-  { name: "Stack", href: "/Stack" },
-  { name: "Services", href: "/Services" },
-  { name: "About", href: "#" },
+  { name: "Home", href: "#home" },
+  { name: "Process", href: "#process" },
+  { name: "Services", href: "#services" },
+  { name: "Stack", href: "#stack" },
 ];
 
 export default function NavBar() {
@@ -23,6 +23,14 @@ export default function NavBar() {
       };
     }
   }, [open]);
+
+  const handleLinkClick = (href: string) => {
+    setOpen(false);
+    const element = document.querySelector(href);
+    if (element instanceof HTMLElement) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <>
@@ -50,8 +58,8 @@ export default function NavBar() {
             {navLinks.map((link) => (
               <a
                 key={link.name}
-                className="text-main hover:text-special transition text-base sm:text-lg"
-                href={link.href}
+                className="text-main hover:text-special transition text-base sm:text-lg cursor-pointer"
+                onClick={() => handleLinkClick(link.href)}
               >
                 {link.name}
               </a>
@@ -117,9 +125,8 @@ export default function NavBar() {
           {navLinks.map((link) => (
             <a
               key={link.name}
-              href={link.href}
-              className="text-main text-lg py-3 px-2 rounded-lg hover:bg-btn/10 transition font-medium"
-              onClick={() => setOpen(false)}
+              className="text-main text-lg py-3 px-2 rounded-lg hover:bg-btn/10 transition font-medium cursor-pointer"
+              onClick={() => handleLinkClick(link.href)}
             >
               {link.name}
             </a>

@@ -24,7 +24,7 @@ export default function Home() {
   return (
     <div className="w-full min-h-fit mx-auto flex flex-col justify-center p-0 m-0 text-main">
       {/* Hero */}
-      <div className="w-full h-screen flex flex-col md:flex-row items-center justify-between relative bg-transparent">
+      <div id="home" className="w-full h-screen flex flex-col md:flex-row items-center justify-between relative bg-transparent">
         <div className="flex-2 bg-transparent w-full h-full lg:px-[120px] px-1 py-5 flex flex-col items-center md:items-left gap-5 justify-between relative z-50">
           <NavBar/>
           <div className="flex flex-col gap-3 items-center md:items-start text-center md:text-left">
@@ -122,7 +122,7 @@ export default function Home() {
         </div>
       </div>
       {/* Our Goal */}
-      <section className="w-full h-fit bg-main text-center flex flex-col gap-3 p-4 sm:p-10">
+      <section id="about" className="w-full h-fit bg-main text-center flex flex-col gap-3 p-4 sm:p-10">
         <div className="flex flex-row gap-2 justify-center">
           <div className="w-5 h-5 rounded-[5px] flex items-center justify-center p-3 font-bold bg-btn-active text-btn">2</div>
           <p>Our goal</p>
@@ -133,7 +133,7 @@ export default function Home() {
            <span className="text-special"> with clarity </span>and speed.</h2>
       </section>
       {/* Proces */}
-      <section className="w-full h-fit bg-main text-main p-4 sm:p-10 flex justify-center py-10">
+      <section id="process" className="w-full h-fit bg-main text-main p-4 sm:p-10 flex justify-center py-10">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 w-full max-w-5xl">
           <div className="flex flex-col gap-2 text-center hover:scale-110 duration-200 hover:cursor-pointer cursor-pointer bg-white/80 rounded-xl p-4">
             <h2 className="text-5xl sm:text-5xl md:text-7xl font-black font-popins">01</h2>
@@ -157,7 +157,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="w-full bg-main text-main h-fit flex flex-col md:flex-row items-center gap-3 md:pl-[120px] py-10">
+      <section id="services" className="w-full bg-main text-main h-fit flex flex-col md:flex-row items-center gap-3 md:pl-[120px] py-10">
         {/* Text / left side */}
         <div className="flex-1 items-center justify-center flex flex-col md:items-start md:justify-center text-center md:text-left px-2">
          <div className="flex flex-row gap-2 mb-3 justify-center md:justify-start">
@@ -173,7 +173,7 @@ export default function Home() {
          <CardCarousel />
         </div>
       </section>
-      <section className="w-full h-fit py-8 bg-main text-main relative flex flex-col justify-center items-center px-4 sm:px-10 md:px-[120px]">
+      <section id="stack" className="w-full h-fit py-8 bg-main text-main relative flex flex-col justify-center items-center px-4 sm:px-10 md:px-[120px]">
         {/* Scattered avatar images, each with a tooltip on hover */}
         {/* On mobile, stack avatars in a row at the top */}
         <div className="flex flex-row flex-wrap gap-4 justify-center md:hidden mb-8">

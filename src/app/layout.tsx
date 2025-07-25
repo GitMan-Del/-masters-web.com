@@ -15,22 +15,21 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://example.com'),
-  title: { default: 'My Site', template: '%s | My Site' },
-  description: 'Welcome to My Site',
+  metadataBase: new URL('https://mastersweb.com'),
+  title: { default: 'MastersWeb', template: '%s | MastersWeb' },
+  description: 'MastersWeb',
   alternates: {
-    canonical: 'https://example.com',
+    canonical: 'https://mastersweb.com',
     languages: {
-      'en-US': 'https://example.com/en-US',
-      'de-DE': 'https://example.com/de-DE'
+      'en-US': 'https://mastersweb.com/en-US',
     }
   },
   openGraph: {
-    title: 'My Site',
-    description: 'Welcome to My Site',
-    url: 'https://example.com',
-    siteName: 'My Site',
-    images: [{ url: 'https://example.com/og.png' }]
+    title: 'MastersWeb',
+    description: 'MastersWeb',
+    url: 'https://mastersweb.com',
+    siteName: 'MastersWeb',
+    images: [{ url: 'https://mastersweb.com/og.png' }]
   },
 }
 
