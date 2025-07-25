@@ -31,15 +31,7 @@ export const metadata: Metadata = {
     description: 'MastersWeb - Modern Web Development Services',
     url: 'https://masters-web.vercel.app',
     siteName: 'MastersWeb',
-    images: [
-      {
-        url: 'https://masters-web.vercel.app/og.png',
-        width: 1200,
-        height: 630,
-        alt: 'MastersWeb - Modern Web Development',
-        type: 'image/png',
-      },
-    ],
+    images: [ { url: '/og.png', width: 1200, height: 630, alt: 'MastersWeb - Modern Web Development Services', type: 'image/png' } ],
     locale: 'en_US',
     type: 'website',
   },
@@ -49,7 +41,7 @@ export const metadata: Metadata = {
     creator: '@mastersweb',
     title: 'MastersWeb',
     description: 'MastersWeb - Modern Web Development Services',
-    images: ['https://masters-web.vercel.app/og.png'],
+    images: ['/og.png'],
   },
 };
 
