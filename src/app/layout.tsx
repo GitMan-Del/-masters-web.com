@@ -17,7 +17,9 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   metadataBase: new URL('https://masters-web.com'),
   title: { default: 'MastersWeb', template: '%s | MastersWeb' },
-  description: 'MastersWeb',
+  description: 'MastersWeb - Modern Web Development Services',
+  keywords: ['web development', 'modern websites', 'MastersWeb'],
+  authors: [{ name: 'MastersWeb' }],
   alternates: {
     canonical: 'https://masters-web.com',
     languages: {
@@ -31,7 +33,7 @@ export const metadata: Metadata = {
     siteName: 'MastersWeb',
     images: [
       {
-        url: '/og.png',
+        url: 'https://masters-web.com/og.png',
         width: 1200,
         height: 630,
         alt: 'MastersWeb - Modern Web Development',
@@ -47,7 +49,7 @@ export const metadata: Metadata = {
     creator: '@mastersweb',
     title: 'MastersWeb',
     description: 'MastersWeb',
-    images: ['/og.png'],
+    images: ['https://masters-web.com/og.png'],
   },
 };
 
