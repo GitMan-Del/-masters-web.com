@@ -24,9 +24,7 @@ export default function Home() {
   return (
     <div className="w-full min-h-fit mx-auto flex flex-col justify-center p-0 m-0 text-main">
       {/* Hero */}
-      <Image src="/bg.png" alt="a" fill className="object-cover absolute top-0 left-0 z-10" />
       <div className="w-full h-screen flex flex-col md:flex-row items-center justify-between relative">
-        <div className="w-full h-full absolute top-0 left-0 bg-main z-10"></div>
         <div className="flex-2 bg-transparent w-full h-full lg:px-[120px] px-1 py-5 flex flex-col items-center md:items-left gap-5 justify-between relative z-50">
           <NavBar/>
           <div className="flex flex-col gap-3 items-center md:items-start text-center md:text-left">
@@ -49,7 +47,7 @@ export default function Home() {
                   <Image src="/daniel.png" alt="avatar" width={148} height={148} className="object-cover w-full h-full rounded-full shadow-2xs hover:scale-110 transition-all duration-300 hover:cursor-pointer hover:z-20 cursor-pointer" />
                 </div>
                 <div className="w-12 h-12 rounded-full bg-btn shadow-2xs">
-                  <Image src="/delia.png" alt="avatar" width={148} height={148} className="object-cover w-full h-full rounded-full shadow-2xs hover:scale-110 transition-all duration-300 hover:cursor-pointer hover:z-20 cursor-pointer" />
+                  <Image src="/Delia.png" alt="avatar" width={148} height={148} className="object-cover w-full h-full rounded-full shadow-2xs hover:scale-110 transition-all duration-300 hover:cursor-pointer hover:z-20 cursor-pointer" />
                 </div>
                 <div className="w-12 h-12 rounded-full bg-btn shadow-2xs">
                   <Image src="/roxi.png" alt="avatar" width={148} height={148} className="object-cover w-full h-full rounded-full shadow-2xs hover:scale-110 transition-all duration-300 hover:cursor-pointer hover:z-20 cursor-pointer" />
