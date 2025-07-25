@@ -15,23 +15,23 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://mastersweb.com'),
+  metadataBase: new URL('https://masters-web.com'),
   title: { default: 'MastersWeb', template: '%s | MastersWeb' },
   description: 'MastersWeb',
   alternates: {
-    canonical: 'https://mastersweb.com',
+    canonical: 'https://masters-web.com',
     languages: {
-      'en-US': 'https://mastersweb.com/en-US',
+      'en-US': 'https://masters-web.com/en-US',
     }
   },
   openGraph: {
     title: 'MastersWeb',
     description: 'MastersWeb',
-    url: 'https://mastersweb.com',
+    url: 'https://masters-web.com',
     siteName: 'MastersWeb',
     images: [
       {
-        url: 'https://mastersweb.com/og.png',
+        url: '/og.png',
         width: 1200,
         height: 630,
         alt: 'MastersWeb - Modern Web Development',
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     creator: '@mastersweb',
     title: 'MastersWeb',
     description: 'MastersWeb',
-    images: ['https://mastersweb.com/og.png'],
+    images: ['/og.png'],
   },
 };
 
