@@ -15,25 +15,25 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://masters-web.com'),
+  metadataBase: new URL('https://masters-web.vercel.app'),
   title: { default: 'MastersWeb', template: '%s | MastersWeb' },
   description: 'MastersWeb - Modern Web Development Services',
   keywords: ['web development', 'modern websites', 'MastersWeb'],
   authors: [{ name: 'MastersWeb' }],
   alternates: {
-    canonical: 'https://masters-web.com',
+    canonical: 'https://masters-web.vercel.app',
     languages: {
-      'en-US': 'https://masters-web.com/en-US',
+      'en-US': 'https://masters-web.vercel.app/en-US',
     }
   },
   openGraph: {
     title: 'MastersWeb',
-    description: 'MastersWeb',
-    url: 'https://masters-web.com',
+    description: 'MastersWeb - Modern Web Development Services',
+    url: 'https://masters-web.vercel.app',
     siteName: 'MastersWeb',
     images: [
       {
-        url: 'https://masters-web.com/og.png',
+        url: 'https://masters-web.vercel.app/og.png',
         width: 1200,
         height: 630,
         alt: 'MastersWeb - Modern Web Development',
@@ -48,8 +48,8 @@ export const metadata: Metadata = {
     site: '@mastersweb',
     creator: '@mastersweb',
     title: 'MastersWeb',
-    description: 'MastersWeb',
-    images: ['https://masters-web.com/og.png'],
+    description: 'MastersWeb - Modern Web Development Services',
+    images: ['https://masters-web.vercel.app/og.png'],
   },
 };
 
