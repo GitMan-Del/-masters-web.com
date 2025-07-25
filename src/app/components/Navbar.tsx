@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 
 const navLinks = [
   { name: "Home", href: "/home" },
@@ -27,7 +28,22 @@ export default function NavBar() {
     <>
       {/* Navbar */}
       <div className="w-full py-3 sm:py-5 h-fit flex flex-row justify-between items-center relative z-[90] px-2 sm:px-0">
-        <h1 className="text-main text-4xl sm:text-5xl font-black">LOGO.</h1>
+        {/* LOGO - adaugă logo-ul aici pentru desktop */}
+        <div className="flex items-center">
+          <Image
+            src="/Logo.svg"
+            alt="logo"
+            width={40}
+            height={40}
+            className="w-20 h-20 block"
+            priority
+            unoptimized={false}
+            onError={(e) => {
+              // fallback pentru debugging
+              (e.target as HTMLImageElement).style.display = "none";
+            }}
+          />
+        </div>
         {/* Desktop links */}
         <ul className="hidden md:flex p-2">
           <li className="space-x-5 text-sec text-md flex items-center">
@@ -74,7 +90,20 @@ export default function NavBar() {
       >
         {/* Header */}
         <div className="flex items-center justify-between px-4 sm:px-6 py-5 border-b border-btn/10">
-          <h1 className="text-main text-2xl sm:text-3xl font-black">LOGO.</h1>
+          {/* LOGO - verifică dacă fișierul există și calea este corectă */}
+          <Image
+            src="/Logo.svg"
+            alt="logo"
+            width={40}
+            height={40}
+            className="w-20 h-20 block"
+            priority
+            unoptimized={false}
+            onError={(e) => {
+              // fallback pentru debugging
+              (e.target as HTMLImageElement).style.display = "none";
+            }}
+          />
           <button
             className="p-2 rounded-full bg-btn text-btn"
             onClick={() => setOpen(false)}

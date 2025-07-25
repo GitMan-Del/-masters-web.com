@@ -24,7 +24,7 @@ export default function Home() {
   return (
     <div className="w-full min-h-fit mx-auto flex flex-col justify-center p-0 m-0 text-main">
       {/* Hero */}
-      <div className="w-full h-screen flex flex-col md:flex-row items-center justify-between relative">
+      <div className="w-full h-screen flex flex-col md:flex-row items-center justify-between relative bg-transparent">
         <div className="flex-2 bg-transparent w-full h-full lg:px-[120px] px-1 py-5 flex flex-col items-center md:items-left gap-5 justify-between relative z-50">
           <NavBar/>
           <div className="flex flex-col gap-3 items-center md:items-start text-center md:text-left">
@@ -277,7 +277,7 @@ export default function Home() {
             100% { transform: translateX(-50%); }
           }
         `}</style>
-      </div>
+      </div> 
       <Footer />
     </div>
   );
