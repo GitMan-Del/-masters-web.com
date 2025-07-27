@@ -2,16 +2,19 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 const navLinks = [
   { name: "Home", href: "#home" },
   { name: "Process", href: "#process" },
   { name: "Services", href: "#services" },
   { name: "Stack", href: "#stack" },
+  { name: "Contact", href: "/contact" },
 ];
 
 export default function NavBar() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   // Prevent scroll when sidebar is open
   useEffect(() => {
@@ -26,9 +29,25 @@ export default function NavBar() {
 
   const handleLinkClick = (href: string) => {
     setOpen(false);
-    const element = document.querySelector(href);
-    if (element instanceof HTMLElement) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    
+    if (href.startsWith('/')) {
+      // Route navigation to different pages
+      window.location.href = href;
+    } else if (href.startsWith('#')) {
+      // Anchor navigation
+      if (pathname === '/') {
+        // We're on homepage, scroll to section
+        const element = document.querySelector(href);
+        if (element instanceof HTMLElement) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      } else {
+        // We're on another page, navigate to homepage with anchor
+        window.location.href = '/' + href;
+      }
+    } else {
+      // Fallback for any other links
+      window.location.href = href;
     }
   };
 
@@ -66,17 +85,20 @@ export default function NavBar() {
             ))}
           </li>
         </ul>
-        <button className="hidden md:block bg-btn px-6 py-1 rounded-full btn-text hover:bg-btn-active transition text-base sm:text-lg">
-          Meet Us →
-        </button>
+        <a href="/contact" className="hidden md:flex btn-modern">
+          <span className="btn-text-content">Meet Us</span>
+          <div className="btn-circle">
+            <span>→</span>
+          </div>
+        </a>
         {/* Mobile menu button */}
         {!open && (
           <button
-            className="md:hidden flex items-center justify-center p-2 rounded-full bg-btn text-btn"
+            className="md:hidden flex items-center justify-center p-3 rounded-full bg-btn text-btn min-w-[48px] min-h-[48px]"
             onClick={() => setOpen(true)}
             aria-label="Open menu"
           >
-            <Menu color="white" className="w-7 h-7" />
+            <Menu color="white" className="w-6 h-6" />
           </button>
         )}
       </div>
@@ -113,19 +135,19 @@ export default function NavBar() {
             }}
           />
           <button
-            className="p-2 rounded-full bg-btn text-btn"
+            className="p-3 rounded-full bg-btn text-btn min-w-[48px] min-h-[48px] flex items-center justify-center"
             onClick={() => setOpen(false)}
             aria-label="Close menu"
           >
-            <X color="white" className="w-6 h-6" />
+            <X color="white" className="w-5 h-5" />
           </button>
         </div>
         {/* Links */}
-        <nav className="flex-1 flex flex-col gap-2 px-4 sm:px-8 py-8">
+        <nav className="flex-1 flex flex-col gap-1 px-4 sm:px-8 py-8">
           {navLinks.map((link) => (
             <a
               key={link.name}
-              className="text-main text-lg py-3 px-2 rounded-lg hover:bg-btn/10 transition font-medium cursor-pointer"
+              className="text-main text-lg py-4 px-3 rounded-lg hover:bg-btn/10 transition font-medium cursor-pointer min-h-[48px] flex items-center"
               onClick={() => handleLinkClick(link.href)}
             >
               {link.name}
@@ -134,9 +156,12 @@ export default function NavBar() {
         </nav>
         {/* Button at bottom */}
         <div className="px-4 sm:px-8 pb-8">
-          <button className="w-full bg-btn px-6 py-3 rounded-full btn-text text-lg hover:bg-btn-active transition">
-            Meet Us →
-          </button>
+          <a href="/contact" className="btn-modern w-full flex min-h-[56px]">
+            <span className="btn-text-content">Meet Us</span>
+            <div className="btn-circle">
+              <span>→</span>
+            </div>
+          </a>
         </div>
       </aside>
     </>

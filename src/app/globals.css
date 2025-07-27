@@ -1,5 +1,19 @@
 @import "tailwindcss";
 
+/* Skip link for screen readers */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--text-special);
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  z-index: 100;
+}
+
+
 :root {
   --text: #000000;
   --text-special: #BB00FF;
@@ -10,8 +24,19 @@
   --bg: #ffffff;
   --social-btn: #BB00FF;
   --social-btn-hover: #d2d2d2;
+  --purpule: #BB00FF;
 }
 
+/* Hide scrollbar but keep functionality */
+.scrollbar-hide,
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar,
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
 
 /* Color utility classes */
 .bg-social-btn {
@@ -59,6 +84,96 @@ button, textarea, input, select, option, label, a, p {
   font-family: var(--font-poppins);
 }
 
+/* New Modern Button Styles */
+.btn-modern {
+  position: relative;
+  background: #000000;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 16px 24px 16px 32px; 
+  font-family: var(--font-poppins);
+  font-weight: 500;
+  font-size: 16px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  align-items: center;
+  min-width: 200px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.btn-modern:hover {
+  border: 2px solid rgba(0, 0, 0, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+.btn-modern .btn-text-content {
+  flex: 1;
+  text-align: left;
+  transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 2;
+  position: relative;
+}
+
+.btn-modern .btn-circle {
+  width: 40px;
+  height: 40px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 3;
+}
+
+.btn-modern .btn-circle svg,
+.btn-modern .btn-circle span {
+  color: #000000;
+  transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.btn-modern::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 40px;
+  height: 40px;
+  background: white;
+  border-radius: 50%;
+  transform: scale(0);
+  transform-origin: center center;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+}
+
+.btn-modern:hover::before {
+  transform: scale(12);
+}
+
+.btn-modern:hover .btn-text-content {
+  color: #000000;
+}
+
+.btn-modern:hover .btn-circle {
+  background: transparent;
+}
+
+.btn-modern:hover .btn-circle svg,
+.btn-modern:hover .btn-circle span {
+  color: #000000;
+}
+
+/* Legacy button styles for compatibility */
 button {
   transition: all 0.3s ease;
   position: relative;

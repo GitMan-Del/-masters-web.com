@@ -11,7 +11,7 @@ const cards = [
     image: '/1.png',
   },
   {
-    title: 'SaaS aplications',
+    title: 'SaaS applications',
     desc: 'Scalable, fast, and secure platforms built to launch and grow your product.',
     image: '/2.png',
   },
@@ -65,8 +65,17 @@ export default function CardCarousel() {
             key={i}
             className="flex-shrink-0 w-[180px] sm:w-[250px] rounded-xl bg-white overflow-hidden shadow-md pointer-events-auto"
           >
-            <div className="h-[120px] sm:h-[180px] overflow-hidden">
-              <Image width={200} height={350} src={card.image} alt={card.title} className="object-cover w-full h-full" />
+            <div className="h-[180px] overflow-hidden">
+              <Image 
+                width={250} 
+                height={180} 
+                src={card.image} 
+                alt={`${card.title} - ${card.desc}`}
+                className="object-cover w-full h-full"
+                priority={i === 0}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                loading={i === 0 ? "eager" : "lazy"}
+              />
             </div>
             <div className="bg-[#BB00FF] text-white p-2 sm:p-4 h-[110px] sm:h-[160px] flex flex-col justify-end">
               <h3 className="text-lg sm:text-2xl">{card.title}</h3>

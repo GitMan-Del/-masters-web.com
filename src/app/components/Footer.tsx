@@ -1,12 +1,27 @@
 "use client";
 import Image from "next/image";
 import { Github, Twitter, Linkedin, Instagram, Clock } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 export default function Footer() {
+  const pathname = usePathname();
+
   const handleLinkClick = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    if (href.startsWith('#')) {
+      // Anchor navigation
+      if (pathname === '/') {
+        // We're on homepage, scroll to section
+        const element = document.querySelector(href);
+        if (element instanceof HTMLElement) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      } else {
+        // We're on another page, navigate to homepage with anchor
+        window.location.href = '/' + href;
+      }
+    } else {
+      // Regular link navigation
+      window.location.href = href;
     }
   };
 
@@ -46,6 +61,7 @@ export default function Footer() {
             <li><a onClick={() => handleLinkClick('#process')} className="hover:text-special transition cursor-pointer">Process</a></li>
             <li><a onClick={() => handleLinkClick('#services')} className="hover:text-special transition cursor-pointer">Services</a></li>
             <li><a onClick={() => handleLinkClick('#stack')} className="hover:text-special transition cursor-pointer">Stack</a></li>
+            <li><a href="/contact" className="hover:text-special transition cursor-pointer">Contact</a></li>
           </ul>
         </div>
         {/* Contact */}
