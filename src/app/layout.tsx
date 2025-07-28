@@ -12,7 +12,7 @@ const koulen = Koulen({
 const poppins = Poppins({
   variable: "--font-poppins",
   subsets: ["latin"],
-  weight: "200",
+  weight: "400",
   display: "swap"
 });
 
