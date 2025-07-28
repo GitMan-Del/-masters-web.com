@@ -67,10 +67,10 @@ export default function Footer() {
         <div>
           <h3 className="text-lg mb-3">Contact</h3>
           <ul className="flex flex-col gap-2 text-sec text-sm">
-            <li><a href="mailto:hello@webdtf.com" className="hover:text-special transition">hello@webdtf.com</a></li>
-            <li><a href="#" className="hover:text-special transition">Twitter</a></li>
-            <li><a href="#" className="hover:text-special transition">LinkedIn</a></li>
-            <li><a href="#" className="hover:text-special transition">Instagram</a></li>
+            <li><a href="mailto:masterswebcom@gmail.com" className="hover:text-special transition hover:underline hover:cursor-pointer">masterswebcom@gmail.com</a></li>
+            <li><a href="tel:+33659514692" className="hover:text-special transition hover:underline hover:cursor-pointer">+33659514692</a></li>
+            <li><a href="https://www.linkedin.com/in/masterswebcom/" className="hover:text-special transition hover:underline hover:cursor-pointer">LinkedIn</a></li>
+            <li><a href="https://www.instagram.com/masterswebcom/" className="hover:text-special transition hover:underline hover:cursor-pointer">Instagram</a></li>
           </ul>
         </div>
         {/* Working hours */}
@@ -82,7 +82,7 @@ export default function Footer() {
       </div>
       {/* Bottom Bar */}
       <div className="mt-12 border-t border-btn/30 pt-4 text-xs text-sec text-center">
-        © 2025 WebDTF. All rights reserved.
+        © 2025 MastersWeb. All rights reserved.
       </div>
     </footer>
   );
