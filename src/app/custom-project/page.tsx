@@ -1,4 +1,3 @@
-import Image from "next/image"
 import NavBar from "../components/Navbar"
 import Footer from "../components/Footer"
 import type { Metadata } from "next"
@@ -199,7 +198,7 @@ export default function CustomProject() {
                 <span className="text-special">Complex Projects</span> We Handle
               </h2>
               <p className="text-sec text-lg max-w-2xl mx-auto">
-                No project is too complex. We specialize in building sophisticated solutions that other agencies can't handle.
+                No project is too complex. We specialize in building sophisticated solutions that other agencies can&apos;t handle.
               </p>
             </div>
             
@@ -369,7 +368,7 @@ export default function CustomProject() {
               Ready to Tackle Your <span className="text-special">Complex Project</span>?
             </h2>
             <p className="text-sec text-lg mb-8 max-w-2xl mx-auto">
-              No matter how complex or unique your requirements, our expert team is ready to turn your vision into reality. Let's discuss your project today.
+              No matter how complex or unique your requirements, our expert team is ready to turn your vision into reality. Let&apos;s discuss your project today.
             </p>
             <a
               href="/contact"

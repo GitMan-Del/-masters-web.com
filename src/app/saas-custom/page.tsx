@@ -1,4 +1,3 @@
-import Image from "next/image"
 import NavBar from "../components/Navbar"
 import Footer from "../components/Footer"
 import type { Metadata } from "next"
@@ -312,7 +311,7 @@ export default function SaaSCustom() {
               Ready to Build Your <span className="text-special">Custom Solution</span>?
             </h2>
             <p className="text-sec text-lg mb-8 max-w-2xl mx-auto">
-              Let's discuss your vision and create a custom SaaS platform or web application that gives you a competitive edge in your market.
+              Let&apos;s discuss your vision and create a custom SaaS platform or web application that gives you a competitive edge in your market.
             </p>
             <a
               href="/contact"
