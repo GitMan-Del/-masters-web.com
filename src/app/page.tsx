@@ -87,7 +87,7 @@ export default function Home() {
         </div> 
           {/* Cards section - Mobile: 4 columns background, Desktop: 2 columns interactive */}
           <div className="md:hidden absolute inset-0 w-full h-full z-10 pointer-events-none overflow-hidden">
-          <div className="w-full h-full bg-white/30 absolute top-0 left-0 z-20"></div>
+          <div className="w-full h-full bg-white/30 backdrop-blur-2xl absolute top-0 left-0 z-20"></div>
             {/* Mobile: 4 columns non-interactive background */}
             <div className="w-full h-full flex justify-between gap-5 transform rotate-6 scale-110">
               {/* Mobile Column 1 - scroll-down */}
