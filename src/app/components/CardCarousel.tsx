@@ -89,12 +89,14 @@ export default function CardCarousel() {
         <button
           onClick={() => scroll('left')}
           className="rounded-full border border-[{var(--white)}] text-2 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center bg hover:bg-white hover:text-black transition"
+          aria-label="Scroll carousel left"
         >
           <ChevronLeft />
         </button>
         <button
           onClick={() => scroll('right')}
           className="rounded-full border border-[{var(--white)}] text-2 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center bg hover:bg-white hover:text-black transition"
+          aria-label="Scroll carousel right"
         >
           <ChevronRight />
         </button>
