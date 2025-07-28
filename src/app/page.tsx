@@ -27,8 +27,8 @@ export default function Home() {
       <a href="#main-content" className="skip-link">Skip to main content</a>
       <div className="w-full min-h-fit mx-auto flex flex-col justify-center p-0 m-0 text-main">
         {/* Hero Section */}
-        <header id="home" className="w-full h-screen flex flex-col md:flex-row items-center justify-between relative bg-main">
-          <div className="flex-2 bg-transparent w-full h-full lg:px-[120px] px-1 py-0 md:py-5 flex flex-col items-center md:items-left gap-5 justify-between relative z-50">
+        <header id="home" className="w-full h-[100svh] md:h-screen flex flex-col md:flex-row items-center justify-between relative bg-main">
+          <div className="flex-2 bg-transparent w-full h-full lg:px-[120px] px-1 flex flex-col items-center md:items-left justify-between relative z-50">
           <NavBar/>          
             <div className="flex flex-col gap-3 items-center md:items-start text-center md:text-left">
               <div className="flex flex-row gap-2 justify-center md:justify-start" role="banner" aria-label="Company highlight">
@@ -84,12 +84,10 @@ export default function Home() {
                 <div className="max-w-[300px] text-sec text-xs sm:text-sm text-center mt-1">1 clear goal: to help you launch fast, with clarity and confidence without wasting time, budget or energy.</div>
             </div>
             </div>
-            <div className="w-10 h-10 items-center justify-center rounded-full bg-transparent border border-[var(--text-main)] absolute bottom-5 right-1/2 p-3 hidden md:flex">
-            <p className="animate-bounce text-4xl w-full h-full flex items-center justify-center">▾</p>
-          </div>
         </div> 
           {/* Cards section - Mobile: 4 columns background, Desktop: 2 columns interactive */}
-          <div className="md:hidden absolute inset-0 w-full h-full z-10 mt-8 pointer-events-none overflow-hidden">
+          <div className="md:hidden absolute inset-0 w-full h-full z-10 pointer-events-none overflow-hidden">
+          <div className="w-full h-full bg-black/20 absolute top-0 left-0"></div>
             {/* Mobile: 4 columns non-interactive background */}
             <div className="w-full h-full flex justify-between gap-5 transform rotate-6 scale-110 opacity-30">
               {/* Mobile Column 1 - scroll-down */}
@@ -272,395 +270,395 @@ export default function Home() {
           </div>
         </section>
 
-{/* Plans Section */}
-<section id="plans" className="w-full h-fit bg-white py-16 px-4 sm:px-10 md:px-[120px]">
-  <div className="max-w-7xl mx-auto">
-    {/* Header */}
-    <div className="flex flex-col items-center justify-center text-center mb-16">
-      <div className="flex flex-row gap-2 justify-center items-center mb-6">
-        <div className="w-5 h-5 rounded-[5px] flex items-center justify-center p-3 font-bold bg-btn-active text-btn">
-          5
+      {/* Plans Section */}
+      <section id="plans" className="w-full h-fit bg-white py-16 px-4 sm:px-10 md:px-[120px]">
+        <div className="max-w-7xl mx-auto">
+          {/* Header */}
+          <div className="flex flex-col items-center justify-center text-center mb-16">
+            <div className="flex flex-row gap-2 justify-center items-center mb-6">
+              <div className="w-5 h-5 rounded-[5px] flex items-center justify-center p-3 font-bold bg-btn-active text-btn">
+                5
+              </div>
+              <p className="text-main">Our services</p>
+            </div>
+            <h2 className="text-main text-4xl sm:text-5xl md:text-7xl mb-6 flex flex-col items-center justify-center text-center">
+              <span>
+                Choose the <span className="text-special">perfect solution</span>
+              </span>
+              <span>
+                for <span className="text-special">your business</span>
+              </span>
+            </h2>
+            <p className="text-sec max-w-2xl mx-auto text-base sm:text-lg">
+              From landing pages to complex web applications, we deliver tailored solutions that help your business grow and succeed online.
+            </p>
+          </div>
+
+          {/* Plans Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
+            {/* Landing Page */}
+            <div className="group bg-gray-50 hover:bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-transparent hover:border-btn-active/20">
+              <div className="flex items-center justify-between mb-6">
+                <div className="w-12 h-12 bg-btn-active rounded-xl flex items-center justify-center">
+                  <svg className="w-6 h-6 text-btn" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                </div>
+                <span className="text-special font-bold text-lg">From €400</span>
+              </div>
+              <h3 className="text-2xl font-bold text-main mb-3">Landing Page</h3>
+              <p className="text-sec mb-6 leading-relaxed">
+                High-converting single pages designed to capture leads and drive sales. Perfect for marketing campaigns and product launches.
+              </p>
+              <div className="flex flex-wrap gap-2 mb-6">
+                <span className="text-xs bg-btn-active/10 text-main px-3 py-1 rounded-full">Conversion-Driven</span>
+                <span className="text-xs bg-btn-active/10 text-main px-3 py-1 rounded-full">Fast Load</span>
+                <span className="text-xs bg-btn-active/10 text-main px-3 py-1 rounded-full">SEO Ready</span>
+              </div>
+              <a 
+                href="/landing-page" 
+                className="inline-flex items-center text-main font-medium group-hover:text-special transition-colors duration-300"
+              >
+                Learn more 
+                <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            </div>
+
+            {/* Multi-Page Website */}
+            <div className="group bg-gray-50 hover:bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-transparent hover:border-btn-active/20">
+              <div className="flex items-center justify-between mb-6">
+                <div className="w-12 h-12 bg-btn-active rounded-xl flex items-center justify-center">
+                  <svg className="w-6 h-6 text-btn" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                  </svg>
+                </div>
+                <span className="text-special font-bold text-lg">From €900</span>
+              </div>
+              <h3 className="text-2xl font-bold text-main mb-3">Multi-Page Website</h3>
+              <p className="text-sec mb-6 leading-relaxed">
+                Complete business websites with CMS, multiple pages, and all the features growing companies need to establish their online presence.
+              </p>
+              <div className="flex flex-wrap gap-2 mb-6">
+                <span className="text-xs bg-btn-active/10 text-main px-3 py-1 rounded-full">CMS Included</span>
+                <span className="text-xs bg-btn-active/10 text-main px-3 py-1 rounded-full">Blog Ready</span>
+                <span className="text-xs bg-btn-active/10 text-main px-3 py-1 rounded-full">Scalable</span>
+              </div>
+              <a 
+                href="/multi-page-website" 
+                className="inline-flex items-center text-main font-medium group-hover:text-special transition-colors duration-300"
+              >
+                Learn more 
+                <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            </div>
+
+            {/* Ecommerce - Featured */}
+            <div className="group bg-gradient-to-br from-btn-active/5 to-btn-active/10 hover:from-btn-active/10 hover:to-btn-active/20 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-btn-active/30 relative">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                <span className="bg-btn-active text-btn px-4 py-1 rounded-full text-sm font-bold">Most Popular</span>
+              </div>
+              <div className="flex items-center justify-between mb-6 mt-2">
+                <div className="w-12 h-12 bg-btn-active rounded-xl flex items-center justify-center">
+                  <svg className="w-6 h-6 text-btn" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                  </svg>
+                </div>
+                <span className="text-special font-bold text-lg">From €1500</span>
+              </div>
+              <h3 className="text-2xl font-bold text-main mb-3">Ecommerce Store</h3>
+              <p className="text-sec mb-6 leading-relaxed">
+                Full-featured online stores with secure payments, inventory management, and everything you need to sell products online and scale your business.
+              </p>
+              <div className="flex flex-wrap gap-2 mb-6">
+                <span className="text-xs bg-btn-active/20 text-main px-3 py-1 rounded-full">Secure Payments</span>
+                <span className="text-xs bg-btn-active/20 text-main px-3 py-1 rounded-full">Inventory</span>
+                <span className="text-xs bg-btn-active/20 text-main px-3 py-1 rounded-full">Analytics</span>
+              </div>
+              <a 
+                href="/ecommerce" 
+                className="inline-flex items-center text-main font-medium group-hover:text-special transition-colors duration-300"
+              >
+                Learn more 
+                <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          {/* Additional Services */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
+            {/* SaaS / Custom */}
+            <div className="group bg-gray-50 hover:bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-transparent hover:border-btn-active/20">
+              <div className="flex items-center justify-between mb-6">
+                <div className="w-12 h-12 bg-btn-active rounded-xl flex items-center justify-center">
+                  <svg className="w-6 h-6 text-btn" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                  </svg>
+                </div>
+                <span className="text-special font-bold text-lg">Custom Quote</span>
+              </div>
+              <h3 className="text-2xl font-bold text-main mb-3">SaaS & Custom Apps</h3>
+              <p className="text-sec mb-6 leading-relaxed">
+                Custom web applications and SaaS platforms built specifically for your business needs and requirements.
+              </p>
+              <a 
+                href="/saas-custom" 
+                className="inline-flex items-center text-main font-medium group-hover:text-special transition-colors duration-300"
+              >
+                Learn more 
+                <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            </div>
+
+            {/* Custom Projects */}
+            <div className="group bg-gray-50 hover:bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-transparent hover:border-btn-active/20">
+              <div className="flex items-center justify-between mb-6">
+                <div className="w-12 h-12 bg-btn-active rounded-xl flex items-center justify-center">
+                  <svg className="w-6 h-6 text-btn" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                  </svg>
+                </div>
+                <span className="text-special font-bold text-lg">Enterprise</span>
+              </div>
+              <h3 className="text-2xl font-bold text-main mb-3">Complex Projects</h3>
+              <p className="text-sec mb-6 leading-relaxed">
+                Enterprise-level solutions with advanced features, integrations, and dedicated support for complex business requirements.
+              </p>
+              <a 
+                href="/custom-project" 
+                className="inline-flex items-center text-main font-medium group-hover:text-special transition-colors duration-300"
+              >
+                Learn more 
+                <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          {/* Bottom CTA */}
+          <div className="flex flex-col items-center justify-center text-center">
+            <p className="text-sec mb-6 text-lg">
+              Not sure which solution fits your needs?
+            </p>
+            <a
+              href="/contact"
+              className="btn-modern inline-flex items-center gap-5 min-h-[56px] justify-center"
+              aria-label="Get free consultation about web development services"
+            >
+              <span className="btn-text-content">Get free consultation</span>
+              <span className="inline-block w-2"></span>
+              <div className="btn-circle">
+                <span>→</span>
+              </div>
+            </a>
+          </div>
         </div>
-        <p className="text-main">Our services</p>
+      </section>
+
+    {/* Testimonials Section */}
+    <section id="testimonials" className="w-full h-fit bg-white py-16 px-4 sm:px-10 md:px-[120px]">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="flex flex-col items-center justify-center text-center mb-16">
+          <div className="flex flex-row gap-2 justify-center items-center mb-6">
+            <div className="w-5 h-5 rounded-[5px] flex items-center justify-center p-3 font-bold bg-btn-active text-btn">
+              6
+            </div>
+            <p className="text-main">Client testimonials</p>
+          </div>
+          <h2 className="text-main text-4xl sm:text-5xl md:text-7xl mb-6 flex flex-col items-center justify-center text-center">
+            <span>
+              Don&rsquo;t take our <span className="text-special">word for it</span>.
+            </span>
+            <span>
+              <span className="text-special">Trust our customers</span>
+            </span>
+          </h2>
+          <p className="text-sec max-w-2xl mx-auto text-base sm:text-lg">
+            Over 200 successful projects delivered. Here&rsquo;s what our clients say about working with Masters Web for their web development needs.
+          </p>
+        </div>
+
+        {/* Testimonials Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {/* Testimonial 1 */}
+          <div className="bg-gray-50 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <div className="flex items-center mb-4">
+              <div className="flex text-btn-active">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+            </div>
+            <blockquote className="text-main mb-4 leading-relaxed">
+              &ldquo;Masters Web delivered our ecommerce site in just 2 weeks. The design is clean, fast, and already driving sales. Highly recommend!&rdquo;
+            </blockquote>
+            <div className="flex items-center">
+              <div className="w-10 h-10 bg-btn-active rounded-full flex items-center justify-center text-btn font-bold text-sm mr-3">
+                AB
+              </div>
+              <div>
+                <div className="font-semibold text-main">Annette Black</div>
+                <div className="text-sec text-sm">@annetteblack35</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Testimonial 2 */}
+          <div className="bg-gray-50 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <div className="flex items-center mb-4">
+              <div className="flex text-btn-active">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+            </div>
+            <blockquote className="text-main mb-4 leading-relaxed">
+              &ldquo;The landing page they built converted 3x better than our previous one. Clear communication and fast delivery.&rdquo;
+            </blockquote>
+            <div className="flex items-center">
+              <div className="w-10 h-10 bg-btn-active rounded-full flex items-center justify-center text-btn font-bold text-sm mr-3">
+                MM
+              </div>
+              <div>
+                <div className="font-semibold text-main">Marvin McKinney</div>
+                <div className="text-sec text-sm">@marvinmckinney45</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Testimonial 3 */}
+          <div className="bg-gray-50 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <div className="flex items-center mb-4">
+              <div className="flex text-btn-active">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+            </div>
+            <blockquote className="text-main mb-4 leading-relaxed">
+              &ldquo;Professional team, modern design, and excellent support. Our business website exceeded all expectations.&rdquo;
+            </blockquote>
+            <div className="flex items-center">
+              <div className="w-10 h-10 bg-btn-active rounded-full flex items-center justify-center text-btn font-bold text-sm mr-3">
+                JC
+              </div>
+              <div>
+                <div className="font-semibold text-main">Jane Cooper</div>
+                <div className="text-sec text-sm">@janecooper95</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Testimonial 4 */}
+          <div className="bg-gray-50 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <div className="flex items-center mb-4">
+              <div className="flex text-btn-active">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+            </div>
+            <blockquote className="text-main mb-4 leading-relaxed">
+              &ldquo;Custom SaaS development that perfectly fits our workflow. It&rsquo;s truly been a game-changer for our business! 😊&rdquo;
+            </blockquote>
+            <div className="flex items-center">
+              <div className="w-10 h-10 bg-btn-active rounded-full flex items-center justify-center text-btn font-bold text-sm mr-3">
+                RR
+              </div>
+              <div>
+                <div className="font-semibold text-main">Ronald Richards</div>
+                <div className="text-sec text-sm">@ronaldrichards47</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Testimonial 5 */}
+          <div className="bg-gray-50 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <div className="flex items-center mb-4">
+              <div className="flex text-btn-active">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+            </div>
+            <blockquote className="text-main mb-4 leading-relaxed">
+              &ldquo;Fast, reliable, and scalable web development. Masters Web delivered exactly what we needed for our startup launch.&rdquo;
+            </blockquote>
+            <div className="flex items-center">
+              <div className="w-10 h-10 bg-btn-active rounded-full flex items-center justify-center text-btn font-bold text-sm mr-3">
+                SW
+              </div>
+              <div>
+                <div className="font-semibold text-main">Sarah Wilson</div>
+                <div className="text-sec text-sm">@sarahwilson88</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Testimonial 6 */}
+          <div className="bg-gray-50 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <div className="flex items-center mb-4">
+              <div className="flex text-btn-active">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+            </div>
+            <blockquote className="text-main mb-4 leading-relaxed">
+              &ldquo;Exceptional web development service. Clean code, modern design, and ongoing support. Couldn&rsquo;t be happier with the results.&rdquo;
+            </blockquote>
+            <div className="flex items-center">
+              <div className="w-10 h-10 bg-btn-active rounded-full flex items-center justify-center text-btn font-bold text-sm mr-3">
+                DK
+              </div>
+              <div>
+                <div className="font-semibold text-main">Daniel Kim</div>
+                <div className="text-sec text-sm">@danielkim42</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom CTA */}
+        <div className="flex flex-col items-center justify-center text-center mt-16">
+          <p className="text-sec mb-6 text-lg">
+            Ready to join our satisfied clients?
+          </p>
+          <a
+            href="/contact"
+            className="btn-modern inline-flex items-center gap-5 min-h-[56px] justify-center"
+            aria-label="Start your web development project with Masters Web"
+          >
+            <span className="btn-text-content">Start your project</span>
+            <span className="inline-block w-2"></span>
+            <div className="btn-circle">
+              <span>→</span>
+            </div>
+          </a>
+        </div>
       </div>
-      <h2 className="text-main text-4xl sm:text-5xl md:text-7xl mb-6 flex flex-col items-center justify-center text-center">
-        <span>
-          Choose the <span className="text-special">perfect solution</span>
-        </span>
-        <span>
-          for <span className="text-special">your business</span>
-        </span>
-      </h2>
-      <p className="text-sec max-w-2xl mx-auto text-base sm:text-lg">
-        From landing pages to complex web applications, we deliver tailored solutions that help your business grow and succeed online.
-      </p>
-    </div>
-
-    {/* Plans Grid */}
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
-      {/* Landing Page */}
-      <div className="group bg-gray-50 hover:bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-transparent hover:border-btn-active/20">
-        <div className="flex items-center justify-between mb-6">
-          <div className="w-12 h-12 bg-btn-active rounded-xl flex items-center justify-center">
-            <svg className="w-6 h-6 text-btn" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-            </svg>
-          </div>
-          <span className="text-special font-bold text-lg">From €400</span>
-        </div>
-        <h3 className="text-2xl font-bold text-main mb-3">Landing Page</h3>
-        <p className="text-sec mb-6 leading-relaxed">
-          High-converting single pages designed to capture leads and drive sales. Perfect for marketing campaigns and product launches.
-        </p>
-        <div className="flex flex-wrap gap-2 mb-6">
-          <span className="text-xs bg-btn-active/10 text-main px-3 py-1 rounded-full">Conversion-Driven</span>
-          <span className="text-xs bg-btn-active/10 text-main px-3 py-1 rounded-full">Fast Load</span>
-          <span className="text-xs bg-btn-active/10 text-main px-3 py-1 rounded-full">SEO Ready</span>
-        </div>
-        <a 
-          href="/landing-page" 
-          className="inline-flex items-center text-main font-medium group-hover:text-special transition-colors duration-300"
-        >
-          Learn more 
-          <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
-        </a>
-      </div>
-
-      {/* Multi-Page Website */}
-      <div className="group bg-gray-50 hover:bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-transparent hover:border-btn-active/20">
-        <div className="flex items-center justify-between mb-6">
-          <div className="w-12 h-12 bg-btn-active rounded-xl flex items-center justify-center">
-            <svg className="w-6 h-6 text-btn" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-            </svg>
-          </div>
-          <span className="text-special font-bold text-lg">From €900</span>
-        </div>
-        <h3 className="text-2xl font-bold text-main mb-3">Multi-Page Website</h3>
-        <p className="text-sec mb-6 leading-relaxed">
-          Complete business websites with CMS, multiple pages, and all the features growing companies need to establish their online presence.
-        </p>
-        <div className="flex flex-wrap gap-2 mb-6">
-          <span className="text-xs bg-btn-active/10 text-main px-3 py-1 rounded-full">CMS Included</span>
-          <span className="text-xs bg-btn-active/10 text-main px-3 py-1 rounded-full">Blog Ready</span>
-          <span className="text-xs bg-btn-active/10 text-main px-3 py-1 rounded-full">Scalable</span>
-        </div>
-        <a 
-          href="/multi-page-website" 
-          className="inline-flex items-center text-main font-medium group-hover:text-special transition-colors duration-300"
-        >
-          Learn more 
-          <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
-        </a>
-      </div>
-
-      {/* Ecommerce - Featured */}
-      <div className="group bg-gradient-to-br from-btn-active/5 to-btn-active/10 hover:from-btn-active/10 hover:to-btn-active/20 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-btn-active/30 relative">
-        <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-          <span className="bg-btn-active text-btn px-4 py-1 rounded-full text-sm font-bold">Most Popular</span>
-        </div>
-        <div className="flex items-center justify-between mb-6 mt-2">
-          <div className="w-12 h-12 bg-btn-active rounded-xl flex items-center justify-center">
-            <svg className="w-6 h-6 text-btn" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-            </svg>
-          </div>
-          <span className="text-special font-bold text-lg">From €1500</span>
-        </div>
-        <h3 className="text-2xl font-bold text-main mb-3">Ecommerce Store</h3>
-        <p className="text-sec mb-6 leading-relaxed">
-          Full-featured online stores with secure payments, inventory management, and everything you need to sell products online and scale your business.
-        </p>
-        <div className="flex flex-wrap gap-2 mb-6">
-          <span className="text-xs bg-btn-active/20 text-main px-3 py-1 rounded-full">Secure Payments</span>
-          <span className="text-xs bg-btn-active/20 text-main px-3 py-1 rounded-full">Inventory</span>
-          <span className="text-xs bg-btn-active/20 text-main px-3 py-1 rounded-full">Analytics</span>
-        </div>
-        <a 
-          href="/ecommerce" 
-          className="inline-flex items-center text-main font-medium group-hover:text-special transition-colors duration-300"
-        >
-          Learn more 
-          <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
-        </a>
-      </div>
-    </div>
-
-    {/* Additional Services */}
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
-      {/* SaaS / Custom */}
-      <div className="group bg-gray-50 hover:bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-transparent hover:border-btn-active/20">
-        <div className="flex items-center justify-between mb-6">
-          <div className="w-12 h-12 bg-btn-active rounded-xl flex items-center justify-center">
-            <svg className="w-6 h-6 text-btn" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-            </svg>
-          </div>
-          <span className="text-special font-bold text-lg">Custom Quote</span>
-        </div>
-        <h3 className="text-2xl font-bold text-main mb-3">SaaS & Custom Apps</h3>
-        <p className="text-sec mb-6 leading-relaxed">
-          Custom web applications and SaaS platforms built specifically for your business needs and requirements.
-        </p>
-        <a 
-          href="/saas-custom" 
-          className="inline-flex items-center text-main font-medium group-hover:text-special transition-colors duration-300"
-        >
-          Learn more 
-          <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
-        </a>
-      </div>
-
-      {/* Custom Projects */}
-      <div className="group bg-gray-50 hover:bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-transparent hover:border-btn-active/20">
-        <div className="flex items-center justify-between mb-6">
-          <div className="w-12 h-12 bg-btn-active rounded-xl flex items-center justify-center">
-            <svg className="w-6 h-6 text-btn" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-            </svg>
-          </div>
-          <span className="text-special font-bold text-lg">Enterprise</span>
-        </div>
-        <h3 className="text-2xl font-bold text-main mb-3">Complex Projects</h3>
-        <p className="text-sec mb-6 leading-relaxed">
-          Enterprise-level solutions with advanced features, integrations, and dedicated support for complex business requirements.
-        </p>
-        <a 
-          href="/custom-project" 
-          className="inline-flex items-center text-main font-medium group-hover:text-special transition-colors duration-300"
-        >
-          Learn more 
-          <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
-        </a>
-      </div>
-    </div>
-
-    {/* Bottom CTA */}
-    <div className="flex flex-col items-center justify-center text-center">
-      <p className="text-sec mb-6 text-lg">
-        Not sure which solution fits your needs?
-      </p>
-      <a
-        href="/contact"
-        className="btn-modern inline-flex items-center gap-5 min-h-[56px] justify-center"
-        aria-label="Get free consultation about web development services"
-      >
-        <span className="btn-text-content">Get free consultation</span>
-        <span className="inline-block w-2"></span>
-        <div className="btn-circle">
-          <span>→</span>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
-
-{/* Testimonials Section */}
-<section id="testimonials" className="w-full h-fit bg-white py-16 px-4 sm:px-10 md:px-[120px]">
-  <div className="max-w-7xl mx-auto">
-    {/* Header */}
-    <div className="flex flex-col items-center justify-center text-center mb-16">
-      <div className="flex flex-row gap-2 justify-center items-center mb-6">
-        <div className="w-5 h-5 rounded-[5px] flex items-center justify-center p-3 font-bold bg-btn-active text-btn">
-          6
-        </div>
-        <p className="text-main">Client testimonials</p>
-      </div>
-      <h2 className="text-main text-4xl sm:text-5xl md:text-7xl mb-6 flex flex-col items-center justify-center text-center">
-        <span>
-          Don&rsquo;t take our <span className="text-special">word for it</span>.
-        </span>
-        <span>
-          <span className="text-special">Trust our customers</span>
-        </span>
-      </h2>
-      <p className="text-sec max-w-2xl mx-auto text-base sm:text-lg">
-        Over 200 successful projects delivered. Here&rsquo;s what our clients say about working with Masters Web for their web development needs.
-      </p>
-    </div>
-
-    {/* Testimonials Grid */}
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-      {/* Testimonial 1 */}
-      <div className="bg-gray-50 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
-        <div className="flex items-center mb-4">
-          <div className="flex text-btn-active">
-            {[...Array(5)].map((_, i) => (
-              <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-            ))}
-          </div>
-        </div>
-        <blockquote className="text-main mb-4 leading-relaxed">
-          &ldquo;Masters Web delivered our ecommerce site in just 2 weeks. The design is clean, fast, and already driving sales. Highly recommend!&rdquo;
-        </blockquote>
-        <div className="flex items-center">
-          <div className="w-10 h-10 bg-btn-active rounded-full flex items-center justify-center text-btn font-bold text-sm mr-3">
-            AB
-          </div>
-          <div>
-            <div className="font-semibold text-main">Annette Black</div>
-            <div className="text-sec text-sm">@annetteblack35</div>
-          </div>
-        </div>
-      </div>
-
-      {/* Testimonial 2 */}
-      <div className="bg-gray-50 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
-        <div className="flex items-center mb-4">
-          <div className="flex text-btn-active">
-            {[...Array(5)].map((_, i) => (
-              <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-            ))}
-          </div>
-        </div>
-        <blockquote className="text-main mb-4 leading-relaxed">
-          &ldquo;The landing page they built converted 3x better than our previous one. Clear communication and fast delivery.&rdquo;
-        </blockquote>
-        <div className="flex items-center">
-          <div className="w-10 h-10 bg-btn-active rounded-full flex items-center justify-center text-btn font-bold text-sm mr-3">
-            MM
-          </div>
-          <div>
-            <div className="font-semibold text-main">Marvin McKinney</div>
-            <div className="text-sec text-sm">@marvinmckinney45</div>
-          </div>
-        </div>
-      </div>
-
-      {/* Testimonial 3 */}
-      <div className="bg-gray-50 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
-        <div className="flex items-center mb-4">
-          <div className="flex text-btn-active">
-            {[...Array(5)].map((_, i) => (
-              <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-            ))}
-          </div>
-        </div>
-        <blockquote className="text-main mb-4 leading-relaxed">
-          &ldquo;Professional team, modern design, and excellent support. Our business website exceeded all expectations.&rdquo;
-        </blockquote>
-        <div className="flex items-center">
-          <div className="w-10 h-10 bg-btn-active rounded-full flex items-center justify-center text-btn font-bold text-sm mr-3">
-            JC
-          </div>
-          <div>
-            <div className="font-semibold text-main">Jane Cooper</div>
-            <div className="text-sec text-sm">@janecooper95</div>
-          </div>
-        </div>
-      </div>
-
-      {/* Testimonial 4 */}
-      <div className="bg-gray-50 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
-        <div className="flex items-center mb-4">
-          <div className="flex text-btn-active">
-            {[...Array(5)].map((_, i) => (
-              <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-            ))}
-          </div>
-        </div>
-        <blockquote className="text-main mb-4 leading-relaxed">
-          &ldquo;Custom SaaS development that perfectly fits our workflow. It&rsquo;s truly been a game-changer for our business! 😊&rdquo;
-        </blockquote>
-        <div className="flex items-center">
-          <div className="w-10 h-10 bg-btn-active rounded-full flex items-center justify-center text-btn font-bold text-sm mr-3">
-            RR
-          </div>
-          <div>
-            <div className="font-semibold text-main">Ronald Richards</div>
-            <div className="text-sec text-sm">@ronaldrichards47</div>
-          </div>
-        </div>
-      </div>
-
-      {/* Testimonial 5 */}
-      <div className="bg-gray-50 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
-        <div className="flex items-center mb-4">
-          <div className="flex text-btn-active">
-            {[...Array(5)].map((_, i) => (
-              <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-            ))}
-          </div>
-        </div>
-        <blockquote className="text-main mb-4 leading-relaxed">
-          &ldquo;Fast, reliable, and scalable web development. Masters Web delivered exactly what we needed for our startup launch.&rdquo;
-        </blockquote>
-        <div className="flex items-center">
-          <div className="w-10 h-10 bg-btn-active rounded-full flex items-center justify-center text-btn font-bold text-sm mr-3">
-            SW
-          </div>
-          <div>
-            <div className="font-semibold text-main">Sarah Wilson</div>
-            <div className="text-sec text-sm">@sarahwilson88</div>
-          </div>
-        </div>
-      </div>
-
-      {/* Testimonial 6 */}
-      <div className="bg-gray-50 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
-        <div className="flex items-center mb-4">
-          <div className="flex text-btn-active">
-            {[...Array(5)].map((_, i) => (
-              <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-            ))}
-          </div>
-        </div>
-        <blockquote className="text-main mb-4 leading-relaxed">
-          &ldquo;Exceptional web development service. Clean code, modern design, and ongoing support. Couldn&rsquo;t be happier with the results.&rdquo;
-        </blockquote>
-        <div className="flex items-center">
-          <div className="w-10 h-10 bg-btn-active rounded-full flex items-center justify-center text-btn font-bold text-sm mr-3">
-            DK
-          </div>
-          <div>
-            <div className="font-semibold text-main">Daniel Kim</div>
-            <div className="text-sec text-sm">@danielkim42</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    {/* Bottom CTA */}
-    <div className="flex flex-col items-center justify-center text-center mt-16">
-      <p className="text-sec mb-6 text-lg">
-        Ready to join our satisfied clients?
-      </p>
-      <a
-        href="/contact"
-        className="btn-modern inline-flex items-center gap-5 min-h-[56px] justify-center"
-        aria-label="Start your web development project with Masters Web"
-      >
-        <span className="btn-text-content">Start your project</span>
-        <span className="inline-block w-2"></span>
-        <div className="btn-circle">
-          <span>→</span>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
+    </section>
 
         <section id="stack" className="w-full h-fit py-8 bg-main text-main relative flex flex-col justify-center items-center px-4 sm:px-10 md:px-[120px]">
           {/* Scattered avatar images, each with a tooltip on hover */}
