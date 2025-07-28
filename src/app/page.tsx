@@ -270,7 +270,7 @@ export default function Home() {
           </div>
         </section>
 
-      {/* Plans Section */}
+      {/* Plans */}
       <section id="plans" className="w-full h-fit bg-white py-16 px-4 sm:px-10 md:px-[120px]">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
@@ -316,10 +316,10 @@ export default function Home() {
                 <span className="text-xs bg-btn-active/10 text-main px-3 py-1 rounded-full">SEO Ready</span>
               </div>
               <a 
-                href="/landing-page" 
+                href="/pricing" 
                 className="inline-flex items-center text-main font-medium group-hover:text-special transition-colors duration-300"
               >
-                Learn more 
+                View Pricing 
                 <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
@@ -346,10 +346,10 @@ export default function Home() {
                 <span className="text-xs bg-btn-active/10 text-main px-3 py-1 rounded-full">Scalable</span>
               </div>
               <a 
-                href="/multi-page-website" 
+                href="/pricing" 
                 className="inline-flex items-center text-main font-medium group-hover:text-special transition-colors duration-300"
               >
-                Learn more 
+                View Pricing 
                 <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
@@ -379,10 +379,10 @@ export default function Home() {
                 <span className="text-xs bg-btn-active/20 text-main px-3 py-1 rounded-full">Analytics</span>
               </div>
               <a 
-                href="/ecommerce" 
+                href="/pricing" 
                 className="inline-flex items-center text-main font-medium group-hover:text-special transition-colors duration-300"
               >
-                Learn more 
+                View Pricing 
                 <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
@@ -407,10 +407,10 @@ export default function Home() {
                 Custom web applications and SaaS platforms built specifically for your business needs and requirements.
               </p>
               <a 
-                href="/saas-custom" 
+                href="/pricing" 
                 className="inline-flex items-center text-main font-medium group-hover:text-special transition-colors duration-300"
               >
-                Learn more 
+                View Pricing 
                 <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
@@ -432,10 +432,10 @@ export default function Home() {
                 Enterprise-level solutions with advanced features, integrations, and dedicated support for complex business requirements.
               </p>
               <a 
-                href="/custom-project" 
+                href="/pricing" 
                 className="inline-flex items-center text-main font-medium group-hover:text-special transition-colors duration-300"
               >
-                Learn more 
+                View Pricing 
                 <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>

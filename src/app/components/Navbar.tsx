@@ -54,7 +54,7 @@ export default function NavBar() {
   return (
     <>
       {/* Navbar */}
-      <div className="w-full py-3 sm:py-5 h-fit flex flex-row justify-between items-center relative z-[90] px-2 sm:px-0">
+      <div className="w-full py-0 h-fit flex flex-row justify-between items-center relative z-[90] px-2 sm:px-0 ">
         {/* LOGO - adaugă logo-ul aici pentru desktop */}
         <div className="flex items-center">
           <Image
