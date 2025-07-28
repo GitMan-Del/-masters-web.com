@@ -244,45 +244,45 @@ export default function PricingPage() {
           
           {/* Complex Projects - Full Width Card */}
           <div className="mt-8 w-full">
-            <div className="bg-white rounded-2xl border border-gray-200 p-6 shadow-lg hover:shadow-xl transition-all duration-300 h-50">
-              <div className="flex flex-col gap-3">
+            <div className="bg-white rounded-2xl border border-gray-200 p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-300">
+              <div className="flex flex-col gap-3 sm:gap-4">
                 <div className="flex items-center">
                   <div className="w-4 h-4 bg-btn-active rounded-full mr-3"></div>
-                  <h3 className="text-xl font-semibold text-main">Complex Projects</h3>
+                  <h3 className="text-lg sm:text-xl font-semibold text-main">Complex Projects</h3>
                 </div>
                 <p className="text-sm text-sec">
                   Enterprise-level solutions with advanced features, integrations, and dedicated support for complex business requirements.
                 </p>
                 
                 {/* Features in horizontal layout */}
-                <div className="flex flex-wrap gap-4 text-sm text-sec">
+                <div className="flex flex-wrap gap-2 sm:gap-4 text-xs sm:text-sm text-sec">
                   <div className="flex items-center">
-                    <svg className="w-4 h-4 text-special mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <svg className="w-3 h-3 sm:w-4 sm:h-4 text-special mr-1 sm:mr-2" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
                     Advanced Capabilities
                   </div>
                   <div className="flex items-center">
-                    <svg className="w-4 h-4 text-special mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <svg className="w-3 h-3 sm:w-4 sm:h-4 text-special mr-1 sm:mr-2" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
                     Enterprise Integrations
                   </div>
                   <div className="flex items-center">
-                    <svg className="w-4 h-4 text-special mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <svg className="w-3 h-3 sm:w-4 sm:h-4 text-special mr-1 sm:mr-2" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
                     Dedicated Support
                   </div>
                 </div>
                 
-                <div className="flex items-center justify-between">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                   <div>
-                    <span className="text-3xl font-bold text-main">Enterprise</span>
+                    <span className="text-2xl sm:text-3xl font-bold text-main">Enterprise</span>
                     <p className="text-sm text-sec">Custom Quote</p>
                   </div>
-                  <button className="btn-modern flex items-center gap-5 min-h-[56px] whitespace-nowrap">
-                    <span className="btn-text-content">Contact Us</span>
+                  <button className="btn-modern flex items-center gap-3 sm:gap-5 min-h-[48px] sm:min-h-[56px] w-full sm:w-auto justify-center sm:justify-start">
+                    <span className="btn-text-content text-sm sm:text-base">Contact Us</span>
                     <div className="btn-circle">
                       <span>→</span>
                     </div>

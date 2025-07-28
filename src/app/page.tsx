@@ -247,7 +247,7 @@ export default function Home() {
               </div>
       </section>
       {/* Proces */}
-        <section id="services" className="w-full bg-main text-main h-[60vh] flex flex-col md:flex-row items-center gap-3 md:pl-[120px] py-10">
+        <section id="services" className="w-full bg-main text-main h-fit flex flex-col md:flex-row items-center gap-3 md:pl-[120px] py-10">
         {/* Text / left side */}
           <div className="flex-1 items-center justify-center flex flex-col md:items-start md:justify-center text-center md:text-left px-2">
            <div className="flex flex-row gap-2 mb-3 justify-center md:justify-start">

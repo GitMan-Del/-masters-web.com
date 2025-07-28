@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { Github, Twitter, Linkedin, Instagram, Clock } from "lucide-react";
 import { usePathname } from "next/navigation";
 
@@ -19,10 +20,8 @@ export default function Footer() {
         // We're on another page, navigate to homepage with anchor
         window.location.href = '/' + href;
       }
-    } else {
-      // Regular link navigation
-      window.location.href = href;
     }
+    // For route navigation (/contact), Link component will handle it
   };
 
   return (
@@ -61,7 +60,7 @@ export default function Footer() {
             <li><a onClick={() => handleLinkClick('#process')} className="hover:text-special transition cursor-pointer">Process</a></li>
             <li><a onClick={() => handleLinkClick('#services')} className="hover:text-special transition cursor-pointer">Services</a></li>
             <li><a onClick={() => handleLinkClick('#stack')} className="hover:text-special transition cursor-pointer">Stack</a></li>
-            <li><a href="/contact" className="hover:text-special transition cursor-pointer">Contact</a></li>
+            <li><Link href="/contact" className="hover:text-special transition cursor-pointer">Contact</Link></li>
           </ul>
         </div>
         {/* Contact */}

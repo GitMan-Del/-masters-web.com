@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const navLinks = [
@@ -30,10 +31,7 @@ export default function NavBar() {
   const handleLinkClick = (href: string) => {
     setOpen(false);
     
-    if (href.startsWith('/')) {
-      // Route navigation to different pages
-      window.location.href = href;
-    } else if (href.startsWith('#')) {
+    if (href.startsWith('#')) {
       // Anchor navigation
       if (pathname === '/') {
         // We're on homepage, scroll to section
@@ -45,10 +43,8 @@ export default function NavBar() {
         // We're on another page, navigate to homepage with anchor
         window.location.href = '/' + href;
       }
-    } else {
-      // Fallback for any other links
-      window.location.href = href;
     }
+    // For route navigation (/contact), Link component will handle it
   };
 
   return (
@@ -75,26 +71,37 @@ export default function NavBar() {
         <ul className="hidden md:flex p-2">
           <li className="space-x-5 text-sec text-md flex items-center">
             {navLinks.map((link) => (
-              <a
-                key={link.name}
-                className="text-main hover:text-special transition text-base sm:text-lg cursor-pointer"
-                onClick={() => handleLinkClick(link.href)}
-              >
-                {link.name}
-              </a>
+              link.href.startsWith('/') ? (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className="text-main hover:text-special transition text-base sm:text-lg cursor-pointer"
+                  onClick={() => setOpen(false)}
+                >
+                  {link.name}
+                </Link>
+              ) : (
+                <a
+                  key={link.name}
+                  className="text-main hover:text-special transition text-base sm:text-lg cursor-pointer"
+                  onClick={() => handleLinkClick(link.href)}
+                >
+                  {link.name}
+                </a>
+              )
             ))}
           </li>
         </ul>
-        <a href="/contact" className="hidden md:flex btn-modern">
+        <Link href="/contact" className="hidden md:flex btn-modern">
           <span className="btn-text-content">Meet Us</span>
           <div className="btn-circle">
             <span>→</span>
           </div>
-        </a>
+        </Link>
         {/* Mobile menu button */}
         {!open && (
           <button
-            className="md:hidden flex items-center justify-center p-3 rounded-full bg-btn text-btn min-w-[48px] min-h-[48px]"
+            className="md:hidden flex items-center justify-center p-3 rounded-full bg-btn text-btn min-w-[48px] min-h-[48px] hover:scale-110 hover:rotate-180 transition-all duration-300 ease-in-out"
             onClick={() => setOpen(true)}
             aria-label="Open menu"
           >
@@ -106,20 +113,21 @@ export default function NavBar() {
       {/* Sidebar Overlay */}
       {open && (
         <div
-          className="fixed inset-0 z-[53] bg-black/40 backdrop-blur-sm transition-opacity"
+          className="fixed inset-0 z-[53] bg-black/40 backdrop-blur-sm transition-opacity duration-300 ease-out"
           onClick={() => setOpen(false)}
         />
       )}
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 h-full w-11/12 max-w-xs bg-main shadow-2xl z-[100] flex flex-col justify-between transition-transform duration-300 ${
-          open ? "translate-x-0" : "-translate-x-full"
+        className={`fixed top-0 left-0 h-full w-11/12 max-w-xs bg-main shadow-2xl z-[100] flex flex-col justify-between transition-all duration-500 ease-in-out ${
+          open ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0"
         }`}
-        style={{ transitionProperty: "transform" }}
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-4 sm:px-6 py-5 border-b border-btn/10">
+        <div className={`flex items-center justify-between px-4 sm:px-6 py-5 border-b border-btn/10 transition-all duration-300 delay-200 ${
+          open ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"
+        }`}>
           {/* LOGO - verifică dacă fișierul există și calea este corectă */}
           <Image
             src="/Logo.svg"
@@ -135,7 +143,7 @@ export default function NavBar() {
             }}
           />
           <button
-            className="p-3 rounded-full bg-btn text-btn min-w-[48px] min-h-[48px] flex items-center justify-center"
+            className="p-3 rounded-full bg-btn text-btn min-w-[48px] min-h-[48px] flex items-center justify-center hover:scale-105 transition-transform duration-200"
             onClick={() => setOpen(false)}
             aria-label="Close menu"
           >
@@ -144,24 +152,47 @@ export default function NavBar() {
         </div>
         {/* Links */}
         <nav className="flex-1 flex flex-col gap-1 px-4 sm:px-8 py-8">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              className="text-main text-lg py-4 px-3 rounded-lg hover:bg-btn/10 transition font-medium cursor-pointer min-h-[48px] flex items-center"
-              onClick={() => handleLinkClick(link.href)}
-            >
-              {link.name}
-            </a>
+          {navLinks.map((link, index) => (
+            link.href.startsWith('/') ? (
+              <Link
+                key={link.name}
+                href={link.href}
+                className={`text-main text-lg py-4 px-3 rounded-lg hover:bg-btn/10 hover:translate-x-2 transition-all duration-300 font-medium cursor-pointer min-h-[48px] flex items-center ${
+                  open ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"
+                }`}
+                style={{
+                  transitionDelay: open ? `${200 + index * 100}ms` : '0ms'
+                }}
+                onClick={() => setOpen(false)}
+              >
+                {link.name}
+              </Link>
+            ) : (
+              <a
+                key={link.name}
+                className={`text-main text-lg py-4 px-3 rounded-lg hover:bg-btn/10 hover:translate-x-2 transition-all duration-300 font-medium cursor-pointer min-h-[48px] flex items-center ${
+                  open ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"
+                }`}
+                style={{
+                  transitionDelay: open ? `${200 + index * 100}ms` : '0ms'
+                }}
+                onClick={() => handleLinkClick(link.href)}
+              >
+                {link.name}
+              </a>
+            )
           ))}
         </nav>
         {/* Button at bottom */}
-        <div className="px-4 sm:px-8 pb-8">
-          <a href="/contact" className="btn-modern w-full flex min-h-[56px]">
+        <div className={`px-4 sm:px-8 pb-8 transition-all duration-300 delay-700 ${
+          open ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"
+        }`}>
+          <Link href="/contact" className="btn-modern w-full flex min-h-[56px] hover:scale-105 transition-transform duration-200">
             <span className="btn-text-content">Meet Us</span>
             <div className="btn-circle">
               <span>→</span>
             </div>
-          </a>
+          </Link>
         </div>
       </aside>
     </>
