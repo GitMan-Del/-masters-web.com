@@ -2,6 +2,7 @@ import Image from "next/image"
 import NavBar from "./components/Navbar"
 import CardCarousel from "./components/CardCarousel";
 import Footer from "./components/Footer";
+import PriceComponent from "./components/PriceComponent";
 
 export default function Home() {
 
@@ -215,7 +216,7 @@ export default function Home() {
         </div>
         </header>
       {/* Our Goal */}
-        <section id="about" className="w-full h-fit bg-main text-center flex flex-col gap-3 p-4 sm:p-10">
+        <section id="about" className="w-full h-fit bg-main text-center flex items-center justify-center flex-col gap-3 p-4 sm:p-10">
         <div className="flex flex-row gap-2 justify-center">
             <div className="w-5 h-5 rounded-[5px] flex items-center justify-center p-3 font-bold bg-btn-active text-btn">2</div>
           <p>Our goal</p>
@@ -224,33 +225,31 @@ export default function Home() {
              We <span className="text-special"> help you </span>
              go from idea<span className="text-special"> to launch </span> <br />
              <span className="text-special"> with clarity </span>and speed.</h2>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 w-full max-w-5xl">
+                  <div className="flex flex-col gap-2 text-center hover:scale-110 duration-200 hover:cursor-pointer cursor-pointer bg-white/80 rounded-xl p-4">
+                    <h2 className="text-5xl sm:text-5xl md:text-7xl font-black font-popins">01</h2>
+                    <p className="text-xl sm:text-2xl font-semibold font-popins">Discovery</p>
+                    <p className="max-w-md text-sec mx-auto text-xs sm:text-base">We discuss your goals and gather key info for the project.</p>
+                  </div>
+                  <div className="flex flex-col gap-2 text-center hover:scale-110 duration-200 hover:cursor-pointer cursor-pointer bg-white/80 rounded-xl p-4">
+                    <h2 className="text-5xl sm:text-5xl md:text-7xl font-black font-popins">0<span className="text-special">2</span></h2>
+                    <p className="text-xl sm:text-2xl font-semibold font-popins"><span className="text-special">Lock</span> the <span className="text-special">Deal</span></p>
+                    <p className="max-w-md text-sec mx-auto text-xs sm:text-base">We discuss your goals and gather key info for the project.</p>
+              </div>
+                  <div className="flex flex-col gap-2 text-center hover:scale-110 duration-200 hover:cursor-pointer cursor-pointer bg-white/80 rounded-xl p-4">
+                    <h2 className="text-5xl sm:text-5xl md:text-7xl font-black font-popins">03</h2>
+                    <p className="text-xl sm:text-2xl font-semibold font-popins">Design</p>
+                    <p className="max-w-md text-sec mx-auto text-xs sm:text-base">We discuss your goals and gather key info for the project.</p>
+              </div>
+                  <div className="flex flex-col gap-2 text-center hover:scale-110 duration-200 hover:cursor-pointer cursor-pointer bg-white/80 rounded-xl p-4">
+                    <h2 className="text-5xl sm:text-5xl md:text-7xl font-black font-popins">0<span className="text-special">4</span></h2>
+                    <p className="text-xl sm:text-2xl font-semibold font-popins"><span className="text-special">Build</span> & <span className="text-special">Launch</span></p>
+                    <p className="max-w-md text-sec mx-auto text-xs sm:text-base">We discuss your goals and gather key info for the project.</p>
+              </div>
+              </div>
       </section>
       {/* Proces */}
-        <section id="process" className="w-full h-fit bg-main text-main p-4 sm:p-10 flex justify-center py-10">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 w-full max-w-5xl">
-            <div className="flex flex-col gap-2 text-center hover:scale-110 duration-200 hover:cursor-pointer cursor-pointer bg-white/80 rounded-xl p-4">
-              <h2 className="text-5xl sm:text-5xl md:text-7xl font-black font-popins">01</h2>
-              <p className="text-xl sm:text-2xl font-semibold font-popins">Discovery</p>
-              <p className="max-w-md text-sec mx-auto text-xs sm:text-base">We discuss your goals and gather key info for the project.</p>
-            </div>
-            <div className="flex flex-col gap-2 text-center hover:scale-110 duration-200 hover:cursor-pointer cursor-pointer bg-white/80 rounded-xl p-4">
-              <h2 className="text-5xl sm:text-5xl md:text-7xl font-black font-popins">0<span className="text-special">2</span></h2>
-              <p className="text-xl sm:text-2xl font-semibold font-popins"><span className="text-special">Lock</span> the <span className="text-special">Deal</span></p>
-              <p className="max-w-md text-sec mx-auto text-xs sm:text-base">We discuss your goals and gather key info for the project.</p>
-        </div>
-            <div className="flex flex-col gap-2 text-center hover:scale-110 duration-200 hover:cursor-pointer cursor-pointer bg-white/80 rounded-xl p-4">
-              <h2 className="text-5xl sm:text-5xl md:text-7xl font-black font-popins">03</h2>
-              <p className="text-xl sm:text-2xl font-semibold font-popins">Design</p>
-              <p className="max-w-md text-sec mx-auto text-xs sm:text-base">We discuss your goals and gather key info for the project.</p>
-        </div>
-            <div className="flex flex-col gap-2 text-center hover:scale-110 duration-200 hover:cursor-pointer cursor-pointer bg-white/80 rounded-xl p-4">
-              <h2 className="text-5xl sm:text-5xl md:text-7xl font-black font-popins">0<span className="text-special">4</span></h2>
-              <p className="text-xl sm:text-2xl font-semibold font-popins"><span className="text-special">Build</span> & <span className="text-special">Launch</span></p>
-              <p className="max-w-md text-sec mx-auto text-xs sm:text-base">We discuss your goals and gather key info for the project.</p>
-        </div>
-        </div>
-      </section>
-        <section id="services" className="w-full bg-main text-main h-fit flex flex-col md:flex-row items-center gap-3 md:pl-[120px] py-10">
+        <section id="services" className="w-full bg-main text-main h-[60vh] flex flex-col md:flex-row items-center gap-3 md:pl-[120px] py-10">
         {/* Text / left side */}
           <div className="flex-1 items-center justify-center flex flex-col md:items-start md:justify-center text-center md:text-left px-2">
            <div className="flex flex-row gap-2 mb-3 justify-center md:justify-start">
@@ -272,6 +271,11 @@ export default function Home() {
            <CardCarousel />
           </div>
         </section>
+
+{/* Pricing Section */}
+<PriceComponent />
+
+
         <section id="stack" className="w-full h-fit py-8 bg-main text-main relative flex flex-col justify-center items-center px-4 sm:px-10 md:px-[120px]">
           {/* Scattered avatar images, each with a tooltip on hover */}
           {/* On mobile, stack avatars in a row at the top */}
@@ -329,6 +333,7 @@ export default function Home() {
                   </div>
                 </a>
         </section>
+        
         {/* Banner mov la final */}
         <div style={{ width: "100%", height: "40px", background: "var(--bg-btn-active)", zIndex: 100, position: "relative", overflow: "hidden", display: "flex", alignItems: "center" }}>
           <div
