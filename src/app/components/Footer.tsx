@@ -38,10 +38,18 @@ export default function Footer() {
             Need a modern, fast website? We build custom websites with clean design and scalable tech. From idea to launch stress-free.
           </p>
           <div className="flex gap-3 mt-2">
-            <a href="https://www.instagram.com/masterswebcom/" className="bg-social-btn p-2 rounded-full hover-social-btn transition">
+            <a 
+              href="https://www.instagram.com/masterswebcom/" 
+              className="bg-social-btn p-2 rounded-full hover-social-btn transition"
+              aria-label="Visit MastersWeb on Instagram"
+            >
               <Instagram className="w-5 h-5 text-main hover:text-btn-text transition" />
             </a>
-            <a href="https://www.linkedin.com/in/masterswebcom/" className="bg-social-btn p-2 rounded-full hover-social-btn transition">
+            <a 
+              href="https://www.linkedin.com/in/masterswebcom/" 
+              className="bg-social-btn p-2 rounded-full hover-social-btn transition"
+              aria-label="Visit MastersWeb on LinkedIn"
+            >
               <Linkedin className="w-5 h-5 text-main hover:text-btn-text transition" />
             </a>
           </div>
