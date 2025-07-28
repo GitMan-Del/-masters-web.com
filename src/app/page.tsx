@@ -29,7 +29,7 @@ export default function Home() {
         {/* Hero Section */}
         <header id="home" className="w-full h-[100svh] md:h-screen flex flex-col md:flex-row items-center justify-between relative bg-main">
           <div className="flex-2 bg-transparent w-full h-full lg:px-[120px] px-1 flex flex-col items-center md:items-left justify-between relative z-50">
-            <NavBar/>          
+            <NavBar/>
             <div className="flex flex-col gap-3 items-center md:items-start text-center md:text-left">
                             <div className="flex flex-row gap-2 justify-center md:justify-start" role="banner" aria-label="Company highlight">
                 <div className="w-5 h-5 rounded-[5px] flex items-center justify-center p-3 font-bold bg-btn-active" aria-hidden="true">
@@ -272,7 +272,8 @@ export default function Home() {
             </div>
           </div>
         </div>
-        </header>
+       </div>  
+       </header>
       {/* Our Goal */}
         <section id="about" className="w-full h-fit bg-main text-center flex items-center justify-center flex-col gap-3 p-4 sm:p-10">
         <div className="flex flex-row gap-2 justify-center">
