@@ -107,6 +107,9 @@ button, textarea, input, select, option, label, a, p {
   border: 2px solid rgba(0, 0, 0, 0.5);
   transform: translateY(-2px);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  color: #000000;
+  z-index: 2;
+  position: relative;
 }
 
 .btn-modern .btn-text-content {
@@ -158,10 +161,6 @@ button, textarea, input, select, option, label, a, p {
 
 .btn-modern:hover::before {
   transform: scale(12);
-}
-
-.btn-modern:hover .btn-text-content {
-  color: #000000;
 }
 
 .btn-modern:hover .btn-circle {
