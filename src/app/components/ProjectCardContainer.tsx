@@ -133,5 +133,9 @@ export default function ProjectCardContainer({
 
   // Pentru primul proiect, afișez ProjectCard cu datele reale
   const activeProject = projects[0];
-  return <ProjectCard project={activeProject} lighthouseData={lighthouseData} />;
+  return <ProjectCard 
+    project={activeProject} 
+    lighthouseData={lighthouseData} 
+    onProjectUpdated={fetchProjects}
+  />;
 } 
