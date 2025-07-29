@@ -28,9 +28,11 @@ export default function WebsitePerformanceContainer({ refreshTrigger }: WebsiteP
     console.log('🏠 hasProjects:', hasProjects);
     console.log('🔗 projectUrl:', projectUrl);
     console.log('💡 lighthouseData:', lighthouseData);
+    console.log('⏳ loading:', loading);
     
-    if (!lighthouseData || !hasProjects) {
-      console.log('❌ No lighthouse data or projects - returning zero data');
+    // Dacă nu există proiecte, afișează date zero
+    if (!hasProjects) {
+      console.log('❌ No projects - returning zero data');
       return [
         { label: "Performance", score: 0, color: "#E5E7EB" },
         { label: "Accessibility", score: 0, color: "#E5E7EB" },
@@ -40,6 +42,21 @@ export default function WebsitePerformanceContainer({ refreshTrigger }: WebsiteP
         { label: "Load Time", score: 0, color: "#E5E7EB", unit: "s" }
       ];
     }
+    
+    // Dacă lighthouseData este null (încă se încarcă), afișează date zero temporar
+    if (!lighthouseData) {
+      console.log('⏳ Lighthouse data still loading - returning zero data temporarily');
+      return [
+        { label: "Performance", score: 0, color: "#E5E7EB" },
+        { label: "Accessibility", score: 0, color: "#E5E7EB" },
+        { label: "Best Practices", score: 0, color: "#E5E7EB" },
+        { label: "SEO", score: 0, color: "#E5E7EB" },
+        { label: "Uptime", score: 0, color: "#E5E7EB", unit: "%" },
+        { label: "Load Time", score: 0, color: "#E5E7EB", unit: "s" }
+      ];
+    }
+    
+    console.log('✅ Using lighthouse data for display');
 
     const getScoreColor = (score: number) => {
       if (score >= 90) return "#10B981"; // Verde
@@ -99,6 +116,7 @@ export default function WebsitePerformanceContainer({ refreshTrigger }: WebsiteP
         console.log('✅ Lighthouse data received:', data);
         console.log('📈 Setting lighthouse data:', data.metrics);
         setLighthouseData(data.metrics);
+        console.log('🔄 Component should re-render now with new data');
       } else {
         console.error('❌ Response not OK:', response.status);
       }
