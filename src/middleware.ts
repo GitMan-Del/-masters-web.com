@@ -4,6 +4,11 @@ export default auth((req) => {
   const { nextUrl } = req
   const isLoggedIn = !!req.auth
 
+  // Skip middleware for NextAuth routes
+  if (nextUrl.pathname.startsWith('/api/auth')) {
+    return
+  }
+
   // Only protect dashboard routes
   const isProtectedRoute = nextUrl.pathname.startsWith('/dashboard')
 
@@ -17,7 +22,7 @@ export default auth((req) => {
 
 export const config = {
   matcher: [
-    // Only match dashboard routes to avoid conflicts with NextAuth
-    '/dashboard/:path*'
+    // Match all paths except static files, but include auth routes
+    '/((?!_next/static|_next/image|favicon.ico).*)',
   ]
 }

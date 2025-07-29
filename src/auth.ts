@@ -18,11 +18,27 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       return !!auth
     },
     async redirect({ url, baseUrl }) {
-      // Allows relative callback URLs
+      // If no specific URL is provided, redirect to dashboard after login
+      if (url === baseUrl) return `${baseUrl}/dashboard`
+      
+      // If it's a relative path, allow it
       if (url.startsWith("/")) return `${baseUrl}${url}`
-      // Allows callback URLs on the same origin
-      else if (new URL(url).origin === baseUrl) return url
-      return baseUrl
+      
+      // If it's the same origin, allow it
+      if (new URL(url).origin === baseUrl) return url
+      
+      // Default fallback to dashboard for successful logins
+      return `${baseUrl}/dashboard`
+    },
+    async signIn({ user, account, profile }) {
+        console.log(user, account, profile)
+      // Always allow sign in - you can add custom logic here if needed
+      return true
+    },
+    async session({ session, token }) {
+        console.log(session, token)
+      // Pass any additional data to the session if needed
+      return session
     },
   },
   session: {
