@@ -86,9 +86,9 @@ export default function WebsitePerformanceContainer({ refreshTrigger }: WebsiteP
   const fetchLighthouseData = useCallback(async (url: string | null) => {
     console.log('🔍 fetchLighthouseData called with URL:', url);
     try {
-      const apiUrl = url 
-        ? `/api/lighthouse?url=${encodeURIComponent(url)}`
-        : '/api/lighthouse';
+      // TEMPORARY: Use test endpoint for debugging
+      console.log('🔧 Using test endpoint instead of real Lighthouse API');
+      const apiUrl = `/api/lighthouse-test`;
       
       console.log('📡 Making request to:', apiUrl);
       const response = await fetch(apiUrl);
