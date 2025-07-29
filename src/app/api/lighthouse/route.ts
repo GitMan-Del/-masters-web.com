@@ -9,17 +9,22 @@ const lighthouseCache = new Map<string, { data: LighthouseMetrics; timestamp: nu
 const CACHE_DURATION = 60 * 60 * 1000; // 1 oră în ms
 
 export async function GET(request: NextRequest) {
+  console.log('🚀 Lighthouse API called');
   const session = await auth();
+  console.log('👤 Session:', !!session?.user?.email);
   
   if (!session?.user?.email) {
+    console.log('❌ No session - returning 401');
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
   const { searchParams } = new URL(request.url);
   const websiteUrl = searchParams.get('url');
+  console.log('🌐 Website URL from request:', websiteUrl);
 
   // Dacă nu există URL, returnează toate valorile la 0
   if (!websiteUrl) {
+    console.log('⚠️ No URL provided - returning zero metrics');
     const emptyMetrics: LighthouseMetrics = {
       performance: 0,
       accessibility: 0,
@@ -54,11 +59,15 @@ export async function GET(request: NextRequest) {
 
     // Face request la Google PageSpeed Insights API
     const apiUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(websiteUrl)}&key=${GOOGLE_API_KEY}&category=performance&category=accessibility&category=best-practices&category=seo&strategy=desktop`;
+    console.log('📡 Making Google API request to:', apiUrl.replace(GOOGLE_API_KEY, '[API_KEY_HIDDEN]'));
     
     const response = await fetch(apiUrl);
+    console.log('📊 Google API response status:', response.status, response.ok);
     
     if (!response.ok) {
-      console.error('Google API error:', response.status, response.statusText);
+      console.error('🚨 Google API error:', response.status, response.statusText);
+      const errorText = await response.text();
+      console.error('🚨 Google API error details:', errorText);
       
       // Dacă API-ul nu funcționează, returnează date simulate
       const fallbackMetrics: LighthouseMetrics = {
@@ -105,7 +114,9 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ metrics });
 
   } catch (error) {
-    console.error('Error fetching Lighthouse data:', error);
+    console.error('🚨 Critical error in Lighthouse API:', error);
+    console.error('🚨 Error message:', error instanceof Error ? error.message : 'Unknown error');
+    console.error('🚨 Error stack:', error instanceof Error ? error.stack : 'No stack trace');
     
     // În caz de eroare, returnează date la zero
     const errorMetrics: LighthouseMetrics = {
@@ -122,7 +133,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({ 
       metrics: errorMetrics,
-      error: 'Failed to fetch Lighthouse data'
-    });
+      error: `Failed to fetch Lighthouse data: ${error instanceof Error ? error.message : 'Unknown error'}`
+    }, { status: 500 });
   }
 } 
