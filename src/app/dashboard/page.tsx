@@ -19,6 +19,7 @@ export default function Dashboard() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [refreshTrigger, setRefreshTrigger] = useState(0);
   const [showBetaToast, setShowBetaToast] = useState(false);
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
   // Redirect la homepage dacă nu este autentificat
   useEffect(() => {
@@ -70,6 +71,24 @@ export default function Dashboard() {
         <Sidebar />
       </div>
 
+      {/* Mobile Sidebar Overlay */}
+      {isMobileSidebarOpen && (
+        <div className="lg:hidden fixed inset-0 z-50 flex">
+          {/* Backdrop */}
+          <div 
+            className="fixed inset-0 bg-black bg-opacity-50 transition-opacity duration-300 ease-out"
+            onClick={() => setIsMobileSidebarOpen(false)}
+          />
+          
+          {/* Sidebar */}
+          <div className={`relative flex flex-col w-64 bg-white shadow-xl transform transition-transform duration-300 ease-out ${
+            isMobileSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+          }`}>
+            <Sidebar onCloseMobile={() => setIsMobileSidebarOpen(false)} isMobile={true} />
+          </div>
+        </div>
+      )}
+
       {/* Main Content */}
       <main className="flex-1 p-3 lg:p-4 overflow-y-auto">
         <div className="h-full max-w-7xl mx-auto flex flex-col">
@@ -86,7 +105,10 @@ export default function Dashboard() {
                 />
                 <span className="font-semibold text-sm text-gray-900">Masters Web</span>
               </div>
-              <button className="p-2 text-gray-500 hover:bg-gray-100 rounded-lg transition-colors">
+              <button 
+                onClick={() => setIsMobileSidebarOpen(true)}
+                className="p-2 text-gray-500 hover:bg-gray-100 rounded-lg transition-colors"
+              >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
