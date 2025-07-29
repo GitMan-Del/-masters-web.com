@@ -24,7 +24,13 @@ export default function WebsitePerformanceContainer({ refreshTrigger }: WebsiteP
 
   // Generează datele de performanță pe baza rezultatelor Lighthouse
   const getPerformanceData = (): PerformanceScore[] => {
+    console.log('📈 getPerformanceData called');
+    console.log('🏠 hasProjects:', hasProjects);
+    console.log('🔗 projectUrl:', projectUrl);
+    console.log('💡 lighthouseData:', lighthouseData);
+    
     if (!lighthouseData || !hasProjects) {
+      console.log('❌ No lighthouse data or projects - returning zero data');
       return [
         { label: "Performance", score: 0, color: "#E5E7EB" },
         { label: "Accessibility", score: 0, color: "#E5E7EB" },
@@ -78,18 +84,26 @@ export default function WebsitePerformanceContainer({ refreshTrigger }: WebsiteP
      };
 
   const fetchLighthouseData = useCallback(async (url: string | null) => {
+    console.log('🔍 fetchLighthouseData called with URL:', url);
     try {
       const apiUrl = url 
         ? `/api/lighthouse?url=${encodeURIComponent(url)}`
         : '/api/lighthouse';
-        
+      
+      console.log('📡 Making request to:', apiUrl);
       const response = await fetch(apiUrl);
+      console.log('📊 Response status:', response.status, response.ok);
+      
       if (response.ok) {
         const data = await response.json();
+        console.log('✅ Lighthouse data received:', data);
+        console.log('📈 Setting lighthouse data:', data.metrics);
         setLighthouseData(data.metrics);
+      } else {
+        console.error('❌ Response not OK:', response.status);
       }
     } catch (error) {
-      console.error('Error fetching Lighthouse data:', error);
+      console.error('🚨 Error fetching Lighthouse data:', error);
       // Setează date goale în caz de eroare
       setLighthouseData({
         performance: 0,
@@ -106,37 +120,50 @@ export default function WebsitePerformanceContainer({ refreshTrigger }: WebsiteP
   }, []);
 
   const checkProjects = useCallback(async () => {
+    console.log('🔍 checkProjects called, session email:', session?.user?.email);
     if (!session?.user?.email) {
       setLoading(false);
       return;
     }
 
     try {
+      console.log('📡 Fetching projects...');
       const response = await fetch('/api/projects');
+      console.log('📊 Projects response:', response.status, response.ok);
+      
       if (response.ok) {
         const data = await response.json();
+        console.log('📦 Projects data:', data);
         const hasProjectsData = data.projects && data.projects.length > 0;
         setHasProjects(hasProjectsData);
         
         // Dacă există proiecte, încearcă să obții URL-ul primului proiect
         if (hasProjectsData && data.projects[0]?.website_url) {
+          console.log('🌐 Found project URL:', data.projects[0].website_url);
           setProjectUrl(data.projects[0].website_url);
         } else {
+          console.log('⚠️ No project URL found');
           setProjectUrl(null);
         }
+      } else {
+        console.error('❌ Projects response not OK:', response.status);
       }
     } catch (error) {
-      console.error('Error checking projects:', error);
+      console.error('🚨 Error checking projects:', error);
     } finally {
       setLoading(false);
     }
   }, [session?.user?.email]);
 
   useEffect(() => {
+    console.log('🔄 checkProjects useEffect triggered, refreshTrigger:', refreshTrigger);
     checkProjects();
   }, [checkProjects, refreshTrigger]);
 
   useEffect(() => {
+    console.log('🔄 fetchLighthouseData useEffect triggered');
+    console.log('⏳ loading:', loading);
+    console.log('🔗 projectUrl:', projectUrl);
     if (!loading) {
       fetchLighthouseData(projectUrl);
     }
