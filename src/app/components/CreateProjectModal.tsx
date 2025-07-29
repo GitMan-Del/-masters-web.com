@@ -7,14 +7,16 @@ interface CreateProjectModalProps {
   isOpen: boolean;
   onClose: () => void;
   onProjectCreated: () => void;
+  onShowBetaToast: () => void; // Nou prop pentru a afișa toast-ul
 }
 
 export default function CreateProjectModal({ 
   isOpen, 
   onClose, 
-  onProjectCreated 
+  onProjectCreated,
+  onShowBetaToast
 }: CreateProjectModalProps) {
-  const [loading, setLoading] = useState(false);
+  
   const [formData, setFormData] = useState<CreateProjectData>({
     name: '',
     description: '',
@@ -22,10 +24,11 @@ export default function CreateProjectModal({
     contact_phone: '',
     website_url: '',
     project_type: '',
-
     project_value: undefined,
     estimated_completion_date: ''
   });
+
+  const [loading, setLoading] = useState(false);
 
   const projectTypes = [
     'Website Corporativ',
@@ -39,16 +42,26 @@ export default function CreateProjectModal({
     'Altele'
   ];
 
-
-
-  const handleInputChange = (field: keyof CreateProjectData, value: string | number | string[] | undefined) => {
+  const handleInputChange = (field: string, value: string | number | string[] | undefined) => {
     setFormData(prev => ({
       ...prev,
       [field]: value
     }));
   };
 
-
+  const checkExistingProjects = async (): Promise<boolean> => {
+    try {
+      const response = await fetch('/api/projects');
+      if (response.ok) {
+        const data = await response.json();
+        return data.projects && data.projects.length > 0;
+      }
+      return false;
+    } catch (error) {
+      console.error('Error checking existing projects:', error);
+      return false;
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -57,6 +70,17 @@ export default function CreateProjectModal({
     console.log('Submitting form data:', formData);
 
     try {
+      // Verifică dacă există deja proiecte
+      const hasExistingProjects = await checkExistingProjects();
+      
+      if (hasExistingProjects) {
+        // Afișează toast-ul BETA și închide modal-ul
+        onShowBetaToast();
+        onClose();
+        setLoading(false);
+        return;
+      }
+
       const response = await fetch('/api/projects', {
         method: 'POST',
         headers: {
@@ -77,7 +101,6 @@ export default function CreateProjectModal({
           contact_phone: '',
           website_url: '',
           project_type: '',
-
           project_value: undefined,
           estimated_completion_date: ''
         });
@@ -120,121 +143,118 @@ export default function CreateProjectModal({
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Nume Proiect *
             </label>
-                          <input
-                type="text"
-                required
-                value={formData.name}
-                onChange={(e) => handleInputChange('name', e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent text-gray-900 placeholder-gray-400"
-                placeholder="ex: Website AutoBots"
-              />
+            <input
+              type="text"
+              required
+              value={formData.name}
+              onChange={(e) => handleInputChange('name', e.target.value)}
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent text-gray-900 placeholder-gray-400"
+              placeholder="ex: Website AutoBots"
+            />
           </div>
 
           {/* Descriere */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Descrierea Proiectului
+              Descriere
             </label>
             <textarea
-              rows={3}
               value={formData.description}
               onChange={(e) => handleInputChange('description', e.target.value)}
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent text-gray-900 placeholder-gray-400"
-              placeholder="Descriere scurtă a proiectului..."
+              placeholder="Descrierea scurtă a proiectului..."
+              rows={3}
             />
           </div>
 
-          {/* Contact Info Row */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Email Contact
-              </label>
-              <input
-                type="email"
-                value={formData.contact_email}
-                onChange={(e) => handleInputChange('contact_email', e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent text-gray-900 placeholder-gray-400"
-                placeholder="client@example.com"
-              />
-            </div>
-            
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Telefon Contact
-              </label>
-              <input
-                type="tel"
-                value={formData.contact_phone}
-                onChange={(e) => handleInputChange('contact_phone', e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent text-gray-900 placeholder-gray-400"
-                placeholder="+40 123 456 789"
-              />
-            </div>
+          {/* Contact Email */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Email Contact
+            </label>
+            <input
+              type="email"
+              value={formData.contact_email}
+              onChange={(e) => handleInputChange('contact_email', e.target.value)}
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent text-gray-900 placeholder-gray-400"
+              placeholder="client@example.com"
+            />
           </div>
 
-          {/* Project Details Row */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Website URL
-              </label>
-              <input
-                type="url"
-                value={formData.website_url}
-                onChange={(e) => handleInputChange('website_url', e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent text-gray-900 placeholder-gray-400"
-                placeholder="https://example.com"
-              />
-            </div>
-            
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Tipul Proiectului
-              </label>
-              <select
-                value={formData.project_type}
-                onChange={(e) => handleInputChange('project_type', e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent text-gray-900"
-              >
-                <option value="">Selectează tipul</option>
-                {projectTypes.map(type => (
-                  <option key={type} value={type}>{type}</option>
-                ))}
-              </select>
-            </div>
+          {/* Contact Phone */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Telefon Contact
+            </label>
+            <input
+              type="tel"
+              value={formData.contact_phone}
+              onChange={(e) => handleInputChange('contact_phone', e.target.value)}
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent text-gray-900 placeholder-gray-400"
+              placeholder="+40 700 000 000"
+            />
           </div>
 
+          {/* Website URL */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              URL Website
+            </label>
+            <input
+              type="url"
+              value={formData.website_url}
+              onChange={(e) => handleInputChange('website_url', e.target.value)}
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent text-gray-900 placeholder-gray-400"
+              placeholder="https://example.com"
+            />
+          </div>
 
+          {/* Project Type */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Tipul Proiectului
+            </label>
+            <select
+              value={formData.project_type}
+              onChange={(e) => handleInputChange('project_type', e.target.value)}
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent text-gray-900"
+            >
+              <option value="">Selectează tipul proiectului</option>
+              {projectTypes.map((type) => (
+                <option key={type} value={type}>
+                  {type}
+                </option>
+              ))}
+            </select>
+          </div>
 
-          {/* Financial & Timeline */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Valoarea Proiectului (EUR)
-              </label>
-              <input
-                type="number"
-                min="0"
-                step="0.01"
-                value={formData.project_value || ''}
-                onChange={(e) => handleInputChange('project_value', parseFloat(e.target.value) || undefined)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent text-gray-900 placeholder-gray-400"
-                placeholder="2500.00"
-              />
-            </div>
-            
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Data Estimată de Finalizare
-              </label>
-              <input
-                type="date"
-                value={formData.estimated_completion_date}
-                onChange={(e) => handleInputChange('estimated_completion_date', e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent text-gray-900"
-              />
-            </div>
+          {/* Project Value */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Valoare Proiect (€)
+            </label>
+            <input
+              type="number"
+              min="0"
+              step="100"
+              value={formData.project_value || ''}
+              onChange={(e) => handleInputChange('project_value', e.target.value ? Number(e.target.value) : undefined)}
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent text-gray-900 placeholder-gray-400"
+              placeholder="5000"
+            />
+          </div>
+
+          {/* Estimated Completion Date */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Data Estimată de Finalizare
+            </label>
+            <input
+              type="date"
+              value={formData.estimated_completion_date}
+              onChange={(e) => handleInputChange('estimated_completion_date', e.target.value)}
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent text-gray-900"
+            />
           </div>
 
           {/* Action Buttons */}

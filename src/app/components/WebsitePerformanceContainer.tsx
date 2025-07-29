@@ -240,7 +240,13 @@ export default function WebsitePerformanceContainer({ refreshTrigger }: WebsiteP
             projectUrl ? 'text-purple-600 hover:text-purple-700' : 'text-gray-400 cursor-not-allowed'
           }`}>
             {projectUrl ? (
-              <button onClick={() => fetchLighthouseData(projectUrl)}>
+              <button 
+                onClick={() => {
+                  console.log('Manual refresh triggered for URL:', projectUrl);
+                  fetchLighthouseData(projectUrl);
+                }}
+                className="hover:text-purple-800 transition-colors"
+              >
                 Refresh data →
               </button>
             ) : (
