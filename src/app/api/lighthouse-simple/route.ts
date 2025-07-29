@@ -49,12 +49,18 @@ export async function GET(request: NextRequest) {
       accessibility: Math.min(100, baseAccessibility),
       bestPractices: 85 + (Math.abs(urlHash * 2) % 15), // 85-100
       seo: 90 + (Math.abs(urlHash * 3) % 10), // 90-100
-      uptime: 95 + (Math.random() * 5), // 95-100%
-      loadTime: 1.5 + (Math.random() * 2), // 1.5-3.5s
-      firstContentfulPaint: 1000 + (Math.random() * 1000), // 1000-2000ms
-      largestContentfulPaint: 2000 + (Math.random() * 1500), // 2000-3500ms
+      uptime: Math.round((95 + (Math.random() * 5)) * 10) / 10, // 95-100% rounded to 1 decimal
+      loadTime: Math.round((1.5 + (Math.random() * 2)) * 10) / 10, // 1.5-3.5s rounded to 1 decimal
+      firstContentfulPaint: Math.round(1000 + (Math.random() * 1000)), // 1000-2000ms
+      largestContentfulPaint: Math.round(2000 + (Math.random() * 1500)), // 2000-3500ms
       lastUpdated: new Date().toISOString()
     };
+
+    console.log('🎯 Final metrics being returned:', {
+      performance: simulatedMetrics.performance,
+      uptime: simulatedMetrics.uptime,
+      loadTime: simulatedMetrics.loadTime
+    });
 
     console.log('📊 Generated metrics:', simulatedMetrics);
     return NextResponse.json({ metrics: simulatedMetrics });

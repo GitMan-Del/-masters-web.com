@@ -56,10 +56,13 @@ export default function ProjectCardContainer({
        console.log('🔧 Using simple lighthouse API for debugging');
        const response = await fetch(apiUrl);
       
-      if (response.ok) {
-        const data = await response.json();
-        setLighthouseData(data.metrics);
-      }
+             if (response.ok) {
+         const data = await response.json();
+         console.log('📊 ProjectCardContainer received lighthouse data:', data.metrics);
+         setLighthouseData(data.metrics);
+       } else {
+         console.error('❌ ProjectCardContainer API response not OK:', response.status);
+       }
     } catch (error) {
       console.error('Error fetching lighthouse data:', error);
       setLighthouseData(null);

@@ -7,6 +7,7 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project, lighthouseData }: ProjectCardProps) {
+  console.log('🎯 ProjectCard received lighthouseData:', lighthouseData);
   // Helper function pentru generarea inițialelor
   const getInitials = (name: string) => {
     return name
@@ -90,13 +91,13 @@ export default function ProjectCard({ project, lighthouseData }: ProjectCardProp
       <div className="grid grid-cols-3 gap-4 mb-4 p-3 bg-gray-50 rounded-lg">
         <div className="text-center">
           <div className="text-lg font-bold text-gray-900">
-            {lighthouseData ? `${lighthouseData.uptime}%` : '0%'}
+            {lighthouseData ? `${Math.round(lighthouseData.uptime)}%` : '0%'}
           </div>
           <div className="text-xs text-gray-500">Uptime</div>
         </div>
         <div className="text-center">
           <div className="text-lg font-bold text-gray-900">
-            {lighthouseData ? `${lighthouseData.loadTime}s` : '0s'}
+            {lighthouseData ? `${Math.round(lighthouseData.loadTime * 10) / 10}s` : '0s'}
           </div>
           <div className="text-xs text-gray-500">Load Time</div>
         </div>
