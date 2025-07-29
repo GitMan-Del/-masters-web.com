@@ -1,6 +1,5 @@
 import Image from "next/image"
 import NavBar from "./components/Navbar"
-import CardCarousel from "./components/CardCarousel";
 import Footer from "./components/Footer";
 
 
@@ -219,56 +218,206 @@ export default function Home() {
             <div className="w-5 h-5 rounded-[5px] flex items-center justify-center p-3 font-bold bg-btn-active text-btn">2</div>
           <p>Our goal</p>
          </div>
-          <h2 className="text-main text-4xl sm:text-5xl md:text-7xl">
-             We <span className="text-special"> help you </span>
-             go from idea<span className="text-special"> to launch </span> <br />
-             <span className="text-special"> with clarity </span>and speed.</h2>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 w-full max-w-5xl">
-                  <div className="flex flex-col gap-2 text-center hover:scale-110 duration-200 hover:cursor-pointer cursor-pointer bg-white/80 rounded-xl p-4">
-                    <h2 className="text-5xl sm:text-5xl md:text-7xl font-black font-popins">01</h2>
-                    <p className="text-xl sm:text-2xl font-semibold font-popins">Discovery</p>
-                    <p className="max-w-md text-sec mx-auto text-xs sm:text-base">We discuss your goals and gather key info for the project.</p>
-                  </div>
-                  <div className="flex flex-col gap-2 text-center hover:scale-110 duration-200 hover:cursor-pointer cursor-pointer bg-white/80 rounded-xl p-4">
-                    <h2 className="text-5xl sm:text-5xl md:text-7xl font-black font-popins">0<span className="text-special">2</span></h2>
-                    <p className="text-xl sm:text-2xl font-semibold font-popins"><span className="text-special">Lock</span> the <span className="text-special">Deal</span></p>
-                    <p className="max-w-md text-sec mx-auto text-xs sm:text-base">We discuss your goals and gather key info for the project.</p>
-              </div>
-                  <div className="flex flex-col gap-2 text-center hover:scale-110 duration-200 hover:cursor-pointer cursor-pointer bg-white/80 rounded-xl p-4">
-                    <h2 className="text-5xl sm:text-5xl md:text-7xl font-black font-popins">03</h2>
-                    <p className="text-xl sm:text-2xl font-semibold font-popins">Design</p>
-                    <p className="max-w-md text-sec mx-auto text-xs sm:text-base">We discuss your goals and gather key info for the project.</p>
-              </div>
-                  <div className="flex flex-col gap-2 text-center hover:scale-110 duration-200 hover:cursor-pointer cursor-pointer bg-white/80 rounded-xl p-4">
-                    <h2 className="text-5xl sm:text-5xl md:text-7xl font-black font-popins">0<span className="text-special">4</span></h2>
-                    <p className="text-xl sm:text-2xl font-semibold font-popins"><span className="text-special">Build</span> & <span className="text-special">Launch</span></p>
-                    <p className="max-w-md text-sec mx-auto text-xs sm:text-base">We discuss your goals and gather key info for the project.</p>
-              </div>
-              </div>
+        <h2 className="text-main text-4xl sm:text-5xl md:text-7xl font-bold leading-tight">
+           We <span className="text-special"> help you </span>
+           go from idea<span className="text-special"> to launch </span> <br />
+           <span className="text-special"> with clarity </span>and speed.</h2>
       </section>
-      {/* Proces */}
-        <section id="services" className="w-full bg-main text-main h-fit flex flex-col md:flex-row items-center gap-3 md:pl-[120px] py-10">
-        {/* Text / left side */}
-          <div className="flex-1 items-center justify-center flex flex-col md:items-start md:justify-center text-center md:text-left px-2">
-           <div className="flex flex-row gap-2 mb-3 justify-center md:justify-start">
-                 <div className="w-5 h-5 rounded-[5px] flex items-center justify-center p-3 font-bold bg-btn-active text-btn">3</div>
-                <p>Type of project we can build</p>
+
+      {/* Process Steps */}
+      <section className="w-full h-fit bg-main text-main p-4 sm:p-10 text-center items-center justify-center">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 w-full max-w-5xl mx-auto">
+          <div className="flex flex-col gap-2 text-center hover:scale-110 duration-200 hover:cursor-pointer cursor-pointer bg-white/80 rounded-xl p-4">
+            <h2 className="text-5xl sm:text-5xl md:text-7xl font-black font-popins">01</h2>
+            <p className="text-xl sm:text-2xl font-semibold font-popins">Discovery</p>
+            <p className="max-w-md text-sec mx-auto text-xs sm:text-base">We discuss your goals and gather key info for the project.</p>
+          </div>
+          <div className="flex flex-col gap-2 text-center hover:scale-110 duration-200 hover:cursor-pointer cursor-pointer bg-white/80 rounded-xl p-4">
+            <h2 className="text-5xl sm:text-5xl md:text-7xl font-black font-popins">0<span className="text-special">2</span></h2>
+            <p className="text-xl sm:text-2xl font-semibold font-popins"><span className="text-special">Lock</span> the <span className="text-special">Deal</span></p>
+            <p className="max-w-md text-sec mx-auto text-xs sm:text-base">We discuss your goals and gather key info for the project.</p>
+          </div>
+          <div className="flex flex-col gap-2 text-center hover:scale-110 duration-200 hover:cursor-pointer cursor-pointer bg-white/80 rounded-xl p-4">
+            <h2 className="text-5xl sm:text-5xl md:text-7xl font-black font-popins">03</h2>
+            <p className="text-xl sm:text-2xl font-semibold font-popins">Design</p>
+            <p className="max-w-md text-sec mx-auto text-xs sm:text-base">We discuss your goals and gather key info for the project.</p>
+          </div>
+          <div className="flex flex-col gap-2 text-center hover:scale-110 duration-200 hover:cursor-pointer cursor-pointer bg-white/80 rounded-xl p-4">
+            <h2 className="text-5xl sm:text-5xl md:text-7xl font-black font-popins">0<span className="text-special">4</span></h2>
+            <p className="text-xl sm:text-2xl font-semibold font-popins"><span className="text-special">Build</span> & <span className="text-special">Launch</span></p>
+            <p className="max-w-md text-sec mx-auto text-xs sm:text-base">We discuss your goals and gather key info for the project.</p>
+          </div>
+        </div>
+      </section>
+
+      
+
+      {/* Type of project we can build */}
+      <section id="services" className="w-full bg-main text-main py-16 px-4 sm:px-8 lg:px-[120px]">
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+          
+          {/* Left Side - Text */}
+          <div className="flex-1 text-center lg:text-left">
+            <div className="flex flex-row gap-2 mb-6 justify-center lg:justify-start">
+              <div className="w-5 h-5 rounded-[5px] flex items-center justify-center p-3 font-bold bg-btn-active text-btn">3</div>
+              <p className="text-sec">Type of project we can build</p>
+            </div>
+            
+            <h2 className="text-main text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6">
+              WE <span className="text-special">DESIGN</span> AND BUILD FAST,<br />
+              <span className="text-special">MODERN WEBSITES</span>, AND WE<br />
+              ALREADY DID IT.
+            </h2>
+            
+            <p className="text-sec text-base sm:text-lg max-w-md mx-auto lg:mx-0 mb-8">
+              We don&apos;t just promise performance and clean code,<br />
+              we&apos;ve delivered it on real projects that made a difference.
+            </p>
+            
+            <a href="/contact" className="btn-modern w-fit mx-auto lg:mx-0 flex items-center gap-5 min-h-[56px]" aria-label="Contact us for your web development project">
+              <span className="btn-text-content">Contact us</span>
+              <span className="inline-block w-2" aria-hidden="true"></span>
+              <div className="btn-circle">
+                <span>→</span>
               </div>
-            <h2 className="text-main text-4xl sm:text-5xl md:text-7xl">We <span className="text-special"> design and </span> build fast, <br />
-             modern websites that <span className="text-special"> grow </span> <br /> your  <span className="text-special"> business </span></h2>
-            <p className="text-sec max-w-xs sm:max-w-md md:max-w-[500px] mx-auto md:mx-0">No drag-and-drop templates. No bloated builders. Just clean code, smart structure, and design that actually serves your goals.</p>
-            <a href="/contact" className="btn-modern w-full sm:w-auto flex items-center gap-5 min-h-[56px] mt-4" aria-label="Start your web development project">
-                  <span className="btn-text-content">Start your project</span>
-                  <span className="inline-block w-2" aria-hidden="true"></span>
-                  <div className="btn-circle">
-                    <span>→</span>
-                  </div>
-                </a>
+            </a>
           </div>
-          <div className="w-full md:w-1/2 overflow-hidden mt-8 md:mt-0">
-           <CardCarousel />
+
+          {/* Right Side - Project Cards */}
+          <div className="flex-1 relative">
+            {/* Mobile Layout - Vertical Stack */}
+            <div className="md:hidden flex flex-col items-center gap-4 max-w-sm mx-auto">
+              
+              {/* AutoBots Card - Mobile */}
+              <div className="relative bg-gradient-to-br from-purple-500 to-purple-700 rounded-2xl p-4 text-white w-full max-w-xs transform rotate-2 hover:rotate-0 transition-all duration-300 shadow-lg">
+                <div className="bg-white rounded-xl p-2 mb-3 h-32 overflow-hidden">
+                  <Image 
+                    src="/og-image.png" 
+                    alt="AutoBots website preview" 
+                    width={250} 
+                    height={120}
+                    className="w-full h-full object-cover rounded-lg"
+                  />
+                </div>
+                <h3 className="text-lg font-bold mb-2">AutoBots</h3>
+                <p className="text-purple-100 text-xs mb-3 leading-relaxed">
+                  AutoBots oferă afacerilor locale superputeri automatizează rezervările, mesajele și...
+                </p>
+                <div className="text-white text-xs font-medium hover:underline cursor-pointer">
+                  See more <span>→</span>
+                </div>
+              </div>
+
+              {/* Rururier Card - Mobile */}
+              <div className="relative bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl p-4 text-white w-full max-w-xs transform -rotate-2 hover:rotate-0 transition-all duration-300 shadow-lg">
+                <div className="bg-white rounded-xl p-2 mb-3 h-32 overflow-hidden">
+                  <Image 
+                    src="/opengraf-image.png" 
+                    alt="Rururier website preview" 
+                    width={250} 
+                    height={120}
+                    className="w-full h-full object-cover rounded-lg"
+                  />
+                </div>
+                <h3 className="text-lg font-bold mb-2">Rururier</h3>
+                <p className="text-blue-100 text-xs mb-3 leading-relaxed">
+                  Rururier - Ouverture de porte rapide, damage de serrure et déplacement de cylindre, urgence, interventions assurées 24h/24 et 7j/7
+                </p>
+                <div className="text-white text-xs font-medium hover:underline cursor-pointer">
+                  See more <span>→</span>
+                </div>
+              </div>
+
+              {/* InvityHub Card - Mobile */}
+              <div className="relative bg-gradient-to-br from-gray-800 to-black rounded-2xl p-4 text-white w-full max-w-xs transform rotate-2 hover:rotate-0 transition-all duration-300 shadow-lg">
+                <div className="bg-white rounded-xl p-2 mb-3 h-32 overflow-hidden">
+                  <Image 
+                    src="/landing-page.png" 
+                    alt="InvityHub website preview" 
+                    width={250} 
+                    height={120}
+                    className="w-full h-full object-cover rounded-lg"
+                  />
+                </div>
+                <h3 className="text-lg font-bold mb-2">InvityHub</h3>
+                <p className="text-gray-300 text-xs mb-3 leading-relaxed">
+                  Create, Send, and Track Beautiful Invitations Effortlessly...
+                </p>
+                <div className="text-white text-xs font-medium hover:underline cursor-pointer">
+                  See more <span>→</span>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Desktop Layout - Overlapping Cards */}
+            <div className="hidden md:flex relative items-center justify-center">
+              
+              {/* AutoBots Card - Desktop */}
+              <div className="relative bg-gradient-to-br from-purple-500 to-purple-700 rounded-3xl p-6 text-white w-80 h-96 transform rotate-12 hover:rotate-6 transition-all duration-500 shadow-2xl z-10">
+                <div className="bg-white rounded-xl p-3 mb-4 h-40 overflow-hidden">
+                  <Image 
+                    src="/og-image.png" 
+                    alt="AutoBots website preview" 
+                    width={300} 
+                    height={180}
+                    className="w-full h-full object-cover rounded-lg"
+                  />
+                </div>
+                <h3 className="text-2xl font-bold mb-3">AutoBots</h3>
+                <p className="text-purple-100 text-sm mb-4 leading-relaxed">
+                  AutoBots oferă afacerilor locale superputeri automatizează rezervările, mesajele și...
+                </p>
+                <div className="text-white text-sm font-medium hover:underline cursor-pointer">
+                  See more <span>→</span>
+                </div>
+              </div>
+
+              {/* Rururier Card - Desktop */}
+              <div className="relative bg-gradient-to-br from-blue-400 to-blue-600 rounded-3xl p-6 text-white w-80 h-96 transform -rotate-6 hover:rotate-0 transition-all duration-500 shadow-2xl z-20 -ml-12">
+                <div className="bg-white rounded-xl p-3 mb-4 h-40 overflow-hidden">
+                  <Image 
+                    src="/opengraf-image.png" 
+                    alt="Rururier website preview" 
+                    width={300} 
+                    height={180}
+                    className="w-full h-full object-cover rounded-lg"
+                  />
+                </div>
+                <h3 className="text-2xl font-bold mb-3">Rururier</h3>
+                <p className="text-blue-100 text-sm mb-4 leading-relaxed">
+                  Rururier - Ouverture de porte rapide, damage de serrure et déplacement de cylindre, urgence, interventions assurées 24h/24 et 7j/7
+                </p>
+                <div className="text-white text-sm font-medium hover:underline cursor-pointer">
+                  See more <span>→</span>
+                </div>
+              </div>
+
+              {/* InvityHub Card - Desktop */}
+              <div className="relative bg-gradient-to-br from-gray-800 to-black rounded-3xl p-6 text-white w-80 h-96 transform rotate-12 hover:rotate-6 transition-all duration-500 shadow-2xl z-10 -ml-12">
+                <div className="bg-white rounded-xl p-3 mb-4 h-40 overflow-hidden">
+                  <Image 
+                    src="/landing-page.png" 
+                    alt="InvityHub website preview" 
+                    width={300} 
+                    height={180}
+                    className="w-full h-full object-cover rounded-lg"
+                  />
+                </div>
+                <h3 className="text-2xl font-bold mb-3">InvityHub</h3>
+                <p className="text-gray-300 text-sm mb-4 leading-relaxed">
+                  Create, Send, and Track Beautiful Invitations Effortlessly...
+                </p>
+                <div className="text-white text-sm font-medium hover:underline cursor-pointer">
+                  See more <span>→</span>
+                </div>
+              </div>
+
+            </div>
           </div>
-        </section>
+
+        </div>
+      </section>
 
       {/* Plans */}
       <section id="plans" className="w-full h-fit bg-white py-16 px-4 sm:px-10 md:px-[120px]">
@@ -277,9 +426,9 @@ export default function Home() {
           <div className="flex flex-col items-center justify-center text-center mb-16">
             <div className="flex flex-row gap-2 justify-center items-center mb-6">
               <div className="w-5 h-5 rounded-[5px] flex items-center justify-center p-3 font-bold bg-btn-active text-btn">
-                5
+                4
               </div>
-              <p className="text-main">Our services</p>
+              <p className="text-main">Our plans</p>
             </div>
             <h2 className="text-main text-4xl sm:text-5xl md:text-7xl mb-6 flex flex-col items-center justify-center text-center">
               <span>
@@ -461,317 +610,549 @@ export default function Home() {
             </a>
           </div>
         </div>
-      </section>
+       </section>
 
-    {/* Testimonials Section */}
-    <section id="testimonials" className="w-full h-fit bg-white py-16 px-4 sm:px-10 md:px-[120px]">
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="flex flex-col items-center justify-center text-center mb-16">
-          <div className="flex flex-row gap-2 justify-center items-center mb-6">
-            <div className="w-5 h-5 rounded-[5px] flex items-center justify-center p-3 font-bold bg-btn-active text-btn">
-              6
+      {/* Testimonials Section */}
+      <section id="testimonials" className="w-full h-fit bg-white py-16 px-4 sm:px-10 md:px-[120px]">
+        <div className="max-w-7xl mx-auto">
+          {/* Header */}
+          <div className="flex flex-col items-center justify-center text-center mb-16">
+            <div className="flex flex-row gap-2 justify-center items-center mb-6">
+              <div className="w-5 h-5 rounded-[5px] flex items-center justify-center p-3 font-bold bg-btn-active text-btn">
+                5
+              </div>
+              <p className="text-main">Client testimonials</p>
             </div>
-            <p className="text-main">Client testimonials</p>
+            <h2 className="text-main text-4xl sm:text-5xl md:text-7xl mb-6 flex flex-col items-center justify-center text-center">
+              <span>
+                Don&rsquo;t take our <span className="text-special">word for it</span>.
+              </span>
+              <span>
+                <span className="text-special">Trust our customers</span>
+              </span>
+            </h2>
+            <p className="text-sec max-w-2xl mx-auto text-base sm:text-lg">
+              Over 200 successful projects delivered. Here&rsquo;s what our clients say about working with Masters Web for their web development needs.
+            </p>
           </div>
-          <h2 className="text-main text-4xl sm:text-5xl md:text-7xl mb-6 flex flex-col items-center justify-center text-center">
-            <span>
-              Don&rsquo;t take our <span className="text-special">word for it</span>.
-            </span>
-            <span>
-              <span className="text-special">Trust our customers</span>
-            </span>
+
+          {/* Testimonials Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {/* Testimonial 1 */}
+            <div className="bg-gray-50 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div className="flex items-center mb-4">
+                <div className="flex text-btn-active">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+              </div>
+              <blockquote className="text-main mb-4 leading-relaxed">
+                &ldquo;Masters Web delivered our ecommerce site in just 2 weeks. The design is clean, fast, and already driving sales. Highly recommend!&rdquo;
+              </blockquote>
+              <div className="flex items-center">
+                <div className="w-10 h-10 bg-btn-active rounded-full flex items-center justify-center text-btn font-bold text-sm mr-3">
+                  AB
+                </div>
+                <div>
+                  <div className="font-semibold text-main">Annette Black</div>
+                  <div className="text-sec text-sm">@annetteblack35</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Testimonial 2 */}
+            <div className="bg-gray-50 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div className="flex items-center mb-4">
+                <div className="flex text-btn-active">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+              </div>
+              <blockquote className="text-main mb-4 leading-relaxed">
+                &ldquo;The landing page they built converted 3x better than our previous one. Clear communication and fast delivery.&rdquo;
+              </blockquote>
+              <div className="flex items-center">
+                <div className="w-10 h-10 bg-btn-active rounded-full flex items-center justify-center text-btn font-bold text-sm mr-3">
+                  MM
+                </div>
+                <div>
+                  <div className="font-semibold text-main">Marvin McKinney</div>
+                  <div className="text-sec text-sm">@marvinmckinney45</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Testimonial 3 */}
+            <div className="bg-gray-50 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div className="flex items-center mb-4">
+                <div className="flex text-btn-active">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+              </div>
+              <blockquote className="text-main mb-4 leading-relaxed">
+                &ldquo;Professional team, modern design, and excellent support. Our business website exceeded all expectations.&rdquo;
+              </blockquote>
+              <div className="flex items-center">
+                <div className="w-10 h-10 bg-btn-active rounded-full flex items-center justify-center text-btn font-bold text-sm mr-3">
+                  JC
+                </div>
+                <div>
+                  <div className="font-semibold text-main">Jane Cooper</div>
+                  <div className="text-sec text-sm">@janecooper95</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Testimonial 4 */}
+            <div className="bg-gray-50 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div className="flex items-center mb-4">
+                <div className="flex text-btn-active">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+              </div>
+              <blockquote className="text-main mb-4 leading-relaxed">
+                &ldquo;Custom SaaS development that perfectly fits our workflow. It&rsquo;s truly been a game-changer for our business! 😊&rdquo;
+              </blockquote>
+              <div className="flex items-center">
+                <div className="w-10 h-10 bg-btn-active rounded-full flex items-center justify-center text-btn font-bold text-sm mr-3">
+                  RR
+                </div>
+                <div>
+                  <div className="font-semibold text-main">Ronald Richards</div>
+                  <div className="text-sec text-sm">@ronaldrichards47</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Testimonial 5 */}
+            <div className="bg-gray-50 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div className="flex items-center mb-4">
+                <div className="flex text-btn-active">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+              </div>
+              <blockquote className="text-main mb-4 leading-relaxed">
+                &ldquo;Fast, reliable, and scalable web development. Masters Web delivered exactly what we needed for our startup launch.&rdquo;
+              </blockquote>
+              <div className="flex items-center">
+                <div className="w-10 h-10 bg-btn-active rounded-full flex items-center justify-center text-btn font-bold text-sm mr-3">
+                  SW
+                </div>
+                <div>
+                  <div className="font-semibold text-main">Sarah Wilson</div>
+                  <div className="text-sec text-sm">@sarahwilson88</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Testimonial 6 */}
+            <div className="bg-gray-50 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div className="flex items-center mb-4">
+                <div className="flex text-btn-active">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+              </div>
+              <blockquote className="text-main mb-4 leading-relaxed">
+                &ldquo;Exceptional web development service. Clean code, modern design, and ongoing support. Couldn&rsquo;t be happier with the results.&rdquo;
+              </blockquote>
+              <div className="flex items-center">
+                <div className="w-10 h-10 bg-btn-active rounded-full flex items-center justify-center text-btn font-bold text-sm mr-3">
+                  DK
+                </div>
+                <div>
+                  <div className="font-semibold text-main">Daniel Kim</div>
+                  <div className="text-sec text-sm">@danielkim42</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom CTA */}
+          <div className="flex flex-col items-center justify-center text-center mt-16">
+            <p className="text-sec mb-6 text-lg">
+              Ready to join our satisfied clients?
+            </p>
+            <a
+              href="/contact"
+              className="btn-modern inline-flex items-center gap-5 min-h-[56px] justify-center"
+              aria-label="Start your web development project with Masters Web"
+            >
+              <span className="btn-text-content">Start your project</span>
+              <span className="inline-block w-2"></span>
+              <div className="btn-circle">
+                <span>→</span>
+              </div>
+            </a>
+          </div>
+        </div>
+       </section>
+        
+      {/* Trusted by Companies */}
+      <section className="w-full bg-main py-16 px-4 sm:px-10">
+        <div className="max-w-6xl mx-auto text-center">
+        <div className="flex flex-row gap-2 justify-center items-center mb-6">
+              <div className="w-5 h-5 rounded-[5px] flex items-center justify-center p-3 font-bold bg-btn-active text-btn">
+                6
+              </div>
+              <p className="text-main">Trusted by</p>
+            </div>
+          <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6">
+            <span className="text-special">TRUSTED BY</span> FAST-GROWING <span className="text-special">STARTUPS</span> AND<br />
+            BOLD <span className="text-special">ENTREPRENEURS</span>
           </h2>
-          <p className="text-sec max-w-2xl mx-auto text-base sm:text-lg">
-            Over 200 successful projects delivered. Here&rsquo;s what our clients say about working with Masters Web for their web development needs.
+          <p className="text-sec text-sm sm:text-base max-w-4xl mx-auto mb-12">
+            Over 200 businesses have trusted Masters Web to build fast, scalable, and conversion-focused 
+            websites. We partner with visionaries across Europe and beyond to turn ideas into digital reality 
+            with clarity, structure, and speed.
           </p>
-        </div>
-
-        {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {/* Testimonial 1 */}
-          <div className="bg-gray-50 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
-            <div className="flex items-center mb-4">
-              <div className="flex text-btn-active">
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
-              </div>
+          
+          {/* Company Logos Grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 max-w-4xl mx-auto">
+            {/* Row 1 */}
+            <div className="bg-gray-200 rounded-lg h-24 sm:h-32 flex items-center justify-center hover:scale-105 transition-all duration-300">
+              <span className="text-gray-400 text-xs">Logo 1</span>
             </div>
-            <blockquote className="text-main mb-4 leading-relaxed">
-              &ldquo;Masters Web delivered our ecommerce site in just 2 weeks. The design is clean, fast, and already driving sales. Highly recommend!&rdquo;
-            </blockquote>
-            <div className="flex items-center">
-              <div className="w-10 h-10 bg-btn-active rounded-full flex items-center justify-center text-btn font-bold text-sm mr-3">
-                AB
-              </div>
-              <div>
-                <div className="font-semibold text-main">Annette Black</div>
-                <div className="text-sec text-sm">@annetteblack35</div>
-              </div>
+            <div className="bg-gray-200 rounded-lg h-24 sm:h-32 flex items-center justify-center hover:scale-105 transition-all duration-300">
+              <span className="text-gray-400 text-xs">Logo 2</span>
             </div>
-          </div>
-
-          {/* Testimonial 2 */}
-          <div className="bg-gray-50 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
-            <div className="flex items-center mb-4">
-              <div className="flex text-btn-active">
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
-              </div>
+            <div className="bg-gray-200 rounded-lg h-24 sm:h-32 flex items-center justify-center hover:scale-105 transition-all duration-300">
+              <span className="text-gray-400 text-xs">Logo 3</span>
             </div>
-            <blockquote className="text-main mb-4 leading-relaxed">
-              &ldquo;The landing page they built converted 3x better than our previous one. Clear communication and fast delivery.&rdquo;
-            </blockquote>
-            <div className="flex items-center">
-              <div className="w-10 h-10 bg-btn-active rounded-full flex items-center justify-center text-btn font-bold text-sm mr-3">
-                MM
-              </div>
-              <div>
-                <div className="font-semibold text-main">Marvin McKinney</div>
-                <div className="text-sec text-sm">@marvinmckinney45</div>
-              </div>
+            <div className="bg-gray-200 rounded-lg h-24 sm:h-32 flex items-center justify-center hover:scale-105 transition-all duration-300">
+              <span className="text-gray-400 text-xs">Logo 4</span>
             </div>
-          </div>
-
-          {/* Testimonial 3 */}
-          <div className="bg-gray-50 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
-            <div className="flex items-center mb-4">
-              <div className="flex text-btn-active">
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
-              </div>
+            
+            {/* Row 2 */}
+            <div className="bg-gray-200 rounded-lg h-24 sm:h-32 flex items-center justify-center hover:scale-105 transition-all duration-300">
+              <span className="text-gray-400 text-xs">Logo 5</span>
             </div>
-            <blockquote className="text-main mb-4 leading-relaxed">
-              &ldquo;Professional team, modern design, and excellent support. Our business website exceeded all expectations.&rdquo;
-            </blockquote>
-            <div className="flex items-center">
-              <div className="w-10 h-10 bg-btn-active rounded-full flex items-center justify-center text-btn font-bold text-sm mr-3">
-                JC
-              </div>
-              <div>
-                <div className="font-semibold text-main">Jane Cooper</div>
-                <div className="text-sec text-sm">@janecooper95</div>
-              </div>
+            <div className="bg-gray-200 rounded-lg h-24 sm:h-32 flex items-center justify-center hover:scale-105 transition-all duration-300">
+              <span className="text-gray-400 text-xs">Logo 6</span>
             </div>
-          </div>
-
-          {/* Testimonial 4 */}
-          <div className="bg-gray-50 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
-            <div className="flex items-center mb-4">
-              <div className="flex text-btn-active">
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
-              </div>
+            <div className="bg-gray-200 rounded-lg h-24 sm:h-32 flex items-center justify-center hover:scale-105 transition-all duration-300">
+              <span className="text-gray-400 text-xs">Logo 7</span>
             </div>
-            <blockquote className="text-main mb-4 leading-relaxed">
-              &ldquo;Custom SaaS development that perfectly fits our workflow. It&rsquo;s truly been a game-changer for our business! 😊&rdquo;
-            </blockquote>
-            <div className="flex items-center">
-              <div className="w-10 h-10 bg-btn-active rounded-full flex items-center justify-center text-btn font-bold text-sm mr-3">
-                RR
-              </div>
-              <div>
-                <div className="font-semibold text-main">Ronald Richards</div>
-                <div className="text-sec text-sm">@ronaldrichards47</div>
-              </div>
-            </div>
-          </div>
-
-          {/* Testimonial 5 */}
-          <div className="bg-gray-50 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
-            <div className="flex items-center mb-4">
-              <div className="flex text-btn-active">
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
-              </div>
-            </div>
-            <blockquote className="text-main mb-4 leading-relaxed">
-              &ldquo;Fast, reliable, and scalable web development. Masters Web delivered exactly what we needed for our startup launch.&rdquo;
-            </blockquote>
-            <div className="flex items-center">
-              <div className="w-10 h-10 bg-btn-active rounded-full flex items-center justify-center text-btn font-bold text-sm mr-3">
-                SW
-              </div>
-              <div>
-                <div className="font-semibold text-main">Sarah Wilson</div>
-                <div className="text-sec text-sm">@sarahwilson88</div>
-              </div>
-            </div>
-          </div>
-
-          {/* Testimonial 6 */}
-          <div className="bg-gray-50 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
-            <div className="flex items-center mb-4">
-              <div className="flex text-btn-active">
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
-              </div>
-            </div>
-            <blockquote className="text-main mb-4 leading-relaxed">
-              &ldquo;Exceptional web development service. Clean code, modern design, and ongoing support. Couldn&rsquo;t be happier with the results.&rdquo;
-            </blockquote>
-            <div className="flex items-center">
-              <div className="w-10 h-10 bg-btn-active rounded-full flex items-center justify-center text-btn font-bold text-sm mr-3">
-                DK
-              </div>
-              <div>
-                <div className="font-semibold text-main">Daniel Kim</div>
-                <div className="text-sec text-sm">@danielkim42</div>
-              </div>
+            <div className="bg-gray-200 rounded-lg h-24 sm:h-32 flex items-center justify-center hover:scale-105 transition-all duration-300">
+              <span className="text-gray-400 text-xs">Logo 8</span>
             </div>
           </div>
         </div>
+       </section>
 
-        {/* Bottom CTA */}
-        <div className="flex flex-col items-center justify-center text-center mt-16">
-          <p className="text-sec mb-6 text-lg">
-            Ready to join our satisfied clients?
-          </p>
-          <a
-            href="/contact"
-            className="btn-modern inline-flex items-center gap-5 min-h-[56px] justify-center"
-            aria-label="Start your web development project with Masters Web"
-          >
-            <span className="btn-text-content">Start your project</span>
-            <span className="inline-block w-2"></span>
-            <div className="btn-circle">
-              <span>→</span>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
+      {/* Services Section - Keep Website Fast, Secure, and Up to Date */}
+      <section className="w-full bg-main py-16 px-4 sm:px-10 md:px-[120px]">
+        <div className="w-full">
+          <div className="flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-16">
+            
+            {/* Left Side - Service Cards */}
+            <div className="flex-1">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                
+                {/* Security Updates Card */}
+                <div className="bg-black rounded-2xl p-6 text-white relative overflow-hidden">
+                  <h3 className="text-xl font-bold mb-3">Security Updates</h3>
+                  <p className="text-gray-300 text-sm mb-4">
+                    Comprehensive infrastructure security patches and system upgrades.
+                  </p>
+                  <div className="text-white text-sm font-medium hover:underline cursor-pointer">
+                    See more →
+                  </div>
+                </div>
 
-        <section id="stack" className="w-full h-fit py-8 bg-main text-main relative flex flex-col justify-center items-center px-4 sm:px-10 md:px-[120px]">
-          {/* Scattered avatar images, each with a tooltip on hover */}
-          {/* On mobile, stack avatars in a row at the top */}
-          <div className="flex flex-row flex-wrap gap-4 justify-center md:hidden mb-8">
-            <Image src="/vercel.jpeg" width={48} height={48} alt="avatar" className="bg-btn rounded-xl h-10 w-10 object-contain shadow-lg animate-float" />
-            <Image src="/typescript.png" width={48} height={48} alt="avatar" className="bg-btn rounded-xl h-10 w-10 object-contain shadow-lg animate-float" />
-            <Image src="/tailwind.png" width={48} height={48} alt="avatar" className="bg-btn rounded-xl h-10 w-10 object-contain shadow-lg animate-float" />
-            <Image src="/nextjs.png" width={48} height={48} alt="avatar" className="bg-btn rounded-xl h-10 w-10 object-contain shadow-lg animate-float" />
-            <Image src="/github.png" width={48} height={48} alt="avatar" className="bg-btn rounded-xl h-10 w-10 object-contain shadow-lg animate-float" />
-          </div>
-          {/* On desktop, keep absolute scattered avatars */}
-          <div className="hidden md:block">
-            <div className="group absolute top-[18%] left-[22%] z-30">
-              <Image src="/vercel.jpeg" width={48} height={48} alt="avatar" className="bg-btn rounded-xl h-10 w-10 object-contain rotate-[8deg] shadow-lg animate-float" />
-              <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 absolute left-1/2 -translate-x-1/2 -top-10 bg-main text-btn text-xs px-3 py-1 rounded shadow-lg pointer-events-none whitespace-nowrap z-50">
-                <span className="font-bold">Vercel </span> - Ensures seamless CI/CD, fast global deployment, <br /> and optimal performance, especially for Next.js projects.
+                {/* Performance Optimization Card */}
+                <div className="bg-transparent border border-black/50 rounded-2xl p-6 text-black relative overflow-hidden">
+                  <h3 className="text-xl font-bold mb-3">Performance Optimization</h3>
+                  <p className="text-gray-700 text-sm mb-4">
+                    We keep your website fast and responsive with speed checks and improvements.
+                  </p>
+                  <div className="text-black text-sm font-medium hover:underline cursor-pointer">
+                    See more →
+                  </div>
+                </div>
+
+                {/* Content & Edits Card */}
+                <div className="bg-transparent border border-black/50 rounded-2xl p-6 text-black relative overflow-hidden">
+                  <h3 className="text-xl font-bold mb-3">Content & Edits</h3>
+                  <p className="text-gray-700 text-sm mb-4">
+                    Need to change text, images, or layouts? We handle it fast and reliably.
+                  </p>
+                  <div className="text-black text-sm font-medium hover:underline cursor-pointer">
+                    See more →
+                  </div>
+                </div>
+
+                {/* Priority Support Card */}
+                <div className="bg-gradient-to-br from-purple-500 to-purple-700 rounded-2xl p-6 text-white relative overflow-hidden">
+                  <h3 className="text-xl font-bold mb-3">Priority Support</h3>
+                  <p className="text-purple-100 text-sm mb-4">
+                    Get expert help within 24h - Whatever you need: updates, fixes, or advice.
+                  </p>
+                  <div className="text-white text-sm font-medium hover:underline cursor-pointer">
+                    See more →
+                  </div>
+                </div>
+
               </div>
             </div>
-            <div className="group absolute bottom-[40%] left-[17%] z-20">
-              <Image src="/typescript.png" width={48} height={48} alt="avatar" className="bg-btn rounded-xl h-10 w-10 object-contain -rotate-[15deg] animate-float" />
-              <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 absolute left-1/2 -translate-x-1/2 -top-10 bg-main text-btn text-xs px-3 py-1 rounded shadow-lg pointer-events-none whitespace-nowrap z-50 text-center">
-                <span className="font-bold">TypeScript </span> - Implemented to ensure code quality, <br /> reduce runtime errors, and support maintainable, large-scale applications.
+
+            {/* Right Side - Text */}
+            <div className="flex-1 text-center lg:text-right">
+              <div className="flex flex-row gap-2 mb-6 justify-center lg:justify-end">
+                <div className="w-5 h-5 rounded-[5px] flex items-center justify-center p-3 font-bold bg-btn-active text-btn">7</div>
+                <p className="text-sec">Website Maintenance</p>
               </div>
-            </div>
-            <div className="group absolute bottom-[30%] left-[68%] z-40">
-              <Image src="/tailwind.png" width={48} height={48} alt="avatar" className="bg-btn rounded-xl h-10 w-10 object-contain rotate-[15deg] animate-float" />
-              <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 absolute left-1/2 -translate-x-1/2 -top-10 bg-main text-btn text-xs px-3 py-1 rounded shadow-lg pointer-events-none whitespace-nowrap z-50 text-center">
-                <span className="font-bold">Tailwind CSS </span> - Used to create clean, responsive designs <br /> with maximum speed and consistency across all components.
-              </div>
-            </div>
-            <div className="group absolute top-[12%] right-[26%] z-30">
-              <Image src="/nextjs.png" width={48} height={48} alt="avatar" className="bg-btn rounded-xl h-10 w-10 object-contain -rotate-[9deg] animate-float" />
-              <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 absolute left-1/2 -translate-x-1/2 -top-10 bg-main text-btn text-xs px-3 py-1 rounded shadow-lg pointer-events-none whitespace-nowrap z-50 text-center">
-                <span className="font-bold">Next.js</span> - Chosen for its performance, SEO capabilities, <br /> and server-side rendering, enabling fast, reliable user experiences.
-              </div>
-            </div>
-            <div className="group absolute bottom-[18%] left-[54%] z-20">
-              <Image src="/github.png" width={48} height={48} alt="avatar" className="bg-btn rounded-xl h-10 w-10 object-contain rotate-[18deg] animate-float" />
-              <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 absolute left-1/2 -translate-x-1/2 -top-10 bg-main text-btn text-xs px-3 py-1 rounded shadow-lg pointer-events-none whitespace-nowrap z-50 text-center">
-                <span className="font-bold">GitHub </span> - Used for version control, code reviews, and <br /> deployment automation ensuring transparency and team efficiency.
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-row gap-2 mb-3">
-            <div className="w-5 h-5 rounded-[5px] flex items-center justify-center p-3 font-bold bg-btn-active text-btn">4</div>
-            <p>Our Tech Stack</p>
-            </div>
-          <h2 className="text-main text-4xl sm:text-5xl md:text-7xl text-center">We use <span className="text-special">modern</span>, <span className="text-special"> scalable</span>, and lightning-fast <span className="text-special"> technologies to build your product </span> the right way.</h2>
-          <p className="text-sec max-w-xs sm:max-w-md md:max-w-[700px] text-center mx-auto">Built with the exact same tools used by top startups, agencies, and product teams to ship fast, scale efficiently, and stay ahead of the curve.</p>
-          <a href="/contact" className="btn-modern w-full sm:w-auto flex items-center gap-5 min-h-[56px] mt-4" aria-label="Start your web development project">
-                  <span className="btn-text-content">Start your project</span>
+              
+              <h2 className="text-main text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6">
+                <span className="text-special">KEEP</span> YOUR <span className="text-special">WEBSITE</span> FAST, SECURE,<br />
+                AND <span className="text-special">UP TO DATE</span>.
+              </h2>
+              
+              <p className="text-sec text-base sm:text-lg max-w-md mx-auto lg:mx-0 lg:ml-auto mb-8">
+                From technical updates to content changes, our maintenance plans ensure your website stays online, optimized, and ready to convert every day.
+              </p>
+              
+              <div className="flex justify-center lg:justify-end">
+                <a href="/contact" className="btn-modern w-fit flex items-center gap-5 min-h-[56px]" aria-label="Contact us about maintenance services">
+                  <span className="btn-text-content">Contact us</span>
                   <span className="inline-block w-2" aria-hidden="true"></span>
                   <div className="btn-circle">
                     <span>→</span>
                   </div>
                 </a>
-        </section>
-        
-        {/* Banner mov la final */}
-        <div style={{ width: "100%", height: "40px", background: "var(--bg-btn-active)", zIndex: 100, position: "relative", overflow: "hidden", display: "flex", alignItems: "center" }}>
-          <div
-            style={{
-              whiteSpace: "nowrap",
-              display: "inline-block",
-              animation: "marquee 28s linear infinite",
-              fontFamily: "'Poppins', Arial, sans-serif",
-              color: "#fff",
-              fontSize: "16px",
-              fontWeight: 400,
-              letterSpacing: "0.02em",
-            }}
-          >
-            {Array(6)
-              .fill(
-                <>
-                  Build with us now{" "}
-                  <span style={{ display: "inline-block", verticalAlign: "middle", margin: "0 8px" }}>
-                    <svg width="6" height="6" viewBox="0 0 16 16" fill="#fff" xmlns="http://www.w3.org/2000/svg" style={{ display: "inline" }}>
-                      <circle cx="8" cy="8" r="6" />
-                    </svg>
-                  </span>
-                  Start your project today{" "}
-                  <span style={{ display: "inline-block", verticalAlign: "middle", margin: "0 8px" }}>
-                    <svg width="6" height="6" viewBox="0 0 16 16" fill="#fff" xmlns="http://www.w3.org/2000/svg" style={{ display: "inline" }}>
-                      <circle cx="8" cy="8" r="6" />
-                    </svg>
-                  </span>
-                  Launch with us  fast &amp; clean{" "}
-                  <span style={{ display: "inline-block", verticalAlign: "middle", margin: "0 8px" }}>
-                    <svg width="6" height="6" viewBox="0 0 16 16" fill="#fff" xmlns="http://www.w3.org/2000/svg" style={{ display: "inline" }}>
-                      <circle cx="8" cy="8" r="6" />
-                    </svg>
-                  </span>
-                  Your vision, our code.{" "}
-                  <span style={{ display: "inline-block", verticalAlign: "middle", margin: "0 8px" }}>
-                    <svg width="6" height="6" viewBox="0 0 16 16" fill="#fff" xmlns="http://www.w3.org/2000/svg" style={{ display: "inline" }}>
-                      <circle cx="8" cy="8" r="6" />
-                    </svg>
-                  </span>
-                </>
-              )
-              .map((el, idx) => (
-                <span key={idx}>{el}</span>
-              ))}
+              </div>
+            </div>
+
+          </div>
         </div>
-          <style>{`
-            @keyframes marquee {
-              0% { transform: translateX(0); }
-              100% { transform: translateX(-50%); }
-            }
-          `}</style>
+      </section>
+
+      <section id="stack" className="w-full h-fit py-8 bg-main text-main relative flex flex-col justify-center items-center px-4 sm:px-10 md:px-[120px]">
+        {/* Scattered avatar images, each with a tooltip on hover */}
+        {/* On mobile, stack avatars in a row at the top */}
+        <div className="flex flex-row flex-wrap gap-4 justify-center md:hidden mb-8">
+          <Image 
+            src="/vercel.jpeg" 
+            width={48} 
+            height={48} 
+            alt="Vercel deployment platform" 
+            className="bg-btn rounded-xl h-10 w-10 object-contain shadow-lg animate-float" 
+            placeholder="blur"
+            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bccXvdm3KyRQQhgeWOo+Jqcq/wAAdxCSVBIdh9A1hPrDqzmuPs="
+            quality={75}
+          />
+          <Image 
+            src="/typescript.png" 
+            width={48} 
+            height={48} 
+            alt="TypeScript programming language" 
+            className="bg-btn rounded-xl h-10 w-10 object-contain shadow-lg animate-float" 
+            placeholder="blur"
+            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bccXvdm3KyRQQhgeWOo+Jqcq/wAAdxCSVBIdh9A1hPrDqzmuPs="
+            quality={75}
+          />
+          <Image 
+            src="/tailwind.png" 
+            width={48} 
+            height={48} 
+            alt="Tailwind CSS framework" 
+            className="bg-btn rounded-xl h-10 w-10 object-contain shadow-lg animate-float" 
+            placeholder="blur"
+            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bccXvdm3KyRQQhgeWOo+Jqcq/wAAdxCSVBIdh9A1hPrDqzmuPs="
+            quality={75}
+          />
+          <Image 
+            src="/nextjs.png" 
+            width={48} 
+            height={48} 
+            alt="Next.js React framework" 
+            className="bg-btn rounded-xl h-10 w-10 object-contain shadow-lg animate-float" 
+            placeholder="blur"
+            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bccXvdm3KyRQQhgeWOo+Jqcq/wAAdxCSVBIdh9A1hPrDqzmuPs="
+            quality={75}
+          />
+          <Image 
+            src="/github.png" 
+            width={48} 
+            height={48} 
+            alt="GitHub version control" 
+            className="bg-btn rounded-xl h-10 w-10 object-contain shadow-lg animate-float" 
+            placeholder="blur"
+            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bccXvdm3KyRQQhgeWOo+Jqcq/wAAdxCSVBIdh9A1hPrDqzmuPs="
+            quality={75}
+          />
         </div>
+        {/* On desktop, keep absolute scattered avatars */}
+        <div className="hidden md:block">
+          <div className="group absolute top-[18%] left-[22%] z-30">
+            <Image 
+              src="/vercel.jpeg" 
+              width={48} 
+              height={48} 
+              alt="Vercel deployment platform" 
+              className="bg-btn rounded-xl h-10 w-10 object-contain rotate-[8deg] shadow-lg animate-float" 
+              placeholder="blur"
+              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bccXvdm3KyRQQhgeWOo+Jqcq/wAAdxCSVBIdh9A1hPrDqzmuPs="
+              quality={75}
+            />
+            <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 absolute left-1/2 -translate-x-1/2 -top-10 bg-main text-btn text-xs px-3 py-1 rounded shadow-lg pointer-events-none whitespace-nowrap z-50">
+              <span className="font-bold">Vercel </span> - Ensures seamless CI/CD, fast global deployment, <br /> and optimal performance, especially for Next.js projects.
+            </div>
+          </div>
+          <div className="group absolute bottom-[40%] left-[17%] z-20">
+            <Image 
+              src="/typescript.png" 
+              width={48} 
+              height={48} 
+              alt="TypeScript programming language" 
+              className="bg-btn rounded-xl h-10 w-10 object-contain -rotate-[15deg] animate-float" 
+              placeholder="blur"
+              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bccXvdm3KyRQQhgeWOo+Jqcq/wAAdxCSVBIdh9A1hPrDqzmuPs="
+              quality={75}
+            />
+            <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 absolute left-1/2 -translate-x-1/2 -top-10 bg-main text-btn text-xs px-3 py-1 rounded shadow-lg pointer-events-none whitespace-nowrap z-50 text-center">
+              <span className="font-bold">TypeScript </span> - Implemented to ensure code quality, <br /> reduce runtime errors, and support maintainable, large-scale applications.
+            </div>
+          </div>
+          <div className="group absolute bottom-[30%] left-[68%] z-40">
+            <Image 
+              src="/tailwind.png" 
+              width={48} 
+              height={48} 
+              alt="Tailwind CSS framework" 
+              className="bg-btn rounded-xl h-10 w-10 object-contain rotate-[15deg] animate-float" 
+              placeholder="blur"
+              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bccXvdm3KyRQQhgeWOo+Jqcq/wAAdxCSVBIdh9A1hPrDqzmuPs="
+              quality={75}
+            />
+            <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 absolute left-1/2 -translate-x-1/2 -top-10 bg-main text-btn text-xs px-3 py-1 rounded shadow-lg pointer-events-none whitespace-nowrap z-50 text-center">
+              <span className="font-bold">Tailwind CSS </span> - Used to create clean, responsive designs <br /> with maximum speed and consistency across all components.
+            </div>
+          </div>
+          <div className="group absolute top-[12%] right-[26%] z-30">
+            <Image 
+              src="/nextjs.png" 
+              width={48} 
+              height={48} 
+              alt="Next.js React framework" 
+              className="bg-btn rounded-xl h-10 w-10 object-contain -rotate-[9deg] animate-float" 
+              placeholder="blur"
+              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bccXvdm3KyRQQhgeWOo+Jqcq/wAAdxCSVBIdh9A1hPrDqzmuPs="
+              quality={75}
+            />
+            <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 absolute left-1/2 -translate-x-1/2 -top-10 bg-main text-btn text-xs px-3 py-1 rounded shadow-lg pointer-events-none whitespace-nowrap z-50 text-center">
+              <span className="font-bold">Next.js</span> - Chosen for its performance, SEO capabilities, <br /> and server-side rendering, enabling fast, reliable user experiences.
+            </div>
+          </div>
+          <div className="group absolute bottom-[18%] left-[54%] z-20">
+            <Image 
+              src="/github.png" 
+              width={48} 
+              height={48} 
+              alt="GitHub version control" 
+              className="bg-btn rounded-xl h-10 w-10 object-contain rotate-[18deg] animate-float" 
+              placeholder="blur"
+              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bccXvdm3KyRQQhgeWOo+Jqcq/wAAdxCSVBIdh9A1hPrDqzmuPs="
+              quality={75}
+            />
+            <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 absolute left-1/2 -translate-x-1/2 -top-10 bg-main text-btn text-xs px-3 py-1 rounded shadow-lg pointer-events-none whitespace-nowrap z-50 text-center">
+              <span className="font-bold">GitHub </span> - Used for version control, code reviews, and <br /> deployment automation ensuring transparency and team efficiency.
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-row gap-2 mb-3">
+          <div className="w-5 h-5 rounded-[5px] flex items-center justify-center p-3 font-bold bg-btn-active text-btn">8</div>
+          <p>Our Tech Stack</p>
+          </div>
+        <h2 className="text-main text-4xl sm:text-5xl md:text-7xl text-center">We use <span className="text-special">modern</span>, <span className="text-special"> scalable</span>, and lightning-fast <span className="text-special"> technologies to build your product </span> the right way.</h2>
+        <p className="text-sec max-w-xs sm:max-w-md md:max-w-[700px] text-center mx-auto">Built with the exact same tools used by top startups, agencies, and product teams to ship fast, scale efficiently, and stay ahead of the curve.</p>
+        <a href="/contact" className="btn-modern w-fit  flex items-center gap-5 min-h-[56px] mt-4" aria-label="Contact us for your web development project">
+              <span className="btn-text-content">Contact us</span>
+              <span className="inline-block w-2" aria-hidden="true"></span>
+              <div className="btn-circle">
+                <span>→</span>
+              </div>
+            </a>
+       </section>
+      
+      {/* Banner mov la final */}
+      <div style={{ width: "100%", height: "40px", background: "var(--bg-btn-active)", zIndex: 100, position: "relative", overflow: "hidden", display: "flex", alignItems: "center" }}>
+        <div
+          style={{
+            whiteSpace: "nowrap",
+            display: "inline-block",
+            animation: "marquee 28s linear infinite",
+            fontFamily: "'Poppins', Arial, sans-serif",
+            color: "#fff",
+            fontSize: "16px",
+            fontWeight: 400,
+            letterSpacing: "0.02em",
+          }}
+        >
+          {Array(6)
+            .fill(
+              <>
+                Build with us now{" "}
+                <span style={{ display: "inline-block", verticalAlign: "middle", margin: "0 8px" }}>
+                  <svg width="6" height="6" viewBox="0 0 16 16" fill="#fff" xmlns="http://www.w3.org/2000/svg" style={{ display: "inline" }}>
+                    <circle cx="8" cy="8" r="6" />
+                  </svg>
+                </span>
+                Start your project today{" "}
+                <span style={{ display: "inline-block", verticalAlign: "middle", margin: "0 8px" }}>
+                  <svg width="6" height="6" viewBox="0 0 16 16" fill="#fff" xmlns="http://www.w3.org/2000/svg" style={{ display: "inline" }}>
+                    <circle cx="8" cy="8" r="6" />
+                  </svg>
+                </span>
+                Launch with us  fast &amp; clean{" "}
+                <span style={{ display: "inline-block", verticalAlign: "middle", margin: "0 8px" }}>
+                  <svg width="6" height="6" viewBox="0 0 16 16" fill="#fff" xmlns="http://www.w3.org/2000/svg" style={{ display: "inline" }}>
+                    <circle cx="8" cy="8" r="6" />
+                  </svg>
+                </span>
+                Your vision, our code.{" "}
+                <span style={{ display: "inline-block", verticalAlign: "middle", margin: "0 8px" }}>
+                  <svg width="6" height="6" viewBox="0 0 16 16" fill="#fff" xmlns="http://www.w3.org/2000/svg" style={{ display: "inline" }}>
+                    <circle cx="8" cy="8" r="6" />
+                  </svg>
+                </span>
+              </>
+            )
+            .map((el, idx) => (
+              <span key={idx}>{el}</span>
+            ))}
+      </div>
+        <style>{`
+          @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+        `}</style>
+       </div>
+
+     
+
         <Footer />
       </div>
     </>
