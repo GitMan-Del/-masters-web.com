@@ -35,7 +35,7 @@ export default function WebsitePerformanceContainer({ refreshTrigger }: WebsiteP
   ];
 
   const checkProjects = useCallback(async () => {
-    if (!session?.user?.id) return;
+    if (!session?.user?.email) return;
 
     try {
       const response = await fetch('/api/projects');
@@ -48,7 +48,7 @@ export default function WebsitePerformanceContainer({ refreshTrigger }: WebsiteP
     } finally {
       setLoading(false);
     }
-  }, [session?.user?.id]);
+  }, [session?.user?.email]);
 
   useEffect(() => {
     checkProjects();

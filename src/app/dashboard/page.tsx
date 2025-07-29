@@ -7,8 +7,8 @@ import Sidebar from "../components/Sidebar";
 import ProjectCardContainer from "../components/ProjectCardContainer";
 import CreateProjectModal from "../components/CreateProjectModal";
 import WebsitePerformanceContainer from "../components/WebsitePerformanceContainer";
-import PhaseCards from "../components/PhaseCards";
-import RecentPayments from "../components/RecentPayments";
+import PhaseCardsContainer from "../components/PhaseCardsContainer";
+import RecentPaymentsContainer from "../components/RecentPaymentsContainer";
 import ChatSidebar from "../components/ChatSidebar";
 
 export default function Dashboard() {
@@ -116,12 +116,12 @@ export default function Dashboard() {
 
               {/* Recent Payments - Compact on mobile */}
               <div className="h-64">
-                <RecentPayments />
+                <RecentPaymentsContainer refreshTrigger={refreshTrigger} />
               </div>
 
               {/* Project Phases - Mobile optimized */}
               <div className="h-fit">
-                <PhaseCards />
+                <PhaseCardsContainer refreshTrigger={refreshTrigger} />
               </div>
             </div>
 
@@ -142,12 +142,12 @@ export default function Dashboard() {
 
               {/* div3 - Recent Payments */}
               <div className="col-start-7 col-end-10 row-start-1 row-end-4">
-                <RecentPayments />
+                <RecentPaymentsContainer refreshTrigger={refreshTrigger} />
               </div>
 
               {/* div4 - Project Phases */}
               <div className="col-start-1 col-end-10 row-start-4 row-end-6">
-                <PhaseCards />
+                <PhaseCardsContainer refreshTrigger={refreshTrigger} />
               </div>
             </div>
 

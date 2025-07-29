@@ -7,7 +7,6 @@ export interface Project {
   contact_phone?: string;
   website_url?: string;
   project_type?: string;
-  technology_stack?: string[];
   project_value?: number;
   status: 'planning' | 'development' | 'testing' | 'deployment' | 'completed' | 'maintenance';
   progress: number;
@@ -24,7 +23,6 @@ export interface CreateProjectData {
   contact_phone?: string;
   website_url?: string;
   project_type?: string;
-  technology_stack?: string[];
   project_value?: number;
   estimated_completion_date?: string;
 } 

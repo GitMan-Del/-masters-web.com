@@ -22,7 +22,7 @@ export default function CreateProjectModal({
     contact_phone: '',
     website_url: '',
     project_type: '',
-    technology_stack: [],
+
     project_value: undefined,
     estimated_completion_date: ''
   });
@@ -39,18 +39,7 @@ export default function CreateProjectModal({
     'Altele'
   ];
 
-  const techStacks = [
-    'React.js',
-    'Next.js',
-    'Vue.js',
-    'Angular',
-    'Node.js',
-    'Laravel',
-    'WordPress',
-    'Shopify',
-    'Python',
-    'TypeScript'
-  ];
+
 
   const handleInputChange = (field: keyof CreateProjectData, value: string | number | string[] | undefined) => {
     setFormData(prev => ({
@@ -59,14 +48,7 @@ export default function CreateProjectModal({
     }));
   };
 
-  const handleTechStackChange = (tech: string, checked: boolean) => {
-    setFormData(prev => ({
-      ...prev,
-      technology_stack: checked 
-        ? [...(prev.technology_stack || []), tech]
-        : (prev.technology_stack || []).filter(t => t !== tech)
-    }));
-  };
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -90,7 +72,7 @@ export default function CreateProjectModal({
           contact_phone: '',
           website_url: '',
           project_type: '',
-          technology_stack: [],
+
           project_value: undefined,
           estimated_completion_date: ''
         });
@@ -131,14 +113,14 @@ export default function CreateProjectModal({
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Nume Proiect *
             </label>
-            <input
-              type="text"
-              required
-              value={formData.name}
-              onChange={(e) => handleInputChange('name', e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-              placeholder="ex: Website AutoBots"
-            />
+                          <input
+                type="text"
+                required
+                value={formData.name}
+                onChange={(e) => handleInputChange('name', e.target.value)}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent text-gray-900 placeholder-gray-400"
+                placeholder="ex: Website AutoBots"
+              />
           </div>
 
           {/* Descriere */}
@@ -150,7 +132,7 @@ export default function CreateProjectModal({
               rows={3}
               value={formData.description}
               onChange={(e) => handleInputChange('description', e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent text-gray-900 placeholder-gray-400"
               placeholder="Descriere scurtă a proiectului..."
             />
           </div>
@@ -165,7 +147,7 @@ export default function CreateProjectModal({
                 type="email"
                 value={formData.contact_email}
                 onChange={(e) => handleInputChange('contact_email', e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent text-gray-900 placeholder-gray-400"
                 placeholder="client@example.com"
               />
             </div>
@@ -178,7 +160,7 @@ export default function CreateProjectModal({
                 type="tel"
                 value={formData.contact_phone}
                 onChange={(e) => handleInputChange('contact_phone', e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent text-gray-900 placeholder-gray-400"
                 placeholder="+40 123 456 789"
               />
             </div>
@@ -194,7 +176,7 @@ export default function CreateProjectModal({
                 type="url"
                 value={formData.website_url}
                 onChange={(e) => handleInputChange('website_url', e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent text-gray-900 placeholder-gray-400"
                 placeholder="https://example.com"
               />
             </div>
@@ -206,7 +188,7 @@ export default function CreateProjectModal({
               <select
                 value={formData.project_type}
                 onChange={(e) => handleInputChange('project_type', e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent text-gray-900"
               >
                 <option value="">Selectează tipul</option>
                 {projectTypes.map(type => (
@@ -216,25 +198,7 @@ export default function CreateProjectModal({
             </div>
           </div>
 
-          {/* Technology Stack */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-3">
-              Tehnologii Folosite
-            </label>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
-              {techStacks.map(tech => (
-                <label key={tech} className="flex items-center space-x-2 text-sm">
-                  <input
-                    type="checkbox"
-                    checked={(formData.technology_stack || []).includes(tech)}
-                    onChange={(e) => handleTechStackChange(tech, e.target.checked)}
-                    className="rounded border-gray-300 text-purple-600 focus:ring-purple-600"
-                  />
-                  <span>{tech}</span>
-                </label>
-              ))}
-            </div>
-          </div>
+
 
           {/* Financial & Timeline */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -248,7 +212,7 @@ export default function CreateProjectModal({
                 step="0.01"
                 value={formData.project_value || ''}
                 onChange={(e) => handleInputChange('project_value', parseFloat(e.target.value) || undefined)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent text-gray-900 placeholder-gray-400"
                 placeholder="2500.00"
               />
             </div>
@@ -261,7 +225,7 @@ export default function CreateProjectModal({
                 type="date"
                 value={formData.estimated_completion_date}
                 onChange={(e) => handleInputChange('estimated_completion_date', e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent text-gray-900"
               />
             </div>
           </div>

@@ -67,12 +67,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                   {project.project_type}
                 </span>
               )}
-              {project.technology_stack && project.technology_stack.length > 0 && (
-                <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-full font-medium">
-                  {project.technology_stack[0]}
-                  {project.technology_stack.length > 1 && ` +${project.technology_stack.length - 1}`}
-                </span>
-              )}
+
             </div>
           </div>
         </div>

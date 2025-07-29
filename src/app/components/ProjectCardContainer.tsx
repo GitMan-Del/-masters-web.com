@@ -21,7 +21,7 @@ export default function ProjectCardContainer({
   const [error, setError] = useState<string | null>(null);
 
   const fetchProjects = useCallback(async () => {
-    if (!session?.user?.id) return;
+    if (!session?.user?.email) return;
 
     try {
       setLoading(true);
@@ -40,7 +40,7 @@ export default function ProjectCardContainer({
     } finally {
       setLoading(false);
     }
-  }, [session?.user?.id]);
+  }, [session?.user?.email]);
 
   useEffect(() => {
     fetchProjects();

@@ -37,7 +37,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         .from('users')
         .upsert([
           {
-            id: user.id,
+            id: user.email,
             email: user.email,
             name: user.name,
             image: user.image,

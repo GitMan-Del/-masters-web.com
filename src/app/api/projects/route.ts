@@ -4,12 +4,11 @@ import { supabase } from '@/lib/supabase';
 import { CreateProjectData } from '@/lib/types';
 
 // GET - Obține toate proiectele utilizatorului
-export async function GET(request: NextRequest) {
-  console.log('Request:', request);
-  console.log('GET request received');
+export async function GET() {
   const session = await auth();
+  console.log('Session:', session);
   
-  if (!session?.user?.id) {
+  if (!session?.user?.email) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
@@ -17,7 +16,7 @@ export async function GET(request: NextRequest) {
     const { data: projects, error } = await supabase
       .from('projects')
       .select('*')
-      .eq('user_id', session.user.id)
+      .eq('user_id', session.user.email)
       .order('created_at', { ascending: false });
 
     if (error) {
@@ -35,8 +34,9 @@ export async function GET(request: NextRequest) {
 // POST - Creează un proiect nou
 export async function POST(request: NextRequest) {
   const session = await auth();
+  console.log('POST Session:', session);
   
-  if (!session?.user?.id) {
+  if (!session?.user?.email) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
@@ -49,14 +49,14 @@ export async function POST(request: NextRequest) {
     }
 
     const projectData = {
-      user_id: session.user.id,
+      user_id: session.user.email,
       name: body.name.trim(),
       description: body.description?.trim() || null,
       contact_email: body.contact_email?.trim() || null,
       contact_phone: body.contact_phone?.trim() || null,
       website_url: body.website_url?.trim() || null,
       project_type: body.project_type?.trim() || null,
-      technology_stack: body.technology_stack || [],
+
       project_value: body.project_value || null,
       estimated_completion_date: body.estimated_completion_date || null,
     };

@@ -9,7 +9,7 @@ export async function PUT(
 ) {
   const session = await auth();
   
-  if (!session?.user?.id) {
+  if (!session?.user?.email) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
@@ -28,7 +28,7 @@ export async function PUT(
       return NextResponse.json({ error: 'Project not found' }, { status: 404 });
     }
 
-    if (existingProject.user_id !== session.user.id) {
+    if (existingProject.user_id !== session.user.email) {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
 
@@ -62,7 +62,7 @@ export async function DELETE(
 ) {
   const session = await auth();
   
-  if (!session?.user?.id) {
+  if (!session?.user?.email) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
@@ -80,7 +80,7 @@ export async function DELETE(
       return NextResponse.json({ error: 'Project not found' }, { status: 404 });
     }
 
-    if (existingProject.user_id !== session.user.id) {
+    if (existingProject.user_id !== session.user.email) {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
 
