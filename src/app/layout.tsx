@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Koulen, Poppins } from "next/font/google";
 import "./globals.css";
+import { Providers } from "./components/siverside/Providers";
 
 const koulen = Koulen({
   variable: "--font-koulen",
@@ -204,7 +205,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body
         className={`${koulen.variable} ${poppins.variable} antialiased`}
       >
-        {children}
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );

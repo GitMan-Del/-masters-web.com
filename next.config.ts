@@ -11,7 +11,31 @@ const nextConfig: NextConfig = {
     
     // Allow optimization of images from external domains if needed
     remotePatterns: [
-      // Add patterns for external image domains if needed
+      // Google profile images for OAuth
+      {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'lh4.googleusercontent.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'lh5.googleusercontent.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'lh6.googleusercontent.com',
+        port: '',
+        pathname: '/**',
+      },
     ],
     
     // Optimize for performance

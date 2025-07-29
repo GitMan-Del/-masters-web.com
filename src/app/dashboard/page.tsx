@@ -1,3 +1,5 @@
+"use client"
+
 import Image from "next/image";
 import Sidebar from "../components/Sidebar";
 import ProjectCard from "../components/ProjectCard";
@@ -5,8 +7,13 @@ import WebsitePerformance from "../components/WebsitePerformance";
 import PhaseCards from "../components/PhaseCards";
 import RecentPayments from "../components/RecentPayments";
 import ChatSidebar from "../components/ChatSidebar";
+import { useSession } from "next-auth/react";
 
 export default function Dashboard() {
+
+  const { data: session } = useSession();
+  console.log(session);
+
   return (
     <div className="h-screen bg-gray-50 flex overflow-hidden">
       {/* Left Sidebar - Hidden on mobile */}

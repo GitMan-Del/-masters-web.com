@@ -229,3 +229,16 @@ button:hover {
 .font-popins {
   font-family: sans-serif;
 }
+
+/* No animation class to override button animations */
+.btn-no-animation,
+.btn-no-animation:hover {
+  transform: none !important;
+  box-shadow: none !important;
+  position: static !important;
+  overflow: visible !important;
+  z-index: auto !important;
+}
+.btn-no-animation::before {
+  display: none !important;
+}

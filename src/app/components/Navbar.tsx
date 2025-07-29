@@ -1,9 +1,11 @@
 "use client";
+
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import SignInClient from "./siverside/SignInClient";
 
 const navLinks = [
   { name: "Home", href: "#home" },
@@ -93,12 +95,9 @@ export default function NavBar() {
             ))}
           </li>
         </ul>
-        <Link href="/contact" className="hidden md:flex btn-modern">
-          <span className="btn-text-content">Meet Us</span>
-          <div className="btn-circle">
-            <span>→</span>
-          </div>
-        </Link>
+        <div className="hidden md:block">
+          <SignInClient />
+        </div>
         {/* Mobile menu button */}
         {!open && (
           <button
@@ -188,12 +187,7 @@ export default function NavBar() {
         <div className={`px-4 sm:px-8 pb-8 transition-all duration-300 delay-700 ${
           open ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"
         }`}>
-          <Link href="/contact" className="btn-modern w-full flex min-h-[56px] hover:scale-105 transition-transform duration-200">
-            <span className="btn-text-content">Meet Us</span>
-            <div className="btn-circle">
-              <span>→</span>
-            </div>
-          </Link>
+          <SignInClient />
         </div>
       </aside>
     </>

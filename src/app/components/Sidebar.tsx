@@ -1,7 +1,16 @@
+"use client"
+
 import Link from "next/link";
 import Image from "next/image";
+import { useSession } from "next-auth/react";
+import LogOut from "./siverside/LogOut";
+
 
 export default function Sidebar() {
+
+  const { data: session } = useSession();
+  console.log(session);
+
   const navItems = [
     { 
       icon: "/home-agreement 1.svg", 
@@ -70,8 +79,8 @@ export default function Sidebar() {
           <div className="relative">
             <div className="w-12 h-12 rounded-full overflow-hidden bg-gray-300">
               <Image 
-                src="/daniel.png" 
-                alt="Raul Constantin" 
+                src={session?.user?.image || "/daniel.png"} 
+                alt={session?.user?.name || "User"} 
                 width={48} 
                 height={48} 
                 className="w-full h-full object-cover"
@@ -81,10 +90,13 @@ export default function Sidebar() {
             <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white"></div>
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-lg font-semibold text-gray-900 truncate">Raul Constantin</p>
-            <p className="text-sm text-gray-500 truncate">Raulcons0921@gmail.com</p>
+            <p className="text-lg font-semibold text-gray-900 truncate">{session?.user?.name}</p>
+            <p className="text-sm text-gray-500 truncate">{session?.user?.email}</p>
           </div>
         </div>
+        
+        {/* Logout Button */}
+        <LogOut />
       </div>
     </div>
   );

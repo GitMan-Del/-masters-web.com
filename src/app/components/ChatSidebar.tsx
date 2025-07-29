@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { useSession } from "next-auth/react";
 
 interface SupportAgent {
   id: string;
@@ -23,6 +24,10 @@ interface Message {
 
 export default function ChatSidebar() {
   const [newMessage, setNewMessage] = useState("");
+  
+  
+  const { data: session } = useSession();
+  console.log(session);
   
   const supportAgent: SupportAgent = {
     id: "sarah-support", 
@@ -164,8 +169,8 @@ export default function ChatSidebar() {
               ) : (
                 <div className={`flex items-start space-x-2 ${isFromSupport ? '' : 'flex-row-reverse space-x-reverse'}`}>
                   <Image
-                    src={isFromSupport ? supportAgent.avatar : "/daniel.png"}
-                    alt={isFromSupport ? supportAgent.name : "Raul Constantin"}
+                    src={isFromSupport ? supportAgent.avatar : session?.user?.image || "/daniel.png"}
+                    alt={isFromSupport ? supportAgent.name : session?.user?.name || "User"}
                     width={28}
                     height={28}
                     className="w-7 h-7 rounded-full object-cover flex-shrink-0"
