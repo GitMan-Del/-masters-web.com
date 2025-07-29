@@ -10,6 +10,7 @@ const navLinks = [
   { name: "Process", href: "#process" },
   { name: "Services", href: "#services" },
   { name: "Stack", href: "#stack" },
+  { name: "Dashboard", href: "/dashboard" },
   { name: "Contact", href: "/contact" },
 ];
 
