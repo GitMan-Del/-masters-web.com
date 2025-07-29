@@ -25,4 +25,32 @@ export interface CreateProjectData {
   project_type?: string;
   project_value?: number;
   estimated_completion_date?: string;
+}
+
+export interface LighthouseMetrics {
+  performance: number;
+  accessibility: number;
+  bestPractices: number;
+  seo: number;
+  uptime: number;
+  loadTime: number; // în secunde
+  firstContentfulPaint: number; // în ms
+  largestContentfulPaint: number; // în ms
+  lastUpdated: string;
+}
+
+export interface GoogleLighthouseResponse {
+  lighthouseResult: {
+    categories: {
+      performance: { score: number };
+      accessibility: { score: number };
+      'best-practices': { score: number };
+      seo: { score: number };
+    };
+    audits: {
+      'first-contentful-paint': { displayValue: string; numericValue: number };
+      'largest-contentful-paint': { displayValue: string; numericValue: number };
+      'speed-index': { displayValue: string; numericValue: number };
+    };
+  };
 } 

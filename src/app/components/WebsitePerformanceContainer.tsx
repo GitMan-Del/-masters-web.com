@@ -2,11 +2,13 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { useSession } from 'next-auth/react';
+import { LighthouseMetrics } from '@/lib/types';
 
 interface PerformanceScore {
   label: string;
   score: number;
   color: string;
+  unit?: string;
 }
 
 interface WebsitePerformanceContainerProps {
@@ -17,31 +19,111 @@ export default function WebsitePerformanceContainer({ refreshTrigger }: WebsiteP
   const { data: session } = useSession();
   const [hasProjects, setHasProjects] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [lighthouseData, setLighthouseData] = useState<LighthouseMetrics | null>(null);
+  const [projectUrl, setProjectUrl] = useState<string | null>(null);
 
-  // Date pentru când există proiecte (vor fi implementate mai târziu cu date reale)
-  const performanceDataWithProjects: PerformanceScore[] = [
-    { label: "Performance", score: 99, color: "#10B981" },
-    { label: "Accessibility", score: 100, color: "#10B981" },
-    { label: "Best Practices", score: 100, color: "#10B981" },
-    { label: "SEO", score: 92, color: "#10B981" }
-  ];
+  // Generează datele de performanță pe baza rezultatelor Lighthouse
+  const getPerformanceData = (): PerformanceScore[] => {
+    if (!lighthouseData || !hasProjects) {
+      return [
+        { label: "Performance", score: 0, color: "#E5E7EB" },
+        { label: "Accessibility", score: 0, color: "#E5E7EB" },
+        { label: "Best Practices", score: 0, color: "#E5E7EB" },
+        { label: "SEO", score: 0, color: "#E5E7EB" },
+        { label: "Uptime", score: 0, color: "#E5E7EB", unit: "%" },
+        { label: "Load Time", score: 0, color: "#E5E7EB", unit: "s" }
+      ];
+    }
 
-  // Date pentru când nu există proiecte
-  const performanceDataEmpty: PerformanceScore[] = [
-    { label: "Performance", score: 0, color: "#E5E7EB" },
-    { label: "Accessibility", score: 0, color: "#E5E7EB" },
-    { label: "Best Practices", score: 0, color: "#E5E7EB" },
-    { label: "SEO", score: 0, color: "#E5E7EB" }
-  ];
+    const getScoreColor = (score: number) => {
+      if (score >= 90) return "#10B981"; // Verde
+      if (score >= 50) return "#F59E0B"; // Galben
+      return "#EF4444"; // Roșu
+    };
+
+    return [
+      { 
+        label: "Performance", 
+        score: lighthouseData.performance, 
+        color: getScoreColor(lighthouseData.performance) 
+      },
+      { 
+        label: "Accessibility", 
+        score: lighthouseData.accessibility, 
+        color: getScoreColor(lighthouseData.accessibility) 
+      },
+      { 
+        label: "Best Practices", 
+        score: lighthouseData.bestPractices, 
+        color: getScoreColor(lighthouseData.bestPractices) 
+      },
+      { 
+        label: "SEO", 
+        score: lighthouseData.seo, 
+        color: getScoreColor(lighthouseData.seo) 
+      },
+      { 
+        label: "Uptime", 
+        score: lighthouseData.uptime, 
+        color: getScoreColor(lighthouseData.uptime),
+        unit: "%" 
+      },
+      { 
+        label: "Load Time", 
+        score: lighthouseData.loadTime, 
+        color: lighthouseData.loadTime <= 3 ? "#10B981" : lighthouseData.loadTime <= 5 ? "#F59E0B" : "#EF4444",
+        unit: "s" 
+      }
+    ];
+     };
+
+  const fetchLighthouseData = useCallback(async (url: string | null) => {
+    try {
+      const apiUrl = url 
+        ? `/api/lighthouse?url=${encodeURIComponent(url)}`
+        : '/api/lighthouse';
+        
+      const response = await fetch(apiUrl);
+      if (response.ok) {
+        const data = await response.json();
+        setLighthouseData(data.metrics);
+      }
+    } catch (error) {
+      console.error('Error fetching Lighthouse data:', error);
+      // Setează date goale în caz de eroare
+      setLighthouseData({
+        performance: 0,
+        accessibility: 0,
+        bestPractices: 0,
+        seo: 0,
+        uptime: 0,
+        loadTime: 0,
+        firstContentfulPaint: 0,
+        largestContentfulPaint: 0,
+        lastUpdated: new Date().toISOString()
+      });
+    }
+  }, []);
 
   const checkProjects = useCallback(async () => {
-    if (!session?.user?.email) return;
+    if (!session?.user?.email) {
+      setLoading(false);
+      return;
+    }
 
     try {
       const response = await fetch('/api/projects');
       if (response.ok) {
         const data = await response.json();
-        setHasProjects(data.projects && data.projects.length > 0);
+        const hasProjectsData = data.projects && data.projects.length > 0;
+        setHasProjects(hasProjectsData);
+        
+        // Dacă există proiecte, încearcă să obții URL-ul primului proiect
+        if (hasProjectsData && data.projects[0]?.website_url) {
+          setProjectUrl(data.projects[0].website_url);
+        } else {
+          setProjectUrl(null);
+        }
       }
     } catch (error) {
       console.error('Error checking projects:', error);
@@ -54,9 +136,15 @@ export default function WebsitePerformanceContainer({ refreshTrigger }: WebsiteP
     checkProjects();
   }, [checkProjects, refreshTrigger]);
 
-  const performanceData = hasProjects ? performanceDataWithProjects : performanceDataEmpty;
+  useEffect(() => {
+    if (!loading) {
+      fetchLighthouseData(projectUrl);
+    }
+  }, [projectUrl, loading, fetchLighthouseData]);
 
-  const CircularProgress = ({ score, color }: { score: number; color: string }) => {
+  const performanceData = getPerformanceData();
+
+  const CircularProgress = ({ score, color, unit }: { score: number; color: string; unit?: string }) => {
     const radius = 45;
     const circumference = 2 * Math.PI * radius;
     const strokeDasharray = circumference;
@@ -90,7 +178,7 @@ export default function WebsitePerformanceContainer({ refreshTrigger }: WebsiteP
         </svg>
         <div className="absolute inset-0 flex items-center justify-center">
           <span className={`text-xl font-bold ${hasProjects ? 'text-gray-900' : 'text-gray-400'}`}>
-            {score}
+            {unit === 's' ? score : Math.round(score)}{unit || ''}
           </span>
         </div>
       </div>
@@ -105,7 +193,7 @@ export default function WebsitePerformanceContainer({ refreshTrigger }: WebsiteP
             <div className="w-6 h-6 bg-gray-200 rounded-lg"></div>
             <div className="h-6 bg-gray-200 rounded w-48"></div>
           </div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {[1, 2, 3, 4].map((index) => (
               <div key={index} className="flex flex-col items-center text-center">
                 <div className="w-24 h-24 bg-gray-200 rounded-full mb-3"></div>
@@ -132,7 +220,7 @@ export default function WebsitePerformanceContainer({ refreshTrigger }: WebsiteP
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
         {performanceData.map((metric, index) => (
           <div key={index} className="flex flex-col items-center text-center">
-            <CircularProgress score={metric.score} color={metric.color} />
+            <CircularProgress score={metric.score} color={metric.color} unit={metric.unit} />
             <span className={`mt-3 text-sm font-medium ${hasProjects ? 'text-gray-700' : 'text-gray-400'}`}>
               {metric.label}
             </span>
@@ -143,12 +231,21 @@ export default function WebsitePerformanceContainer({ refreshTrigger }: WebsiteP
       <div className="mt-6 pt-4 border-t border-gray-200">
         <div className="flex items-center justify-between text-sm text-gray-600">
           <span>
-            {hasProjects ? 'Latest scan: 2 hours ago' : 'No data available - Add a project to see metrics'}
+            {lighthouseData?.lastUpdated 
+              ? `Last scan: ${new Date(lighthouseData.lastUpdated).toLocaleString('ro-RO')}`
+              : 'No data available - Add a project with URL to see metrics'
+            }
           </span>
           <p className={`font-medium hover:underline cursor-pointer ${
-            hasProjects ? 'text-purple-600 hover:text-purple-700' : 'text-gray-400 cursor-not-allowed'
+            projectUrl ? 'text-purple-600 hover:text-purple-700' : 'text-gray-400 cursor-not-allowed'
           }`}>
-            {hasProjects ? 'View full report →' : 'No report available'}
+            {projectUrl ? (
+              <button onClick={() => fetchLighthouseData(projectUrl)}>
+                Refresh data →
+              </button>
+            ) : (
+              'No URL available'
+            )}
           </p>
         </div>
       </div>
