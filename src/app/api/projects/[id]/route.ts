@@ -5,7 +5,7 @@ import { supabase } from '@/lib/supabase';
 // PUT - Actualizează un proiect
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   const session = await auth();
   
@@ -15,7 +15,7 @@ export async function PUT(
 
   try {
     const body = await request.json();
-    const projectId = params.id;
+    const { id: projectId } = await params;
 
     // Verifică dacă proiectul aparține utilizatorului
     const { data: existingProject, error: fetchError } = await supabase
@@ -58,7 +58,7 @@ export async function PUT(
 // DELETE - Șterge un proiect
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   const session = await auth();
   
@@ -67,7 +67,7 @@ export async function DELETE(
   }
 
   try {
-    const projectId = params.id;
+    const { id: projectId } = await params;
 
     // Verifică dacă proiectul aparține utilizatorului
     const { data: existingProject, error: fetchError } = await supabase

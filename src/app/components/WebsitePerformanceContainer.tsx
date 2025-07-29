@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useSession } from 'next-auth/react';
 
 interface PerformanceScore {
@@ -34,7 +34,7 @@ export default function WebsitePerformanceContainer({ refreshTrigger }: WebsiteP
     { label: "SEO", score: 0, color: "#E5E7EB" }
   ];
 
-  const checkProjects = async () => {
+  const checkProjects = useCallback(async () => {
     if (!session?.user?.id) return;
 
     try {
@@ -48,11 +48,11 @@ export default function WebsitePerformanceContainer({ refreshTrigger }: WebsiteP
     } finally {
       setLoading(false);
     }
-  };
+  }, [session?.user?.id]);
 
   useEffect(() => {
     checkProjects();
-  }, [session, refreshTrigger]);
+  }, [checkProjects, refreshTrigger]);
 
   const performanceData = hasProjects ? performanceDataWithProjects : performanceDataEmpty;
 

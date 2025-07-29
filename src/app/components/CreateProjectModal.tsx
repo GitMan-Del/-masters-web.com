@@ -52,7 +52,7 @@ export default function CreateProjectModal({
     'TypeScript'
   ];
 
-  const handleInputChange = (field: keyof CreateProjectData, value: any) => {
+  const handleInputChange = (field: keyof CreateProjectData, value: string | number | string[] | undefined) => {
     setFormData(prev => ({
       ...prev,
       [field]: value

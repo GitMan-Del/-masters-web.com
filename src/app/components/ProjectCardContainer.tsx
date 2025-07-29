@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useSession } from 'next-auth/react';
 import { Project } from '@/lib/types';
 import ProjectCard from './ProjectCard';
@@ -20,7 +20,7 @@ export default function ProjectCardContainer({
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchProjects = async () => {
+  const fetchProjects = useCallback(async () => {
     if (!session?.user?.id) return;
 
     try {
@@ -40,11 +40,11 @@ export default function ProjectCardContainer({
     } finally {
       setLoading(false);
     }
-  };
+  }, [session?.user?.id]);
 
   useEffect(() => {
     fetchProjects();
-  }, [session, refreshTrigger]);
+  }, [fetchProjects, refreshTrigger]);
 
   if (loading) {
     return (
