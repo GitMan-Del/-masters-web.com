@@ -1,6 +1,7 @@
 import Image from "next/image"
 import NavBar from "./components/Navbar"
 import Footer from "./components/Footer";
+import AuthErrorToast from "./components/AuthErrorToast";
 
 export default function Home() {
 
@@ -23,6 +24,7 @@ export default function Home() {
   return (
     <>
       <a href="#main-content" className="skip-link">Skip to main content</a>
+      <AuthErrorToast />
       <div className="w-full min-h-fit mx-auto flex flex-col justify-center p-0 m-0 text-main">
         {/* Hero Section */}
         <header id="home" className="w-full h-[100svh] md:h-screen flex flex-col md:flex-row items-center justify-between relative bg-main">

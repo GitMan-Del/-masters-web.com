@@ -1,11 +1,12 @@
 import Image from "next/image";
-import { Project } from '@/lib/types';
+import { Project, LighthouseMetrics } from '@/lib/types';
 
 interface ProjectCardProps {
   project: Project;
+  lighthouseData?: LighthouseMetrics | null;
 }
 
-export default function ProjectCard({ project }: ProjectCardProps) {
+export default function ProjectCard({ project, lighthouseData }: ProjectCardProps) {
   // Helper function pentru generarea inițialelor
   const getInitials = (name: string) => {
     return name
@@ -85,19 +86,25 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         {project.description || 'Nu există descriere disponibilă pentru acest proiect.'}
       </p>
 
-      {/* Project Metrics - Afișez valori zero pentru început */}
+      {/* Project Metrics - Uptime, Load Time, Performance */}
       <div className="grid grid-cols-3 gap-4 mb-4 p-3 bg-gray-50 rounded-lg">
         <div className="text-center">
-          <div className="text-lg font-bold text-gray-900">0%</div>
+          <div className="text-lg font-bold text-gray-900">
+            {lighthouseData ? `${lighthouseData.uptime}%` : '0%'}
+          </div>
           <div className="text-xs text-gray-500">Uptime</div>
         </div>
         <div className="text-center">
-          <div className="text-lg font-bold text-gray-900">0s</div>
+          <div className="text-lg font-bold text-gray-900">
+            {lighthouseData ? `${lighthouseData.loadTime}s` : '0s'}
+          </div>
           <div className="text-xs text-gray-500">Load Time</div>
         </div>
         <div className="text-center">
-          <div className="text-lg font-bold text-gray-900">0</div>
-          <div className="text-xs text-gray-500">Users</div>
+          <div className="text-lg font-bold text-gray-900">
+            {lighthouseData ? `${Math.round(lighthouseData.performance)}%` : '0%'}
+          </div>
+          <div className="text-xs text-gray-500">Performance</div>
         </div>
       </div>
 

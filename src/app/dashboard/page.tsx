@@ -1,8 +1,9 @@
 "use client"
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import Sidebar from "../components/Sidebar";
 import ProjectCardContainer from "../components/ProjectCardContainer";
 import CreateProjectModal from "../components/CreateProjectModal";
@@ -13,10 +14,36 @@ import ChatSidebar from "../components/ChatSidebar";
 import Toast from "../components/Toast";
 
 export default function Dashboard() {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
+  const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [refreshTrigger, setRefreshTrigger] = useState(0);
   const [showBetaToast, setShowBetaToast] = useState(false);
+
+  // Redirect la homepage dacă nu este autentificat
+  useEffect(() => {
+    if (status === 'unauthenticated') {
+      console.log('❌ User not authenticated - redirecting to home');
+      router.push('/?error=auth_required');
+    }
+  }, [status, router]);
+
+  // Afișează loading dacă sesiunea se încarcă
+  if (status === 'loading') {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Nu afișa nimic dacă nu este autentificat (va fi redirectat)
+  if (status === 'unauthenticated') {
+    return null;
+  }
 
   const handleCreateProject = () => {
     setIsModalOpen(true);

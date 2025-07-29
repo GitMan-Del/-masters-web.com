@@ -50,9 +50,7 @@ export default function WebsitePerformanceContainer({ refreshTrigger }: WebsiteP
         { label: "Performance", score: 0, color: "#E5E7EB" },
         { label: "Accessibility", score: 0, color: "#E5E7EB" },
         { label: "Best Practices", score: 0, color: "#E5E7EB" },
-        { label: "SEO", score: 0, color: "#E5E7EB" },
-        { label: "Uptime", score: 0, color: "#E5E7EB", unit: "%" },
-        { label: "Load Time", score: 0, color: "#E5E7EB", unit: "s" }
+        { label: "SEO", score: 0, color: "#E5E7EB" }
       ];
     }
     
@@ -84,18 +82,6 @@ export default function WebsitePerformanceContainer({ refreshTrigger }: WebsiteP
         label: "SEO", 
         score: lighthouseData.seo, 
         color: getScoreColor(lighthouseData.seo) 
-      },
-      { 
-        label: "Uptime", 
-        score: lighthouseData.uptime, 
-        color: getScoreColor(lighthouseData.uptime),
-        unit: "%" 
-      },
-      { 
-        label: "Load Time", 
-        score: lighthouseData.loadTime, 
-        color: lighthouseData.loadTime <= 3 ? "#10B981" : lighthouseData.loadTime <= 5 ? "#F59E0B" : "#EF4444",
-        unit: "s" 
       }
     ];
      };
@@ -103,9 +89,9 @@ export default function WebsitePerformanceContainer({ refreshTrigger }: WebsiteP
   const fetchLighthouseData = useCallback(async (url: string | null) => {
     console.log('🔍 fetchLighthouseData called with URL:', url);
     try {
-      // TEMPORARY: Use test endpoint for debugging
-      console.log('🔧 Using test endpoint instead of real Lighthouse API');
-      const apiUrl = `/api/lighthouse-test`;
+      const apiUrl = url 
+        ? `/api/lighthouse?url=${encodeURIComponent(url)}`
+        : '/api/lighthouse';
       
       console.log('📡 Making request to:', apiUrl);
       const response = await fetch(apiUrl);
@@ -238,7 +224,7 @@ export default function WebsitePerformanceContainer({ refreshTrigger }: WebsiteP
             <div className="w-6 h-6 bg-gray-200 rounded-lg"></div>
             <div className="h-6 bg-gray-200 rounded w-48"></div>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {[1, 2, 3, 4].map((index) => (
               <div key={index} className="flex flex-col items-center text-center">
                 <div className="w-24 h-24 bg-gray-200 rounded-full mb-3"></div>

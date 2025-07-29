@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { useSession } from 'next-auth/react';
-import { Project } from '@/lib/types';
+import { Project, LighthouseMetrics } from '@/lib/types';
 import ProjectCard from './ProjectCard';
 import EmptyProjectCard from './EmptyProjectCard';
 
@@ -19,6 +19,7 @@ export default function ProjectCardContainer({
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [lighthouseData, setLighthouseData] = useState<LighthouseMetrics | null>(null);
 
   const fetchProjects = useCallback(async () => {
     if (!session?.user?.email) return;
@@ -42,9 +43,38 @@ export default function ProjectCardContainer({
     }
   }, [session?.user?.email]);
 
+  // Fetch lighthouse data
+  const fetchLighthouseData = useCallback(async (url: string | null) => {
+    if (!url) {
+      setLighthouseData(null);
+      return;
+    }
+
+    try {
+      const apiUrl = `/api/lighthouse?url=${encodeURIComponent(url)}`;
+      const response = await fetch(apiUrl);
+      
+      if (response.ok) {
+        const data = await response.json();
+        setLighthouseData(data.metrics);
+      }
+    } catch (error) {
+      console.error('Error fetching lighthouse data:', error);
+      setLighthouseData(null);
+    }
+  }, []);
+
   useEffect(() => {
     fetchProjects();
   }, [fetchProjects, refreshTrigger]);
+
+  useEffect(() => {
+    if (projects.length > 0 && projects[0].website_url) {
+      fetchLighthouseData(projects[0].website_url);
+    } else {
+      setLighthouseData(null);
+    }
+  }, [projects, fetchLighthouseData]);
 
   if (loading) {
     return (
@@ -98,5 +128,5 @@ export default function ProjectCardContainer({
 
   // Pentru primul proiect, afișez ProjectCard cu datele reale
   const activeProject = projects[0];
-  return <ProjectCard project={activeProject} />;
+  return <ProjectCard project={activeProject} lighthouseData={lighthouseData} />;
 } 
