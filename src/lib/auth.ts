@@ -1,6 +1,6 @@
 import NextAuth from "next-auth"
 import Google from "next-auth/providers/google"
-import { supabase } from "./supabase"
+import { supabaseAdmin } from "./supabase"
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
@@ -33,7 +33,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     },
     async signIn({ user }) {
       console.log(user)
-      const { data, error } = await supabase
+      const { data, error } = await supabaseAdmin
         .from('users')
         .upsert([
           {
@@ -44,7 +44,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           },
         ]);
       if (error) console.error('Supabase insert error:', error);
-      console.log(data, error)
+      console.log('User upserted successfully:', { data, error });
       return true;
     },
     async session({ session, token }) {
@@ -58,5 +58,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   },
   session: {
     strategy: "jwt",
+    maxAge: 60 * 60, // 1 hour in seconds (60 minutes * 60 seconds)
+    updateAge: 60 * 5, // Update session every 5 minutes
+  },
+  jwt: {
+    maxAge: 60 * 60, // JWT expires in 1 hour
   },
 })
