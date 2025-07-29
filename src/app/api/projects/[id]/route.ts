@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
-import { supabase } from '@/lib/supabase';
+import { supabaseAdmin } from '@/lib/supabase';
 
 // PUT - Actualizează un proiect
 export async function PUT(
@@ -18,7 +18,7 @@ export async function PUT(
     const { id: projectId } = await params;
 
     // Verifică dacă proiectul aparține utilizatorului
-    const { data: existingProject, error: fetchError } = await supabase
+    const { data: existingProject, error: fetchError } = await supabaseAdmin
       .from('projects')
       .select('user_id')
       .eq('id', projectId)
@@ -33,7 +33,7 @@ export async function PUT(
     }
 
     // Actualizez proiectul
-    const { data: project, error } = await supabase
+    const { data: project, error } = await supabaseAdmin
       .from('projects')
       .update({
         ...body,
@@ -70,7 +70,7 @@ export async function DELETE(
     const { id: projectId } = await params;
 
     // Verifică dacă proiectul aparține utilizatorului
-    const { data: existingProject, error: fetchError } = await supabase
+    const { data: existingProject, error: fetchError } = await supabaseAdmin
       .from('projects')
       .select('user_id')
       .eq('id', projectId)
@@ -85,7 +85,7 @@ export async function DELETE(
     }
 
     // Șterge proiectul
-    const { error } = await supabase
+    const { error } = await supabaseAdmin
       .from('projects')
       .delete()
       .eq('id', projectId);

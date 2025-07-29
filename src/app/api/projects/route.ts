@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
-import { supabase } from '@/lib/supabase';
+import { supabaseAdmin } from '@/lib/supabase';
 import { CreateProjectData } from '@/lib/types';
 
 // GET - Obține toate proiectele utilizatorului
@@ -13,7 +13,7 @@ export async function GET() {
   }
 
   try {
-    const { data: projects, error } = await supabase
+    const { data: projects, error } = await supabaseAdmin
       .from('projects')
       .select('*')
       .eq('user_id', session.user.email)
@@ -67,7 +67,7 @@ export async function POST(request: NextRequest) {
 
     console.log('Project data to insert:', projectData);
 
-    const { data: project, error } = await supabase
+    const { data: project, error } = await supabaseAdmin
       .from('projects')
       .insert([projectData])
       .select()
