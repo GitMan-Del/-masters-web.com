@@ -50,9 +50,11 @@ export default function ProjectCardContainer({
       return;
     }
 
-    try {
-      const apiUrl = `/api/lighthouse?url=${encodeURIComponent(url)}`;
-      const response = await fetch(apiUrl);
+         try {
+       // TEMPORARY: Use simple lighthouse for debugging
+       const apiUrl = `/api/lighthouse-simple?url=${encodeURIComponent(url)}`;
+       console.log('🔧 Using simple lighthouse API for debugging');
+       const response = await fetch(apiUrl);
       
       if (response.ok) {
         const data = await response.json();
