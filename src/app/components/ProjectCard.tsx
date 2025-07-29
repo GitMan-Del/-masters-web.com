@@ -1,52 +1,107 @@
 import Image from "next/image";
+import { Project } from '@/lib/types';
 
-export default function ProjectCard() {
+interface ProjectCardProps {
+  project: Project;
+}
+
+export default function ProjectCard({ project }: ProjectCardProps) {
+  // Helper function pentru generarea inițialelor
+  const getInitials = (name: string) => {
+    return name
+      .split(' ')
+      .map(word => word[0])
+      .join('')
+      .toUpperCase()
+      .slice(0, 2);
+  };
+
+  // Helper function pentru statusul proiectului
+  const getStatusInfo = (status: string) => {
+    switch (status) {
+      case 'completed':
+        return { color: 'bg-green-500', text: 'text-green-600', label: 'Finalizat' };
+      case 'development':
+        return { color: 'bg-blue-500', text: 'text-blue-600', label: 'În dezvoltare' };
+      case 'testing':
+        return { color: 'bg-yellow-500', text: 'text-yellow-600', label: 'În testare' };
+      case 'deployment':
+        return { color: 'bg-purple-500', text: 'text-purple-600', label: 'Deployment' };
+      case 'maintenance':
+        return { color: 'bg-gray-500', text: 'text-gray-600', label: 'Mentenanță' };
+      default:
+        return { color: 'bg-orange-500', text: 'text-orange-600', label: 'Planificare' };
+    }
+  };
+
+  // Helper function pentru formatarea datei
+  const formatDate = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString('ro-RO', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
+    });
+  };
+
+  const statusInfo = getStatusInfo(project.status);
+
   return (
     <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 hover:shadow-lg transition-shadow duration-300">
       {/* Header with status indicator */}
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center space-x-3">
           <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-700 rounded-xl flex items-center justify-center shadow-lg">
-            <span className="text-white font-bold text-lg">AB</span>
+            <span className="text-white font-bold text-lg">{getInitials(project.name)}</span>
           </div>
           <div>
             <div className="flex items-center space-x-2 mb-1">
-              <h3 className="text-2xl text-gray-900">AutoBots.com</h3>
+              <h3 className="text-2xl text-gray-900">{project.name}</h3>
               <div className="flex items-center space-x-1">
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                <span className="text-xs text-green-600 font-medium">Live</span>
+                <div className={`w-2 h-2 ${statusInfo.color} rounded-full animate-pulse`}></div>
+                <span className={`text-xs ${statusInfo.text} font-medium`}>{statusInfo.label}</span>
               </div>
             </div>
             <div className="flex items-center space-x-2">
-              <span className="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded-full font-medium">SaaS Platform</span>
-              <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-full font-medium">Next.js</span>
+              {project.project_type && (
+                <span className="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded-full font-medium">
+                  {project.project_type}
+                </span>
+              )}
+              {project.technology_stack && project.technology_stack.length > 0 && (
+                <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-full font-medium">
+                  {project.technology_stack[0]}
+                  {project.technology_stack.length > 1 && ` +${project.technology_stack.length - 1}`}
+                </span>
+              )}
             </div>
           </div>
         </div>
         
         <div className="text-right">
-          <div className="text-lg font-bold text-green-600">€2,500</div>
+          <div className="text-lg font-bold text-green-600">
+            {project.project_value ? `€${project.project_value.toLocaleString()}` : '€0'}
+          </div>
           <div className="text-xs text-gray-500">Project Value</div>
         </div>
       </div>
       
       {/* Project Description */}
       <p className="text-sm text-gray-600 leading-relaxed mb-4">
-        AutoBots oferă afacerilor locale superputeri — automatizează rezervările, mesajele și marketingul fără cod necesar. Platformă SaaS cu AI integration pentru creșterea business-ului.
+        {project.description || 'Nu există descriere disponibilă pentru acest proiect.'}
       </p>
 
-      {/* Project Metrics */}
+      {/* Project Metrics - Afișez valori zero pentru început */}
       <div className="grid grid-cols-3 gap-4 mb-4 p-3 bg-gray-50 rounded-lg">
         <div className="text-center">
-          <div className="text-lg font-bold text-gray-900">98.5%</div>
+          <div className="text-lg font-bold text-gray-900">0%</div>
           <div className="text-xs text-gray-500">Uptime</div>
         </div>
         <div className="text-center">
-          <div className="text-lg font-bold text-gray-900">2.1s</div>
+          <div className="text-lg font-bold text-gray-900">0s</div>
           <div className="text-xs text-gray-500">Load Time</div>
         </div>
         <div className="text-center">
-          <div className="text-lg font-bold text-gray-900">450+</div>
+          <div className="text-lg font-bold text-gray-900">0</div>
           <div className="text-xs text-gray-500">Users</div>
         </div>
       </div>
@@ -55,27 +110,49 @@ export default function ProjectCard() {
       <div className="mb-4">
         <div className="flex items-center justify-between mb-2">
           <span className="text-sm font-medium text-gray-700">Project Progress</span>
-          <span className="text-sm font-bold text-green-600">95%</span>
+          <span className="text-sm font-bold text-green-600">{project.progress}%</span>
         </div>
         <div className="w-full bg-gray-200 rounded-full h-2">
-          <div className="bg-gradient-to-r from-green-500 to-green-600 h-2 rounded-full transition-all duration-300" style={{ width: '95%' }}></div>
+          <div 
+            className="bg-gradient-to-r from-green-500 to-green-600 h-2 rounded-full transition-all duration-300" 
+            style={{ width: `${project.progress}%` }}
+          ></div>
         </div>
         <div className="flex justify-between text-xs text-gray-500 mt-1">
-          <span>Started: Jan 15, 2024</span>
-          <span>Est. completion: Feb 20, 2024</span>
+          <span>Started: {formatDate(project.start_date)}</span>
+          {project.estimated_completion_date && (
+            <span>Est. completion: {formatDate(project.estimated_completion_date)}</span>
+          )}
         </div>
       </div>
 
       {/* Action Buttons */}
       <div className="flex items-center justify-between">
         <div className="flex space-x-2">
-          <button className="bg-black text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-800 transition-colors flex items-center gap-2">
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-2M7 7l10 10M17 7l-10 10" />
-            </svg>
-            Visit Project
-          </button>
-          <button className="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-200 hover:text-white transition-colors flex items-center gap-2">
+          {project.website_url ? (
+            <a 
+              href={project.website_url} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="bg-black text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-800 transition-colors flex items-center gap-2"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-2M7 7l10 10M17 7l-10 10" />
+              </svg>
+              Visit Project
+            </a>
+          ) : (
+            <button 
+              disabled
+              className="bg-gray-300 text-gray-500 px-4 py-2 rounded-lg text-sm font-medium cursor-not-allowed flex items-center gap-2"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-2M7 7l10 10M17 7l-10 10" />
+              </svg>
+              No URL
+            </button>
+          )}
+          <button className="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-200 hover:text-gray-900 transition-colors flex items-center gap-2">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
             </svg>
@@ -96,10 +173,17 @@ export default function ProjectCard() {
       <div className="mt-4 pt-4 border-t border-gray-200">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-            <span className="text-xs text-gray-600">Last deployment: 2 hours ago</span>
+            <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+            <span className="text-xs text-gray-600">Creat: {formatDate(project.created_at)}</span>
           </div>
-          <span className="text-xs text-purple-600 font-medium hover:underline cursor-pointer">View Details →</span>
+          {project.contact_email && (
+            <a 
+              href={`mailto:${project.contact_email}`}
+              className="text-xs text-purple-600 font-medium hover:underline cursor-pointer"
+            >
+              Contact Client →
+            </a>
+          )}
         </div>
       </div>
     </div>

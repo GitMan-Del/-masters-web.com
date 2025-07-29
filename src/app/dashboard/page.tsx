@@ -1,17 +1,29 @@
 "use client"
 
+import { useState } from "react";
 import Image from "next/image";
+import { useSession } from "next-auth/react";
 import Sidebar from "../components/Sidebar";
-import ProjectCard from "../components/ProjectCard";
-import WebsitePerformance from "../components/WebsitePerformance";
+import ProjectCardContainer from "../components/ProjectCardContainer";
+import CreateProjectModal from "../components/CreateProjectModal";
+import WebsitePerformanceContainer from "../components/WebsitePerformanceContainer";
 import PhaseCards from "../components/PhaseCards";
 import RecentPayments from "../components/RecentPayments";
 import ChatSidebar from "../components/ChatSidebar";
-import { useSession } from "next-auth/react";
 
 export default function Dashboard() {
-
   const { data: session } = useSession();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [refreshTrigger, setRefreshTrigger] = useState(0);
+
+  const handleCreateProject = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleProjectCreated = () => {
+    setRefreshTrigger(prev => prev + 1);
+  };
+
   console.log(session);
 
   return (
@@ -50,7 +62,10 @@ export default function Dashboard() {
                 <h1 className="text-xl font-bold text-gray-900">Dashboard</h1>
                 <p className="text-xs text-gray-500">Project overview & analytics</p>
               </div>
-              <button className="bg-purple-600 text-white px-3 py-2 rounded-lg text-sm hover:bg-purple-700 transition-colors">
+              <button 
+                onClick={handleCreateProject}
+                className="bg-purple-600 text-white px-3 py-2 rounded-lg text-sm hover:bg-purple-700 transition-colors"
+              >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
                 </svg>
@@ -69,7 +84,10 @@ export default function Dashboard() {
                 </nav>
                 <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
               </div>
-              <button className="bg-purple-600 text-white px-3 py-2 rounded-lg text-sm hover:bg-purple-700 transition-colors">
+              <button 
+                onClick={handleCreateProject}
+                className="bg-purple-600 text-white px-3 py-2 rounded-lg text-sm hover:bg-purple-700 transition-colors"
+              >
                 <svg className="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
                 </svg>
@@ -85,12 +103,15 @@ export default function Dashboard() {
             <div className="lg:hidden space-y-4">
               {/* Project Card - Full width on mobile */}
               <div className="h-auto">
-                <ProjectCard />
+                <ProjectCardContainer 
+                  onCreateProject={handleCreateProject}
+                  refreshTrigger={refreshTrigger}
+                />
               </div>
 
               {/* Website Performance - Full width on mobile */}
               <div className="h-auto">
-                <WebsitePerformance />
+                <WebsitePerformanceContainer refreshTrigger={refreshTrigger} />
               </div>
 
               {/* Recent Payments - Compact on mobile */}
@@ -108,12 +129,15 @@ export default function Dashboard() {
             <div className="hidden lg:grid lg:grid-cols-9 lg:grid-rows-5 lg:gap-2 lg:h-full lg:min-h-0">
               {/* div1 - Project Card */}
               <div className="col-start-1 col-end-4 row-start-1 row-end-4">
-                <ProjectCard />
+                <ProjectCardContainer 
+                  onCreateProject={handleCreateProject}
+                  refreshTrigger={refreshTrigger}
+                />
               </div>
 
               {/* div2 - Website Performance */}
               <div className="col-start-4 col-end-7 row-start-1 row-end-4">
-                <WebsitePerformance />
+                <WebsitePerformanceContainer refreshTrigger={refreshTrigger} />
               </div>
 
               {/* div3 - Recent Payments */}
@@ -135,6 +159,13 @@ export default function Dashboard() {
       <div className="hidden xl:block">
         <ChatSidebar />
       </div>
+
+      {/* Create Project Modal */}
+      <CreateProjectModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onProjectCreated={handleProjectCreated}
+      />
     </div>
   );
 }
