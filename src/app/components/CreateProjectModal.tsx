@@ -54,6 +54,8 @@ export default function CreateProjectModal({
     e.preventDefault();
     setLoading(true);
 
+    console.log('Submitting form data:', formData);
+
     try {
       const response = await fetch('/api/projects', {
         method: 'POST',
@@ -63,6 +65,9 @@ export default function CreateProjectModal({
         body: JSON.stringify(formData),
       });
 
+      console.log('Response status:', response.status);
+      console.log('Response ok:', response.ok);
+      
       if (response.ok) {
         // Reset form
         setFormData({
@@ -80,7 +85,9 @@ export default function CreateProjectModal({
         onClose();
       } else {
         const error = await response.json();
-        alert(error.error || 'A apărut o eroare');
+        console.error('API Error:', error);
+        console.error('Response status:', response.status);
+        alert(`Eroare ${response.status}: ${error.error || 'A apărut o eroare'}`);
       }
     } catch (error) {
       console.error('Error creating project:', error);
