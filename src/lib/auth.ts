@@ -1,5 +1,6 @@
 import NextAuth from "next-auth"
 import Google from "next-auth/providers/google"
+import { supabase } from "./supabase"
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
@@ -30,16 +31,30 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       // Default fallback to dashboard for successful logins
       return `${baseUrl}/dashboard`
     },
-    async signIn({ user, account, profile }) {
-        console.log(user, account, profile)
-      // Always allow sign in - you can add custom logic here if needed
-      return true
+    async signIn({ user }) {
+      console.log(user)
+      const { data, error } = await supabase
+        .from('users')
+        .upsert([
+          {
+            id: user.id,
+            email: user.email,
+            name: user.name,
+            image: user.image,
+          },
+        ]);
+      if (error) console.error('Supabase insert error:', error);
+      console.log(data, error)
+      return true;
     },
     async session({ session, token }) {
         console.log(session, token)
       // Pass any additional data to the session if needed
       return session
     },
+
+    
+
   },
   session: {
     strategy: "jwt",
