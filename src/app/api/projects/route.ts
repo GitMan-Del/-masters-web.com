@@ -5,6 +5,8 @@ import { CreateProjectData } from '@/lib/types';
 
 // GET - Obține toate proiectele utilizatorului
 export async function GET(request: NextRequest) {
+  console.log('Request:', request);
+  console.log('GET request received');
   const session = await auth();
   
   if (!session?.user?.id) {
