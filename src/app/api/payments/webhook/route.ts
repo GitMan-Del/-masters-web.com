@@ -81,9 +81,13 @@ async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session) 
   console.log('📋 Mode:', session.mode);
   console.log('🔍 FULL SESSION DATA:', JSON.stringify(session, null, 2));
   
-  const userEmail = session.customer_email || session.metadata?.user_email;
+  const userEmail = session.customer_email || session.metadata?.user_email || session.customer_details?.email;
   const paymentType = session.metadata?.payment_type as 'one_time' | 'monthly_maintenance';
   
+  console.log('📧 EMAIL SOURCES:');
+  console.log('  - customer_email:', session.customer_email);
+  console.log('  - metadata.user_email:', session.metadata?.user_email);
+  console.log('  - customer_details.email:', session.customer_details?.email);
   console.log('👤 EXTRACTED User email:', userEmail);
   console.log('💳 EXTRACTED Payment type:', paymentType);
   
