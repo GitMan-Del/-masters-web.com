@@ -25,12 +25,18 @@ export async function POST(request: NextRequest) {
 
     console.log('✅ Stripe webhook received:', event.type);
     console.log('📄 Event data keys:', Object.keys(event.data.object));
-    console.log('🔍 Full event object:', JSON.stringify(event, null, 2));
+    
+    // Log doar pentru checkout.session.completed să nu spam consola
+    if (event.type === 'checkout.session.completed') {
+      console.log('🔍 Checkout session object:', JSON.stringify(event.data.object, null, 2));
+    }
 
     // Procesează evenimentele relevante
     switch (event.type) {
       case 'checkout.session.completed':
+        console.log('🎯 PROCESSING checkout.session.completed...');
         await handleCheckoutSessionCompleted(event.data.object as Stripe.Checkout.Session);
+        console.log('✅ FINISHED processing checkout.session.completed');
         break;
       
       case 'payment_intent.succeeded':
@@ -65,39 +71,60 @@ export async function POST(request: NextRequest) {
 }
 
 async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session) {
-  console.log('🛒 Processing checkout session completed:', session.id);
+  console.log('🛒 ========== HANDLING CHECKOUT SESSION ==========');
+  console.log('🆔 Session ID:', session.id);
   console.log('📧 Customer email:', session.customer_email);
-  console.log('🏷️ Session metadata:', session.metadata);
+  console.log('🏷️ Session metadata:', JSON.stringify(session.metadata, null, 2));
+  console.log('💰 Amount total:', session.amount_total);
+  console.log('💱 Currency:', session.currency);
+  console.log('🔗 Payment intent:', session.payment_intent);
+  console.log('📋 Mode:', session.mode);
   
   const userEmail = session.customer_email || session.metadata?.user_email;
   const paymentType = session.metadata?.payment_type as 'one_time' | 'monthly_maintenance';
   
-  console.log('👤 User email:', userEmail);
-  console.log('💳 Payment type:', paymentType);
+  console.log('👤 EXTRACTED User email:', userEmail);
+  console.log('💳 EXTRACTED Payment type:', paymentType);
   
-  if (!userEmail || !paymentType) {
-    console.error('❌ Missing metadata in checkout session:', {
-      sessionId: session.id,
-      userEmail,
-      paymentType,
-      metadata: session.metadata
-    });
+  if (!userEmail) {
+    console.error('❌ NO USER EMAIL FOUND!');
+    console.error('❌ customer_email:', session.customer_email);
+    console.error('❌ metadata.user_email:', session.metadata?.user_email);
+    console.error('❌ SKIPPING - Payment will not be saved to database');
     return;
   }
+  
+  if (!paymentType) {
+    console.error('❌ NO PAYMENT TYPE FOUND!');
+    console.error('❌ metadata:', session.metadata);
+    console.error('❌ Available keys in metadata:', Object.keys(session.metadata || {}));
+    return;
+  }
+  
+  console.log('✅ Both email and payment type found, proceeding...');
 
   // Pentru plăți one-time
-  if (paymentType === 'one_time' && session.payment_intent) {
-    await savePaymentToDatabase({
-      user_email: userEmail,
-      payment_type: paymentType,
-      stripe_payment_id: session.payment_intent.toString(),
-      stripe_session_id: session.id,
-      amount: (session.amount_total || 0) / 100,
-      currency: session.currency || 'ron',
-      status: 'completed',
-      description: session.metadata?.description,
-      metadata: session.metadata as Record<string, string | number | boolean> | undefined,
-    });
+  if (paymentType === 'one_time') {
+    console.log('🎯 Processing ONE-TIME payment...');
+    console.log('🔗 Payment intent exists:', !!session.payment_intent);
+    
+    if (session.payment_intent) {
+      console.log('💾 Calling savePaymentToDatabase...');
+      await savePaymentToDatabase({
+        user_email: userEmail,
+        payment_type: paymentType,
+        stripe_payment_id: session.payment_intent.toString(),
+        stripe_session_id: session.id,
+        amount: (session.amount_total || 0) / 100,
+        currency: session.currency || 'ron',
+        status: 'completed',
+        description: session.metadata?.description,
+        metadata: session.metadata as Record<string, string | number | boolean> | undefined,
+      });
+      console.log('✅ savePaymentToDatabase completed');
+    } else {
+      console.error('❌ No payment_intent found for one-time payment!');
+    }
   }
   
   // Pentru subscripții
