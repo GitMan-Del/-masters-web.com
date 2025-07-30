@@ -13,10 +13,12 @@ export async function POST() {
     console.log('🔧 Setting up payments table...');
 
     // Check if payments table exists by trying to select from it
-    const { data: tableCheck, error: checkError } = await supabaseAdmin
+    const { data, error: checkError } = await supabaseAdmin
+     
       .from('payments')
       .select('count')
       .limit(1);
+    console.log(data);
 
     if (checkError && checkError.code === '42P01') {
       // Table doesn't exist (error code 42P01 = relation does not exist)
