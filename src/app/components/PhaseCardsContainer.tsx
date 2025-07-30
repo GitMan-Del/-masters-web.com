@@ -12,39 +12,70 @@ interface ProjectPhase {
 }
 
 export default React.memo(function PhaseCardsContainer() {
-  const { hasProjects, loading } = useDashboard();
+  const { hasProjects, loading, projects } = useDashboard();
 
-  // Date pentru când există proiecte (date reale)
-  const phasesWithProjects: ProjectPhase[] = [
-    { 
-      number: "01", 
-      name: "DISCOVERY", 
-      description: "Research & Planning",
-      status: 'completed',
-      progress: 100
-    },
-    { 
-      number: "02", 
-      name: "DESIGN", 
-      description: "UI/UX & Wireframes",
-      status: 'completed',
-      progress: 100
-    },
-    { 
-      number: "03", 
-      name: "DEVELOPMENT", 
-      description: "Coding & Testing",
-      status: 'in-progress',
-      progress: 75
-    },
-    { 
-      number: "04", 
-      name: "LAUNCH", 
-      description: "Deployment & Go-live",
-      status: 'pending',
-      progress: 0
-    }
-  ];
+  // Function to calculate phases based on overall progress
+  const calculatePhases = (overallProgress: number): ProjectPhase[] => {
+    const phaseTemplates = [
+      { 
+        number: "01", 
+        name: "DISCOVERY", 
+        description: "Research & Planning",
+        threshold: 25 // Complete la 25%
+      },
+      { 
+        number: "02", 
+        name: "DESIGN", 
+        description: "UI/UX & Wireframes",
+        threshold: 50 // Complete la 50%
+      },
+      { 
+        number: "03", 
+        name: "DEVELOPMENT", 
+        description: "Coding & Testing",
+        threshold: 80 // Complete la 80%
+      },
+      { 
+        number: "04", 
+        name: "LAUNCH", 
+        description: "Deployment & Go-live",
+        threshold: 100 // Complete la 100%
+      }
+    ];
+
+    return phaseTemplates.map((template, index) => {
+      const prevThreshold = index === 0 ? 0 : phaseTemplates[index - 1].threshold;
+      const currentThreshold = template.threshold;
+      
+      let status: 'completed' | 'in-progress' | 'pending';
+      let progress: number;
+
+      if (overallProgress >= currentThreshold) {
+        // Faza este completă
+        status = 'completed';
+        progress = 100;
+      } else if (overallProgress > prevThreshold) {
+        // Faza este în progres
+        status = 'in-progress';
+        // Calculez progresul în cadrul fazei
+        const phaseRange = currentThreshold - prevThreshold;
+        const phaseProgress = overallProgress - prevThreshold;
+        progress = Math.round((phaseProgress / phaseRange) * 100);
+      } else {
+        // Faza este în așteptare
+        status = 'pending';
+        progress = 0;
+      }
+
+      return {
+        number: template.number,
+        name: template.name,
+        description: template.description,
+        status,
+        progress
+      };
+    });
+  };
 
   // Date pentru când nu există proiecte (toate la zero)
   const phasesEmpty: ProjectPhase[] = [
@@ -80,8 +111,12 @@ export default React.memo(function PhaseCardsContainer() {
 
 
 
-  const phases = hasProjects ? phasesWithProjects : phasesEmpty;
-  const overallProgress = hasProjects ? 68 : 0;
+  // Get current project's overall progress
+  const currentProject = hasProjects && projects.length > 0 ? projects[0] : null;
+  const overallProgress = currentProject?.progress || 0;
+  
+  // Calculate phases based on overall progress
+  const phases = hasProjects ? calculatePhases(overallProgress) : phasesEmpty;
 
   const getStatusColor = (status: string) => {
     switch (status) {
