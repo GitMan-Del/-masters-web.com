@@ -128,7 +128,7 @@ export default function ChatSidebar() {
           <p className="text-xs text-gray-500 mb-3">Need help now?</p>
           <div className="space-y-2">
             <a
-              href="mailto:support@masters-web.com"
+              href="mailto:masterswebcom@gmail.com"
               className="flex items-center justify-center gap-2 w-full px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors text-sm"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
