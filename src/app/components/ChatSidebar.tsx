@@ -61,9 +61,9 @@ export default function ChatSidebar() {
         </h2>
 
         {/* Description */}
-        <p className="text-gray-600 text-sm leading-relaxed mb-8 max-w-xs">
-          We're building an amazing support experience for you. Get instant help from our expert team with real-time chat, file sharing, and quick responses.
-        </p>
+                 <p className="text-gray-600 text-sm leading-relaxed mb-8 max-w-xs">
+           We&apos;re building an amazing support experience for you. Get instant help from our expert team with real-time chat, file sharing, and quick responses.
+         </p>
 
         {/* Features List */}
         <div className="space-y-3 mb-8 w-full max-w-xs">
@@ -90,7 +90,7 @@ export default function ChatSidebar() {
           <div className="w-full max-w-xs">
             <div className="flex items-center gap-2 mb-3">
               <Bell className="w-4 h-4 text-gray-500" />
-              <span className="text-sm font-medium text-gray-700">Get notified when it's ready</span>
+                             <span className="text-sm font-medium text-gray-700">Get notified when it&apos;s ready</span>
             </div>
             <div className="flex gap-2">
               <input
@@ -117,8 +117,8 @@ export default function ChatSidebar() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <p className="text-sm font-medium text-green-800">You'll be notified!</p>
-              <p className="text-xs text-green-600 mt-1">We'll let you know when chat is available</p>
+                             <p className="text-sm font-medium text-green-800">You&apos;ll be notified!</p>
+               <p className="text-xs text-green-600 mt-1">We&apos;ll let you know when chat is available</p>
             </div>
           </div>
         )}
