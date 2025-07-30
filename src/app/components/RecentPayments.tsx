@@ -3,7 +3,7 @@
 
 import { useState, useEffect } from 'react';
 import { Payment } from '@/lib/types';
-import { CreditCard, Calendar, CheckCircle, XCircle, Clock, DollarSign } from 'lucide-react';
+import { CreditCard, Calendar, CheckCircle, XCircle, Clock, DollarSign, TrendingUp, AlertCircle } from 'lucide-react';
 
 export default function RecentPayments() {
   const [payments, setPayments] = useState<Payment[]>([]);
@@ -34,15 +34,15 @@ export default function RecentPayments() {
   const getStatusIcon = (status: Payment['status']) => {
     switch (status) {
       case 'completed':
-        return <CheckCircle className="w-5 h-5 text-green-500" />;
+        return <CheckCircle className="w-4 h-4 text-green-500" />;
       case 'failed':
-        return <XCircle className="w-5 h-5 text-red-500" />;
+        return <XCircle className="w-4 h-4 text-red-500" />;
       case 'pending':
-        return <Clock className="w-5 h-5 text-yellow-500" />;
+        return <Clock className="w-4 h-4 text-yellow-500" />;
       case 'refunded':
-        return <XCircle className="w-5 h-5 text-orange-500" />;
+        return <XCircle className="w-4 h-4 text-orange-500" />;
       default:
-        return <Clock className="w-5 h-5 text-gray-500" />;
+        return <Clock className="w-4 h-4 text-gray-500" />;
     }
   };
 
@@ -64,15 +64,15 @@ export default function RecentPayments() {
   const getStatusColor = (status: Payment['status']) => {
     switch (status) {
       case 'completed':
-        return 'text-green-600 bg-green-50';
+        return 'bg-green-100 text-green-800 border-green-200';
       case 'failed':
-        return 'text-red-600 bg-red-50';
+        return 'bg-red-100 text-red-800 border-red-200';
       case 'pending':
-        return 'text-yellow-600 bg-yellow-50';
+        return 'bg-yellow-100 text-yellow-800 border-yellow-200';
       case 'refunded':
-        return 'text-orange-600 bg-orange-50';
+        return 'bg-orange-100 text-orange-800 border-orange-200';
       default:
-        return 'text-gray-600 bg-gray-50';
+        return 'bg-gray-100 text-gray-800 border-gray-200';
     }
   };
 
@@ -88,13 +88,23 @@ export default function RecentPayments() {
   };
 
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-GB', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-    });
+    const date = new Date(dateString);
+    const now = new Date();
+    const diffTime = Math.abs(now.getTime() - date.getTime());
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+    if (diffDays === 1) {
+      return 'Today';
+    } else if (diffDays === 2) {
+      return 'Yesterday';
+    } else if (diffDays <= 7) {
+      return `${diffDays - 1} days ago`;
+    } else {
+      return date.toLocaleDateString('en-GB', {
+        month: 'short',
+        day: 'numeric',
+      });
+    }
   };
 
   const formatAmount = (amount: number, currency: string) => {
@@ -104,18 +114,25 @@ export default function RecentPayments() {
     }).format(amount);
   };
 
+  const getTotalAmount = () => {
+    return payments
+      .filter(payment => payment.status === 'completed')
+      .reduce((sum, payment) => sum + payment.amount, 0);
+  };
+
   if (loading) {
     return (
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 sm:p-6">
+      <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4 sm:p-6">
         <div className="flex items-center gap-3 mb-6">
-          <CreditCard className="w-6 h-6 text-blue-600" />
-          <h2 className="text-xl font-semibold text-gray-900">Recent Payments</h2>
+          <div className="p-2 bg-blue-50 rounded-lg">
+            <CreditCard className="w-5 h-5 text-blue-600" />
+          </div>
+          <h2 className="text-lg font-semibold text-gray-900">Recent Payments</h2>
         </div>
-        <div className="space-y-4">
+        <div className="space-y-3">
           {[...Array(3)].map((_, i) => (
             <div key={i} className="animate-pulse">
-              <div className="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
-              <div className="h-3 bg-gray-200 rounded w-1/2"></div>
+              <div className="h-16 bg-gray-100 rounded-lg"></div>
             </div>
           ))}
         </div>
@@ -125,17 +142,21 @@ export default function RecentPayments() {
 
   if (error) {
     return (
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 sm:p-6">
+      <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4 sm:p-6">
         <div className="flex items-center gap-3 mb-4">
-          <CreditCard className="w-6 h-6 text-blue-600" />
-          <h2 className="text-xl font-semibold text-gray-900">Recent Payments</h2>
+          <div className="p-2 bg-blue-50 rounded-lg">
+            <CreditCard className="w-5 h-5 text-blue-600" />
+          </div>
+          <h2 className="text-lg font-semibold text-gray-900">Recent Payments</h2>
         </div>
         <div className="text-center py-8">
-          <XCircle className="w-12 h-12 text-red-500 mx-auto mb-4" />
-          <p className="text-gray-600">{error}</p>
+          <div className="p-3 bg-red-50 rounded-full w-fit mx-auto mb-4">
+            <AlertCircle className="w-6 h-6 text-red-500" />
+          </div>
+          <p className="text-gray-600 mb-4">{error}</p>
           <button
             onClick={fetchPayments}
-            className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
           >
             Try again
           </button>
@@ -145,67 +166,100 @@ export default function RecentPayments() {
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 sm:p-6">
-      <div className="flex items-center gap-3 mb-6">
-        <CreditCard className="w-6 h-6 text-blue-600" />
-        <h2 className="text-xl font-semibold text-gray-900">Recent Payments</h2>
-      </div>
-
-      {payments.length === 0 ? (
-        <div className="text-center py-8">
-          <DollarSign className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-          <p className="text-gray-600">No payments have been recorded yet.</p>
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {payments.slice(0, 10).map((payment) => (
-          <div
-            key={payment.id}
-            className="bg-white border border-gray-200 rounded-lg shadow-sm p-5 hover:shadow-md transition-shadow"
-          >
-            <div className="flex items-center justify-between mb-3">
-              <h3 className="text-sm font-semibold text-gray-800">
-                {getPaymentTypeText(payment.payment_type)}
-              </h3>
-              <span
-                className={`px-2 py-1 text-xs font-medium rounded-full ${getStatusColor(payment.status)}`}
-              >
-                {getStatusText(payment.status)}
-              </span>
-            </div>
-      
-            <p className="text-sm text-gray-600 mb-2">
-              {payment.description || 'No description'}
-            </p>
-      
-            <div className="flex items-center text-xs text-gray-500 gap-1 mb-4">
-              <Calendar className="w-4 h-4 text-gray-400" />
-              <span>{formatDate(payment.payment_date)}</span>
-            </div>
-      
-            <div className="flex justify-between items-end">
-              <div>
-                <div className="text-lg font-bold text-gray-900">
-                  {formatAmount(payment.amount, payment.currency)}
-                </div>
-                <div className="text-xs text-gray-400">
-                  ID: {payment.stripe_payment_id.slice(-8)}
-                </div>
-              </div>
-              <div>{getStatusIcon(payment.status)}</div>
-            </div>
+    <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4 sm:p-6">
+      <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center gap-3">
+          <div className="p-2 bg-blue-50 rounded-lg">
+            <CreditCard className="w-5 h-5 text-blue-600" />
           </div>
-        ))}
-      
-        {payments.length > 10 && (
-          <div className="sm:col-span-2 lg:col-span-3 text-center">
-            <button className="text-blue-600 hover:text-blue-700 font-medium text-sm mt-2">
-              View all payments ({payments.length})
-            </button>
+          <div>
+            <h2 className="text-lg font-semibold text-gray-900">Recent Payments</h2>
+            <p className="text-sm text-gray-500">{payments.length} transactions</p>
+          </div>
+        </div>
+        {payments.length > 0 && (
+          <div className="text-right">
+            <p className="text-xs text-gray-500">Total</p>
+            <p className="text-lg font-bold text-green-600">
+              {formatAmount(getTotalAmount(), payments[0]?.currency || 'USD')}
+            </p>
           </div>
         )}
       </div>
-      
+
+      {payments.length === 0 ? (
+        <div className="text-center py-12">
+          <div className="p-4 bg-gray-50 rounded-full w-fit mx-auto mb-4">
+            <DollarSign className="w-8 h-8 text-gray-400" />
+          </div>
+          <h3 className="text-gray-900 font-medium mb-2">No payments yet</h3>
+          <p className="text-gray-500 text-sm">Your payment history will appear here</p>
+        </div>
+      ) : (
+        <div className="space-y-3">
+          {payments.slice(0, 8).map((payment) => (
+            <div
+              key={payment.id}
+              className="group relative p-4 border border-gray-100 rounded-xl hover:border-gray-200 hover:shadow-sm transition-all duration-200 bg-gradient-to-r from-white to-gray-50/30"
+            >
+              <div className="flex items-start justify-between">
+                <div className="flex items-start gap-3 flex-1 min-w-0">
+                  <div className="flex-shrink-0 mt-1">
+                    {getStatusIcon(payment.status)}
+                  </div>
+                  
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-1">
+                      <h3 className="font-medium text-gray-900 text-sm truncate">
+                        {getPaymentTypeText(payment.payment_type)}
+                      </h3>
+                      <span
+                        className={`px-2 py-0.5 text-xs font-medium rounded-full border ${getStatusColor(
+                          payment.status
+                        )}`}
+                      >
+                        {getStatusText(payment.status)}
+                      </span>
+                    </div>
+                    
+                    {payment.description && (
+                      <p className="text-xs text-gray-600 mb-2 line-clamp-2">
+                        {payment.description}
+                      </p>
+                    )}
+                    
+                    <div className="flex items-center gap-2 text-xs text-gray-500">
+                      <Calendar className="w-3 h-3" />
+                      <span>{formatDate(payment.payment_date)}</span>
+                      <span className="text-gray-300">•</span>
+                      <span className="font-mono">#{payment.stripe_payment_id.slice(-6)}</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="flex-shrink-0 ml-3 text-right">
+                  <div className="font-bold text-gray-900 text-sm">
+                    {formatAmount(payment.amount, payment.currency)}
+                  </div>
+                  {payment.status === 'completed' && (
+                    <div className="flex items-center gap-1 mt-1">
+                      <TrendingUp className="w-3 h-3 text-green-500" />
+                      <span className="text-xs text-green-600">Paid</span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
+
+          {payments.length > 8 && (
+            <div className="text-center pt-4">
+              <button className="text-blue-600 hover:text-blue-700 font-medium text-sm px-4 py-2 rounded-lg hover:bg-blue-50 transition-colors">
+                View all {payments.length} payments
+              </button>
+            </div>
+          )}
+        </div>
       )}
     </div>
   );
