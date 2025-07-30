@@ -1,0 +1,214 @@
+// app/api/payments/webhook/route.ts
+import { NextRequest, NextResponse } from 'next/server';
+import { validateStripeWebhook } from '@/lib/stripe';
+import { supabaseAdmin } from '@/lib/supabase';
+import Stripe from 'stripe';
+
+export async function POST(request: NextRequest) {
+  try {
+    const body = await request.text();
+    const signature = request.headers.get('stripe-signature');
+
+    if (!signature) {
+      return NextResponse.json(
+        { error: 'Missing stripe-signature header' },
+        { status: 400 }
+      );
+    }
+
+    // Validează webhook-ul
+    const event = validateStripeWebhook(Buffer.from(body), signature);
+
+    console.log('Stripe webhook received:', event.type);
+
+    // Procesează evenimentele relevante
+    switch (event.type) {
+      case 'checkout.session.completed':
+        await handleCheckoutSessionCompleted(event.data.object as Stripe.Checkout.Session);
+        break;
+      
+      case 'payment_intent.succeeded':
+        await handlePaymentSucceeded(event.data.object as Stripe.PaymentIntent);
+        break;
+      
+      case 'payment_intent.payment_failed':
+        await handlePaymentFailed(event.data.object as Stripe.PaymentIntent);
+        break;
+      
+      case 'invoice.payment_succeeded':
+        await handleInvoicePaymentSucceeded(event.data.object as Stripe.Invoice);
+        break;
+      
+      case 'invoice.payment_failed':
+        await handleInvoicePaymentFailed(event.data.object as Stripe.Invoice);
+        break;
+      
+      default:
+        console.log(`Unhandled event type: ${event.type}`);
+    }
+
+    return NextResponse.json({ received: true });
+
+  } catch (error) {
+    console.error('Webhook error:', error);
+    return NextResponse.json(
+      { error: 'Webhook handler failed' },
+      { status: 400 }
+    );
+  }
+}
+
+async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session) {
+  console.log('Processing checkout session completed:', session.id);
+  
+  const userEmail = session.metadata?.user_email;
+  const paymentType = session.metadata?.payment_type as 'one_time' | 'monthly_maintenance';
+  
+  if (!userEmail || !paymentType) {
+    console.error('Missing metadata in checkout session:', session.id);
+    return;
+  }
+
+  // Pentru plăți one-time
+  if (paymentType === 'one_time' && session.payment_intent) {
+    await savePaymentToDatabase({
+      user_email: userEmail,
+      payment_type: paymentType,
+      stripe_payment_id: session.payment_intent.toString(),
+      stripe_session_id: session.id,
+      amount: (session.amount_total || 0) / 100,
+      currency: session.currency || 'ron',
+      status: 'completed',
+      description: session.metadata?.description,
+      metadata: session.metadata,
+    });
+  }
+  
+  // Pentru subscripții
+  if (paymentType === 'monthly_maintenance' && session.subscription) {
+    await savePaymentToDatabase({
+      user_email: userEmail,
+      payment_type: paymentType,
+      stripe_payment_id: session.subscription.toString(),
+      stripe_session_id: session.id,
+      amount: (session.amount_total || 0) / 100,
+      currency: session.currency || 'ron',
+      status: 'completed',
+      description: session.metadata?.description || 'Monthly maintenance subscription',
+      metadata: session.metadata,
+    });
+  }
+}
+
+async function handlePaymentSucceeded(paymentIntent: Stripe.PaymentIntent) {
+  console.log('Processing payment succeeded:', paymentIntent.id);
+  
+  // Actualizează statusul plății dacă există deja în baza de date
+  await updatePaymentStatus(paymentIntent.id, 'completed');
+}
+
+async function handlePaymentFailed(paymentIntent: Stripe.PaymentIntent) {
+  console.log('Processing payment failed:', paymentIntent.id);
+  
+  // Actualizează statusul plății
+  await updatePaymentStatus(paymentIntent.id, 'failed');
+}
+
+async function handleInvoicePaymentSucceeded(invoice: Stripe.Invoice) {
+  console.log('Processing invoice payment succeeded:', invoice.id);
+  
+  if (invoice.subscription && invoice.customer_email) {
+    await savePaymentToDatabase({
+      user_email: invoice.customer_email,
+      payment_type: 'monthly_maintenance',
+      stripe_payment_id: invoice.payment_intent?.toString() || invoice.id,
+      amount: (invoice.amount_paid || 0) / 100,
+      currency: invoice.currency || 'ron',
+      status: 'completed',
+      description: `Monthly maintenance - ${new Date().toLocaleDateString('ro-RO', { month: 'long', year: 'numeric' })}`,
+      metadata: {
+        invoice_id: invoice.id,
+        subscription_id: invoice.subscription.toString(),
+      },
+    });
+  }
+}
+
+async function handleInvoicePaymentFailed(invoice: Stripe.Invoice) {
+  console.log('Processing invoice payment failed:', invoice.id);
+  
+  if (invoice.customer_email) {
+    await savePaymentToDatabase({
+      user_email: invoice.customer_email,
+      payment_type: 'monthly_maintenance',
+      stripe_payment_id: invoice.payment_intent?.toString() || invoice.id,
+      amount: (invoice.amount_due || 0) / 100,
+      currency: invoice.currency || 'ron',
+      status: 'failed',
+      description: `Failed monthly maintenance - ${new Date().toLocaleDateString('ro-RO', { month: 'long', year: 'numeric' })}`,
+      metadata: {
+        invoice_id: invoice.id,
+        subscription_id: invoice.subscription?.toString(),
+      },
+    });
+  }
+}
+
+async function savePaymentToDatabase(paymentData: {
+  user_email: string;
+  payment_type: 'one_time' | 'monthly_maintenance';
+  stripe_payment_id: string;
+  stripe_session_id?: string;
+  amount: number;
+  currency: string;
+  status: 'pending' | 'completed' | 'failed' | 'refunded';
+  description?: string;
+  metadata?: Record<string, any>;
+}) {
+  try {
+    const { data, error } = await supabaseAdmin
+      .from('payments')
+      .insert([
+        {
+          user_id: paymentData.user_email,
+          user_email: paymentData.user_email,
+          stripe_payment_id: paymentData.stripe_payment_id,
+          stripe_session_id: paymentData.stripe_session_id,
+          payment_type: paymentData.payment_type,
+          amount: paymentData.amount,
+          currency: paymentData.currency,
+          status: paymentData.status,
+          description: paymentData.description,
+          metadata: paymentData.metadata,
+        },
+      ]);
+
+    if (error) {
+      console.error('Error saving payment to database:', error);
+    } else {
+      console.log('Payment saved successfully:', data);
+    }
+  } catch (error) {
+    console.error('Error in savePaymentToDatabase:', error);
+  }
+}
+
+async function updatePaymentStatus(
+  stripePaymentId: string,
+  status: 'pending' | 'completed' | 'failed' | 'refunded'
+) {
+  try {
+    const { data, error } = await supabaseAdmin
+      .from('payments')
+      .update({ status })
+      .eq('stripe_payment_id', stripePaymentId);
+
+    if (error) {
+      console.error('Error updating payment status:', error);
+    } else {
+      console.log('Payment status updated:', data);
+    }
+  } catch (error) {
+    console.error('Error in updatePaymentStatus:', error);
+  }
+}

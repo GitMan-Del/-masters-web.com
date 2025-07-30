@@ -27,6 +27,40 @@ export interface CreateProjectData {
   estimated_completion_date?: string;
 }
 
+export interface Payment {
+  id: string;
+  user_id: string;
+  user_email: string;
+  stripe_payment_id: string;
+  stripe_session_id?: string;
+  payment_type: 'one_time' | 'monthly_maintenance';
+  amount: number;
+  currency: string;
+  status: 'pending' | 'completed' | 'failed' | 'refunded';
+  description?: string;
+  metadata?: Record<string, any>;
+  payment_date: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface CreatePaymentData {
+  user_email: string;
+  payment_type: 'one_time' | 'monthly_maintenance';
+  amount: number;
+  currency?: string;
+  description?: string;
+  metadata?: Record<string, any>;
+}
+
+export interface StripePaymentLinkData {
+  payment_link_url: string;
+  payment_link_id: string;
+  user_email: string;
+  amount: number;
+  payment_type: 'one_time' | 'monthly_maintenance';
+}
+
 export interface LighthouseMetrics {
   performance: number;
   accessibility: number;

@@ -13,7 +13,8 @@ export default auth((req) => {
     '/dashboard',
     '/projects',
     '/api/projects',
-    '/api/lighthouse'
+    '/api/lighthouse',
+    '/api/payments'
   ]
 
   // Verifică dacă ruta curentă este protejată
