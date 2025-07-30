@@ -79,6 +79,7 @@ async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session) 
   console.log('💱 Currency:', session.currency);
   console.log('🔗 Payment intent:', session.payment_intent);
   console.log('📋 Mode:', session.mode);
+  console.log('🔍 FULL SESSION DATA:', JSON.stringify(session, null, 2));
   
   const userEmail = session.customer_email || session.metadata?.user_email;
   const paymentType = session.metadata?.payment_type as 'one_time' | 'monthly_maintenance';
