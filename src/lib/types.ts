@@ -44,22 +44,7 @@ export interface Payment {
   updated_at: string;
 }
 
-export interface CreatePaymentData {
-  user_email: string;
-  payment_type: 'one_time' | 'monthly_maintenance';
-  amount: number;
-  currency?: string;
-  description?: string;
-  metadata?: Record<string, string | number | boolean>;
-}
 
-export interface StripePaymentLinkData {
-  payment_link_url: string;
-  payment_link_id: string;
-  user_email: string;
-  amount: number;
-  payment_type: 'one_time' | 'monthly_maintenance';
-}
 
 export interface LighthouseMetrics {
   performance: number;
