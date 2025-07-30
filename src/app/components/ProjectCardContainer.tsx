@@ -1,85 +1,20 @@
 "use client";
 
-import { useState, useEffect, useCallback } from 'react';
-import { useSession } from 'next-auth/react';
-import { Project, LighthouseMetrics } from '@/lib/types';
+import React from 'react';
+import { useDashboard } from '../contexts/DashboardContext';
 import ProjectCard from './ProjectCard';
 import EmptyProjectCard from './EmptyProjectCard';
 
 interface ProjectCardContainerProps {
   onCreateProject: () => void;
-  refreshTrigger?: number;
 }
 
-export default function ProjectCardContainer({ 
-  onCreateProject, 
-  refreshTrigger 
+export default React.memo(function ProjectCardContainer({ 
+  onCreateProject
 }: ProjectCardContainerProps) {
-  const { data: session } = useSession();
-  const [projects, setProjects] = useState<Project[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [lighthouseData, setLighthouseData] = useState<LighthouseMetrics | null>(null);
+  const { projects, lighthouseData, loading, error, refreshData } = useDashboard();
 
-  const fetchProjects = useCallback(async () => {
-    if (!session?.user?.email) return;
-
-    try {
-      setLoading(true);
-      const response = await fetch('/api/projects');
-      
-      if (response.ok) {
-        const data = await response.json();
-        setProjects(data.projects || []);
-        setError(null);
-      } else {
-        setError('Failed to fetch projects');
-      }
-    } catch (err) {
-      console.error('Error fetching projects:', err);
-      setError('Error loading projects');
-    } finally {
-      setLoading(false);
-    }
-  }, [session?.user?.email]);
-
-  // Fetch lighthouse data
-  const fetchLighthouseData = useCallback(async (url: string | null) => {
-    if (!url) {
-      setLighthouseData(null);
-      return;
-    }
-
-         try {
-       // TEMPORARY: Use simple lighthouse for debugging
-       const apiUrl = `/api/lighthouse-simple?url=${encodeURIComponent(url)}`;
-       console.log('🔧 Using simple lighthouse API for debugging');
-       const response = await fetch(apiUrl);
-      
-             if (response.ok) {
-         const data = await response.json();
-         console.log('📊 ProjectCardContainer received lighthouse data:', data.metrics);
-         setLighthouseData(data.metrics);
-       } else {
-         console.error('❌ ProjectCardContainer API response not OK:', response.status);
-       }
-    } catch (error) {
-      console.error('Error fetching lighthouse data:', error);
-      setLighthouseData(null);
-    }
-  }, []);
-
-  useEffect(() => {
-    fetchProjects();
-  }, [fetchProjects, refreshTrigger]);
-
-  useEffect(() => {
-    if (projects.length > 0 && projects[0].website_url) {
-      fetchLighthouseData(projects[0].website_url);
-    } else {
-      setLighthouseData(null);
-    }
-  }, [projects, fetchLighthouseData]);
+  
 
   if (loading) {
     return (
@@ -116,7 +51,7 @@ export default function ProjectCardContainer({
           <h3 className="text-lg font-medium text-gray-900 mb-2">Eroare la încărcare</h3>
           <p className="text-sm text-gray-500 mb-4">{error}</p>
           <button 
-            onClick={fetchProjects}
+            onClick={refreshData}
             className="bg-purple-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-purple-700 transition-colors"
           >
             Încearcă din nou
@@ -134,4 +69,4 @@ export default function ProjectCardContainer({
   // Pentru primul proiect, afișez ProjectCard cu datele reale
   const activeProject = projects[0];
   return <ProjectCard project={activeProject} lighthouseData={lighthouseData} />;
-} 
+}); 

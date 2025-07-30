@@ -10,7 +10,7 @@ import SignInClient from "./siverside/SignInClient";
 const navLinks = [
   { name: "Home", href: "#home" },
   { name: "Process", href: "#process" },
-  { name: "Services", href: "#services" },
+  { name: "Projects", href: "#projects" },
   { name: "Stack", href: "#stack" },
   { name: "Dashboard", href: "/dashboard" },
   { name: "Contact", href: "/contact" },

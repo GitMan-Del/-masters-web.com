@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -8,16 +8,18 @@ import Sidebar from "../components/Sidebar";
 import ProjectCardContainer from "../components/ProjectCardContainer";
 import CreateProjectModal from "../components/CreateProjectModal";
 import WebsitePerformanceContainer from "../components/WebsitePerformanceContainer";
-import PhaseCardsContainer from "../components/PhaseCardsContainer";
-import RecentPaymentsContainer from "../components/RecentPaymentsContainer";
-import ChatSidebar from "../components/ChatSidebar";
 import Toast from "../components/Toast";
+import { DashboardProvider, useDashboard } from "../contexts/DashboardContext";
+
+// Lazy load non-critical components
+const PhaseCardsContainer = lazy(() => import("../components/PhaseCardsContainer"));
+const RecentPaymentsContainer = lazy(() => import("../components/RecentPaymentsContainer"));
+const ChatSidebar = lazy(() => import("../components/ChatSidebar"));
 
 export default function Dashboard() {
   const { data: session, status } = useSession();
   const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [refreshTrigger, setRefreshTrigger] = useState(0);
   const [showBetaToast, setShowBetaToast] = useState(false);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
@@ -50,19 +52,56 @@ export default function Dashboard() {
     setIsModalOpen(true);
   };
 
-  const handleProjectCreated = () => {
-    setRefreshTrigger(prev => prev + 1);
-  };
-
-  const handleRefreshDashboard = () => {
-    setRefreshTrigger(prev => prev + 1);
-  };
-
   const handleShowBetaToast = () => {
     setShowBetaToast(true);
   };
 
   console.log(session);
+
+  return (
+    <DashboardProvider>
+      <DashboardContent 
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+        showBetaToast={showBetaToast}
+        setShowBetaToast={setShowBetaToast}
+        isMobileSidebarOpen={isMobileSidebarOpen}
+        setIsMobileSidebarOpen={setIsMobileSidebarOpen}
+        handleCreateProject={handleCreateProject}
+        handleShowBetaToast={handleShowBetaToast}
+      />
+    </DashboardProvider>
+  );
+}
+
+function DashboardContent({ 
+  isModalOpen, 
+  setIsModalOpen, 
+  showBetaToast, 
+  setShowBetaToast, 
+  isMobileSidebarOpen, 
+  setIsMobileSidebarOpen,
+  handleCreateProject,
+  handleShowBetaToast
+}: {
+  isModalOpen: boolean;
+  setIsModalOpen: (open: boolean) => void;
+  showBetaToast: boolean;
+  setShowBetaToast: (show: boolean) => void;
+  isMobileSidebarOpen: boolean;
+  setIsMobileSidebarOpen: (open: boolean) => void;
+  handleCreateProject: () => void;
+  handleShowBetaToast: () => void;
+}) {
+  const { refreshData } = useDashboard();
+
+  const handleProjectCreated = () => {
+    refreshData();
+  };
+
+  const handleRefreshDashboard = () => {
+    refreshData();
+  };
 
   return (
     <div className="h-screen bg-gray-50 flex overflow-hidden">
@@ -186,23 +225,26 @@ export default function Dashboard() {
               <div className="h-auto">
                 <ProjectCardContainer 
                   onCreateProject={handleCreateProject}
-                  refreshTrigger={refreshTrigger}
                 />
               </div>
 
               {/* Website Performance - Full width on mobile */}
               <div className="h-auto">
-                <WebsitePerformanceContainer refreshTrigger={refreshTrigger} />
+                <WebsitePerformanceContainer />
               </div>
 
               {/* Recent Payments - Compact on mobile */}
               <div className="h-64">
-                <RecentPaymentsContainer refreshTrigger={refreshTrigger} />
+                <Suspense fallback={<div className="animate-pulse bg-gray-200 rounded-lg h-full"></div>}>
+                  <RecentPaymentsContainer />
+                </Suspense>
               </div>
 
               {/* Project Phases - Mobile optimized */}
               <div className="h-fit">
-                <PhaseCardsContainer refreshTrigger={refreshTrigger} />
+                <Suspense fallback={<div className="animate-pulse bg-gray-200 rounded-lg h-20"></div>}>
+                  <PhaseCardsContainer />
+                </Suspense>
               </div>
             </div>
 
@@ -212,23 +254,26 @@ export default function Dashboard() {
               <div className="col-start-1 col-end-4 row-start-1 row-end-4">
                 <ProjectCardContainer 
                   onCreateProject={handleCreateProject}
-                  refreshTrigger={refreshTrigger}
                 />
               </div>
 
               {/* div2 - Website Performance */}
               <div className="col-start-4 col-end-7 row-start-1 row-end-4">
-                <WebsitePerformanceContainer refreshTrigger={refreshTrigger} />
+                <WebsitePerformanceContainer />
               </div>
 
               {/* div3 - Recent Payments */}
               <div className="col-start-7 col-end-10 row-start-1 row-end-4">
-                <RecentPaymentsContainer refreshTrigger={refreshTrigger} />
+                <Suspense fallback={<div className="animate-pulse bg-gray-200 rounded-lg h-full"></div>}>
+                  <RecentPaymentsContainer />
+                </Suspense>
               </div>
 
               {/* div4 - Project Phases */}
               <div className="col-start-1 col-end-10 row-start-4 row-end-6">
-                <PhaseCardsContainer refreshTrigger={refreshTrigger} />
+                <Suspense fallback={<div className="animate-pulse bg-gray-200 rounded-lg h-full"></div>}>
+                  <PhaseCardsContainer />
+                </Suspense>
               </div>
             </div>
 
@@ -238,7 +283,9 @@ export default function Dashboard() {
 
       {/* Right Chat Sidebar - Hidden on mobile and tablet */}
       <div className="hidden xl:block">
-        <ChatSidebar />
+        <Suspense fallback={<div className="animate-pulse bg-gray-200 rounded-lg h-full w-80"></div>}>
+          <ChatSidebar />
+        </Suspense>
       </div>
 
       {/* Create Project Modal */}
@@ -251,7 +298,7 @@ export default function Dashboard() {
 
       {/* Beta Toast */}
       <Toast
-        message="🚀 Aplicația este în BETA! Momentan poți crea doar 1 proiect per cont. Funcționalitatea completă va fi disponibilă în curând!"
+        message="🚀 App is in BETA! Currently you can create only 1 project per account. Full functionality will be available soon!"
         type="warning"
         isVisible={showBetaToast}
         onClose={() => setShowBetaToast(false)}

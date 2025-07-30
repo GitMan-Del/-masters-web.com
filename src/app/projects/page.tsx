@@ -67,14 +67,14 @@ export default function ProjectsPage() {
         // Remove project from local state
         setProjects(prev => prev.filter(p => p.id !== projectId));
         setToast({
-          message: 'Proiectul a fost șters cu succes!',
+          message: 'Project deleted successfully!',
           type: 'success',
           show: true
         });
       } else {
         const error = await response.json();
         setToast({
-          message: `Eroare la ștergere: ${error.error || 'Unknown error'}`,
+          message: `Delete error: ${error.error || 'Unknown error'}`,
           type: 'error',
           show: true
         });
@@ -82,7 +82,7 @@ export default function ProjectsPage() {
     } catch (error) {
       console.error('Error deleting project:', error);
       setToast({
-        message: 'Eroare la ștergerea proiectului',
+        message: 'Error deleting project',
         type: 'error',
         show: true
       });
@@ -250,14 +250,14 @@ export default function ProjectsPage() {
                         {deletingId === project.id ? (
                           <>
                             <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-red-600"></div>
-                            Ștergere...
+                            Deleting...
                           </>
                         ) : (
                           <>
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                             </svg>
-                            Șterge
+                            Delete
                           </>
                         )}
                       </button>
@@ -274,22 +274,22 @@ export default function ProjectsPage() {
       {showDeleteConfirm && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-xl p-6 w-full max-w-md">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Confirmare ștergere</h3>
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">Delete Confirmation</h3>
             <p className="text-gray-600 mb-6">
-              Ești sigur că vrei să ștergi acest proiect? Această acțiune nu poate fi anulată.
+              Are you sure you want to delete this project? This action cannot be undone.
             </p>
             <div className="flex justify-end gap-3">
               <button
                 onClick={() => setShowDeleteConfirm(null)}
                 className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors"
               >
-                Anulează
+                Cancel
               </button>
               <button
                 onClick={() => handleDeleteProject(showDeleteConfirm)}
                 className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
               >
-                Șterge
+                Delete
               </button>
             </div>
           </div>

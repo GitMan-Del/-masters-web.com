@@ -110,11 +110,11 @@ export default function CreateProjectModal({
         const error = await response.json();
         console.error('API Error:', error);
         console.error('Response status:', response.status);
-        alert(`Eroare ${response.status}: ${error.error || 'A apărut o eroare'}`);
+        alert(`Error ${response.status}: ${error.error || 'An error occurred'}`);
       }
     } catch (error) {
       console.error('Error creating project:', error);
-      alert('A apărut o eroare la crearea proiectului');
+      alert('An error occurred while creating the project');
     } finally {
       setLoading(false);
     }
@@ -126,7 +126,7 @@ export default function CreateProjectModal({
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-2xl p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold text-gray-900">Creează Proiect Nou</h2>
+          <h2 className="text-2xl font-bold text-gray-900">Create New Project</h2>
           <button 
             onClick={onClose}
             className="text-gray-400 hover:text-gray-600 transition-colors"
@@ -264,7 +264,7 @@ export default function CreateProjectModal({
               onClick={onClose}
               className="px-6 py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors"
             >
-              Anulează
+              Cancel
             </button>
             <button
               type="submit"
@@ -277,7 +277,7 @@ export default function CreateProjectModal({
                   <path className="opacity-75" fill="currentColor" d="m4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
               )}
-              <span>{loading ? 'Se creează...' : 'Creează Proiectul'}</span>
+              <span>{loading ? 'Creating...' : 'Create Project'}</span>
             </button>
           </div>
         </form>

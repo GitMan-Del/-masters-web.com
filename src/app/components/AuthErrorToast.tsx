@@ -28,10 +28,10 @@ function AuthErrorToastInner() {
         </div>
         <div className="ml-3 w-0 flex-1">
           <p className="text-sm font-medium text-red-800">
-            🔐 Acces restricționat
+            🔐 Access Restricted
           </p>
           <p className="text-sm text-red-600 mt-1">
-            Trebuie să te autentifici pentru a accesa dashboard-ul.
+            You need to authenticate to access the dashboard.
           </p>
         </div>
         <div className="ml-4 flex-shrink-0 flex">

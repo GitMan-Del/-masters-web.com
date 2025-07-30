@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect, useCallback } from 'react';
-import { useSession } from 'next-auth/react';
+import React from 'react';
+import { useDashboard } from '../contexts/DashboardContext';
 
 interface Payment {
   description: string;
@@ -9,14 +9,8 @@ interface Payment {
   status: 'Paid' | 'Pending';
 }
 
-interface RecentPaymentsContainerProps {
-  refreshTrigger?: number;
-}
-
-export default function RecentPaymentsContainer({ refreshTrigger }: RecentPaymentsContainerProps) {
-  const { data: session } = useSession();
-  const [hasProjects, setHasProjects] = useState(false);
-  const [loading, setLoading] = useState(true);
+export default React.memo(function RecentPaymentsContainer() {
+  const { hasProjects, loading } = useDashboard();
 
   // Date pentru când există proiecte (date reale)
   const paymentsWithProjects: Payment[] = [
@@ -33,28 +27,7 @@ export default function RecentPaymentsContainer({ refreshTrigger }: RecentPaymen
   // Date pentru când nu există proiecte (empty state)
   const paymentsEmpty: Payment[] = [];
 
-  const checkProjects = useCallback(async () => {
-    if (!session?.user?.email) {
-      setLoading(false);
-      return;
-    }
 
-    try {
-      const response = await fetch('/api/projects');
-      if (response.ok) {
-        const data = await response.json();
-        setHasProjects(data.projects && data.projects.length > 0);
-      }
-    } catch (error) {
-      console.error('Error checking projects:', error);
-    } finally {
-      setLoading(false);
-    }
-  }, [session?.user?.email]);
-
-  useEffect(() => {
-    checkProjects();
-  }, [checkProjects, refreshTrigger]);
 
   const payments = hasProjects ? paymentsWithProjects : paymentsEmpty;
 
@@ -155,4 +128,4 @@ export default function RecentPaymentsContainer({ refreshTrigger }: RecentPaymen
       </div>
     </div>
   );
-} 
+}); 

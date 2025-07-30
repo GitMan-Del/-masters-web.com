@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect, useCallback } from 'react';
-import { useSession } from 'next-auth/react';
+import React from 'react';
+import { useDashboard } from '../contexts/DashboardContext';
 
 interface ProjectPhase {
   number: string;
@@ -11,14 +11,8 @@ interface ProjectPhase {
   progress: number;
 }
 
-interface PhaseCardsContainerProps {
-  refreshTrigger?: number;
-}
-
-export default function PhaseCardsContainer({ refreshTrigger }: PhaseCardsContainerProps) {
-  const { data: session } = useSession();
-  const [hasProjects, setHasProjects] = useState(false);
-  const [loading, setLoading] = useState(true);
+export default React.memo(function PhaseCardsContainer() {
+  const { hasProjects, loading } = useDashboard();
 
   // Date pentru când există proiecte (date reale)
   const phasesWithProjects: ProjectPhase[] = [
@@ -84,28 +78,7 @@ export default function PhaseCardsContainer({ refreshTrigger }: PhaseCardsContai
     }
   ];
 
-  const checkProjects = useCallback(async () => {
-    if (!session?.user?.email) {
-      setLoading(false);
-      return;
-    }
 
-    try {
-      const response = await fetch('/api/projects');
-      if (response.ok) {
-        const data = await response.json();
-        setHasProjects(data.projects && data.projects.length > 0);
-      }
-    } catch (error) {
-      console.error('Error checking projects:', error);
-    } finally {
-      setLoading(false);
-    }
-  }, [session?.user?.email]);
-
-  useEffect(() => {
-    checkProjects();
-  }, [checkProjects, refreshTrigger]);
 
   const phases = hasProjects ? phasesWithProjects : phasesEmpty;
   const overallProgress = hasProjects ? 68 : 0;
@@ -248,4 +221,4 @@ export default function PhaseCardsContainer({ refreshTrigger }: PhaseCardsContai
       </div>
     </div>
   );
-} 
+}); 

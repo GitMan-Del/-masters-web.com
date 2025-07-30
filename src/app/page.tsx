@@ -213,11 +213,11 @@ export default function Home() {
           </div>
         </div>
         </header>
-      {/* Our Goal */}
-        <section id="about" className="w-full h-fit bg-main text-center flex items-center justify-center flex-col gap-3 p-4 sm:p-10">
+      {/* Our Process */}
+        <section id="process" className="w-full h-fit bg-main text-center flex items-center justify-center flex-col gap-3 p-4 sm:p-10">
         <div className="flex flex-row gap-2 justify-center">
             <div className="w-5 h-5 rounded-[5px] flex items-center justify-center p-3 font-bold bg-btn-active text-btn">2</div>
-          <p>Our goal</p>
+          <p>Our Process</p>
          </div>
         <h2 className="text-main text-4xl sm:text-5xl md:text-7xl font-bold leading-tight">
            We <span className="text-special"> help you </span>
@@ -254,7 +254,7 @@ export default function Home() {
       
 
       {/* Type of project we can build */}
-      <section id="services" className="w-full bg-main text-main py-16 px-4 sm:px-8 lg:px-[120px]">
+      <section id="projects" className="w-full bg-main text-main py-16 px-4 sm:px-8 lg:px-[120px]">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
           
           {/* Left Side - Text */}

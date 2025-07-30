@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect, useCallback } from 'react';
-import { useSession } from 'next-auth/react';
+import React from 'react';
+import { useDashboard } from '../contexts/DashboardContext';
 import { LighthouseMetrics } from '@/lib/types';
 
 interface PerformanceScore {
@@ -11,28 +11,16 @@ interface PerformanceScore {
   unit?: string;
 }
 
-interface WebsitePerformanceContainerProps {
-  refreshTrigger?: number;
-}
-
-export default function WebsitePerformanceContainer({ refreshTrigger }: WebsitePerformanceContainerProps) {
-  const { data: session } = useSession();
-  const [hasProjects, setHasProjects] = useState(false);
-  const [loading, setLoading] = useState(true);
-  const [lighthouseData, setLighthouseData] = useState<LighthouseMetrics | null>(null);
-  const [projectUrl, setProjectUrl] = useState<string | null>(null);
+export default React.memo(function WebsitePerformanceContainer() {
+  const { projects, lighthouseData, loading, hasProjects, refreshData } = useDashboard();
+  
+  const projectUrl = hasProjects && projects.length > 0 && projects[0].website_url ? projects[0].website_url : null;
 
   // Generează datele de performanță pe baza rezultatelor Lighthouse
   const getPerformanceData = (): PerformanceScore[] => {
-    console.log('📈 getPerformanceData called');
-    console.log('🏠 hasProjects:', hasProjects);
-    console.log('🔗 projectUrl:', projectUrl);
-    console.log('💡 lighthouseData:', lighthouseData);
-    console.log('⏳ loading:', loading);
     
     // Dacă nu există proiecte, afișează date zero
     if (!hasProjects) {
-      console.log('❌ No projects - returning zero data');
       return [
         { label: "Performance", score: 0, color: "#E5E7EB" },
         { label: "Accessibility", score: 0, color: "#E5E7EB" },
@@ -45,7 +33,6 @@ export default function WebsitePerformanceContainer({ refreshTrigger }: WebsiteP
     
     // Dacă lighthouseData este null (încă se încarcă), afișează date zero temporar
     if (!lighthouseData) {
-      console.log('⏳ Lighthouse data still loading - returning zero data temporarily');
       return [
         { label: "Performance", score: 0, color: "#E5E7EB" },
         { label: "Accessibility", score: 0, color: "#E5E7EB" },
@@ -53,8 +40,6 @@ export default function WebsitePerformanceContainer({ refreshTrigger }: WebsiteP
         { label: "SEO", score: 0, color: "#E5E7EB" }
       ];
     }
-    
-    console.log('✅ Using lighthouse data for display');
 
     const getScoreColor = (score: number) => {
       if (score >= 90) return "#10B981"; // Verde
@@ -86,94 +71,11 @@ export default function WebsitePerformanceContainer({ refreshTrigger }: WebsiteP
     ];
      };
 
-  const fetchLighthouseData = useCallback(async (url: string | null) => {
-    console.log('🔍 fetchLighthouseData called with URL:', url);
-    try {
-      // TEMPORARY: Use simple lighthouse for debugging
-      const apiUrl = url 
-        ? `/api/lighthouse-simple?url=${encodeURIComponent(url)}`
-        : '/api/lighthouse-simple';
-      console.log('🔧 WebsitePerformance using simple lighthouse API');
-      
-      console.log('📡 Making request to:', apiUrl);
-      const response = await fetch(apiUrl);
-      console.log('📊 Response status:', response.status, response.ok);
-      
-      if (response.ok) {
-        const data = await response.json();
-        console.log('✅ Lighthouse data received:', data);
-        console.log('📈 Setting lighthouse data:', data.metrics);
-        setLighthouseData(data.metrics);
-        console.log('🔄 Component should re-render now with new data');
-      } else {
-        console.error('❌ Response not OK:', response.status);
-      }
-    } catch (error) {
-      console.error('🚨 Error fetching Lighthouse data:', error);
-      // Setează date goale în caz de eroare
-      setLighthouseData({
-        performance: 0,
-        accessibility: 0,
-        bestPractices: 0,
-        seo: 0,
-        uptime: 0,
-        loadTime: 0,
-        firstContentfulPaint: 0,
-        largestContentfulPaint: 0,
-        lastUpdated: new Date().toISOString()
-      });
-    }
-  }, []);
 
-  const checkProjects = useCallback(async () => {
-    console.log('🔍 checkProjects called, session email:', session?.user?.email);
-    if (!session?.user?.email) {
-      setLoading(false);
-      return;
-    }
 
-    try {
-      console.log('📡 Fetching projects...');
-      const response = await fetch('/api/projects');
-      console.log('📊 Projects response:', response.status, response.ok);
-      
-      if (response.ok) {
-        const data = await response.json();
-        console.log('📦 Projects data:', data);
-        const hasProjectsData = data.projects && data.projects.length > 0;
-        setHasProjects(hasProjectsData);
-        
-        // Dacă există proiecte, încearcă să obții URL-ul primului proiect
-        if (hasProjectsData && data.projects[0]?.website_url) {
-          console.log('🌐 Found project URL:', data.projects[0].website_url);
-          setProjectUrl(data.projects[0].website_url);
-        } else {
-          console.log('⚠️ No project URL found');
-          setProjectUrl(null);
-        }
-      } else {
-        console.error('❌ Projects response not OK:', response.status);
-      }
-    } catch (error) {
-      console.error('🚨 Error checking projects:', error);
-    } finally {
-      setLoading(false);
-    }
-  }, [session?.user?.email]);
 
-  useEffect(() => {
-    console.log('🔄 checkProjects useEffect triggered, refreshTrigger:', refreshTrigger);
-    checkProjects();
-  }, [checkProjects, refreshTrigger]);
 
-  useEffect(() => {
-    console.log('🔄 fetchLighthouseData useEffect triggered');
-    console.log('⏳ loading:', loading);
-    console.log('🔗 projectUrl:', projectUrl);
-    if (!loading) {
-      fetchLighthouseData(projectUrl);
-    }
-  }, [projectUrl, loading, fetchLighthouseData]);
+
 
   const performanceData = getPerformanceData();
 
@@ -276,7 +178,7 @@ export default function WebsitePerformanceContainer({ refreshTrigger }: WebsiteP
               <button 
                 onClick={() => {
                   console.log('Manual refresh triggered for URL:', projectUrl);
-                  fetchLighthouseData(projectUrl);
+                  refreshData();
                 }}
                 className="hover:text-purple-800 transition-colors"
               >
@@ -290,4 +192,4 @@ export default function WebsitePerformanceContainer({ refreshTrigger }: WebsiteP
       </div>
     </div>
   );
-} 
+}); 
