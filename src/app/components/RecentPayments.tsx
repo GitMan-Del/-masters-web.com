@@ -156,7 +156,7 @@ export default function RecentPayments() {
       {payments.length === 0 ? (
         <div className="text-center py-8">
           <DollarSign className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-          <p className="text-gray-600">Nu există plăți înregistrate încă.</p>
+          <p className="text-gray-600">No payments have been recorded yet.</p>
         </div>
       ) : (
         <div className="space-y-4">

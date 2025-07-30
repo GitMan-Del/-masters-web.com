@@ -9,14 +9,16 @@ module.exports = {
     '/private/*',
     '/_next/*',
     '/404',
-    '/500'
+    '/500',
+    '/dashboard',
+    '/dashboard/*'
   ],
   robotsTxtOptions: {
     policies: [
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/', '/_next/', '/admin/', '/private/']
+        disallow: ['/api/', '/_next/', '/admin/', '/private/', '/dashboard/']
       },
       {
         userAgent: 'Googlebot',
@@ -40,10 +42,9 @@ module.exports = {
     // Custom priority and changefreq based on route
     const customRoutes = {
       '/': { priority: 1.0, changefreq: 'daily' },
-      '/about': { priority: 0.8, changefreq: 'monthly' },
-      '/contact': { priority: 0.8, changefreq: 'monthly' },
-      '/services': { priority: 0.9, changefreq: 'weekly' },
-      '/portfolio': { priority: 0.9, changefreq: 'weekly' }
+      '/pricing': { priority: 0.9, changefreq: 'weekly' },
+      '/projects': { priority: 0.8, changefreq: 'weekly' },
+      '/contact': { priority: 0.8, changefreq: 'monthly' }
     }
 
     const customConfig = customRoutes[path] || {}
