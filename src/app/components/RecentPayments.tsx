@@ -157,40 +157,44 @@ export default function RecentPayments() {
           <p className="text-gray-600">No payments have been recorded yet.</p>
         </div>
       ) : (
-        <div className="space-y-4">
+        <div className="grid gap-4">
           {payments.slice(0, 10).map((payment) => (
             <div
               key={payment.id}
-              className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-4 border border-gray-100 rounded-lg hover:bg-gray-50 transition-colors"
+              className="grid grid-cols-1 sm:grid-cols-5 items-center p-4 border border-gray-100 rounded-lg hover:bg-gray-50 transition-colors gap-4"
             >
-              <div className="flex items-start sm:items-center gap-4 w-full sm:w-auto">
+              {/* Status Icon */}
+              <div className="flex justify-start sm:justify-center items-center">
                 {getStatusIcon(payment.status)}
-                <div>
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-2">
-                    <h3 className="font-medium text-gray-900">
-                      {getPaymentTypeText(payment.payment_type)}
-                    </h3>
-                    <span
-                      className={`px-2 py-1 text-xs font-medium rounded-full ${getStatusColor(
-                        payment.status
-                      )}`}
-                    >
-                      {getStatusText(payment.status)}
-                    </span>
-                  </div>
-                  <p className="text-sm text-gray-600 mt-1">
-                    {payment.description || 'No description'}
-                  </p>
-                  <div className="flex items-center gap-1 mt-1">
-                    <Calendar className="w-4 h-4 text-gray-400" />
-                    <span className="text-xs text-gray-500">
-                      {formatDate(payment.payment_date)}
-                    </span>
-                  </div>
+              </div>
+
+              {/* Payment Info */}
+              <div className="sm:col-span-2 flex flex-col gap-1">
+                <div className="flex flex-wrap items-center gap-2">
+                  <h3 className="font-medium text-gray-900">
+                    {getPaymentTypeText(payment.payment_type)}
+                  </h3>
+                  <span
+                    className={`px-2 py-1 text-xs font-medium rounded-full ${getStatusColor(
+                      payment.status
+                    )}`}
+                  >
+                    {getStatusText(payment.status)}
+                  </span>
+                </div>
+                <p className="text-sm text-gray-600">
+                  {payment.description || 'No description'}
+                </p>
+                <div className="flex items-center gap-1 mt-1">
+                  <Calendar className="w-4 h-4 text-gray-400" />
+                  <span className="text-xs text-gray-500">
+                    {formatDate(payment.payment_date)}
+                  </span>
                 </div>
               </div>
-              
-              <div className="text-right mt-4 sm:mt-0 min-w-[120px]">
+
+              {/* Amount */}
+              <div className="flex flex-col items-start sm:items-end">
                 <div className="font-semibold text-lg text-gray-900">
                   {formatAmount(payment.amount, payment.currency)}
                 </div>
