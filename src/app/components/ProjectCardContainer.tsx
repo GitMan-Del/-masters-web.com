@@ -61,12 +61,12 @@ export default React.memo(function ProjectCardContainer({
     );
   }
 
-  // Dacă nu sunt proiecte, afișez cardul pentru creare
+      // If no projects exist, show the creation card
   if (projects.length === 0) {
     return <EmptyProjectCard onCreateProject={onCreateProject} />;
   }
 
-  // Pentru primul proiect, afișez ProjectCard cu datele reale
+  // For the first project, show ProjectCard with real data
   const activeProject = projects[0];
   return <ProjectCard project={activeProject} lighthouseData={lighthouseData} />;
 }); 

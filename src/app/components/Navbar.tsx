@@ -128,7 +128,7 @@ export default function NavBar() {
         <div className={`flex items-center justify-between px-4 sm:px-6 py-5 border-b border-btn/10 transition-all duration-300 delay-200 ${
           open ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"
         }`}>
-          {/* LOGO - verifică dacă fișierul există și calea este corectă */}
+          {/* LOGO - check if file exists and path is correct */}
           <Image
             src="/Logo.svg"
             alt="logo"

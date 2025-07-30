@@ -25,7 +25,3 @@ This project includes:
 ## 📸 Previews
 
 Live preview: [https://masters-web.vercel.app](https://masters-web.vercel.app)
-
-
-## 📂 Folder Structure (Partial)
-w

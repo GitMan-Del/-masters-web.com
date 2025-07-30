@@ -21,7 +21,7 @@ export default function ProjectsPage() {
     show: boolean;
   }>({ message: '', type: 'info', show: false });
 
-  // Redirect dacă nu este autentificat
+  // Redirect if not authenticated
   useEffect(() => {
     if (status === 'unauthenticated') {
       router.push('/?error=auth_required');
@@ -144,8 +144,8 @@ export default function ProjectsPage() {
         <div className="p-6">
           {/* Header */}
           <div className="mb-8">
-            <h1 className="text-3xl font-bold text-gray-900">Proiectele Mele</h1>
-            <p className="text-gray-600 mt-2">Gestionează toate proiectele tale</p>
+            <h1 className="text-3xl font-bold text-gray-900">My Projects</h1>
+            <p className="text-gray-600 mt-2">Manage all your projects</p>
           </div>
 
           {/* Error State */}
@@ -169,13 +169,13 @@ export default function ProjectsPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                 </svg>
               </div>
-              <h3 className="text-lg font-medium text-gray-900 mb-2">Nu ai proiecte încă</h3>
-              <p className="text-gray-500 mb-4">Creează primul tău proiect pentru a începe.</p>
+              <h3 className="text-lg font-medium text-gray-900 mb-2">You don't have any projects yet</h3>
+              <p className="text-gray-500 mb-4">Create your first project to get started.</p>
               <button 
                 onClick={() => router.push('/dashboard')}
                 className="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors"
               >
-                Mergi la Dashboard
+                Go to Dashboard
               </button>
             </div>
           ) : (
@@ -195,24 +195,24 @@ export default function ProjectsPage() {
                       
                       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
                         <div>
-                          <span className="font-medium text-gray-500">Tip proiect:</span>
-                          <p className="text-gray-900">{project.project_type || 'Nu este specificat'}</p>
+                          <span className="font-medium text-gray-500">Project Type:</span>
+                          <p className="text-gray-900">{project.project_type || 'Not specified'}</p>
                         </div>
                         
                         <div>
-                          <span className="font-medium text-gray-500">Valoare:</span>
+                          <span className="font-medium text-gray-500">Value:</span>
                           <p className="text-gray-900">
-                            {project.project_value ? `€${project.project_value.toLocaleString()}` : 'Nu este specificată'}
+                            {project.project_value ? `€${project.project_value.toLocaleString()}` : 'Not specified'}
                           </p>
                         </div>
                         
                         <div>
-                          <span className="font-medium text-gray-500">Progres:</span>
+                          <span className="font-medium text-gray-500">Progress:</span>
                           <p className="text-gray-900">{project.progress}%</p>
                         </div>
                         
                         <div>
-                          <span className="font-medium text-gray-500">Creat:</span>
+                          <span className="font-medium text-gray-500">Created:</span>
                           <p className="text-gray-900">{formatDate(project.created_at)}</p>
                         </div>
                       </div>

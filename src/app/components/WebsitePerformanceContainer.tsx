@@ -16,10 +16,10 @@ export default React.memo(function WebsitePerformanceContainer() {
   
   const projectUrl = hasProjects && projects.length > 0 && projects[0].website_url ? projects[0].website_url : null;
 
-  // Generează datele de performanță pe baza rezultatelor Lighthouse
+  // Generate performance data based on Lighthouse results
   const getPerformanceData = (): PerformanceScore[] => {
     
-    // Dacă nu există proiecte, afișează date zero
+    // If no projects exist, show zero data
     if (!hasProjects) {
       return [
         { label: "Performance", score: 0, color: "#E5E7EB" },
@@ -31,7 +31,7 @@ export default React.memo(function WebsitePerformanceContainer() {
       ];
     }
     
-    // Dacă lighthouseData este null (încă se încarcă), afișează date zero temporar
+    // If lighthouseData is null (still loading), show temporary zero data
     if (!lighthouseData) {
       return [
         { label: "Performance", score: 0, color: "#E5E7EB" },

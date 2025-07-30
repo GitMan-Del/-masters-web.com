@@ -84,7 +84,7 @@ export default function ProjectCard({ project, lighthouseData }: ProjectCardProp
       
       {/* Project Description */}
       <p className="text-sm text-gray-600 leading-relaxed mb-4">
-        {project.description || 'Nu există descriere disponibilă pentru acest proiect.'}
+        {project.description || 'No description available for this project.'}
       </p>
 
       {/* Project Metrics - Uptime, Load Time, Performance */}

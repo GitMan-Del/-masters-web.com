@@ -70,11 +70,11 @@ export default function CreateProjectModal({
     console.log('Submitting form data:', formData);
 
     try {
-      // Verifică dacă există deja proiecte
+      // Check if projects already exist
       const hasExistingProjects = await checkExistingProjects();
       
       if (hasExistingProjects) {
-        // Afișează toast-ul BETA și închide modal-ul
+        // Show BETA toast and close modal
         onShowBetaToast();
         onClose();
         setLoading(false);

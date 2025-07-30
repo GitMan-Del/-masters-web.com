@@ -23,7 +23,7 @@ export default function Dashboard() {
   const [showBetaToast, setShowBetaToast] = useState(false);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
-  // Redirect la homepage dacă nu este autentificat
+  // Redirect to homepage if not authenticated
   useEffect(() => {
     if (status === 'unauthenticated') {
       console.log('❌ User not authenticated - redirecting to home');
@@ -31,7 +31,7 @@ export default function Dashboard() {
     }
   }, [status, router]);
 
-  // Afișează loading dacă sesiunea se încarcă
+  // Show loading if session is loading
   if (status === 'loading') {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -43,7 +43,7 @@ export default function Dashboard() {
     );
   }
 
-  // Nu afișa nimic dacă nu este autentificat (va fi redirectat)
+  // Don't show anything if not authenticated (will be redirected)
   if (status === 'unauthenticated') {
     return null;
   }

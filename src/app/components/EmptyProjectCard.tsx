@@ -21,10 +21,10 @@ export default function EmptyProjectCard({ onCreateProject }: EmptyProjectCardPr
       {/* Content */}
       <div className="text-center">
         <h3 className="text-xl font-semibold text-gray-900 mb-2">
-          Creează Primul Tău Proiect
+          Create Your First Project
         </h3>
         <p className="text-gray-500 text-sm mb-6 leading-relaxed">
-          Începe prin a adăuga un proiect nou pentru a-ți vedea progresul și metricicile în dashboard.
+          Start by adding a new project to view your progress and metrics in the dashboard.
         </p>
 
         {/* Features */}
@@ -33,25 +33,19 @@ export default function EmptyProjectCard({ onCreateProject }: EmptyProjectCardPr
             <svg className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
-            <span>Monitorizare progres în timp real</span>
+            <span>Real-time progress monitoring</span>
           </div>
           <div className="flex items-center text-sm text-gray-600">
             <svg className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
-            <span>Analitice detaliate de performanță</span>
-          </div>
-          <div className="flex items-center text-sm text-gray-600">
-            <svg className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-            </svg>
-            <span>Gestionarea informațiilor client</span>
+            <span>Detailed performance analytics</span>
           </div>
         </div>
 
         {/* CTA Button */}
         <button className="w-full bg-purple-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-purple-700 transition-colors group-hover:scale-105 transform">
-          Creează Proiect Nou
+          Create New Project
         </button>
       </div>
 

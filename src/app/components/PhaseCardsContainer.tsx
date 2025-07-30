@@ -51,18 +51,18 @@ export default React.memo(function PhaseCardsContainer() {
       let progress: number;
 
       if (overallProgress >= currentThreshold) {
-        // Faza este completă
+        // Phase is complete
         status = 'completed';
         progress = 100;
       } else if (overallProgress > prevThreshold) {
-        // Faza este în progres
+        // Phase is in progress
         status = 'in-progress';
-        // Calculez progresul în cadrul fazei
+        // Calculate progress within the phase
         const phaseRange = currentThreshold - prevThreshold;
         const phaseProgress = overallProgress - prevThreshold;
         progress = Math.round((phaseProgress / phaseRange) * 100);
       } else {
-        // Faza este în așteptare
+        // Phase is pending
         status = 'pending';
         progress = 0;
       }
@@ -77,7 +77,7 @@ export default React.memo(function PhaseCardsContainer() {
     });
   };
 
-  // Date pentru când nu există proiecte (toate la zero)
+  // Data for when no projects exist (all at zero)
   const phasesEmpty: ProjectPhase[] = [
     { 
       number: "01", 
