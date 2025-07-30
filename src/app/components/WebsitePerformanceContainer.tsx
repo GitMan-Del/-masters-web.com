@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useDashboard } from '../contexts/DashboardContext';
-import { LighthouseMetrics } from '@/lib/types';
+
 
 interface PerformanceScore {
   label: string;

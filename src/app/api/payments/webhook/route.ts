@@ -80,7 +80,7 @@ async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session) 
       currency: session.currency || 'ron',
       status: 'completed',
       description: session.metadata?.description,
-      metadata: session.metadata,
+      metadata: session.metadata as Record<string, string | number | boolean> | undefined,
     });
   }
   
@@ -95,7 +95,7 @@ async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session) 
       currency: session.currency || 'ron',
       status: 'completed',
       description: session.metadata?.description || 'Monthly maintenance subscription',
-      metadata: session.metadata,
+      metadata: session.metadata as Record<string, string | number | boolean> | undefined,
     });
   }
 }
@@ -117,18 +117,21 @@ async function handlePaymentFailed(paymentIntent: Stripe.PaymentIntent) {
 async function handleInvoicePaymentSucceeded(invoice: Stripe.Invoice) {
   console.log('Processing invoice payment succeeded:', invoice.id);
   
-  if (invoice.subscription && invoice.customer_email) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  if ((invoice as any).subscription && invoice.customer_email) {
     await savePaymentToDatabase({
       user_email: invoice.customer_email,
       payment_type: 'monthly_maintenance',
-      stripe_payment_id: invoice.payment_intent?.toString() || invoice.id,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      stripe_payment_id: (invoice as any).payment_intent?.toString() || invoice.id,
       amount: (invoice.amount_paid || 0) / 100,
       currency: invoice.currency || 'ron',
       status: 'completed',
       description: `Monthly maintenance - ${new Date().toLocaleDateString('ro-RO', { month: 'long', year: 'numeric' })}`,
       metadata: {
-        invoice_id: invoice.id,
-        subscription_id: invoice.subscription.toString(),
+        invoice_id: invoice.id || '',
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        subscription_id: (invoice as any).subscription?.toString() || '',
       },
     });
   }
@@ -141,14 +144,16 @@ async function handleInvoicePaymentFailed(invoice: Stripe.Invoice) {
     await savePaymentToDatabase({
       user_email: invoice.customer_email,
       payment_type: 'monthly_maintenance',
-      stripe_payment_id: invoice.payment_intent?.toString() || invoice.id,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      stripe_payment_id: (invoice as any).payment_intent?.toString() || invoice.id,
       amount: (invoice.amount_due || 0) / 100,
       currency: invoice.currency || 'ron',
       status: 'failed',
       description: `Failed monthly maintenance - ${new Date().toLocaleDateString('ro-RO', { month: 'long', year: 'numeric' })}`,
       metadata: {
-        invoice_id: invoice.id,
-        subscription_id: invoice.subscription?.toString(),
+        invoice_id: invoice.id || '',
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        subscription_id: (invoice as any).subscription?.toString() || '',
       },
     });
   }
@@ -163,7 +168,7 @@ async function savePaymentToDatabase(paymentData: {
   currency: string;
   status: 'pending' | 'completed' | 'failed' | 'refunded';
   description?: string;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, string | number | boolean>;
 }) {
   try {
     const { data, error } = await supabaseAdmin

@@ -30,7 +30,7 @@ export default function CreatePaymentLinkModal({
   const [createdPaymentLink, setCreatedPaymentLink] = useState<StripePaymentLinkData | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const handleInputChange = (field: keyof CreatePaymentData, value: any) => {
+  const handleInputChange = (field: keyof CreatePaymentData, value: string | number) => {
     setFormData(prev => ({
       ...prev,
       [field]: value

@@ -1,8 +1,8 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
 import { LighthouseMetrics } from '@/lib/types';
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   console.log('🧪 Test Lighthouse API called');
   const session = await auth();
   

@@ -38,7 +38,7 @@ export interface Payment {
   currency: string;
   status: 'pending' | 'completed' | 'failed' | 'refunded';
   description?: string;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, string | number | boolean>;
   payment_date: string;
   created_at: string;
   updated_at: string;
@@ -50,7 +50,7 @@ export interface CreatePaymentData {
   amount: number;
   currency?: string;
   description?: string;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, string | number | boolean>;
 }
 
 export interface StripePaymentLinkData {
