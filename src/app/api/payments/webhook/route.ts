@@ -10,6 +10,7 @@ export async function POST(request: NextRequest) {
     const signature = request.headers.get('stripe-signature');
 
     console.log('🔔 Webhook received with signature:', !!signature);
+    console.log('📅 Timestamp:', new Date().toISOString());
 
     if (!signature) {
       console.error('❌ Missing stripe-signature header');
@@ -24,6 +25,7 @@ export async function POST(request: NextRequest) {
 
     console.log('✅ Stripe webhook received:', event.type);
     console.log('📄 Event data keys:', Object.keys(event.data.object));
+    console.log('🔍 Full event object:', JSON.stringify(event, null, 2));
 
     // Procesează evenimentele relevante
     switch (event.type) {
