@@ -172,21 +172,11 @@ export default function ProjectCard({ project, lighthouseData }: ProjectCardProp
         </div>
       </div>
 
-      {/* Recent Activity */}
+      {/* Project Info */}
       <div className="mt-4 pt-4 border-t border-gray-200">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-            <span className="text-xs text-gray-600">Creat: {formatDate(project.created_at)}</span>
-          </div>
-          {project.contact_email && (
-            <a 
-              href={`mailto:${project.contact_email}`}
-              className="text-xs text-purple-600 font-medium hover:underline cursor-pointer"
-            >
-              Contact Client →
-            </a>
-          )}
+        <div className="flex items-center space-x-2">
+          <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+          <span className="text-xs text-gray-600">Creat: {formatDate(project.created_at)}</span>
         </div>
       </div>
     </div>
