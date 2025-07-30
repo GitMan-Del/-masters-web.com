@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import LogOut from "./siverside/LogOut";
 
 interface SidebarProps {
@@ -21,7 +21,7 @@ export default function Sidebar({ onCloseMobile, isMobile = false }: SidebarProp
 
   console.log(session);
 
-  const navItems = [
+  const navItems = useMemo(() => [
     { 
       icon: "/home-agreement 1.svg", 
       label: "Dashboard", 
@@ -32,7 +32,7 @@ export default function Sidebar({ onCloseMobile, isMobile = false }: SidebarProp
       label: "Projects", 
       href: "/projects"
     }
-  ];
+  ], []);
 
   // Function to get active link index based on current pathname
   const getActiveLinkIndex = useCallback(() => {

@@ -22,6 +22,24 @@ export function DashboardProvider({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  const fetchLighthouseData = useCallback(async (url: string) => {
+    try {
+      const apiUrl = `/api/lighthouse?url=${encodeURIComponent(url)}`;
+      const response = await fetch(apiUrl);
+      
+      if (response.ok) {
+        const data = await response.json();
+        setLighthouseData(data.metrics);
+      } else {
+        console.error('❌ Lighthouse API response not OK:', response.status);
+        setLighthouseData(null);
+      }
+    } catch (error) {
+      console.error('Error fetching lighthouse data:', error);
+      setLighthouseData(null);
+    }
+  }, []);
+
   const fetchProjects = useCallback(async () => {
     if (!session?.user?.email) {
       setLoading(false);
@@ -54,24 +72,6 @@ export function DashboardProvider({ children }: { children: React.ReactNode }) {
       setLoading(false);
     }
   }, [session?.user?.email, fetchLighthouseData]);
-
-  const fetchLighthouseData = useCallback(async (url: string) => {
-    try {
-      const apiUrl = `/api/lighthouse?url=${encodeURIComponent(url)}`;
-      const response = await fetch(apiUrl);
-      
-      if (response.ok) {
-        const data = await response.json();
-        setLighthouseData(data.metrics);
-      } else {
-        console.error('❌ Lighthouse API response not OK:', response.status);
-        setLighthouseData(null);
-      }
-    } catch (error) {
-      console.error('Error fetching lighthouse data:', error);
-      setLighthouseData(null);
-    }
-  }, []);
 
   const refreshData = useCallback(() => {
     fetchProjects();

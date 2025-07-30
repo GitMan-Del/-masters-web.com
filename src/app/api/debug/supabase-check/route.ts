@@ -13,7 +13,7 @@ export async function GET() {
     console.log('🔍 Checking Supabase tables and permissions...');
 
     // 1. Check if payments table exists
-    const { data: tables, error: tablesError } = await supabaseAdmin
+    const { error: tablesError } = await supabaseAdmin
       .rpc('check_table_exists', { table_name: 'payments' })
       .single();
 
