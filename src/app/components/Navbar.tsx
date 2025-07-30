@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -19,8 +19,6 @@ const navLinks = [
 export default function NavBar() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
-  const sidebarNavRef = useRef<HTMLElement>(null);
-  const [sidebarActiveIndicator, setSidebarActiveIndicator] = useState({ top: 0, height: 0, opacity: 0 });
 
   // Prevent scroll when sidebar is open
   useEffect(() => {
@@ -32,57 +30,6 @@ export default function NavBar() {
       };
     }
   }, [open]);
-
-  // Function to get active link index
-  const getActiveLinkIndex = useCallback(() => {
-    if (pathname === '/dashboard') return navLinks.findIndex(link => link.href === '/dashboard');
-    if (pathname === '/contact') return navLinks.findIndex(link => link.href === '/contact');
-    if (pathname === '/projects') return navLinks.findIndex(link => link.href === '#projects');
-    if (pathname.startsWith('/projects')) return navLinks.findIndex(link => link.href === '#projects');
-    if (pathname === '/' || pathname === '') {
-      // Check if we're scrolled to a specific section
-      const hash = window.location.hash;
-      if (hash) {
-        const linkIndex = navLinks.findIndex(link => link.href === hash);
-        return linkIndex !== -1 ? linkIndex : 0;
-      }
-      return 0; // Default to Home
-    }
-    return -1;
-  }, [pathname]);
-
-  // Update sidebar active indicator position
-  const updateSidebarActiveIndicator = useCallback(() => {
-    if (!sidebarNavRef.current || !open) return;
-    
-    const activeIndex = getActiveLinkIndex();
-    if (activeIndex === -1) {
-      setSidebarActiveIndicator({ top: 0, height: 0, opacity: 0 });
-      return;
-    }
-
-    const linkElements = sidebarNavRef.current.querySelectorAll('[data-sidebar-link]');
-    const activeElement = linkElements[activeIndex] as HTMLElement;
-    
-    if (activeElement) {
-      const navRect = sidebarNavRef.current.getBoundingClientRect();
-      const activeRect = activeElement.getBoundingClientRect();
-      
-      setSidebarActiveIndicator({
-        top: activeRect.top - navRect.top,
-        height: activeRect.height,
-        opacity: 1
-      });
-    }
-  }, [getActiveLinkIndex, open]);
-
-  // Update indicator when pathname changes or sidebar opens
-  useEffect(() => {
-    if (open) {
-      const timer = setTimeout(updateSidebarActiveIndicator, 300); // Wait for sidebar animation
-      return () => clearTimeout(timer);
-    }
-  }, [updateSidebarActiveIndicator, open]);
 
   const handleLinkClick = (href: string) => {
     setOpen(false);
@@ -204,29 +151,14 @@ export default function NavBar() {
           </button>
         </div>
         {/* Links */}
-        <nav ref={sidebarNavRef} className="flex-1 flex flex-col gap-1 px-4 sm:px-8 py-8 relative">
-          {/* Animated Active Indicator for Sidebar */}
-          <div 
-            className="absolute left-0 w-1 bg-gradient-to-b from-purple-500 to-purple-700 rounded-r-full transition-all duration-500 ease-out z-10"
-            style={{
-              top: `${sidebarActiveIndicator.top}px`,
-              height: `${sidebarActiveIndicator.height}px`,
-              opacity: sidebarActiveIndicator.opacity,
-            }}
-          />
-          
-          {navLinks.map((link, index) => {
-            const isActive = getActiveLinkIndex() === index;
-            
-            return link.href.startsWith('/') ? (
+        <nav className="flex-1 flex flex-col gap-1 px-4 sm:px-8 py-8">
+          {navLinks.map((link, index) => (
+            link.href.startsWith('/') ? (
               <Link
                 key={link.name}
                 href={link.href}
-                data-sidebar-link
-                className={`text-main text-lg py-4 px-3 rounded-lg hover:bg-btn/10 hover:translate-x-2 transition-all duration-300 font-medium cursor-pointer min-h-[48px] flex items-center relative ${
+                className={`text-main text-lg py-4 px-3 rounded-lg hover:bg-btn/10 hover:translate-x-2 transition-all duration-300 font-medium cursor-pointer min-h-[48px] flex items-center ${
                   open ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"
-                } ${
-                  isActive ? 'bg-purple-50 text-purple-600 border-l-4 border-purple-500' : ''
                 }`}
                 style={{
                   transitionDelay: open ? `${200 + index * 100}ms` : '0ms'
@@ -234,18 +166,12 @@ export default function NavBar() {
                 onClick={() => setOpen(false)}
               >
                 {link.name}
-                {isActive && (
-                  <div className="absolute right-3 w-2 h-2 bg-purple-500 rounded-full animate-pulse" />
-                )}
               </Link>
             ) : (
               <a
                 key={link.name}
-                data-sidebar-link
-                className={`text-main text-lg py-4 px-3 rounded-lg hover:bg-btn/10 hover:translate-x-2 transition-all duration-300 font-medium cursor-pointer min-h-[48px] flex items-center relative ${
+                className={`text-main text-lg py-4 px-3 rounded-lg hover:bg-btn/10 hover:translate-x-2 transition-all duration-300 font-medium cursor-pointer min-h-[48px] flex items-center ${
                   open ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"
-                } ${
-                  isActive ? 'bg-purple-50 text-purple-600 border-l-4 border-purple-500' : ''
                 }`}
                 style={{
                   transitionDelay: open ? `${200 + index * 100}ms` : '0ms'
@@ -253,12 +179,9 @@ export default function NavBar() {
                 onClick={() => handleLinkClick(link.href)}
               >
                 {link.name}
-                {isActive && (
-                  <div className="absolute right-3 w-2 h-2 bg-purple-500 rounded-full animate-pulse" />
-                )}
               </a>
-            );
-          })}
+            )
+          ))}
         </nav>
         {/* Button at bottom */}
         <div className={`px-4 sm:px-8 pb-8 transition-all duration-300 delay-700 ${

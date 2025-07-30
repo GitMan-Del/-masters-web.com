@@ -3,6 +3,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
+import { usePathname } from "next/navigation";
+import { useState, useEffect, useRef, useCallback } from "react";
 import LogOut from "./siverside/LogOut";
 
 interface SidebarProps {
@@ -13,22 +15,86 @@ interface SidebarProps {
 export default function Sidebar({ onCloseMobile, isMobile = false }: SidebarProps) {
 
   const { data: session } = useSession();
+  const pathname = usePathname();
+  const navRef = useRef<HTMLUListElement>(null);
+  const [activeIndicator, setActiveIndicator] = useState({ top: 0, height: 0, opacity: 0 });
+
   console.log(session);
 
   const navItems = [
     { 
       icon: "/home-agreement 1.svg", 
       label: "Dashboard", 
-      href: "/dashboard", 
-      active: true 
+      href: "/dashboard"
     },
     { 
       icon: "/plus 1.svg", 
       label: "Projects", 
-      href: "/projects", 
-      active: false 
+      href: "/projects"
     }
   ];
+
+  // Function to get active link index based on current pathname
+  const getActiveLinkIndex = useCallback(() => {
+    return navItems.findIndex(item => {
+      if (item.href === '/dashboard') {
+        return pathname === '/dashboard';
+      }
+      if (item.href === '/projects') {
+        return pathname === '/projects' || pathname.startsWith('/projects');
+      }
+      return pathname === item.href;
+    });
+  }, [pathname]);
+
+  // Function to check if a nav item is active
+  const isItemActive = (item: typeof navItems[0]) => {
+    if (item.href === '/dashboard') {
+      return pathname === '/dashboard';
+    }
+    if (item.href === '/projects') {
+      return pathname === '/projects' || pathname.startsWith('/projects');
+    }
+    return pathname === item.href;
+  };
+
+  // Update active indicator position
+  const updateActiveIndicator = useCallback(() => {
+    if (!navRef.current) return;
+    
+    const activeIndex = getActiveLinkIndex();
+    if (activeIndex === -1) {
+      setActiveIndicator({ top: 0, height: 0, opacity: 0 });
+      return;
+    }
+
+    const linkElements = navRef.current.querySelectorAll('[data-nav-item]');
+    const activeElement = linkElements[activeIndex] as HTMLElement;
+    
+    if (activeElement) {
+      const navRect = navRef.current.getBoundingClientRect();
+      const activeRect = activeElement.getBoundingClientRect();
+      
+      setActiveIndicator({
+        top: activeRect.top - navRect.top,
+        height: activeRect.height,
+        opacity: 1
+      });
+    }
+  }, [getActiveLinkIndex]);
+
+  // Update indicator when pathname changes
+  useEffect(() => {
+    const timer = setTimeout(updateActiveIndicator, 100);
+    return () => clearTimeout(timer);
+  }, [updateActiveIndicator]);
+
+  // Update indicator on window resize
+  useEffect(() => {
+    const handleResize = () => updateActiveIndicator();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [updateActiveIndicator]);
 
   return (
     <div className="w-64 bg-white shadow-sm border-r border-gray-200 h-screen flex flex-col">
@@ -61,33 +127,53 @@ export default function Sidebar({ onCloseMobile, isMobile = false }: SidebarProp
 
       {/* Navigation */}
       <nav className="flex-1 p-4">
-        <ul className="space-y-2">
-          {navItems.map((item, index) => (
-            <li key={index}>
-              <Link
-                href={item.href}
-                onClick={isMobile ? onCloseMobile : undefined}
-                className={`flex items-center space-x-3 px-3 py-2 rounded-lg transition-colors relative ${
-                  item.active
-                    ? "bg-purple-50 text-purple-700 border border-purple-200"
-                    : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
-                }`}
-              >
-                {/* Purple square indicator for active item */}
-                {item.active && (
-                  <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-6 bg-purple-600 rounded-r"></div>
-                )}
-                <Image 
-                  src={item.icon} 
-                  alt={item.label}
-                  width={20} 
-                  height={20} 
-                  className="w-5 h-5"
-                />
-                <span className="font-medium">{item.label}</span>
-              </Link>
-            </li>
-          ))}
+        <ul ref={navRef} className="space-y-2 relative">
+          {/* Animated Active Indicator */}
+          <div 
+            className="absolute left-0 w-1 bg-gradient-to-b from-purple-500 to-purple-700 rounded-r transition-all duration-500 ease-out z-10"
+            style={{
+              top: `${activeIndicator.top}px`,
+              height: `${activeIndicator.height}px`,
+              opacity: activeIndicator.opacity,
+            }}
+          />
+          
+          {navItems.map((item, index) => {
+            const isActive = isItemActive(item);
+            
+            return (
+              <li key={index}>
+                <Link
+                  href={item.href}
+                  data-nav-item
+                  onClick={isMobile ? onCloseMobile : undefined}
+                  className={`flex items-center space-x-3 px-3 py-2 rounded-lg transition-all duration-300 relative ${
+                    isActive
+                      ? "bg-purple-50 text-purple-700 border border-purple-200 transform translate-x-1"
+                      : "text-gray-600 hover:bg-gray-50 hover:text-gray-900 hover:translate-x-0.5"
+                  }`}
+                >
+                  {/* Static purple indicator for active item - now hidden since we have animated one */}
+                  {isActive && (
+                    <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-6 bg-transparent rounded-r"></div>
+                  )}
+                  <Image 
+                    src={item.icon} 
+                    alt={item.label}
+                    width={20} 
+                    height={20} 
+                    className="w-5 h-5 relative z-20"
+                  />
+                  <span className="font-medium relative z-20">{item.label}</span>
+                  
+                  {/* Subtle glow effect for active item */}
+                  {isActive && (
+                    <div className="absolute right-3 w-2 h-2 bg-purple-500 rounded-full animate-pulse"></div>
+                  )}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       </nav>
 
