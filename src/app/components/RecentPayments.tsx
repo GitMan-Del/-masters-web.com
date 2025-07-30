@@ -18,16 +18,14 @@ export default function RecentPayments() {
     try {
       setLoading(true);
       const response = await fetch('/api/payments');
-      
       if (!response.ok) {
         throw new Error('Failed to fetch payments');
       }
-      
       const data = await response.json();
       setPayments(data.payments || []);
     } catch (error) {
       console.error('Error fetching payments:', error);
-      setError('Nu s-au putut încărca plățile');
+      setError('Could not load payments');
     } finally {
       setLoading(false);
     }
@@ -51,15 +49,15 @@ export default function RecentPayments() {
   const getStatusText = (status: Payment['status']) => {
     switch (status) {
       case 'completed':
-        return 'Completată';
+        return 'Completed';
       case 'failed':
-        return 'Eșuată';
+        return 'Failed';
       case 'pending':
-        return 'În așteptare';
+        return 'Pending';
       case 'refunded':
-        return 'Rambursată';
+        return 'Refunded';
       default:
-        return 'Necunoscută';
+        return 'Unknown';
     }
   };
 
@@ -81,16 +79,16 @@ export default function RecentPayments() {
   const getPaymentTypeText = (paymentType: Payment['payment_type']) => {
     switch (paymentType) {
       case 'one_time':
-        return 'Plată unică';
+        return 'One-time payment';
       case 'monthly_maintenance':
-        return 'Mentenanță lunară';
+        return 'Monthly maintenance';
       default:
         return paymentType;
     }
   };
 
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('ro-RO', {
+    return new Date(dateString).toLocaleDateString('en-GB', {
       year: 'numeric',
       month: 'long',
       day: 'numeric',
@@ -100,7 +98,7 @@ export default function RecentPayments() {
   };
 
   const formatAmount = (amount: number, currency: string) => {
-    return new Intl.NumberFormat('ro-RO', {
+    return new Intl.NumberFormat('en-GB', {
       style: 'currency',
       currency: currency.toUpperCase(),
     }).format(amount);
@@ -108,7 +106,7 @@ export default function RecentPayments() {
 
   if (loading) {
     return (
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 sm:p-6">
         <div className="flex items-center gap-3 mb-6">
           <CreditCard className="w-6 h-6 text-blue-600" />
           <h2 className="text-xl font-semibold text-gray-900">Recent Payments</h2>
@@ -127,7 +125,7 @@ export default function RecentPayments() {
 
   if (error) {
     return (
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 sm:p-6">
         <div className="flex items-center gap-3 mb-4">
           <CreditCard className="w-6 h-6 text-blue-600" />
           <h2 className="text-xl font-semibold text-gray-900">Recent Payments</h2>
@@ -139,7 +137,7 @@ export default function RecentPayments() {
             onClick={fetchPayments}
             className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
           >
-            Încearcă din nou
+            Try again
           </button>
         </div>
       </div>
@@ -147,7 +145,7 @@ export default function RecentPayments() {
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+    <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 sm:p-6">
       <div className="flex items-center gap-3 mb-6">
         <CreditCard className="w-6 h-6 text-blue-600" />
         <h2 className="text-xl font-semibold text-gray-900">Recent Payments</h2>
@@ -163,12 +161,12 @@ export default function RecentPayments() {
           {payments.slice(0, 10).map((payment) => (
             <div
               key={payment.id}
-              className="flex items-center justify-between p-4 border border-gray-100 rounded-lg hover:bg-gray-50 transition-colors"
+              className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-4 border border-gray-100 rounded-lg hover:bg-gray-50 transition-colors"
             >
-              <div className="flex items-center gap-4">
+              <div className="flex items-start sm:items-center gap-4 w-full sm:w-auto">
                 {getStatusIcon(payment.status)}
                 <div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2">
                     <h3 className="font-medium text-gray-900">
                       {getPaymentTypeText(payment.payment_type)}
                     </h3>
@@ -181,7 +179,7 @@ export default function RecentPayments() {
                     </span>
                   </div>
                   <p className="text-sm text-gray-600 mt-1">
-                    {payment.description || 'Fără descriere'}
+                    {payment.description || 'No description'}
                   </p>
                   <div className="flex items-center gap-1 mt-1">
                     <Calendar className="w-4 h-4 text-gray-400" />
@@ -192,11 +190,11 @@ export default function RecentPayments() {
                 </div>
               </div>
               
-              <div className="text-right">
+              <div className="text-right mt-4 sm:mt-0 min-w-[120px]">
                 <div className="font-semibold text-lg text-gray-900">
                   {formatAmount(payment.amount, payment.currency)}
                 </div>
-                <div className="text-xs text-gray-500">
+                <div className="text-xs text-gray-500 break-all">
                   ID: {payment.stripe_payment_id.slice(-8)}
                 </div>
               </div>
@@ -206,7 +204,7 @@ export default function RecentPayments() {
           {payments.length > 10 && (
             <div className="text-center pt-4">
               <button className="text-blue-600 hover:text-blue-700 font-medium text-sm">
-                Vezi toate plățile ({payments.length})
+                View all payments ({payments.length})
               </button>
             </div>
           )}
