@@ -57,7 +57,7 @@ export function DashboardProvider({ children }: { children: React.ReactNode }) {
 
   const fetchLighthouseData = useCallback(async (url: string) => {
     try {
-      const apiUrl = `/api/lighthouse-simple?url=${encodeURIComponent(url)}`;
+      const apiUrl = `/api/lighthouse?url=${encodeURIComponent(url)}`;
       const response = await fetch(apiUrl);
       
       if (response.ok) {

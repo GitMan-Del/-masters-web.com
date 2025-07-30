@@ -9,7 +9,10 @@ export async function POST(request: NextRequest) {
     const body = await request.text();
     const signature = request.headers.get('stripe-signature');
 
+    console.log('🔔 Webhook received with signature:', !!signature);
+
     if (!signature) {
+      console.error('❌ Missing stripe-signature header');
       return NextResponse.json(
         { error: 'Missing stripe-signature header' },
         { status: 400 }
@@ -19,7 +22,8 @@ export async function POST(request: NextRequest) {
     // Validează webhook-ul
     const event = validateStripeWebhook(Buffer.from(body), signature);
 
-    console.log('Stripe webhook received:', event.type);
+    console.log('✅ Stripe webhook received:', event.type);
+    console.log('📄 Event data keys:', Object.keys(event.data.object));
 
     // Procesează evenimentele relevante
     switch (event.type) {
@@ -59,13 +63,23 @@ export async function POST(request: NextRequest) {
 }
 
 async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session) {
-  console.log('Processing checkout session completed:', session.id);
+  console.log('🛒 Processing checkout session completed:', session.id);
+  console.log('📧 Customer email:', session.customer_email);
+  console.log('🏷️ Session metadata:', session.metadata);
   
-  const userEmail = session.metadata?.user_email;
+  const userEmail = session.customer_email || session.metadata?.user_email;
   const paymentType = session.metadata?.payment_type as 'one_time' | 'monthly_maintenance';
   
+  console.log('👤 User email:', userEmail);
+  console.log('💳 Payment type:', paymentType);
+  
   if (!userEmail || !paymentType) {
-    console.error('Missing metadata in checkout session:', session.id);
+    console.error('❌ Missing metadata in checkout session:', {
+      sessionId: session.id,
+      userEmail,
+      paymentType,
+      metadata: session.metadata
+    });
     return;
   }
 
@@ -171,11 +185,20 @@ async function savePaymentToDatabase(paymentData: {
   metadata?: Record<string, string | number | boolean>;
 }) {
   try {
+    console.log('💾 Attempting to save payment to database:', {
+      user_email: paymentData.user_email,
+      payment_type: paymentData.payment_type,
+      stripe_payment_id: paymentData.stripe_payment_id,
+      amount: paymentData.amount,
+      currency: paymentData.currency,
+      status: paymentData.status
+    });
+
     const { data, error } = await supabaseAdmin
       .from('payments')
       .insert([
         {
-          user_id: paymentData.user_email,
+          user_id: paymentData.user_email, // Using email as user_id since that's how users table is set up
           user_email: paymentData.user_email,
           stripe_payment_id: paymentData.stripe_payment_id,
           stripe_session_id: paymentData.stripe_session_id,
@@ -189,12 +212,13 @@ async function savePaymentToDatabase(paymentData: {
       ]);
 
     if (error) {
-      console.error('Error saving payment to database:', error);
+      console.error('❌ Error saving payment to database:', error);
+      console.error('❌ Error details:', JSON.stringify(error, null, 2));
     } else {
-      console.log('Payment saved successfully:', data);
+      console.log('✅ Payment saved successfully:', data);
     }
   } catch (error) {
-    console.error('Error in savePaymentToDatabase:', error);
+    console.error('❌ Exception in savePaymentToDatabase:', error);
   }
 }
 
