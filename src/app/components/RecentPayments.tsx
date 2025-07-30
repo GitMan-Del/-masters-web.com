@@ -157,62 +157,55 @@ export default function RecentPayments() {
           <p className="text-gray-600">No payments have been recorded yet.</p>
         </div>
       ) : (
-        <div className="grid gap-4">
-          {payments.slice(0, 10).map((payment) => (
-            <div
-              key={payment.id}
-              className="grid grid-cols-1 sm:grid-cols-5 items-center p-4 border border-gray-100 rounded-lg hover:bg-gray-50 transition-colors gap-4"
-            >
-              {/* Status Icon */}
-              <div className="flex justify-start sm:justify-center items-center">
-                {getStatusIcon(payment.status)}
-              </div>
-
-              {/* Payment Info */}
-              <div className="sm:col-span-2 flex flex-col gap-1">
-                <div className="flex flex-wrap items-center gap-2">
-                  <h3 className="font-medium text-gray-900">
-                    {getPaymentTypeText(payment.payment_type)}
-                  </h3>
-                  <span
-                    className={`px-2 py-1 text-xs font-medium rounded-full ${getStatusColor(
-                      payment.status
-                    )}`}
-                  >
-                    {getStatusText(payment.status)}
-                  </span>
-                </div>
-                <p className="text-sm text-gray-600">
-                  {payment.description || 'No description'}
-                </p>
-                <div className="flex items-center gap-1 mt-1">
-                  <Calendar className="w-4 h-4 text-gray-400" />
-                  <span className="text-xs text-gray-500">
-                    {formatDate(payment.payment_date)}
-                  </span>
-                </div>
-              </div>
-
-              {/* Amount */}
-              <div className="flex flex-col items-start sm:items-end">
-                <div className="font-semibold text-lg text-gray-900">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {payments.slice(0, 10).map((payment) => (
+          <div
+            key={payment.id}
+            className="bg-white border border-gray-200 rounded-lg shadow-sm p-5 hover:shadow-md transition-shadow"
+          >
+            <div className="flex items-center justify-between mb-3">
+              <h3 className="text-sm font-semibold text-gray-800">
+                {getPaymentTypeText(payment.payment_type)}
+              </h3>
+              <span
+                className={`px-2 py-1 text-xs font-medium rounded-full ${getStatusColor(payment.status)}`}
+              >
+                {getStatusText(payment.status)}
+              </span>
+            </div>
+      
+            <p className="text-sm text-gray-600 mb-2">
+              {payment.description || 'No description'}
+            </p>
+      
+            <div className="flex items-center text-xs text-gray-500 gap-1 mb-4">
+              <Calendar className="w-4 h-4 text-gray-400" />
+              <span>{formatDate(payment.payment_date)}</span>
+            </div>
+      
+            <div className="flex justify-between items-end">
+              <div>
+                <div className="text-lg font-bold text-gray-900">
                   {formatAmount(payment.amount, payment.currency)}
                 </div>
-                <div className="text-xs text-gray-500 break-all">
+                <div className="text-xs text-gray-400">
                   ID: {payment.stripe_payment_id.slice(-8)}
                 </div>
               </div>
+              <div>{getStatusIcon(payment.status)}</div>
             </div>
-          ))}
-
-          {payments.length > 10 && (
-            <div className="text-center pt-4">
-              <button className="text-blue-600 hover:text-blue-700 font-medium text-sm">
-                View all payments ({payments.length})
-              </button>
-            </div>
-          )}
-        </div>
+          </div>
+        ))}
+      
+        {payments.length > 10 && (
+          <div className="sm:col-span-2 lg:col-span-3 text-center">
+            <button className="text-blue-600 hover:text-blue-700 font-medium text-sm mt-2">
+              View all payments ({payments.length})
+            </button>
+          </div>
+        )}
+      </div>
+      
       )}
     </div>
   );
