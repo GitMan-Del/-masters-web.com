@@ -68,7 +68,7 @@ export const config = {
     '/projects/:path*',
     '/api/projects/:path*',
     '/api/lighthouse/:path*',
-    '/api/payments/((?!webhook).)*' // Exclude webhook din protecție
+    '/api/payments'  // Protejează doar /api/payments, nu și /api/payments/webhook
   ]
 } 
  
