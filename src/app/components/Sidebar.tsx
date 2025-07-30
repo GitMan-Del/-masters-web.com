@@ -45,7 +45,7 @@ export default function Sidebar({ onCloseMobile, isMobile = false }: SidebarProp
       }
       return pathname === item.href;
     });
-  }, [pathname]);
+  }, [pathname, navItems]);
 
   // Function to check if a nav item is active
   const isItemActive = (item: typeof navItems[0]) => {

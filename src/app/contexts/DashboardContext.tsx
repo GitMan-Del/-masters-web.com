@@ -53,7 +53,7 @@ export function DashboardProvider({ children }: { children: React.ReactNode }) {
     } finally {
       setLoading(false);
     }
-  }, [session?.user?.email]);
+  }, [session?.user?.email, fetchLighthouseData]);
 
   const fetchLighthouseData = useCallback(async (url: string) => {
     try {
