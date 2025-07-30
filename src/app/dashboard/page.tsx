@@ -115,7 +115,7 @@ function DashboardContent({
         <div className="lg:hidden fixed inset-0 z-50 flex">
           {/* Backdrop */}
           <div 
-            className="fixed inset-0 bg-black bg-opacity-50 transition-opacity duration-300 ease-out"
+            className="fixed inset-0 bg-black/10 transition-opacity duration-300 ease-out"
             onClick={() => setIsMobileSidebarOpen(false)}
           />
           
