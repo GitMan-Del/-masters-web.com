@@ -16,11 +16,33 @@ export default React.memo(function WebsitePerformanceContainer() {
   
   const projectUrl = hasProjects && projects.length > 0 && projects[0].website_url ? projects[0].website_url : null;
 
+  // Debug logging
+  console.log('🔍 WebsitePerformanceContainer Debug:', {
+    hasProjects,
+    projectsCount: projects.length,
+    projectUrl,
+    lighthouseData,
+    loading
+  });
+
+  // Additional detailed debugging
+  if (lighthouseData) {
+    console.log('📊 Lighthouse Data Details:', {
+      performance: lighthouseData.performance,
+      accessibility: lighthouseData.accessibility,
+      bestPractices: lighthouseData.bestPractices,
+      seo: lighthouseData.seo,
+      hasRealData: lighthouseData.performance > 0 || lighthouseData.accessibility > 0 || lighthouseData.bestPractices > 0 || lighthouseData.seo > 0
+    });
+  }
+
   // Generate performance data based on Lighthouse results
   const getPerformanceData = (): PerformanceScore[] => {
+    console.log('🔄 getPerformanceData called with:', { hasProjects, lighthouseData });
     
     // If no projects exist, show empty data
     if (!hasProjects) {
+      console.log('❌ No projects - returning empty data');
       return [
         { label: "Performance", score: 0, color: "#E5E7EB" },
         { label: "Accessibility", score: 0, color: "#E5E7EB" },
@@ -31,6 +53,7 @@ export default React.memo(function WebsitePerformanceContainer() {
     
     // If lighthouseData is null (no data available), show empty data
     if (!lighthouseData) {
+      console.log('❌ No lighthouse data - returning empty data');
       return [
         { label: "Performance", score: 0, color: "#E5E7EB" },
         { label: "Accessibility", score: 0, color: "#E5E7EB" },
@@ -45,7 +68,16 @@ export default React.memo(function WebsitePerformanceContainer() {
                        lighthouseData.bestPractices > 0 || 
                        lighthouseData.seo > 0;
 
+    console.log('🔍 Checking real data:', {
+      performance: lighthouseData.performance,
+      accessibility: lighthouseData.accessibility,
+      bestPractices: lighthouseData.bestPractices,
+      seo: lighthouseData.seo,
+      hasRealData
+    });
+
     if (!hasRealData) {
+      console.log('❌ No real data - returning empty data');
       return [
         { label: "Performance", score: 0, color: "#E5E7EB" },
         { label: "Accessibility", score: 0, color: "#E5E7EB" },
@@ -60,7 +92,7 @@ export default React.memo(function WebsitePerformanceContainer() {
       return "#EF4444"; // Roșu
     };
 
-    return [
+    const result = [
       { 
         label: "Performance", 
         score: lighthouseData.performance, 
@@ -82,6 +114,9 @@ export default React.memo(function WebsitePerformanceContainer() {
         color: getScoreColor(lighthouseData.seo) 
       }
     ];
+    
+    console.log('✅ Returning performance data:', result);
+    return result;
   };
 
   const performanceData = getPerformanceData();
@@ -94,11 +129,30 @@ export default React.memo(function WebsitePerformanceContainer() {
     lighthouseData.seo > 0
   );
 
+  console.log('🎯 hasRealData check:', {
+    hasRealData,
+    lighthouseData: lighthouseData ? {
+      performance: lighthouseData.performance,
+      accessibility: lighthouseData.accessibility,
+      bestPractices: lighthouseData.bestPractices,
+      seo: lighthouseData.seo
+    } : null
+  });
+
   const CircularProgress = ({ score, color, unit }: { score: number; color: string; unit?: string }) => {
     const radius = 45;
     const circumference = 2 * Math.PI * radius;
     const strokeDasharray = circumference;
     const strokeDashoffset = circumference - (score / 100) * circumference;
+
+    console.log('🎨 CircularProgress rendering:', {
+      score,
+      color,
+      unit,
+      hasRealData,
+      strokeDashoffset,
+      textColor: hasRealData ? 'text-gray-900' : 'text-gray-400'
+    });
 
     return (
       <div className="relative w-24 h-24 flex items-center justify-center">
@@ -186,7 +240,7 @@ export default React.memo(function WebsitePerformanceContainer() {
             {!hasProjects ? (
               'No projects available - Add a project with URL to see metrics'
             ) : !hasRealData ? (
-              'No performance data available - Check API configuration'
+              `No performance data available for ${projectUrl} - URL may not be publicly accessible`
             ) : lighthouseData?.lastUpdated ? (
               `Last scan: ${new Date(lighthouseData.lastUpdated).toLocaleString('ro-RO')}`
             ) : (

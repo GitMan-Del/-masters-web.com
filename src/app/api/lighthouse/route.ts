@@ -58,6 +58,12 @@ export async function GET(request: NextRequest) {
     console.log('📡 Fetching new Lighthouse data for:', websiteUrl);
 
     // Verifică dacă API key-ul există
+    console.log('🔑 Google API Key check:', {
+      hasKey: !!GOOGLE_API_KEY,
+      keyLength: GOOGLE_API_KEY?.length || 0,
+      keyStart: GOOGLE_API_KEY?.substring(0, 10) || 'none'
+    });
+    
     if (!GOOGLE_API_KEY) {
       console.error('❌ Google PageSpeed API key not configured');
       return NextResponse.json({ 
@@ -86,8 +92,18 @@ export async function GET(request: NextRequest) {
 
     const data: GoogleLighthouseResponse = await response.json();
     console.log('✅ Lighthouse API response received');
+    console.log('📊 Raw Google API data:', JSON.stringify(data, null, 2));
 
     // Procesează datele Lighthouse
+    console.log('🔍 Processing Lighthouse data:', {
+      performanceScore: data.lighthouseResult.categories.performance?.score,
+      accessibilityScore: data.lighthouseResult.categories.accessibility?.score,
+      bestPracticesScore: data.lighthouseResult.categories['best-practices']?.score,
+      seoScore: data.lighthouseResult.categories.seo?.score,
+      firstContentfulPaint: data.lighthouseResult.audits['first-contentful-paint']?.numericValue,
+      largestContentfulPaint: data.lighthouseResult.audits['largest-contentful-paint']?.numericValue
+    });
+    
     const metrics: LighthouseMetrics = {
       performance: Math.round((data.lighthouseResult.categories.performance?.score || 0) * 100),
       accessibility: Math.round((data.lighthouseResult.categories.accessibility?.score || 0) * 100),
