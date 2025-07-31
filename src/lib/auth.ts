@@ -2,7 +2,15 @@ import NextAuth from "next-auth"
 import Google from "next-auth/providers/google"
 import { supabaseAdmin } from "./supabase"
 
+// Debug logging for environment variables
+console.log('🔐 Auth Config Debug:')
+console.log('AUTH_GOOGLE_ID exists:', !!process.env.AUTH_GOOGLE_ID)
+console.log('AUTH_GOOGLE_SECRET exists:', !!process.env.AUTH_GOOGLE_SECRET)
+console.log('AUTH_SECRET exists:', !!process.env.AUTH_SECRET)
+console.log('NEXTAUTH_URL:', process.env.NEXTAUTH_URL)
+
 export const { handlers, signIn, signOut, auth } = NextAuth({
+  secret: process.env.AUTH_SECRET,
   providers: [
     Google({
       clientId: process.env.AUTH_GOOGLE_ID!,
@@ -19,36 +27,45 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       return !!auth
     },
     async redirect({ url, baseUrl }) {
-      // If no specific URL is provided, redirect to dashboard after login
-      if (url === baseUrl) return `${baseUrl}/dashboard`
+      console.log('🔄 Redirect callback:', { url, baseUrl })
+      
+      // Handle the new domain properly
+      const allowedHosts = ['masters-web.com', 'www.masters-web.com', 'localhost:3000', 'localhost']
+      const host = new URL(url).hostname
       
       // If it's a relative path, allow it
       if (url.startsWith("/")) return `${baseUrl}${url}`
       
-      // If it's the same origin, allow it
-      if (new URL(url).origin === baseUrl) return url
+      // If it's the same origin or allowed host, allow it
+      if (new URL(url).origin === baseUrl || allowedHosts.includes(host)) return url
       
       // Default fallback to dashboard for successful logins
       return `${baseUrl}/dashboard`
     },
-    async signIn({ user }) {
-      console.log(user)
-      const { data, error } = await supabaseAdmin
-        .from('users')
-        .upsert([
-          {
-            id: user.email,
-            email: user.email,
-            name: user.name,
-            image: user.image,
-          },
-        ]);
-      if (error) console.error('Supabase insert error:', error);
-      console.log('User upserted successfully:', { data, error });
-      return true;
+    async signIn({ user, account, profile }) {
+      console.log('🔑 SignIn callback:', { user, account: account?.provider, profile })
+      
+      try {
+        const { data, error } = await supabaseAdmin
+          .from('users')
+          .upsert([
+            {
+              id: user.email,
+              email: user.email,
+              name: user.name,
+              image: user.image,
+            },
+          ]);
+        if (error) console.error('❌ Supabase insert error:', error);
+        console.log('✅ User upserted successfully:', { data, error });
+        return true;
+      } catch (error) {
+        console.error('❌ SignIn error:', error);
+        return true; // Still allow sign in even if database insert fails
+      }
     },
     async session({ session, token }) {
-        console.log(session, token)
+        console.log('📋 Session callback:', { session: !!session, token: !!token })
       // Pass any additional data to the session if needed
       return session
     },
@@ -64,4 +81,5 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   jwt: {
     maxAge: 60 * 60, // JWT expires in 1 hour
   },
+  debug: process.env.NODE_ENV === 'development',
 })
