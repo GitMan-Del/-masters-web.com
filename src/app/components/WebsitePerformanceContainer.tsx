@@ -16,68 +16,23 @@ export default React.memo(function WebsitePerformanceContainer() {
   
   const projectUrl = hasProjects && projects.length > 0 && projects[0].website_url ? projects[0].website_url : null;
 
-  // Debug logging
-  console.log('🔍 WebsitePerformanceContainer Debug:', {
-    hasProjects,
-    projectsCount: projects.length,
-    projectUrl,
-    lighthouseData,
-    loading
-  });
-
-  // Additional detailed debugging
-  if (lighthouseData) {
-    console.log('📊 Lighthouse Data Details:', {
-      performance: lighthouseData.performance,
-      accessibility: lighthouseData.accessibility,
-      bestPractices: lighthouseData.bestPractices,
-      seo: lighthouseData.seo,
-      hasRealData: lighthouseData.performance > 0 || lighthouseData.accessibility > 0 || lighthouseData.bestPractices > 0 || lighthouseData.seo > 0
-    });
-  }
-
   // Generate performance data based on Lighthouse results
   const getPerformanceData = (): PerformanceScore[] => {
-    console.log('🔄 getPerformanceData called with:', { hasProjects, lighthouseData });
     
-    // If no projects exist, show empty data
+    // If no projects exist, show zero data
     if (!hasProjects) {
-      console.log('❌ No projects - returning empty data');
       return [
         { label: "Performance", score: 0, color: "#E5E7EB" },
         { label: "Accessibility", score: 0, color: "#E5E7EB" },
         { label: "Best Practices", score: 0, color: "#E5E7EB" },
-        { label: "SEO", score: 0, color: "#E5E7EB" }
+        { label: "SEO", score: 0, color: "#E5E7EB" },
+        { label: "Uptime", score: 0, color: "#E5E7EB", unit: "%" },
+        { label: "Load Time", score: 0, color: "#E5E7EB", unit: "s" }
       ];
     }
     
-    // If lighthouseData is null (no data available), show empty data
+    // If lighthouseData is null (still loading), show temporary zero data
     if (!lighthouseData) {
-      console.log('❌ No lighthouse data - returning empty data');
-      return [
-        { label: "Performance", score: 0, color: "#E5E7EB" },
-        { label: "Accessibility", score: 0, color: "#E5E7EB" },
-        { label: "Best Practices", score: 0, color: "#E5E7EB" },
-        { label: "SEO", score: 0, color: "#E5E7EB" }
-      ];
-    }
-
-    // Check if all metrics are 0 (no real data)
-    const hasRealData = lighthouseData.performance > 0 || 
-                       lighthouseData.accessibility > 0 || 
-                       lighthouseData.bestPractices > 0 || 
-                       lighthouseData.seo > 0;
-
-    console.log('🔍 Checking real data:', {
-      performance: lighthouseData.performance,
-      accessibility: lighthouseData.accessibility,
-      bestPractices: lighthouseData.bestPractices,
-      seo: lighthouseData.seo,
-      hasRealData
-    });
-
-    if (!hasRealData) {
-      console.log('❌ No real data - returning empty data');
       return [
         { label: "Performance", score: 0, color: "#E5E7EB" },
         { label: "Accessibility", score: 0, color: "#E5E7EB" },
@@ -92,7 +47,7 @@ export default React.memo(function WebsitePerformanceContainer() {
       return "#EF4444"; // Roșu
     };
 
-    const result = [
+    return [
       { 
         label: "Performance", 
         score: lighthouseData.performance, 
@@ -114,45 +69,21 @@ export default React.memo(function WebsitePerformanceContainer() {
         color: getScoreColor(lighthouseData.seo) 
       }
     ];
-    
-    console.log('✅ Returning performance data:', result);
-    return result;
-  };
+     };
+
+
+
+
+
+
 
   const performanceData = getPerformanceData();
-
-  // Check if we have real data
-  const hasRealData = lighthouseData && (
-    lighthouseData.performance > 0 || 
-    lighthouseData.accessibility > 0 || 
-    lighthouseData.bestPractices > 0 || 
-    lighthouseData.seo > 0
-  );
-
-  console.log('🎯 hasRealData check:', {
-    hasRealData,
-    lighthouseData: lighthouseData ? {
-      performance: lighthouseData.performance,
-      accessibility: lighthouseData.accessibility,
-      bestPractices: lighthouseData.bestPractices,
-      seo: lighthouseData.seo
-    } : null
-  });
 
   const CircularProgress = ({ score, color, unit }: { score: number; color: string; unit?: string }) => {
     const radius = 45;
     const circumference = 2 * Math.PI * radius;
     const strokeDasharray = circumference;
     const strokeDashoffset = circumference - (score / 100) * circumference;
-
-    console.log('🎨 CircularProgress rendering:', {
-      score,
-      color,
-      unit,
-      hasRealData,
-      strokeDashoffset,
-      textColor: hasRealData ? 'text-gray-900' : 'text-gray-400'
-    });
 
     return (
       <div className="relative w-24 h-24 flex items-center justify-center">
@@ -166,24 +97,22 @@ export default React.memo(function WebsitePerformanceContainer() {
             strokeWidth="8"
             fill="none"
           />
-          {/* Progress circle - only show if there's real data */}
-          {hasRealData && (
-            <circle
-              cx="50"
-              cy="50"
-              r={radius}
-              stroke={color}
-              strokeWidth="8"
-              fill="none"
-              strokeLinecap="round"
-              strokeDasharray={strokeDasharray}
-              strokeDashoffset={strokeDashoffset}
-              className="transition-all duration-300 ease-in-out"
-            />
-          )}
+          {/* Progress circle */}
+          <circle
+            cx="50"
+            cy="50"
+            r={radius}
+            stroke={color}
+            strokeWidth="8"
+            fill="none"
+            strokeLinecap="round"
+            strokeDasharray={strokeDasharray}
+            strokeDashoffset={strokeDashoffset}
+            className="transition-all duration-300 ease-in-out"
+          />
         </svg>
         <div className="absolute inset-0 flex items-center justify-center">
-          <span className={`text-xl font-bold ${hasRealData ? 'text-gray-900' : 'text-gray-400'}`}>
+          <span className={`text-xl font-bold ${hasProjects ? 'text-gray-900' : 'text-gray-400'}`}>
             {unit === 's' ? score : Math.round(score)}{unit || ''}
           </span>
         </div>
@@ -227,7 +156,7 @@ export default React.memo(function WebsitePerformanceContainer() {
         {performanceData.map((metric, index) => (
           <div key={index} className="flex flex-col items-center text-center">
             <CircularProgress score={metric.score} color={metric.color} unit={metric.unit} />
-            <span className={`mt-3 text-sm font-medium ${hasRealData ? 'text-gray-700' : 'text-gray-400'}`}>
+            <span className={`mt-3 text-sm font-medium ${hasProjects ? 'text-gray-700' : 'text-gray-400'}`}>
               {metric.label}
             </span>
           </div>
@@ -237,20 +166,15 @@ export default React.memo(function WebsitePerformanceContainer() {
       <div className="mt-6 pt-4 border-t border-gray-200">
         <div className="flex items-center justify-between text-sm text-gray-600">
           <span>
-            {!hasProjects ? (
-              'No projects available - Add a project with URL to see metrics'
-            ) : !hasRealData ? (
-              `No performance data available for ${projectUrl} - URL may not be publicly accessible`
-            ) : lighthouseData?.lastUpdated ? (
-              `Last scan: ${new Date(lighthouseData.lastUpdated).toLocaleString('ro-RO')}`
-            ) : (
-              'No data available'
-            )}
+            {lighthouseData?.lastUpdated 
+              ? `Last scan: ${new Date(lighthouseData.lastUpdated).toLocaleString('ro-RO')}`
+              : 'No data available - Add a project with URL to see metrics'
+            }
           </span>
           <p className={`font-medium hover:underline cursor-pointer ${
-            projectUrl && hasRealData ? 'text-purple-600 hover:text-purple-700' : 'text-gray-400 cursor-not-allowed'
+            projectUrl ? 'text-purple-600 hover:text-purple-700' : 'text-gray-400 cursor-not-allowed'
           }`}>
-            {projectUrl && hasRealData ? (
+            {projectUrl ? (
               <button 
                 onClick={() => {
                   console.log('Manual refresh triggered for URL:', projectUrl);
@@ -261,7 +185,7 @@ export default React.memo(function WebsitePerformanceContainer() {
                 Refresh data →
               </button>
             ) : (
-              'No data to refresh'
+              'No URL available'
             )}
           </p>
         </div>
