@@ -7,6 +7,7 @@ export default auth((req) => {
   
   console.log('🔐 Middleware - Path:', nextUrl.pathname)
   console.log('🔐 Middleware - Is logged in:', isLoggedIn)
+  console.log('🔐 Middleware - Auth user:', req.auth?.user?.email)
 
   // Rutele care necesită autentificare
   const protectedRoutes = [
@@ -45,7 +46,10 @@ export default auth((req) => {
     // Pentru API routes, returnează 401
     if (nextUrl.pathname.startsWith('/api/')) {
       return NextResponse.json(
-        { error: 'Authentication required' },
+        { 
+          error: 'Authentication required',
+          details: 'No valid session found for API access'
+        },
         { status: 401 }
       )
     }
@@ -56,7 +60,7 @@ export default auth((req) => {
     return NextResponse.redirect(redirectUrl)
   }
 
-  console.log('✅ Access granted')
+  console.log('✅ Access granted for:', nextUrl.pathname)
   return NextResponse.next()
 })
 

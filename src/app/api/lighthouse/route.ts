@@ -10,44 +10,52 @@ const CACHE_DURATION = 60 * 60 * 1000; // 1 oră în ms
 
 export async function GET(request: NextRequest) {
   console.log('🚀 Lighthouse API called');
-  const session = await auth();
-  console.log('👤 Session:', !!session?.user?.email);
   
-  if (!session?.user?.email) {
-    console.log('❌ No session - returning 401');
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  }
-
-  const { searchParams } = new URL(request.url);
-  const websiteUrl = searchParams.get('url');
-  console.log('🌐 Website URL from request:', websiteUrl);
-
-  // Dacă nu există URL, returnează toate valorile la 0
-  if (!websiteUrl) {
-    console.log('⚠️ No URL provided - returning zero metrics');
-    const emptyMetrics: LighthouseMetrics = {
-      performance: 0,
-      accessibility: 0,
-      bestPractices: 0,
-      seo: 0,
-      uptime: 0,
-      loadTime: 0,
-      firstContentfulPaint: 0,
-      largestContentfulPaint: 0,
-      lastUpdated: new Date().toISOString()
-    };
-    return NextResponse.json({ metrics: emptyMetrics });
-  }
-
   try {
+    const session = await auth();
+    console.log('👤 Session check:', {
+      exists: !!session,
+      userEmail: session?.user?.email,
+      userId: session?.user?.id
+    });
+    
+    if (!session?.user?.email) {
+      console.log('❌ No session - returning 401');
+      return NextResponse.json({ 
+        error: 'Unauthorized',
+        details: 'No valid session found'
+      }, { status: 401 });
+    }
+
+    const { searchParams } = new URL(request.url);
+    const websiteUrl = searchParams.get('url');
+    console.log('🌐 Website URL from request:', websiteUrl);
+
+    // Dacă nu există URL, returnează toate valorile la 0
+    if (!websiteUrl) {
+      console.log('⚠️ No URL provided - returning zero metrics');
+      const emptyMetrics: LighthouseMetrics = {
+        performance: 0,
+        accessibility: 0,
+        bestPractices: 0,
+        seo: 0,
+        uptime: 0,
+        loadTime: 0,
+        firstContentfulPaint: 0,
+        largestContentfulPaint: 0,
+        lastUpdated: new Date().toISOString()
+      };
+      return NextResponse.json({ metrics: emptyMetrics });
+    }
+
     // Verifică cache-ul
     const cached = lighthouseCache.get(websiteUrl);
     if (cached && Date.now() - cached.timestamp < CACHE_DURATION) {
-      console.log('Returning cached Lighthouse data for:', websiteUrl);
+      console.log('✅ Returning cached Lighthouse data for:', websiteUrl);
       return NextResponse.json({ metrics: cached.data });
     }
 
-    console.log('Fetching new Lighthouse data for:', websiteUrl);
+    console.log('📡 Fetching new Lighthouse data for:', websiteUrl);
 
     // Verifică dacă API key-ul există - dacă nu, returnează date simulate
     if (!GOOGLE_API_KEY) {
@@ -128,7 +136,7 @@ export async function GET(request: NextRequest) {
     }
 
     const data: GoogleLighthouseResponse = await response.json();
-    console.log('Lighthouse API response received');
+    console.log('✅ Lighthouse API response received');
 
     // Procesează datele Lighthouse
     const metrics: LighthouseMetrics = {
@@ -149,7 +157,7 @@ export async function GET(request: NextRequest) {
       timestamp: Date.now()
     });
 
-    console.log('Processed Lighthouse metrics:', metrics);
+    console.log('✅ Processed Lighthouse metrics:', metrics);
     return NextResponse.json({ metrics });
 
   } catch (error) {
