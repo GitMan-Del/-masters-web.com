@@ -29,17 +29,32 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     async redirect({ url, baseUrl }) {
       console.log('🔄 Redirect callback:', { url, baseUrl })
       
-      // Handle the new domain properly
-      const allowedHosts = ['masters-web.com', 'www.masters-web.com', 'localhost:3000', 'localhost']
-      const host = new URL(url).hostname
-      
       // If it's a relative path, allow it
-      if (url.startsWith("/")) return `${baseUrl}${url}`
+      if (url.startsWith("/")) {
+        console.log('✅ Relative URL, redirecting to:', `${baseUrl}${url}`)
+        return `${baseUrl}${url}`
+      }
       
-      // If it's the same origin or allowed host, allow it
-      if (new URL(url).origin === baseUrl || allowedHosts.includes(host)) return url
+      // If it's the same origin, allow it
+      if (new URL(url).origin === baseUrl) {
+        console.log('✅ Same origin, allowing:', url)
+        return url
+      }
+      
+      // Handle allowed hosts for external URLs
+      const allowedHosts = ['masters-web.com', 'www.masters-web.com', 'localhost:3000', 'localhost']
+      try {
+        const host = new URL(url).hostname
+        if (allowedHosts.includes(host)) {
+          console.log('✅ Allowed host, allowing:', url)
+          return url
+        }
+      } catch (error) {
+        console.log('⚠️ Invalid URL, using fallback')
+      }
       
       // Default fallback to dashboard for successful logins
+      console.log('🔄 Default fallback to dashboard')
       return `${baseUrl}/dashboard`
     },
     async signIn({ user, account, profile }) {

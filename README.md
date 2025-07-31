@@ -24,4 +24,4 @@ This project includes:
 
 ## 📸 Previews
 
-Live preview: [https://masters-web.vercel.app](https://masters-web.vercel.app)
+Live preview: [https://masters-web.com](https://masters-web..com)
