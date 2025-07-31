@@ -1,13 +1,13 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { MessageCircle, Clock, Bell, Sparkles, ArrowRight } from "lucide-react";
 
 export default function ChatSidebar() {
   const { data: session } = useSession();
-  
+  console.log(session);
+
   const [email, setEmail] = useState("");
   const [isSubscribed, setIsSubscribed] = useState(false);
 
