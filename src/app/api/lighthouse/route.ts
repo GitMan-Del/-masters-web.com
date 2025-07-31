@@ -57,39 +57,13 @@ export async function GET(request: NextRequest) {
 
     console.log('📡 Fetching new Lighthouse data for:', websiteUrl);
 
-    // Verifică dacă API key-ul există - dacă nu, returnează date simulate
+    // Verifică dacă API key-ul există
     if (!GOOGLE_API_KEY) {
-      console.warn('🚧 Google PageSpeed API key not configured - returning simulated data');
-      
-      // Generează date simulate bazate pe URL pentru a părea mai realist
-      const urlHash = websiteUrl.split('').reduce((a, b) => {
-        a = ((a << 5) - a) + b.charCodeAt(0);
-        return a & a;
-      }, 0);
-      
-      const basePerformance = 75 + (Math.abs(urlHash) % 20); // 75-95
-      const baseAccessibility = 85 + (Math.abs(urlHash) % 15); // 85-100
-      
-      const simulatedMetrics: LighthouseMetrics = {
-        performance: Math.min(100, basePerformance),
-        accessibility: Math.min(100, baseAccessibility),
-        bestPractices: 85 + (Math.abs(urlHash * 2) % 15), // 85-100
-        seo: 90 + (Math.abs(urlHash * 3) % 10), // 90-100
-        uptime: Math.round((95 + (Math.random() * 5)) * 10) / 10, // 95-100% rounded to 1 decimal
-        loadTime: Math.round((1.5 + (Math.random() * 2)) * 10) / 10, // 1.5-3.5s rounded to 1 decimal
-        firstContentfulPaint: Math.round(1000 + (Math.random() * 1000)), // 1000-2000ms
-        largestContentfulPaint: Math.round(2000 + (Math.random() * 1500)), // 2000-3500ms
-        lastUpdated: new Date().toISOString()
-      };
-
-      // Salvează în cache pentru consistență
-      lighthouseCache.set(websiteUrl, {
-        data: simulatedMetrics,
-        timestamp: Date.now()
-      });
-
-      console.log('✅ Returning simulated metrics for URL:', websiteUrl);
-      return NextResponse.json({ metrics: simulatedMetrics });
+      console.error('❌ Google PageSpeed API key not configured');
+      return NextResponse.json({ 
+        error: 'Google PageSpeed API key not configured',
+        details: 'Please configure GOOGLE_PAGESPEED_API_KEY environment variable'
+      }, { status: 500 });
     }
 
     // Face request la Google PageSpeed Insights API
@@ -104,35 +78,10 @@ export async function GET(request: NextRequest) {
       const errorText = await response.text();
       console.error('🚨 Google API error details:', errorText);
       
-      // Dacă API-ul nu funcționează, returnează date simulate realiste
-      console.warn('🚧 Google API failed - returning simulated data as fallback');
-      
-      const urlHash = websiteUrl.split('').reduce((a, b) => {
-        a = ((a << 5) - a) + b.charCodeAt(0);
-        return a & a;
-      }, 0);
-      
-      const fallbackMetrics: LighthouseMetrics = {
-        performance: 75 + (Math.abs(urlHash) % 20),
-        accessibility: 85 + (Math.abs(urlHash) % 15),
-        bestPractices: 80 + (Math.abs(urlHash * 2) % 20),
-        seo: 85 + (Math.abs(urlHash * 3) % 15),
-        uptime: Math.round((95 + (Math.random() * 5)) * 10) / 10,
-        loadTime: Math.round((1.5 + (Math.random() * 2)) * 10) / 10,
-        firstContentfulPaint: Math.round(1000 + (Math.random() * 1000)),
-        largestContentfulPaint: Math.round(2000 + (Math.random() * 1500)),
-        lastUpdated: new Date().toISOString()
-      };
-      
-      // Salvează în cache
-      lighthouseCache.set(websiteUrl, {
-        data: fallbackMetrics,
-        timestamp: Date.now()
-      });
-      
       return NextResponse.json({ 
-        metrics: fallbackMetrics
-      });
+        error: 'Failed to fetch Lighthouse data from Google API',
+        details: `Google API returned ${response.status}: ${response.statusText}`
+      }, { status: 500 });
     }
 
     const data: GoogleLighthouseResponse = await response.json();
@@ -144,7 +93,7 @@ export async function GET(request: NextRequest) {
       accessibility: Math.round((data.lighthouseResult.categories.accessibility?.score || 0) * 100),
       bestPractices: Math.round((data.lighthouseResult.categories['best-practices']?.score || 0) * 100),
       seo: Math.round((data.lighthouseResult.categories.seo?.score || 0) * 100),
-      uptime: Math.round(Math.random() * 15 + 85), // Simulez uptime 85-100%
+      uptime: 0, // Nu avem date pentru uptime din Google API
       loadTime: Math.round((data.lighthouseResult.audits['first-contentful-paint']?.numericValue || 0) / 1000 * 10) / 10,
       firstContentfulPaint: Math.round(data.lighthouseResult.audits['first-contentful-paint']?.numericValue || 0),
       largestContentfulPaint: Math.round(data.lighthouseResult.audits['largest-contentful-paint']?.numericValue || 0),
@@ -165,22 +114,9 @@ export async function GET(request: NextRequest) {
     console.error('🚨 Error message:', error instanceof Error ? error.message : 'Unknown error');
     console.error('🚨 Error stack:', error instanceof Error ? error.stack : 'No stack trace');
     
-    // În caz de eroare, returnează date la zero
-    const errorMetrics: LighthouseMetrics = {
-      performance: 0,
-      accessibility: 0,
-      bestPractices: 0,
-      seo: 0,
-      uptime: 0,
-      loadTime: 0,
-      firstContentfulPaint: 0,
-      largestContentfulPaint: 0,
-      lastUpdated: new Date().toISOString()
-    };
-
     return NextResponse.json({ 
-      metrics: errorMetrics,
-      error: `Failed to fetch Lighthouse data: ${error instanceof Error ? error.message : 'Unknown error'}`
+      error: 'Failed to fetch Lighthouse data',
+      details: error instanceof Error ? error.message : 'Unknown error'
     }, { status: 500 });
   }
 } 
