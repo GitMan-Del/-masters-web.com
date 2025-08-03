@@ -245,8 +245,8 @@ function DashboardContent({
                 <WebsitePerformanceContainer />
               </div>
 
-              {/* Recent Payments - Compact on mobile */}
-              <div className="h-64">
+              {/* Recent Payments - Scrollable on mobile */}
+              <div className="h-80 min-h-0">
                 <Suspense fallback={<div className="animate-pulse bg-gray-200 rounded-lg h-full"></div>}>
                   <RecentPaymentsContainer />
                 </Suspense>

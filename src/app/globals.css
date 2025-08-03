@@ -22,30 +22,19 @@
   --text-sec: #686868;
   --btn-text: #ffffff;
   --bg: #ffffff;
-  --social-btn: #BB00FF;
-  --social-btn-hover: #d2d2d2;
-  --purpule: #BB00FF;
+  --purple: #BB00FF;
 }
 
 /* Hide scrollbar but keep functionality */
-.scrollbar-hide,
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
-.scrollbar-hide::-webkit-scrollbar,
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
 
 /* Color utility classes */
-.bg-social-btn {
-  background-color: var(--social-btn);
-}
-.hover-social-btn:hover {
-  background-color: var(--social-btn-hover);
-}
-
 .text-main {
   color: var(--text);
 }
@@ -64,16 +53,10 @@
 .bg-btn-active {
   background-color: var(--bg-btn-active);
 }
-.btn-text {
-  color: var(--btn-text);
-}
 
-/* Button text color (for white/black switching) */
+/* Button text color */
 .text-btn {
   color: var(--bg-btn);
-}
-.text-btn-active {
-  color: var(--bg-btn-active);
 }
 
 /* Font families */
@@ -226,8 +209,8 @@ button:hover {
 .animate-float {
   animation: float 4s ease-in-out infinite;
 }
-.font-popins {
-  font-family: sans-serif;
+.font-poppins {
+  font-family: var(--font-poppins);
 }
 
 /* No animation class to override button animations */

@@ -165,9 +165,9 @@ export default function RecentPayments() {
     );
   }
 
-  return (
-    <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4 sm:p-6">
-      <div className="flex items-center justify-between mb-6">
+    return (
+    <div className="h-full flex flex-col p-4 sm:p-6">
+      <div className="flex items-center justify-between mb-4 flex-shrink-0">
         <div className="flex items-center gap-3">
           <div className="p-2 bg-blue-50 rounded-lg">
             <CreditCard className="w-5 h-5 text-blue-600" />
@@ -182,22 +182,25 @@ export default function RecentPayments() {
             <p className="text-xs text-gray-500">Total</p>
             <p className="text-lg font-bold text-green-600">
               {formatAmount(getTotalAmount(), payments[0]?.currency || 'USD')}
-            </p>
+</p>
           </div>
         )}
       </div>
 
       {payments.length === 0 ? (
-        <div className="text-center py-12">
-          <div className="p-4 bg-gray-50 rounded-full w-fit mx-auto mb-4">
-            <DollarSign className="w-8 h-8 text-gray-400" />
+        <div className="flex-1 flex items-center justify-center">
+          <div className="text-center">
+            <div className="p-4 bg-gray-50 rounded-full w-fit mx-auto mb-4">
+              <DollarSign className="w-8 h-8 text-gray-400" />
+            </div>
+            <h3 className="text-gray-900 font-medium mb-2">No payments yet</h3>
+            <p className="text-gray-500 text-sm">Your payment history will appear here</p>
           </div>
-          <h3 className="text-gray-900 font-medium mb-2">No payments yet</h3>
-          <p className="text-gray-500 text-sm">Your payment history will appear here</p>
         </div>
       ) : (
-        <div className="space-y-3">
-          {payments.slice(0, 8).map((payment) => (
+        <div className="flex-1 overflow-y-auto overflow-x-hidden min-h-0">
+          <div className="space-y-3 pr-2">
+            {payments.slice(0, 8).map((payment) => (
             <div
               key={payment.id}
               className="group relative p-4 border border-gray-100 rounded-xl hover:border-gray-200 hover:shadow-sm transition-all duration-200 bg-gradient-to-r from-white to-gray-50/30"
@@ -250,15 +253,16 @@ export default function RecentPayments() {
                 </div>
               </div>
             </div>
-          ))}
+            ))}
 
-          {payments.length > 8 && (
-            <div className="text-center pt-4">
-              <button className="text-blue-600 hover:text-blue-700 font-medium text-sm px-4 py-2 rounded-lg hover:bg-blue-50 transition-colors">
-                View all {payments.length} payments
-              </button>
-            </div>
-          )}
+            {payments.length > 8 && (
+              <div className="text-center pt-4 flex-shrink-0">
+                <button className="text-blue-600 hover:text-blue-700 font-medium text-sm px-4 py-2 rounded-lg hover:bg-blue-50 transition-colors">
+                  View all {payments.length} payments
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       )}
     </div>

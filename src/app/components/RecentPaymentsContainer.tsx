@@ -13,7 +13,7 @@ export default React.memo(function RecentPaymentsContainer() {
       </div>
       
       {/* Recent Payments component */}
-      <div className="flex-1 overflow-hidden">
+      <div className="flex-1 overflow-y-auto overflow-x-hidden">
         <RecentPayments />
       </div>
     </div>
