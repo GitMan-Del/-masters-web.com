@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import Sidebar from "../components/Sidebar";
 import { Project } from "@/lib/types";
 import Toast from "../components/Toast";
+import Link from "next/link";
 
 export default function ProjectsPage() {
   const { data: session, status } = useSession();
@@ -221,19 +222,19 @@ export default function ProjectsPage() {
                         <div className="mt-4 pt-4 border-t border-gray-100">
                           <div className="flex flex-wrap gap-4 text-sm">
                             {project.contact_email && (
-                              <a href={`mailto:${project.contact_email}`} className="text-purple-600 hover:text-purple-800">
+                              <Link href={`mailto:${project.contact_email}`} className="text-purple-600 hover:text-purple-800">
                                 📧 {project.contact_email}
-                              </a>
+                              </Link>
                             )}
                             {project.contact_phone && (
-                              <a href={`tel:${project.contact_phone}`} className="text-purple-600 hover:text-purple-800">
+                              <Link href={`tel:${project.contact_phone}`} className="text-purple-600 hover:text-purple-800">
                                 📞 {project.contact_phone}
-                              </a>
+                              </Link>
                             )}
                             {project.website_url && (
-                              <a href={project.website_url} target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-800">
+                              <Link href={project.website_url} target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-800">
                                 🌐 Website
-                              </a>
+                              </Link>
                             )}
                           </div>
                         </div>

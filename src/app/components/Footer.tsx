@@ -38,20 +38,20 @@ export default function Footer() {
             Need a modern, fast website? We build custom websites with clean design and scalable tech. From idea to launch stress-free.
           </p>
           <div className="flex gap-3 mt-2">
-            <a 
+            <Link
               href="https://www.instagram.com/masterswebcom/" 
               className="bg-social-btn p-2 rounded-full hover-social-btn transition"
               aria-label="Visit MastersWeb on Instagram"
             >
               <Instagram className="w-5 h-5 text-main hover:text-btn-text transition" />
-            </a>
-            <a 
+            </Link>
+            <Link 
               href="https://www.linkedin.com/in/masterswebcom/" 
               className="bg-social-btn p-2 rounded-full hover-social-btn transition"
               aria-label="Visit MastersWeb on LinkedIn"
             >
               <Linkedin className="w-5 h-5 text-main hover:text-btn-text transition" />
-            </a>
+            </Link>
           </div>
         </div>
         {/* Quick Links */}
@@ -69,11 +69,11 @@ export default function Footer() {
         <div>
           <h3 className="text-lg mb-3">Contact</h3>
           <ul className="flex flex-col gap-2 text-sec text-sm">
-            <li><a href="mailto:masterswebcom@gmail.com" className="hover:text-special transition hover:underline hover:cursor-pointer">masterswebcom@gmail.com</a></li>
-            <li><a href="tel:+33659514692" className="hover:text-special transition hover:underline hover:cursor-pointer">+33659514692</a></li>
-            <li><a href="https://www.google.com/maps/place/54-56+Avenue+Hoche/@48.8833333,2.3166667,17z/data=!3m1!4b1!4m6!3m5!1s0x47e66e145a7892e1:0x818236856b889e46!8m2!3d48.8833333!4d2.3166667!16s%2Fg%2F11c48t4kgb?entry=ttu&g_ep=EgoyMDI1MDIyMi4wIKXMDSoASAFQAw%3D%3D" className="hover:text-special transition hover:underline hover:cursor-pointer">54-56 avenue Hoche 75008 Paris
-            REGUS PARIS SAS</a></li>
-            <li><a href="https://www.instagram.com/masterswebcom/" className="hover:text-special transition hover:underline hover:cursor-pointer">Instagram</a></li>
+            <li><Link href="mailto:masterswebcom@gmail.com" className="hover:text-special transition hover:underline hover:cursor-pointer">masterswebcom@gmail.com</Link></li>
+            <li><Link href="tel:+33659514692" className="hover:text-special transition hover:underline hover:cursor-pointer">+33659514692</Link></li>
+            <li><Link href="https://www.google.com/maps/place/54-56+Avenue+Hoche/@48.8833333,2.3166667,17z/data=!3m1!4b1!4m6!3m5!1s0x47e66e145a7892e1:0x818236856b889e46!8m2!3d48.8833333!4d2.3166667!16s%2Fg%2F11c48t4kgb?entry=ttu&g_ep=EgoyMDI1MDIyMi4wIKXMDSoASAFQAw%3D%3D" className="hover:text-special transition hover:underline hover:cursor-pointer">54-56 avenue Hoche 75008 Paris
+            REGUS PARIS SAS</Link></li>
+            <li><Link href="https://www.instagram.com/masterswebcom/" className="hover:text-special transition hover:underline hover:cursor-pointer">Instagram</Link></li>
           </ul>
         </div>
         {/* Working hours */}

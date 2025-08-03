@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { MessageCircle, Clock, Bell, Sparkles, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export default function ChatSidebar() {
   const { data: session } = useSession();
@@ -127,7 +128,7 @@ export default function ChatSidebar() {
         <div className="mt-8 pt-6 border-t border-gray-200 w-full">
           <p className="text-xs text-gray-500 mb-3">Need help now?</p>
           <div className="space-y-2">
-            <a
+            <Link
               href="mailto:masterswebcom@gmail.com"
               className="flex items-center justify-center gap-2 w-full px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors text-sm"
             >
@@ -135,8 +136,8 @@ export default function ChatSidebar() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
               Email Support
-            </a>
-            <a
+            </Link>
+            <Link
               href="/contact"
               className="flex items-center justify-center gap-2 w-full px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors text-sm"
             >
@@ -144,7 +145,7 @@ export default function ChatSidebar() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
               </svg>
               Contact Form
-            </a>
+            </Link>
           </div>
         </div>
       </div>

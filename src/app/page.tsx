@@ -2,6 +2,7 @@ import Image from "next/image"
 import NavBar from "./components/Navbar"
 import Footer from "./components/Footer";
 import AuthErrorToast from "./components/AuthErrorToast";
+import Link from "next/link";
 
 export default function Home() {
 
@@ -23,7 +24,7 @@ export default function Home() {
 
   return (
     <>
-      <a href="#main-content" className="skip-link">Skip to main content</a>
+      <Link href="#main-content" className="skip-link">Skip to main content</Link>
       <AuthErrorToast />
       <div className="w-full min-h-fit mx-auto flex flex-col justify-center p-0 m-0 text-main">
         {/* Hero Section */}
@@ -46,13 +47,13 @@ export default function Home() {
               </h1>
               <p className="text-sec max-w-xs sm:max-w-md md:max-w-2xl text-base sm:text-lg mx-auto md:mx-0">We turn clear ideas into fast, reliable digital products with structure, precision, and modern tools that scale.</p>
               <div className="flex flex-col sm:flex-row gap-5 items-center mt-6">
-                <a href="/contact" className="btn-modern w-full sm:w-auto flex items-center gap-5 min-h-[56px]" aria-label="Start your web development project">
+                <Link href="/contact" className="btn-modern w-full sm:w-auto flex items-center gap-5 min-h-[56px]" aria-label="Start your web development project">
                   <span className="btn-text-content">Start your project</span>
                   <span className="inline-block w-2" aria-hidden="true"></span>
                   <div className="btn-circle">
                     <span>→</span>
                   </div>
-                </a>
+                </Link>
                 <div className="flex flex-row items-center justify-center -space-x-3 sm:-space-x-5 mt-4 sm:mt-0" role="group" aria-label="Team members">
                   <div className="w-14 h-14 sm:w-12 sm:h-12 rounded-full bg-btn shadow-2xs">
                     <Image src="/daniel.png" alt="Daniel - Web Developer at Masters Web" width={148} height={148} className="object-cover w-full h-full rounded-full shadow-2xs hover:scale-110 transition-all duration-300 hover:cursor-pointer hover:z-20 cursor-pointer" />
@@ -275,13 +276,13 @@ export default function Home() {
               we&apos;ve delivered it on real projects that made a difference.
             </p>
             
-            <a href="/contact" className="btn-modern w-fit mx-auto lg:mx-0 flex items-center gap-5 min-h-[56px]" aria-label="Contact us for your web development project">
+            <Link href="/contact" className="btn-modern w-fit mx-auto lg:mx-0 flex items-center gap-5 min-h-[56px]" aria-label="Contact us for your web development project">
               <span className="btn-text-content">Contact us</span>
               <span className="inline-block w-2" aria-hidden="true"></span>
               <div className="btn-circle">
                 <span>→</span>
               </div>
-            </a>
+            </Link>
           </div>
 
           {/* Right Side - Project Cards */}
@@ -465,7 +466,7 @@ export default function Home() {
                 <span className="text-xs bg-btn-active/10 text-main px-3 py-1 rounded-full">Fast Load</span>
                 <span className="text-xs bg-btn-active/10 text-main px-3 py-1 rounded-full">SEO Ready</span>
               </div>
-              <a 
+              <Link 
                 href="/pricing" 
                 className="inline-flex items-center text-main font-medium group-hover:text-special transition-colors duration-300"
               >
@@ -473,7 +474,7 @@ export default function Home() {
                 <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
-              </a>
+              </Link>
             </div>
 
             {/* Multi-Page Website */}
@@ -495,7 +496,7 @@ export default function Home() {
                 <span className="text-xs bg-btn-active/10 text-main px-3 py-1 rounded-full">Blog Ready</span>
                 <span className="text-xs bg-btn-active/10 text-main px-3 py-1 rounded-full">Scalable</span>
               </div>
-              <a 
+              <Link 
                 href="/pricing" 
                 className="inline-flex items-center text-main font-medium group-hover:text-special transition-colors duration-300"
               >
@@ -503,7 +504,7 @@ export default function Home() {
                 <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
-              </a>
+              </Link>
             </div>
 
             {/* Ecommerce - Featured */}
@@ -528,7 +529,7 @@ export default function Home() {
                 <span className="text-xs bg-btn-active/20 text-main px-3 py-1 rounded-full">Inventory</span>
                 <span className="text-xs bg-btn-active/20 text-main px-3 py-1 rounded-full">Analytics</span>
               </div>
-              <a 
+              <Link
                 href="/pricing" 
                 className="inline-flex items-center text-main font-medium group-hover:text-special transition-colors duration-300"
               >
@@ -536,7 +537,7 @@ export default function Home() {
                 <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -556,7 +557,7 @@ export default function Home() {
               <p className="text-sec mb-6 leading-relaxed">
                 Custom web applications and SaaS platforms built specifically for your business needs and requirements.
               </p>
-              <a 
+              <Link
                 href="/pricing" 
                 className="inline-flex items-center text-main font-medium group-hover:text-special transition-colors duration-300"
               >
@@ -564,7 +565,7 @@ export default function Home() {
                 <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
-              </a>
+              </Link>
             </div>
 
             {/* Custom Projects */}
@@ -581,7 +582,7 @@ export default function Home() {
               <p className="text-sec mb-6 leading-relaxed">
                 Enterprise-level solutions with advanced features, integrations, and dedicated support for complex business requirements.
               </p>
-              <a 
+              <Link
                 href="/pricing" 
                 className="inline-flex items-center text-main font-medium group-hover:text-special transition-colors duration-300"
               >
@@ -589,7 +590,7 @@ export default function Home() {
                 <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -598,17 +599,16 @@ export default function Home() {
             <p className="text-sec mb-6 text-lg">
               Not sure which solution fits your needs?
             </p>
-            <a
+            <Link
               href="/contact"
               className="btn-modern inline-flex items-center gap-5 min-h-[56px] justify-center"
-              aria-label="Get free consultation about web development services"
-            >
+              aria-label="Get free consultation about web development services">
               <span className="btn-text-content">Get free consultation</span>
               <span className="inline-block w-2"></span>
               <div className="btn-circle">
                 <span>→</span>
               </div>
-            </a>
+            </Link>
           </div>
         </div>
        </section>
@@ -795,7 +795,7 @@ export default function Home() {
             <p className="text-sec mb-6 text-lg">
               Ready to join our satisfied clients?
             </p>
-            <a
+            <Link
               href="/contact"
               className="btn-modern inline-flex items-center gap-5 min-h-[56px] justify-center"
               aria-label="Start your web development project with Masters Web"
@@ -805,7 +805,7 @@ export default function Home() {
               <div className="btn-circle">
                 <span>→</span>
               </div>
-            </a>
+            </Link>
           </div>
         </div>
        </section>
@@ -935,13 +935,13 @@ export default function Home() {
               </p>
               
               <div className="flex justify-center lg:justify-end">
-                <a href="/contact" className="btn-modern w-fit flex items-center gap-5 min-h-[56px]" aria-label="Contact us about maintenance services">
+                <Link href="/contact" className="btn-modern w-fit flex items-center gap-5 min-h-[56px]" aria-label="Contact us about maintenance services">
                   <span className="btn-text-content">Contact us</span>
                   <span className="inline-block w-2" aria-hidden="true"></span>
                   <div className="btn-circle">
                     <span>→</span>
                   </div>
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -1088,13 +1088,13 @@ export default function Home() {
           </div>
         <h2 className="text-main text-4xl sm:text-5xl md:text-7xl text-center">We use <span className="text-special">modern</span>, <span className="text-special"> scalable</span>, and lightning-fast <span className="text-special"> technologies to build your product </span> the right way.</h2>
         <p className="text-sec max-w-xs sm:max-w-md md:max-w-[700px] text-center mx-auto">Built with the exact same tools used by top startups, agencies, and product teams to ship fast, scale efficiently, and stay ahead of the curve.</p>
-        <a href="/contact" className="btn-modern w-fit  flex items-center gap-5 min-h-[56px] mt-4" aria-label="Contact us for your web development project">
+        <Link href="/contact" className="btn-modern w-fit  flex items-center gap-5 min-h-[56px] mt-4" aria-label="Contact us for your web development project">
               <span className="btn-text-content">Contact us</span>
               <span className="inline-block w-2" aria-hidden="true"></span>
               <div className="btn-circle">
                 <span>→</span>
               </div>
-            </a>
+            </Link>
        </section>
       
       {/* Banner mov la final */}

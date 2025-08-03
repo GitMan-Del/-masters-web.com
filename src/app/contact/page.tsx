@@ -2,6 +2,7 @@ import Image from "next/image"
 import NavBar from "../components/Navbar"
 import Footer from "../components/Footer"
 import type { Metadata } from "next"
+import Link from "next/link"
 
 export const metadata: Metadata = {
   title: 'Contact Us - Masters Web',
@@ -106,7 +107,7 @@ export default function Contact() {
 
   return (
     <>
-      <a href="#main-content" className="skip-link">Skip to main content</a>
+      <Link href="#main-content" className="skip-link">Skip to main content</Link>
       <div className="w-full min-h-fit mx-auto flex flex-col justify-center p-0 m-0 text-main">
         {/* Hero Section */}
         <header id="home" className="w-full h-screen flex flex-col md:flex-row items-center justify-between relative bg-main">
@@ -127,7 +128,7 @@ export default function Contact() {
               </h1>
               <p className="text-sec max-w-xs sm:max-w-md md:max-w-2xl text-base sm:text-lg mx-auto md:mx-0">Whether it&apos;s a landing page, SaaS platform, or something custom, we&apos;ll help you launch smarter. Get in touch today.</p>
               <div className="flex flex-col sm:flex-row gap-5 items-center mt-6">
-              <a
+              <Link
                 href="https://wa.me/+40737484701"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -139,7 +140,7 @@ export default function Contact() {
                 <div className="btn-circle">
                   <span>→</span>
                 </div>
-              </a>
+              </Link>
                 <div className="flex flex-row items-center justify-center -space-x-3 sm:-space-x-5 mt-4 sm:mt-0" role="group" aria-label="Team members">
                   <div className="w-14 h-14 sm:w-12 sm:h-12 rounded-full bg-btn shadow-2xs">
                     <Image src="/daniel.png" alt="Daniel - Web Developer at Masters Web" width={148} height={148} className="object-cover w-full h-full rounded-full shadow-2xs hover:scale-110 transition-all duration-300 hover:cursor-pointer hover:z-20 cursor-pointer" />
