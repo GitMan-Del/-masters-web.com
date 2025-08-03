@@ -22,17 +22,17 @@ export default function ProjectCard({ project, lighthouseData }: ProjectCardProp
   const getStatusInfo = (status: string) => {
     switch (status) {
       case 'completed':
-        return { color: 'bg-green-500', text: 'text-green-600', label: 'Finalizat' };
+        return { color: 'bg-green-500', text: 'text-green-600', label: 'Completed' };
       case 'development':
-        return { color: 'bg-blue-500', text: 'text-blue-600', label: 'În dezvoltare' };
+        return { color: 'bg-blue-500', text: 'text-blue-600', label: 'In Development' };
       case 'testing':
-        return { color: 'bg-yellow-500', text: 'text-yellow-600', label: 'În testare' };
+        return { color: 'bg-yellow-500', text: 'text-yellow-600', label: 'Testing' };
       case 'deployment':
         return { color: 'bg-purple-500', text: 'text-purple-600', label: 'Deployment' };
       case 'maintenance':
-        return { color: 'bg-gray-500', text: 'text-gray-600', label: 'Mentenanță' };
+        return { color: 'bg-gray-500', text: 'text-gray-600', label: 'Maintenance' };
       default:
-        return { color: 'bg-orange-500', text: 'text-orange-600', label: 'Planificare' };
+        return { color: 'bg-orange-500', text: 'text-orange-600', label: 'Planning' };
     }
   };
 
