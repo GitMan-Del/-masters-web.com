@@ -229,7 +229,7 @@ export default React.memo(function WebsitePerformanceContainer() {
                   console.log('Manual refresh triggered for URL:', projectUrl);
                   refreshData();
                 }}
-                className="hover:text-purple-800 transition-colors"
+                className="hover:text-purple-800 transition-colors hover:bg-transparent"
               >
                 Refresh data →
               </button>
