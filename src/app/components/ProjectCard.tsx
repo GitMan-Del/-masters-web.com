@@ -24,7 +24,7 @@ export default function ProjectCard({ project, lighthouseData }: ProjectCardProp
       case 'completed':
         return { color: 'bg-green-500', text: 'text-green-600', label: 'Completed' };
       case 'development':
-        return { color: 'bg-blue-500', text: 'text-blue-600', label: 'In Development' };
+        return { color: 'bg-blue-500', text: 'text-blue-600', label: 'Development' };
       case 'testing':
         return { color: 'bg-yellow-500', text: 'text-yellow-600', label: 'Testing' };
       case 'deployment':
