@@ -167,7 +167,8 @@ export default function ProjectsPage() {
               onClick={() => setIsMobileSidebarOpen(true)}
               className="p-2 rounded-lg border border-gray-300 bg-white hover:bg-gray-50"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-6 h-6" fill="none" stroke="black" viewBox="0 0 24 24">
+                <rect x="0" y="0" width="24" height="24" fill="white" rx="8" />
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>
