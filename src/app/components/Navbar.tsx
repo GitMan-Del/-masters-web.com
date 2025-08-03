@@ -12,7 +12,7 @@ const navLinks = [
   { name: "Process", href: "#process" },
   { name: "Projects", href: "#projects" },
   { name: "Stack", href: "#stack" },
-  { name: "Dashboard", href: "/dashboard" },
+  // { name: "Dashboard", href: "/dashboard" }, // Removed as per instruction
   { name: "Contact", href: "/contact" },
 ];
 

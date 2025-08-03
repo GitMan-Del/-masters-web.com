@@ -165,8 +165,8 @@ export default function ProjectCard({ project, lighthouseData }: ProjectCardProp
         
         <div className="flex items-center space-x-2">
           <div className="flex -space-x-2">
-            <Image src="/daniel.png" alt="Daniel" width={24} height={24} className="w-6 h-6 rounded-full border-2 border-white" />
-            <Image src="/roxi.png" alt="Roxi" width={24} height={24} className="w-6 h-6 rounded-full border-2 border-white" />
+            <Image src="/Logo.svg" alt="Daniel" width={24} height={24} className="w-6 h-6 rounded-full border-2 border-white" />
+            <Image src="/Logo_colaborator.png" alt="Partener" width={24} height={24} className="w-6 h-6 rounded-full border-2 border-white" />
           </div>
           <span className="text-xs text-gray-500">Team</span>
         </div>
