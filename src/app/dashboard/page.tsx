@@ -11,10 +11,22 @@ import WebsitePerformanceContainer from "../components/WebsitePerformanceContain
 import Toast from "../components/Toast";
 import { DashboardProvider, useDashboard } from "../contexts/DashboardContext";
 
-// Lazy load non-critical components
+// Lazy load non-critical components with loading fallbacks
 const PhaseCardsContainer = lazy(() => import("../components/PhaseCardsContainer"));
 const RecentPaymentsContainer = lazy(() => import("../components/RecentPaymentsContainer"));
 const ChatSidebar = lazy(() => import("../components/ChatSidebar"));
+
+// Loading component for lazy loaded sections
+const SectionSkeleton = () => (
+  <div className="animate-pulse">
+    <div className="h-6 bg-gray-200 rounded w-1/4 mb-4"></div>
+    <div className="space-y-3">
+      <div className="h-4 bg-gray-200 rounded w-full"></div>
+      <div className="h-4 bg-gray-200 rounded w-3/4"></div>
+      <div className="h-4 bg-gray-200 rounded w-1/2"></div>
+    </div>
+  </div>
+);
 
 export default function Dashboard() {
   const { data: session, status } = useSession();
