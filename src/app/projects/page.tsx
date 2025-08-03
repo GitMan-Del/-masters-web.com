@@ -16,6 +16,7 @@ export default function ProjectsPage() {
   const [error, setError] = useState<string | null>(null);
   const [deletingId, setDeletingId] = useState<string | null>(null);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState<string | null>(null);
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
   const [toast, setToast] = useState<{
     message: string;
     type: 'success' | 'error' | 'warning' | 'info';
@@ -123,10 +124,10 @@ export default function ProjectsPage() {
   // Loading state
   if (status === 'loading' || loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading projects...</p>
+          <p className="text-gray-600 text-sm sm:text-base">Loading projects...</p>
         </div>
       </div>
     );
@@ -138,13 +139,42 @@ export default function ProjectsPage() {
   }
 
   return (
-    <div className="flex h-screen bg-gray-50">
-      <Sidebar />
+    <div className="flex min-h-screen bg-gray-50">
+      {/* Desktop Sidebar */}
+      <div className="hidden lg:block">
+        <Sidebar />
+      </div>
+      
+      {/* Mobile Sidebar Overlay */}
+      {isMobileSidebarOpen && (
+        <div className="fixed inset-0 z-50 lg:hidden">
+          <div className="fixed inset-0 bg-black/50" onClick={() => setIsMobileSidebarOpen(false)}></div>
+          <div className="fixed left-0 top-0 h-full w-64 bg-white">
+            <Sidebar />
+          </div>
+        </div>
+      )}
       
       <main className="flex-1 overflow-y-auto">
-        <div className="p-6">
-          {/* Header */}
-          <div className="mb-8">
+        <div className="p-4 sm:p-6">
+          {/* Mobile Header with Hamburger */}
+          <div className="lg:hidden flex items-center justify-between mb-6">
+            <div>
+              <h1 className="text-2xl font-bold text-gray-900">My Projects</h1>
+              <p className="text-gray-600 text-sm mt-1">Manage all your projects</p>
+            </div>
+            <button
+              onClick={() => setIsMobileSidebarOpen(true)}
+              className="p-2 rounded-lg border border-gray-300 bg-white hover:bg-gray-50"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
+
+          {/* Desktop Header */}
+          <div className="hidden lg:block mb-8">
             <h1 className="text-3xl font-bold text-gray-900">My Projects</h1>
             <p className="text-gray-600 mt-2">Manage all your projects</p>
           </div>
@@ -164,104 +194,185 @@ export default function ProjectsPage() {
 
           {/* Projects List */}
           {projects.length === 0 ? (
-            <div className="text-center py-12">
+            <div className="text-center py-8 sm:py-12">
               <div className="mx-auto h-12 w-12 text-gray-400 mb-4">
                 <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                 </svg>
               </div>
-              <h3 className="text-lg font-medium text-gray-900 mb-2">You don&apos;t have any projects yet</h3>
-              <p className="text-gray-500 mb-4">Create your first project to get started.</p>
+              <h3 className="text-lg sm:text-xl font-medium text-gray-900 mb-2">You don&apos;t have any projects yet</h3>
+              <p className="text-gray-500 mb-4 text-sm sm:text-base px-4">Create your first project to get started.</p>
               <button 
                 onClick={() => router.push('/dashboard')}
-                className="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors"
+                className="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors text-sm sm:text-base"
               >
                 Go to Dashboard
               </button>
             </div>
           ) : (
-            <div className="grid gap-6">
+            <div className="grid gap-4 sm:gap-6">
               {projects.map((project) => (
-                <div key={project.id} className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
-                  <div className="flex items-start justify-between">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-3">
-                        <h3 className="text-xl font-semibold text-gray-900">{project.name}</h3>
-                        {getStatusBadge(project.status)}
-                      </div>
-                      
-                      {project.description && (
-                        <p className="text-gray-600 mb-4">{project.description}</p>
-                      )}
-                      
-                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
-                        <div>
-                          <span className="font-medium text-gray-500">Project Type:</span>
-                          <p className="text-gray-900">{project.project_type || 'Not specified'}</p>
-                        </div>
-                        
-                        <div>
-                          <span className="font-medium text-gray-500">Value:</span>
-                          <p className="text-gray-900">
-                            {project.project_value ? `€${project.project_value.toLocaleString()}` : 'Not specified'}
-                          </p>
-                        </div>
-                        
-                        <div>
-                          <span className="font-medium text-gray-500">Progress:</span>
-                          <p className="text-gray-900">{project.progress}%</p>
-                        </div>
-                        
-                        <div>
-                          <span className="font-medium text-gray-500">Created:</span>
-                          <p className="text-gray-900">{formatDate(project.created_at)}</p>
-                        </div>
-                      </div>
-                      
-                      {(project.contact_email || project.contact_phone || project.website_url) && (
-                        <div className="mt-4 pt-4 border-t border-gray-100">
-                          <div className="flex flex-wrap gap-4 text-sm">
-                            {project.contact_email && (
-                              <Link href={`mailto:${project.contact_email}`} className="text-purple-600 hover:text-purple-800">
-                                📧 {project.contact_email}
-                              </Link>
-                            )}
-                            {project.contact_phone && (
-                              <Link href={`tel:${project.contact_phone}`} className="text-purple-600 hover:text-purple-800">
-                                📞 {project.contact_phone}
-                              </Link>
-                            )}
-                            {project.website_url && (
-                              <Link href={project.website_url} target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-800">
-                                🌐 Website
-                              </Link>
-                            )}
-                          </div>
-                        </div>
-                      )}
+                <div key={project.id} className="bg-white rounded-xl p-4 sm:p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+                  {/* Mobile Layout */}
+                  <div className="block sm:hidden">
+                    <div className="flex items-start justify-between mb-3">
+                      <h3 className="text-lg font-semibold text-gray-900 flex-1 mr-2">{project.name}</h3>
+                      {getStatusBadge(project.status)}
                     </div>
                     
-                    {/* Actions */}
-                    <div className="ml-6 flex flex-col gap-2">
-                      <button
-                        onClick={() => setShowDeleteConfirm(project.id)}
-                        disabled={deletingId === project.id}
-                        className="bg-red-50 text-red-600 px-3 py-2 rounded-lg hover:bg-red-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
-                      >
-                        {deletingId === project.id ? (
-                          <>
-                            <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-red-600"></div>
-                            Deleting...
-                          </>
-                        ) : (
-                          <>
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                            </svg>
-                            Delete
-                          </>
+                    {project.description && (
+                      <p className="text-gray-600 mb-4 text-sm">{project.description}</p>
+                    )}
+                    
+                    {/* Mobile Info Grid */}
+                    <div className="space-y-3 text-sm mb-4">
+                      <div className="flex justify-between">
+                        <span className="font-medium text-gray-500">Type:</span>
+                        <span className="text-gray-900">{project.project_type || 'Not specified'}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="font-medium text-gray-500">Value:</span>
+                        <span className="text-gray-900">
+                          {project.project_value ? `€${project.project_value.toLocaleString()}` : 'Not specified'}
+                        </span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="font-medium text-gray-500">Progress:</span>
+                        <span className="text-gray-900">{project.progress}%</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="font-medium text-gray-500">Created:</span>
+                        <span className="text-gray-900">{formatDate(project.created_at)}</span>
+                      </div>
+                    </div>
+
+                    {/* Mobile Contact Info */}
+                    {(project.contact_email || project.contact_phone || project.website_url) && (
+                      <div className="border-t border-gray-100 pt-3 mb-4">
+                        <div className="space-y-2 text-sm">
+                          {project.contact_email && (
+                            <Link href={`mailto:${project.contact_email}`} className="block text-purple-600 hover:text-purple-800 truncate">
+                              📧 {project.contact_email}
+                            </Link>
+                          )}
+                          {project.contact_phone && (
+                            <Link href={`tel:${project.contact_phone}`} className="block text-purple-600 hover:text-purple-800">
+                              📞 {project.contact_phone}
+                            </Link>
+                          )}
+                          {project.website_url && (
+                            <Link href={project.website_url} target="_blank" rel="noopener noreferrer" className="block text-purple-600 hover:text-purple-800">
+                              🌐 Website
+                            </Link>
+                          )}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Mobile Delete Button */}
+                    <button
+                      onClick={() => setShowDeleteConfirm(project.id)}
+                      disabled={deletingId === project.id}
+                      className="w-full bg-red-50 text-red-600 px-3 py-2 rounded-lg hover:bg-red-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    >
+                      {deletingId === project.id ? (
+                        <>
+                          <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-red-600"></div>
+                          Deleting...
+                        </>
+                      ) : (
+                        <>
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                          </svg>
+                          Delete Project
+                        </>
+                      )}
+                    </button>
+                  </div>
+
+                  {/* Desktop Layout */}
+                  <div className="hidden sm:block">
+                    <div className="flex items-start justify-between">
+                      <div className="flex-1">
+                        <div className="flex items-center gap-3 mb-3">
+                          <h3 className="text-xl font-semibold text-gray-900">{project.name}</h3>
+                          {getStatusBadge(project.status)}
+                        </div>
+                        
+                        {project.description && (
+                          <p className="text-gray-600 mb-4">{project.description}</p>
                         )}
-                      </button>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
+                          <div>
+                            <span className="font-medium text-gray-500">Project Type:</span>
+                            <p className="text-gray-900">{project.project_type || 'Not specified'}</p>
+                          </div>
+                          
+                          <div>
+                            <span className="font-medium text-gray-500">Value:</span>
+                            <p className="text-gray-900">
+                              {project.project_value ? `€${project.project_value.toLocaleString()}` : 'Not specified'}
+                            </p>
+                          </div>
+                          
+                          <div>
+                            <span className="font-medium text-gray-500">Progress:</span>
+                            <p className="text-gray-900">{project.progress}%</p>
+                          </div>
+                          
+                          <div>
+                            <span className="font-medium text-gray-500">Created:</span>
+                            <p className="text-gray-900">{formatDate(project.created_at)}</p>
+                          </div>
+                        </div>
+                        
+                        {(project.contact_email || project.contact_phone || project.website_url) && (
+                          <div className="mt-4 pt-4 border-t border-gray-100">
+                            <div className="flex flex-wrap gap-4 text-sm">
+                              {project.contact_email && (
+                                <Link href={`mailto:${project.contact_email}`} className="text-purple-600 hover:text-purple-800">
+                                  📧 {project.contact_email}
+                                </Link>
+                              )}
+                              {project.contact_phone && (
+                                <Link href={`tel:${project.contact_phone}`} className="text-purple-600 hover:text-purple-800">
+                                  📞 {project.contact_phone}
+                                </Link>
+                              )}
+                              {project.website_url && (
+                                <Link href={project.website_url} target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-800">
+                                  🌐 Website
+                                </Link>
+                              )}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                      
+                      {/* Desktop Actions */}
+                      <div className="ml-6 flex flex-col gap-2">
+                        <button
+                          onClick={() => setShowDeleteConfirm(project.id)}
+                          disabled={deletingId === project.id}
+                          className="bg-red-50 text-red-600 px-3 py-2 rounded-lg hover:bg-red-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                        >
+                          {deletingId === project.id ? (
+                            <>
+                              <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-red-600"></div>
+                              Deleting...
+                            </>
+                          ) : (
+                            <>
+                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                              </svg>
+                              Delete
+                            </>
+                          )}
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -274,21 +385,21 @@ export default function ProjectsPage() {
       {/* Delete Confirmation Modal */}
       {showDeleteConfirm && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl p-6 w-full max-w-md">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Delete Confirmation</h3>
-            <p className="text-gray-600 mb-6">
+          <div className="bg-white rounded-xl p-4 sm:p-6 w-full max-w-md mx-4">
+            <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-4">Delete Confirmation</h3>
+            <p className="text-gray-600 mb-6 text-sm sm:text-base">
               Are you sure you want to delete this project? This action cannot be undone.
             </p>
-            <div className="flex justify-end gap-3">
+            <div className="flex flex-col sm:flex-row justify-end gap-3">
               <button
                 onClick={() => setShowDeleteConfirm(null)}
-                className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors"
+                className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors order-2 sm:order-1"
               >
                 Cancel
               </button>
               <button
                 onClick={() => handleDeleteProject(showDeleteConfirm)}
-                className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+                className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors order-1 sm:order-2"
               >
                 Delete
               </button>
