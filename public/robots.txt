@@ -6,6 +6,7 @@ Disallow: /_next/
 Disallow: /admin/
 Disallow: /private/
 Disallow: /dashboard/
+Disallow: /projects/
 
 # Googlebot
 User-agent: Googlebot
