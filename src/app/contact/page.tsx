@@ -250,15 +250,16 @@ export default function Contact() {
         {/* Map Section */}
         <section id="main-content" className="w-full h-64 sm:h-80 md:h-96 bg-gray-200 relative">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.681138079049!2d-73.98933968459396!3d40.748441779328085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1641234567890!5m2!1sen!2sus"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.9916256937595!2d2.3166667!3d48.8833333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e145a7892e1%3A0x818236856b889e46!2s54-56%20Avenue%20Hoche%2C%2075008%20Paris%2C%20France!5e0!3m2!1sen!2sfr!4v1641234567890!5m2!1sen!2sfr"
             width="100%"
             height="100%"
             style={{ border: 0 }}
             allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
+            sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
             className="opacity-80"
-            title="Masters Web Location Map"
+            title="Masters Web Location - 54-56 Avenue Hoche, 75008 Paris"
           ></iframe>
         </section>
 
