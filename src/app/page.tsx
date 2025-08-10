@@ -284,7 +284,7 @@ export default function Home() {
             </h2>
             
             <p className="text-sec text-base sm:text-lg max-w-md mx-auto lg:mx-0 mb-8">
-              We don&apos;t just promise performance and clean code,<br />
+              We don&apos;t just promise performance and clean code,
               we&apos;ve delivered it on real projects that made a difference.
             </p>
             
