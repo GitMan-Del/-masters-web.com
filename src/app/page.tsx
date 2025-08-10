@@ -232,22 +232,34 @@ export default function Home() {
           <div className="flex flex-col gap-2 text-center hover:scale-110 duration-200 hover:cursor-pointer cursor-pointer bg-white/80 rounded-xl p-4">
             <h2 className="text-5xl sm:text-5xl md:text-7xl font-black font-poppins">01</h2>
             <p className="text-xl sm:text-2xl font-semibold font-poppins">Discovery</p>
-            <p className="max-w-md text-sec mx-auto text-xs sm:text-base">We discuss your goals and gather key info for the project.</p>
+            <p className="max-w-md text-sec mx-auto text-xs sm:text-base">
+              We clarify your goals and gather all project requirements.
+            </p>
           </div>
           <div className="flex flex-col gap-2 text-center hover:scale-110 duration-200 hover:cursor-pointer cursor-pointer bg-white/80 rounded-xl p-4">
             <h2 className="text-5xl sm:text-5xl md:text-7xl font-black font-poppins">0<span className="text-special">2</span></h2>
-            <p className="text-xl sm:text-2xl font-semibold font-poppins"><span className="text-special">Lock</span> the <span className="text-special">Deal</span></p>
-            <p className="max-w-md text-sec mx-auto text-xs sm:text-base">We discuss your goals and gather key info for the project.</p>
+            <p className="text-xl sm:text-2xl font-semibold font-poppins">
+              <span className="text-special">Lock</span> the <span className="text-special">Deal</span>
+            </p>
+            <p className="max-w-md text-sec mx-auto text-xs sm:text-base">
+              We agree on scope, timeline, and budget to start the project.
+            </p>
           </div>
           <div className="flex flex-col gap-2 text-center hover:scale-110 duration-200 hover:cursor-pointer cursor-pointer bg-white/80 rounded-xl p-4">
             <h2 className="text-5xl sm:text-5xl md:text-7xl font-black font-poppins">03</h2>
             <p className="text-xl sm:text-2xl font-semibold font-poppins">Design</p>
-            <p className="max-w-md text-sec mx-auto text-xs sm:text-base">We discuss your goals and gather key info for the project.</p>
+            <p className="max-w-md text-sec mx-auto text-xs sm:text-base">
+              We create modern, user-friendly designs for your brand.
+            </p>
           </div>
           <div className="flex flex-col gap-2 text-center hover:scale-110 duration-200 hover:cursor-pointer cursor-pointer bg-white/80 rounded-xl p-4">
             <h2 className="text-5xl sm:text-5xl md:text-7xl font-black font-poppins">0<span className="text-special">4</span></h2>
-            <p className="text-xl sm:text-2xl font-semibold font-poppins"><span className="text-special">Build</span> & <span className="text-special">Launch</span></p>
-            <p className="max-w-md text-sec mx-auto text-xs sm:text-base">We discuss your goals and gather key info for the project.</p>
+            <p className="text-xl sm:text-2xl font-semibold font-poppins">
+              <span className="text-special">Build</span> & <span className="text-special">Launch</span>
+            </p>
+            <p className="max-w-md text-sec mx-auto text-xs sm:text-base">
+              We develop, test, and launch your website quickly and smoothly.
+            </p>
           </div>
         </div>
       </section>
