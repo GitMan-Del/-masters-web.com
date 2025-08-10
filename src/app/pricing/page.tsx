@@ -39,7 +39,7 @@ export default function PricingPage() {
                   High-converting single pages designed to capture leads and drive sales. Perfect for marketing campaigns.
                 </p>
                 <div className="mb-6">
-                  <span className="text-4xl font-bold text-main">€400</span>
+                  <span className="text-4xl font-bold text-main">€500</span>
                   <p className="text-sm text-sec mt-1">Starting Price</p>
                 </div>
               </div>
