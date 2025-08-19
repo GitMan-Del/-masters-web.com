@@ -318,27 +318,31 @@ export default function Home() {
                   AutoBots oferă afacerilor locale superputeri automatizează rezervările, mesajele și...
                 </p>
                 <div className="text-white text-xs font-medium hover:underline cursor-pointer">
+                <Link href="https://autobots-three.vercel.app/">
                   See more <span>→</span>
+                  </Link>
                 </div>
               </div>
 
               {/* Rururier Card - Mobile */}
-              <div className="relative bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl p-4 text-white w-full max-w-xs transform -rotate-2 hover:rotate-0 transition-all duration-300 shadow-lg">
+              <div className="relative bg-gradient-to-br from-pink-500 to-indigo-600 rounded-2xl p-4 text-white w-full max-w-xs transform -rotate-2 hover:rotate-0 transition-all duration-300 shadow-lg">
                 <div className="bg-white rounded-xl p-2 mb-3 h-32 overflow-hidden">
                   <Image 
                     src="/opengraf-image.png" 
-                    alt="Rururier website preview" 
+                    alt="AnimeAstral website preview" 
                     width={250} 
                     height={120}
                     className="w-full h-full object-cover rounded-lg"
                   />
                 </div>
-                <h3 className="text-lg font-bold mb-2">Rururier</h3>
-                <p className="text-blue-100 text-xs mb-3 leading-relaxed">
-                  Rururier - Ouverture de porte rapide, damage de serrure et déplacement de cylindre, urgence, interventions assurées 24h/24 et 7j/7
+                <h3 className="text-lg font-bold mb-2">AnimeAstral</h3>
+                <p className="text-pink-100 text-xs mb-3 leading-relaxed">
+                  AnimeAstral is your gateway to free anime streaming. Enjoy a huge library of anime titles, all for free, with a clean and modern interface.
                 </p>
                 <div className="text-white text-xs font-medium hover:underline cursor-pointer">
+                <Link href="https://animeastral.com/">
                   See more <span>→</span>
+                  </Link>
                 </div>
               </div>
 
@@ -358,7 +362,9 @@ export default function Home() {
                   Create, Send, and Track Beautiful Invitations Effortlessly...
                 </p>
                 <div className="text-white text-xs font-medium hover:underline cursor-pointer">
+                  <Link href="https://inviltyhub-invitlyhubs-projects.vercel.app/">
                   See more <span>→</span>
+                  </Link>
                 </div>
               </div>
 
@@ -383,27 +389,31 @@ export default function Home() {
                   AutoBots oferă afacerilor locale superputeri automatizează rezervările, mesajele și...
                 </p>
                 <div className="text-white text-sm font-medium hover:underline cursor-pointer">
+                <Link href="https://autobots-three.vercel.app/">
                   See more <span>→</span>
+                  </Link>
                 </div>
               </div>
 
-              {/* Rururier Card - Desktop */}
+              {/* Anime Astral Card - Desktop */}
               <div className="relative bg-gradient-to-br from-blue-400 to-blue-600 rounded-3xl p-6 text-white w-80 h-96 transform -rotate-6 hover:rotate-0 transition-all duration-500 shadow-2xl z-20 -ml-12">
                 <div className="bg-white rounded-xl p-3 mb-4 h-40 overflow-hidden">
                   <Image 
                     src="/opengraf-image.png" 
-                    alt="Rururier website preview" 
+                    alt="AnimeAstral website preview" 
                     width={300} 
                     height={180}
                     className="w-full h-full object-cover rounded-lg"
                   />
                 </div>
-                <h3 className="text-2xl font-bold mb-3">Rururier</h3>
+                <h3 className="text-2xl font-bold mb-3">AnimeAstral</h3>
                 <p className="text-blue-100 text-sm mb-4 leading-relaxed">
-                  Rururier - Ouverture de porte rapide, damage de serrure et déplacement de cylindre, urgence, interventions assurées 24h/24 et 7j/7
+                AnimeAstral is your gateway to free anime streaming. Enjoy a huge library of anime titles, all for free, with a clean and modern interface.
                 </p>
                 <div className="text-white text-sm font-medium hover:underline cursor-pointer">
+                <Link href="https://animeastral.com/">
                   See more <span>→</span>
+                  </Link>
                 </div>
               </div>
 
@@ -426,10 +436,8 @@ export default function Home() {
                   See more <span>→</span>
                 </div>
               </div>
-
             </div>
           </div>
-
         </div>
       </section>
 
@@ -1109,7 +1117,7 @@ export default function Home() {
             </Link>
        </section>
       
-      {/* Banner mov la final */}
+      {/* Banner mov */}
       <div style={{ width: "100%", height: "40px", background: "var(--bg-btn-active)", zIndex: 100, position: "relative", overflow: "hidden", display: "flex", alignItems: "center" }}>
         <div
           style={{
@@ -1163,9 +1171,6 @@ export default function Home() {
           }
         `}</style>
        </div>
-
-      
-      
 
         <Footer />
       </div>

@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { Linkedin, Instagram, Clock } from "lucide-react";
+import { Instagram, Clock } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 export default function Footer() { 
@@ -45,13 +45,6 @@ export default function Footer() {
             >
               <Instagram className="w-5 h-5 text-main hover:text-btn-text transition" />
             </Link>
-            <Link 
-              href="https://www.linkedin.com/in/masterswebcom/" 
-              className="bg-social-btn p-2 rounded-full hover-social-btn transition"
-              aria-label="Visit MastersWeb on LinkedIn"
-            >
-              <Linkedin className="w-5 h-5 text-main hover:text-btn-text transition" />
-            </Link>
           </div>
         </div>
         {/* Quick Links */}
@@ -70,7 +63,7 @@ export default function Footer() {
           <h3 className="text-lg mb-3">Contact</h3>
           <ul className="flex flex-col gap-2 text-sec text-sm">
             <li><Link href="mailto:masterswebcom@gmail.com" className="hover:text-special transition hover:underline hover:cursor-pointer">masterswebcom@gmail.com</Link></li>
-            <li><Link href="tel:+33659514692" className="hover:text-special transition hover:underline hover:cursor-pointer">+33659514692</Link></li>
+            <li><Link href="tel:+40728191220" className="hover:text-special transition hover:underline hover:cursor-pointer">+40728191220</Link></li>
             <li><Link href="https://www.google.com/maps/place/54-56+Avenue+Hoche/@48.8833333,2.3166667,17z/data=!3m1!4b1!4m6!3m5!1s0x47e66e145a7892e1:0x818236856b889e46!8m2!3d48.8833333!4d2.3166667!16s%2Fg%2F11c48t4kgb?entry=ttu&g_ep=EgoyMDI1MDIyMi4wIKXMDSoASAFQAw%3D%3D" className="hover:text-special transition hover:underline hover:cursor-pointer">54-56 avenue Hoche 75008 Paris
             REGUS PARIS SAS</Link></li>
             <li><Link href="https://www.instagram.com/masterswebcom/" className="hover:text-special transition hover:underline hover:cursor-pointer">Instagram</Link></li>
