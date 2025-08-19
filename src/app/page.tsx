@@ -318,7 +318,7 @@ export default function Home() {
                   AutoBots oferă afacerilor locale superputeri automatizează rezervările, mesajele și...
                 </p>
                 <div className="text-white text-xs font-medium hover:underline cursor-pointer">
-                <Link href="https://autobots-three.vercel.app/">
+                <Link target="_blank" href="https://autobots-three.vercel.app/">
                   See more <span>→</span>
                   </Link>
                 </div>
@@ -340,7 +340,7 @@ export default function Home() {
                   AnimeAstral is your gateway to free anime streaming. Enjoy a huge library of anime titles, all for free, with a clean and modern interface.
                 </p>
                 <div className="text-white text-xs font-medium hover:underline cursor-pointer">
-                <Link href="https://animeastral.com/">
+                <Link target="_blank" href="https://animeastral.com/">
                   See more <span>→</span>
                   </Link>
                 </div>
@@ -362,7 +362,7 @@ export default function Home() {
                   Create, Send, and Track Beautiful Invitations Effortlessly...
                 </p>
                 <div className="text-white text-xs font-medium hover:underline cursor-pointer">
-                  <Link href="https://inviltyhub-invitlyhubs-projects.vercel.app/">
+                  <Link target="_blank" href="https://inviltyhub-invitlyhubs-projects.vercel.app/">
                   See more <span>→</span>
                   </Link>
                 </div>
@@ -389,7 +389,7 @@ export default function Home() {
                   AutoBots oferă afacerilor locale superputeri automatizează rezervările, mesajele și...
                 </p>
                 <div className="text-white text-sm font-medium hover:underline cursor-pointer">
-                <Link href="https://autobots-three.vercel.app/">
+                <Link target="_blank" href="https://autobots-three.vercel.app/">
                   See more <span>→</span>
                   </Link>
                 </div>
@@ -411,7 +411,7 @@ export default function Home() {
                 AnimeAstral is your gateway to free anime streaming. Enjoy a huge library of anime titles, all for free, with a clean and modern interface.
                 </p>
                 <div className="text-white text-sm font-medium hover:underline cursor-pointer">
-                <Link href="https://animeastral.com/">
+                <Link target="_blank" href="https://animeastral.com/">
                   See more <span>→</span>
                   </Link>
                 </div>
@@ -433,7 +433,9 @@ export default function Home() {
                   Create, Send, and Track Beautiful Invitations Effortlessly...
                 </p>
                 <div className="text-white text-sm font-medium hover:underline cursor-pointer">
+                <Link target="_blank" href="https://inviltyhub-invitlyhubs-projects.vercel.app/">
                   See more <span>→</span>
+                  </Link>
                 </div>
               </div>
             </div>
