@@ -25,7 +25,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="w-full bg-main border-t border-btn/30 pt-16 pb-6 px-4 md:px-16 relative z-10 text-main">
+    <footer className="w-full bg-main  pt-16 pb-6 px-4 md:px-16 relative z-10 text-main">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
         {/* Logo & Description */}
         <div className="flex flex-col gap-4">

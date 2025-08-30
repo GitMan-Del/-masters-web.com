@@ -74,7 +74,7 @@ export default function Home() {
             <div className="flex flex-row gap-3 md:gap-8 mb-8 z-50 w-full justify-start md:justify-start overflow-x-auto no-scrollbar py-2 px-4 md:px-0">
               <div className="min-w-[80px] bg-white/80 rounded-xl shadow p-3 flex flex-col items-center justify-center flex-shrink-0">
                 <div className="text-3xl sm:text-4xl md:text-6xl font-black text-main">99%</div>
-                <div className="max-w-[300px] text-sec text-xs sm:text-sm text-center mt-1">delivery rate — because we plan, execute and communicate with clarity.</div>
+                <div className="max-w-[300px] text-sec text-xs sm:text-sm text-center mt-1">delivery rate , because we plan, execute and communicate with clarity.</div>
           </div> 
               <div className="min-w-[80px] bg-white/80 rounded-xl shadow p-3 flex flex-col items-center justify-center flex-shrink-0">
                 <div className="text-3xl sm:text-4xl md:text-6xl font-black text-main">200+</div>
