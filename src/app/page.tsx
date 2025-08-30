@@ -399,9 +399,9 @@ export default function Home() {
               <div className="relative bg-gradient-to-br from-blue-400 to-blue-600 rounded-3xl p-6 text-white w-80 h-96 transform -rotate-6 hover:rotate-0 transition-all duration-500 shadow-2xl z-20 -ml-12">
                 <div className="bg-white rounded-xl p-3 mb-4 h-40 overflow-hidden">
                   <Image 
-                    src="/opengraf-image.png" 
+                    src="/opengraf-image.png"
                     alt="AnimeAstral website preview" 
-                    width={300} 
+                    width={300}
                     height={180}
                     className="w-full h-full object-cover rounded-lg"
                   />
@@ -411,7 +411,7 @@ export default function Home() {
                 AnimeAstral is your gateway to free anime streaming. Enjoy a huge library of anime titles, all for free, with a clean and modern interface.
                 </p>
                 <div className="text-white text-sm font-medium hover:underline cursor-pointer">
-                <Link target="_blank" href="https://animeastral.com/">
+                <Link target="_blank" href="https://anime-astral.vercel.app/">
                   See more <span>→</span>
                   </Link>
                 </div>
@@ -511,7 +511,7 @@ export default function Home() {
               </div>
               <h3 className="text-2xl font-bold text-main mb-3">Multi-Page Website</h3>
               <p className="text-sec mb-6 leading-relaxed">
-                Complete business websites with CMS, multiple pages, and all the features growing companies need to establish their online presence.
+                Complete business websites developed from the ground up with fully custom code, including multiple pages and a built-in content management system. Designed to deliver all the essential features that growing companies need to build and strengthen their online presence.
               </p>
               <div className="flex flex-wrap gap-2 mb-6">
                 <span className="text-xs bg-btn-active/10 text-main px-3 py-1 rounded-full">CMS Included</span>
@@ -899,9 +899,7 @@ export default function Home() {
                   <p className="text-gray-300 text-sm mb-4">
                     Comprehensive infrastructure security patches and system upgrades.
                   </p>
-                  <div className="text-white text-sm font-medium hover:underline cursor-pointer">
-                    See more →
-                  </div>
+                  
                 </div>
 
                 {/* Performance Optimization Card */}
@@ -910,9 +908,7 @@ export default function Home() {
                   <p className="text-gray-700 text-sm mb-4">
                     We keep your website fast and responsive with speed checks and improvements.
                   </p>
-                  <div className="text-black text-sm font-medium hover:underline cursor-pointer">
-                    See more →
-                  </div>
+                 
                 </div>
 
                 {/* Content & Edits Card */}
@@ -921,9 +917,6 @@ export default function Home() {
                   <p className="text-gray-700 text-sm mb-4">
                     Need to change text, images, or layouts? We handle it fast and reliably.
                   </p>
-                  <div className="text-black text-sm font-medium hover:underline cursor-pointer">
-                    See more →
-                  </div>
                 </div>
 
                 {/* Priority Support Card */}
@@ -932,9 +925,7 @@ export default function Home() {
                   <p className="text-purple-100 text-sm mb-4">
                     Get expert help within 24h - Whatever you need: updates, fixes, or advice.
                   </p>
-                  <div className="text-white text-sm font-medium hover:underline cursor-pointer">
-                    See more →
-                  </div>
+                  
                 </div>
 
               </div>

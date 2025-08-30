@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 import SignInClient from "./siverside/SignInClient";
 
 const navLinks = [
-  { name: "Home", href: "#home" },
+  { name: "Home", href: "/" },
   { name: "Process", href: "#process" },
   { name: "Projects", href: "#projects" },
   { name: "Stack", href: "#stack" },

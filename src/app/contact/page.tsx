@@ -165,11 +165,11 @@ export default function Contact() {
           </div> 
               <div className="min-w-[80px] bg-white/80 rounded-xl shadow p-3 flex flex-col items-center justify-center flex-shrink-0">
                 <div className="text-3xl sm:text-4xl md:text-6xl font-black text-main">1h Avg.</div>
-                <div className="max-w-[300px] text-sec text-xs sm:text-sm text-center mt-1">Whether it&apos;s through email or our contact form, we respond fast — because time matters.</div>
+                <div className="max-w-[300px] text-sec text-xs sm:text-sm text-center mt-1">We always respond quickly, no matter how you contact us. Your time is important to us.</div>
             </div>
               <div className="min-w-[80px] bg-white/80 rounded-xl shadow p-3 flex flex-col items-center justify-center flex-shrink-0">
                 <div className="text-3xl sm:text-4xl md:text-6xl font-black text-main">3.</div>
-                <div className="max-w-[300px] text-sec text-xs sm:text-sm text-center mt-1">Call, email, or use the contact form — pick what suits you best, and get a fast reply.</div>
+                <div className="max-w-[300px] text-sec text-xs sm:text-sm text-center mt-1">Call or email, pick what suits you best, and get a fast reply.</div>
             </div>
             </div>
             <div className="w-10 h-10 items-center justify-center rounded-full bg-transparent border border-[var(--text-main)] absolute bottom-5 right-1/2 p-3 hidden md:flex">

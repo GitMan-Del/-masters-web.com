@@ -1,6 +1,7 @@
 "use client";
 import NavBar from "../components/Navbar"
 import Footer from "../components/Footer"
+import Link from "next/link";
 import { useEffect } from "react"
 
 export default function PricingPage() {
@@ -72,12 +73,7 @@ export default function PricingPage() {
                 </li>
               </ul>
               
-              <button className="btn-modern w-full flex items-center gap-5 min-h-[56px]" aria-label="Choose Landing Page plan for €400">
-                <span className="btn-text-content">Choose Plan</span>
-                <div className="btn-circle">
-                  <span>→</span>
-                </div>
-              </button>
+             
             </div>
 
             {/* Multi-page Website Plan */}
@@ -128,12 +124,7 @@ export default function PricingPage() {
                 </li>
               </ul>
               
-              <button className="btn-modern w-full flex items-center gap-5 min-h-[56px]" aria-label="Choose Multi-page Website plan for €900">
-                <span className="btn-text-content">Choose Plan</span>
-                <div className="btn-circle">
-                  <span>→</span>
-                </div>
-              </button>
+             
             </div>
 
             {/* Ecommerce Plan */}
@@ -180,12 +171,7 @@ export default function PricingPage() {
                 </li>
               </ul>
               
-              <button className="btn-modern w-full flex items-center gap-5 min-h-[56px]" aria-label="Choose Ecommerce Store plan for €1500">
-                <span className="btn-text-content">Choose Plan</span>
-                <div className="btn-circle">
-                  <span>→</span>
-                </div>
-              </button>
+             
             </div>
 
             {/* SaaS & Custom Apps Plan */}
@@ -281,12 +267,16 @@ export default function PricingPage() {
                     <span className="text-2xl sm:text-3xl font-bold text-main">Enterprise</span>
                     <p className="text-sm text-sec">Custom Quote</p>
                   </div>
-                  <button className="btn-modern flex items-center gap-3 sm:gap-5 min-h-[48px] sm:min-h-[56px] w-full sm:w-auto justify-center sm:justify-start" aria-label="Contact us for Enterprise project pricing">
+                  <Link
+                    href="tel:+40728191220"
+                    className="btn-modern flex items-center gap-3 sm:gap-5 min-h-[48px] sm:min-h-[56px] w-full sm:w-auto justify-center sm:justify-start"
+                    aria-label="Call us for Enterprise project pricing"
+                  >
                     <span className="btn-text-content text-sm sm:text-base">Contact Us</span>
                     <div className="btn-circle">
                       <span>→</span>
                     </div>
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
