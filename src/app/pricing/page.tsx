@@ -289,7 +289,7 @@ export default function PricingPage() {
                     <p className="text-sm text-sec">Get a custom quote</p>
                   </div>
                   <Link
-                    href="tel:+336594692"
+                    href="tel:336594692"
                     className="btn-modern flex items-center gap-3 sm:gap-5 min-h-[48px] sm:min-h-[56px] w-full sm:w-auto justify-center sm:justify-start"
                     aria-label="Call us for custom project pricing"
                   >
