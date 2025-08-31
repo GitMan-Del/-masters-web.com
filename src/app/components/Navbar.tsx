@@ -12,7 +12,6 @@ const navLinks = [
   { name: "Process", href: "#process" },
   { name: "Projects", href: "#projects" },
   { name: "Stack", href: "#stack" },
-  // { name: "Dashboard", href: "/dashboard" }, // Removed as per instruction
   { name: "Contact", href: "/contact" },
 ];
 
@@ -72,13 +71,13 @@ export default function NavBar() {
         </div>
         {/* Desktop links */}
         <ul className="hidden md:flex p-2">
-          <li className="space-x-5 text-sec text-md flex items-center">
+          <li className="space-x-5 text-sec text-sm flex items-center">
             {navLinks.map((link) => (
               link.href.startsWith('/') ? (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="text-main hover:text-special transition text-base sm:text-lg cursor-pointer"
+                  className="text-main hover:text-special transition cursor-pointer"
                   onClick={() => setOpen(false)}
                 >
                   {link.name}
@@ -86,7 +85,7 @@ export default function NavBar() {
               ) : (
                 <a
                   key={link.name}
-                  className="text-main hover:text-special transition text-base sm:text-lg cursor-pointer"
+                  className="text-main hover:text-special transition  cursor-pointer"
                   onClick={() => handleLinkClick(link.href)}
                 >
                   {link.name}

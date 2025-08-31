@@ -115,7 +115,7 @@ export default React.memo(function WebsitePerformanceContainer() {
           />
         </svg>
         <div className="absolute inset-0 flex items-center justify-center">
-          <span className={`text-xl font-bold ${hasProjects ? 'text-gray-900' : 'text-gray-400'}`}>
+          <span className={`text-5xl font-bold ${hasProjects ? 'text-gray-900' : 'text-gray-400'}`}>
             {unit === 's' ? score : Math.round(score)}{unit || ''}
           </span>
         </div>

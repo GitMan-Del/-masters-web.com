@@ -176,7 +176,7 @@ export default function ProjectsPage() {
 
           {/* Desktop Header */}
           <div className="hidden lg:block mb-8">
-            <h1 className="text-3xl font-bold text-gray-900">My Projects</h1>
+            <h1 className="text-5xl font-bold text-gray-900">My Projects</h1>
             <p className="text-gray-600 mt-2">Manage all your projects</p>
           </div>
 
@@ -201,7 +201,7 @@ export default function ProjectsPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                 </svg>
               </div>
-              <h3 className="text-lg sm:text-xl font-medium text-gray-900 mb-2">You don&apos;t have any projects yet</h3>
+              <h3 className="text-lg sm:text-5xl font-medium text-gray-900 mb-2">You don&apos;t have any projects yet</h3>
               <p className="text-gray-500 mb-4 text-sm sm:text-base px-4">Create your first project to get started.</p>
               <button 
                 onClick={() => router.push('/dashboard')}
@@ -297,7 +297,7 @@ export default function ProjectsPage() {
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-3">
-                          <h3 className="text-xl font-semibold text-gray-900">{project.name}</h3>
+                          <h3 className="text-5xl font-semibold text-gray-900">{project.name}</h3>
                           {getStatusBadge(project.status)}
                         </div>
                         
@@ -387,7 +387,7 @@ export default function ProjectsPage() {
       {showDeleteConfirm && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-xl p-4 sm:p-6 w-full max-w-md mx-4">
-            <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-4">Delete Confirmation</h3>
+            <h3 className="text-lg sm:text-5xl font-semibold text-gray-900 mb-4">Delete Confirmation</h3>
             <p className="text-gray-600 mb-6 text-sm sm:text-base">
               Are you sure you want to delete this project? This action cannot be undone.
             </p>

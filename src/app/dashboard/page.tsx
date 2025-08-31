@@ -159,7 +159,7 @@ function DashboardContent({
             {/* Mobile Dashboard Title */}
             <div className="flex items-center justify-between">
               <div>
-                <h1 className="text-xl font-bold text-gray-900">Dashboard</h1>
+                <h1 className="text-5xl font-bold text-gray-900">Dashboard</h1>
                 <p className="text-xs text-gray-500">Project overview & analytics</p>
               </div>
               <div className="flex gap-1">

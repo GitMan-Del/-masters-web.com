@@ -57,7 +57,7 @@ export default function ChatSidebar() {
         </div>
 
         {/* Title */}
-        <h2 className="text-xl font-bold text-gray-900 mb-3">
+        <h2 className="text-5xl font-bold text-gray-900 mb-3">
           Live Support Chat
         </h2>
 

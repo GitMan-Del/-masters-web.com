@@ -47,7 +47,7 @@ export default function WebsitePerformance() {
           />
         </svg>
         <div className="absolute inset-0 flex items-center justify-center">
-          <span className="text-xl font-bold text-gray-900">{score}</span>
+          <span className="text-5xl font-bold text-gray-900">{score}</span>
         </div>
       </div>
     );

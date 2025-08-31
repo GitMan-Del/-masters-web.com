@@ -120,7 +120,7 @@ export default function Contact() {
                 </div>
                 <p>Let&apos;s talk about your project</p>
               </div>
-              <h1 className="text-main text-4xl sm:text-5xl md:text-7xl font-bold leading-tight">
+              <h1 className="text-main text-2xl sm:text-5xl md:text-5xl font-bold leading-tight">
                 <span className="text-special">LET&apos;S TALK </span>
                 ABOUT YOUR NEXT WEBSITE BUILT
                 <span className="text-special"> FAST</span>, DESIGNED TO PERFORM, AND 
@@ -129,7 +129,7 @@ export default function Contact() {
               <p className="text-sec max-w-xs sm:max-w-md md:max-w-2xl text-base sm:text-lg mx-auto md:mx-0">Whether it&apos;s a landing page, SaaS platform, or something custom, we&apos;ll help you launch smarter. Get in touch today.</p>
               <div className="flex flex-col sm:flex-row gap-5 items-center mt-6">
               <Link
-                href="https://wa.me/+40728191220"
+                href="https://wa.me/+336594692"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-modern w-full sm:w-auto flex items-center gap-5 min-h-[56px]"
@@ -160,20 +160,20 @@ export default function Contact() {
             {/* Stats: Contact focused */}
             <div className="flex flex-row gap-3 md:gap-8 mb-8 z-50 w-full justify-start md:justify-start overflow-x-auto no-scrollbar py-2 px-4 md:px-0">
               <div className="min-w-[80px] bg-white/80 rounded-xl shadow p-3 flex flex-col items-center justify-center flex-shrink-0">
-                <div className="text-3xl sm:text-4xl md:text-6xl font-black text-main">+150</div>
+                <div className="text-5xl sm:text-2xl md:text-2xl font-black text-main">+150</div>
                 <div className="max-w-[300px] text-sec text-xs sm:text-sm text-center mt-1">We&apos;re contacted daily for web projects, redesigns, and ongoing support. We&apos;re responsive, clear, and always ready to help.</div>
           </div> 
               <div className="min-w-[80px] bg-white/80 rounded-xl shadow p-3 flex flex-col items-center justify-center flex-shrink-0">
-                <div className="text-3xl sm:text-4xl md:text-6xl font-black text-main">1h Avg.</div>
+                <div className="text-5xl sm:text-2xl md:text-2xl font-black text-main">1h Avg.</div>
                 <div className="max-w-[300px] text-sec text-xs sm:text-sm text-center mt-1">We always respond quickly, no matter how you contact us. Your time is important to us.</div>
             </div>
               <div className="min-w-[80px] bg-white/80 rounded-xl shadow p-3 flex flex-col items-center justify-center flex-shrink-0">
-                <div className="text-3xl sm:text-4xl md:text-6xl font-black text-main">3.</div>
+                <div className="text-5xl sm:text-2xl md:text-2xl font-black text-main">3.</div>
                 <div className="max-w-[300px] text-sec text-xs sm:text-sm text-center mt-1">Call or email, pick what suits you best, and get a fast reply.</div>
             </div>
             </div>
             <div className="w-10 h-10 items-center justify-center rounded-full bg-transparent border border-[var(--text-main)] absolute bottom-5 right-1/2 p-3 hidden md:flex">
-            <p className="animate-bounce text-4xl w-full h-full flex items-center justify-center">▾</p>
+            <p className="animate-bounce text-2xl w-full h-full flex items-center justify-center">▾</p>
           </div>
         </div> 
           {/* Cards section only on md+ */}

@@ -32,20 +32,20 @@ export default function Home() {
           <div className="flex-2 bg-transparent w-full h-full lg:px-[120px] px-1 flex flex-col items-center md:items-left justify-between relative z-50">
           <NavBar/>          
             <div className="flex flex-col gap-3 items-center md:items-start text-center md:text-left">
-              <div className="flex flex-row gap-2 justify-center md:justify-start" role="banner" aria-label="Company highlight">
+              <div className="flex flex-row gap-2 justify-center md:justify-start items-center" role="banner" aria-label="Company highlight">
                 <div className="w-5 h-5 rounded-[5px] flex items-center justify-center p-3 font-bold bg-btn-active" aria-hidden="true">
-                  <span className="text-btn">1</span>
+                  <span className="text-btn text-sm">1</span>
                 </div>
-              <p>Built with care and speed</p>
+              <p className="text-sm">Built with care and speed</p>
             </div>
-              <h1 className="text-main text-4xl sm:text-5xl md:text-7xl font-bold leading-tight">
+              <h1 className="text-main text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
                 <span className="text-special">Every project is </span>
               different. But the goal is 
                 <span className="text-special"> always </span>
               the same: make it work
                 <span className="text-special"> beautifully</span>.
               </h1>
-              <p className="text-sec max-w-xs sm:max-w-md md:max-w-2xl text-base sm:text-lg mx-auto md:mx-0">We turn clear ideas into fast, reliable digital products with structure, precision, and modern tools that scale.</p>
+              <p className="text-sec max-w-xs sm:max-w-md md:max-w-2xl text-base sm:text-md mx-auto md:mx-0">We turn clear ideas into fast, reliable digital products with structure, precision, and modern tools that scale.</p>
               <div className="flex flex-col sm:flex-row gap-5 items-center mt-6">
                 <Link href="/contact" className="btn-modern w-full sm:w-auto flex items-center gap-5 min-h-[56px]" aria-label="Start your web development project">
                   <span className="btn-text-content">Start your project</span>
@@ -72,17 +72,17 @@ export default function Home() {
             </div>
             {/* Stats: horizontal scroll on mobile, row on md+ */}
             <div className="flex flex-row gap-3 md:gap-8 mb-8 z-50 w-full justify-start md:justify-start overflow-x-auto no-scrollbar py-2 px-4 md:px-0">
-              <div className="min-w-[80px] bg-white/80 rounded-xl shadow p-3 flex flex-col items-center justify-center flex-shrink-0">
-                <div className="text-3xl sm:text-4xl md:text-6xl font-black text-main">99%</div>
-                <div className="max-w-[300px] text-sec text-xs sm:text-sm text-center mt-1">delivery rate , because we plan, execute and communicate with clarity.</div>
+              <div className="max-w-[230px] bg-white/80 rounded-xl shadow p-3 flex flex-col items-center justify-center flex-shrink-0">
+                <div className="text-3xl sm:text-4xl md:text-4xl font-black text-main">99%</div>
+                <div className="max-w-[300px] text-sec text-xs text-center mt-1">delivery rate , because we plan, execute and communicate with clarity.</div>
           </div> 
-              <div className="min-w-[80px] bg-white/80 rounded-xl shadow p-3 flex flex-col items-center justify-center flex-shrink-0">
-                <div className="text-3xl sm:text-4xl md:text-6xl font-black text-main">200+</div>
-                <div className="max-w-[300px] text-sec text-xs sm:text-sm text-center mt-1">Over 200 projects delivered with cohesion, speed, and consistent client clarity.</div>
+              <div className="max-w-[230px] bg-white/80 rounded-xl shadow p-3 flex flex-col items-center justify-center flex-shrink-0">
+                <div className="text-3xl sm:text-4xl md:text-4xl font-black text-main">200+</div>
+                <div className="max-w-[300px] text-sec text-xs  text-center mt-1">Over 200 projects delivered with cohesion, speed, and consistent client clarity.</div>
             </div>
-              <div className="min-w-[80px] bg-white/80 rounded-xl shadow p-3 flex flex-col items-center justify-center flex-shrink-0">
-                <div className="text-3xl sm:text-4xl md:text-6xl font-black text-main">1.</div>
-                <div className="max-w-[300px] text-sec text-xs sm:text-sm text-center mt-1">1 clear goal: to help you launch fast, with clarity and confidence without wasting time, budget or energy.</div>
+              <div className="max-w-[230px] bg-white/80 rounded-xl shadow p-3 flex flex-col items-center justify-center flex-shrink-0">
+                <div className="text-3xl sm:text-4xl md:text-4xl font-black text-main">1.</div>
+                <div className="max-w-[300px] text-sec text-xs text-center mt-1">1 clear goal: to help you launch fast, with clarity and confidence without wasting time, budget or energy.</div>
             </div>
             </div>
         </div> 
@@ -216,11 +216,11 @@ export default function Home() {
         </header>
       {/* Our Process */}
         <section id="process" className="w-full h-fit bg-main text-center flex items-center justify-center flex-col gap-3 p-4 sm:p-10">
-        <div className="flex flex-row gap-2 justify-center">
-            <div className="w-5 h-5 rounded-[5px] flex items-center justify-center p-3 font-bold bg-btn-active text-btn">2</div>
-          <p>Our Process</p>
+        <div className="flex flex-row gap-2 justify-center items-center">
+            <div className="w-5 h-5 rounded-[5px] flex items-center justify-center p-3 font-bold bg-btn-active text-btn text-sm">2</div>
+             <p className="text-sm">Our Process</p>
          </div>
-        <h2 className="text-main text-4xl sm:text-5xl md:text-7xl font-bold leading-tight">
+        <h2 className="text-main text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
            We <span className="text-special"> help you </span>
            go from idea<span className="text-special"> to launch </span> <br />
            <span className="text-special"> with clarity </span>and speed.</h2>
@@ -230,34 +230,34 @@ export default function Home() {
       <section className="w-full h-fit bg-main text-main p-4 sm:p-10 text-center items-center justify-center">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 w-full max-w-5xl mx-auto">
           <div className="flex flex-col gap-2 text-center hover:scale-110 duration-200 hover:cursor-pointer cursor-pointer bg-white/80 rounded-xl p-4">
-            <h2 className="text-5xl sm:text-5xl md:text-7xl font-black font-poppins">01</h2>
+            <h2 className="text-5xl sm:text-5xl md:text-5xl font-black font-poppins">01</h2>
             <p className="text-xl sm:text-2xl font-semibold font-poppins">Discovery</p>
-            <p className="max-w-md text-sec mx-auto text-xs sm:text-base">
+            <p className="max-w-md text-sec mx-auto text-xs sm:text-sm">
               We clarify your goals and gather all project requirements.
             </p>
           </div>
           <div className="flex flex-col gap-2 text-center hover:scale-110 duration-200 hover:cursor-pointer cursor-pointer bg-white/80 rounded-xl p-4">
-            <h2 className="text-5xl sm:text-5xl md:text-7xl font-black font-poppins">0<span className="text-special">2</span></h2>
+            <h2 className="text-5xl sm:text-5xl md:text-5xl font-black font-poppins">0<span className="text-special">2</span></h2>
             <p className="text-xl sm:text-2xl font-semibold font-poppins">
               <span className="text-special">Lock</span> the <span className="text-special">Deal</span>
             </p>
-            <p className="max-w-md text-sec mx-auto text-xs sm:text-base">
+            <p className="max-w-md text-sec mx-auto text-xs sm:text-sm">
               We agree on scope, timeline, and budget to start the project.
             </p>
           </div>
           <div className="flex flex-col gap-2 text-center hover:scale-110 duration-200 hover:cursor-pointer cursor-pointer bg-white/80 rounded-xl p-4">
-            <h2 className="text-5xl sm:text-5xl md:text-7xl font-black font-poppins">03</h2>
+            <h2 className="text-5xl sm:text-5xl md:text-5xl font-black font-poppins">03</h2>
             <p className="text-xl sm:text-2xl font-semibold font-poppins">Design</p>
-            <p className="max-w-md text-sec mx-auto text-xs sm:text-base">
+            <p className="max-w-md text-sec mx-auto text-xs sm:text-sm">
               We create modern, user-friendly designs for your brand.
             </p>
           </div>
           <div className="flex flex-col gap-2 text-center hover:scale-110 duration-200 hover:cursor-pointer cursor-pointer bg-white/80 rounded-xl p-4">
-            <h2 className="text-5xl sm:text-5xl md:text-7xl font-black font-poppins">0<span className="text-special">4</span></h2>
+            <h2 className="text-5xl sm:text-5xl md:text-5xl font-black font-poppins">0<span className="text-special">4</span></h2>
             <p className="text-xl sm:text-2xl font-semibold font-poppins">
               <span className="text-special">Build</span> & <span className="text-special">Launch</span>
             </p>
-            <p className="max-w-md text-sec mx-auto text-xs sm:text-base">
+            <p className="max-w-md text-sec mx-auto text-xs sm:text-sm">
               We develop, test, and launch your website quickly and smoothly.
             </p>
           </div>
@@ -271,19 +271,19 @@ export default function Home() {
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
           
           {/* Left Side - Text */}
-          <div className="flex-1 text-center lg:text-left">
+          <div className="text-center lg:text-left min-w-md">
             <div className="flex flex-row gap-2 mb-6 justify-center lg:justify-start">
-              <div className="w-5 h-5 rounded-[5px] flex items-center justify-center p-3 font-bold bg-btn-active text-btn">3</div>
-              <p className="text-sec">Type of project we can build</p>
+              <div className="w-5 h-5 rounded-[5px] flex items-center justify-center p-3 font-bold bg-btn-active text-btn text-sm">3</div>
+              <p className="text-sec text-sm">Type of project we can build</p>
             </div>
             
-            <h2 className="text-main text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6">
-              WE <span className="text-special">DESIGN</span> AND BUILD FAST,<br />
-              <span className="text-special">MODERN WEBSITES</span>, AND WE<br />
+            <h2 className="text-main text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6">
+              WE <span className="text-special">DESIGN</span> AND BUILD FAST,
+              <span className="text-special">MODERN WEBSITES</span>, <br/> AND WE
               ALREADY DID IT.
             </h2>
             
-            <p className="text-sec text-base sm:text-lg max-w-md mx-auto lg:mx-0 mb-8">
+            <p className="text-sec text-base sm:text-md max-w-md mx-auto lg:mx-0 mb-8">
               We don&apos;t just promise performance and clean code,
               we&apos;ve delivered it on real projects that made a difference.
             </p>
@@ -298,9 +298,9 @@ export default function Home() {
           </div>
 
           {/* Right Side - Project Cards */}
-          <div className="flex-1 relative">
+          <div className="relative">
             {/* Mobile Layout - Vertical Stack */}
-            <div className="md:hidden flex flex-col items-center gap-4 max-w-sm mx-auto">
+            <div className="flex md:flex-row flex-col items-center md:-space-x-10 max-w-full mx-auto">
               
               {/* AutoBots Card - Mobile */}
               <div className="relative bg-gradient-to-br from-purple-500 to-purple-700 rounded-2xl p-4 text-white w-full max-w-xs transform rotate-2 hover:rotate-0 transition-all duration-300 shadow-lg">
@@ -370,91 +370,22 @@ export default function Home() {
 
             </div>
 
-            {/* Desktop Layout - Overlapping Cards */}
-            <div className="hidden md:flex relative items-center justify-center">
-              
-              {/* AutoBots Card - Desktop */}
-              <div className="relative bg-gradient-to-br from-purple-500 to-purple-700 rounded-3xl p-6 text-white w-80 h-96 transform rotate-12 hover:rotate-6 transition-all duration-500 shadow-2xl z-10">
-                <div className="bg-white rounded-xl p-3 mb-4 h-40 overflow-hidden">
-                  <Image 
-                    src="/og-image.png" 
-                    alt="AutoBots website preview" 
-                    width={300} 
-                    height={180}
-                    className="w-full h-full object-cover rounded-lg"
-                  />
-                </div>
-                <h3 className="text-2xl font-bold mb-3">AutoBots</h3>
-                <p className="text-purple-100 text-sm mb-4 leading-relaxed">
-                  AutoBots oferă afacerilor locale superputeri automatizează rezervările, mesajele și...
-                </p>
-                <div className="text-white text-sm font-medium hover:underline cursor-pointer">
-                <Link target="_blank" href="https://autobots-three.vercel.app/">
-                  See more <span>→</span>
-                  </Link>
-                </div>
-              </div>
-
-              {/* Anime Astral Card - Desktop */}
-              <div className="relative bg-gradient-to-br from-blue-400 to-blue-600 rounded-3xl p-6 text-white w-80 h-96 transform -rotate-6 hover:rotate-0 transition-all duration-500 shadow-2xl z-20 -ml-12">
-                <div className="bg-white rounded-xl p-3 mb-4 h-40 overflow-hidden">
-                  <Image 
-                    src="/opengraf-image.png"
-                    alt="AnimeAstral website preview" 
-                    width={300}
-                    height={180}
-                    className="w-full h-full object-cover rounded-lg"
-                  />
-                </div>
-                <h3 className="text-2xl font-bold mb-3">AnimeAstral</h3>
-                <p className="text-blue-100 text-sm mb-4 leading-relaxed">
-                AnimeAstral is your gateway to free anime streaming. Enjoy a huge library of anime titles, all for free, with a clean and modern interface.
-                </p>
-                <div className="text-white text-sm font-medium hover:underline cursor-pointer">
-                <Link target="_blank" href="https://anime-astral.vercel.app/">
-                  See more <span>→</span>
-                  </Link>
-                </div>
-              </div>
-
-              {/* InvityHub Card - Desktop */}
-              <div className="relative bg-gradient-to-br from-gray-800 to-black rounded-3xl p-6 text-white w-80 h-96 transform rotate-12 hover:rotate-6 transition-all duration-500 shadow-2xl z-10 -ml-12">
-                <div className="bg-white rounded-xl p-3 mb-4 h-40 overflow-hidden">
-                  <Image 
-                    src="/landing-page.png" 
-                    alt="InvityHub website preview" 
-                    width={300} 
-                    height={180}
-                    className="w-full h-full object-cover rounded-lg"
-                  />
-                </div>
-                <h3 className="text-2xl font-bold mb-3">InvityHub</h3>
-                <p className="text-gray-300 text-sm mb-4 leading-relaxed">
-                  Create, Send, and Track Beautiful Invitations Effortlessly...
-                </p>
-                <div className="text-white text-sm font-medium hover:underline cursor-pointer">
-                <Link target="_blank" href="https://inviltyhub-invitlyhubs-projects.vercel.app/">
-                  See more <span>→</span>
-                  </Link>
-                </div>
-              </div>
-            </div>
+          
           </div>
         </div>
       </section>
 
       {/* Plans */}
       <section id="plans" className="w-full h-fit bg-white py-16 px-4 sm:px-10 md:px-[120px]">
-        <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="flex flex-col items-center justify-center text-center mb-16">
             <div className="flex flex-row gap-2 justify-center items-center mb-6">
-              <div className="w-5 h-5 rounded-[5px] flex items-center justify-center p-3 font-bold bg-btn-active text-btn">
+              <div className="w-5 h-5 rounded-[5px] flex items-center justify-center p-3 font-bold bg-btn-active text-btn text-sm">
                 4
               </div>
-              <p className="text-main">Our plans</p>
+              <p className="text-main text-sm">Our plans</p>
             </div>
-            <h2 className="text-main text-4xl sm:text-5xl md:text-7xl mb-6 flex flex-col items-center justify-center text-center">
+            <h2 className="text-main text-4xl sm:text-5xl md:text-6xl mb-6 flex flex-col items-center justify-center text-center">
               <span>
                 Choose the <span className="text-special">perfect solution</span>
               </span>
@@ -462,163 +393,112 @@ export default function Home() {
                 for <span className="text-special">your business</span>
               </span>
             </h2>
-            <p className="text-sec max-w-2xl mx-auto text-base sm:text-lg">
+            <p className="text-sec max-w-2xl mx-auto text-base sm:text-sm">
               From landing pages to complex web applications, we deliver tailored solutions that help your business grow and succeed online.
             </p>
           </div>
-
           {/* Plans Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
-            {/* Landing Page */}
-            <div className="group bg-gray-50 hover:bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-transparent hover:border-btn-active/20">
-              <div className="flex items-center justify-between mb-6">
-                <div className="w-12 h-12 bg-btn-active rounded-xl flex items-center justify-center">
-                  <svg className="w-6 h-6 text-btn" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto px-4 py-16">
+            {/* SIMPLE */}
+            <div className="group relative bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-purple-200/50 overflow-hidden">
+              <div className="relative flex items-center justify-between mb-6">
+                <div className="w-14 h-14 bg-[var(--text-special)] rounded-2xl flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
+                  <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                   </svg>
                 </div>
-                <span className="text-special font-bold text-lg">From €400</span>
+                <span className="text-special font-bold text-xl">€200 setup</span>
               </div>
-              <h3 className="text-2xl font-bold text-main mb-3">Landing Page</h3>
-              <p className="text-sec mb-6 leading-relaxed">
-                High-converting single pages designed to capture leads and drive sales. Perfect for marketing campaigns and product launches.
+              <h3 className="text-2xl font-extrabold text-gray-900 mb-3">SIMPLE</h3>
+              <p className="text-gray-600 mb-6 leading-relaxed text-sm">
+                One-page website, delivered in 2 days. Perfect for a quick online presence.
               </p>
               <div className="flex flex-wrap gap-2 mb-6">
-                <span className="text-xs bg-btn-active/10 text-main px-3 py-1 rounded-full">Conversion-Driven</span>
-                <span className="text-xs bg-btn-active/10 text-main px-3 py-1 rounded-full">Fast Load</span>
-                <span className="text-xs bg-btn-active/10 text-main px-3 py-1 rounded-full">SEO Ready</span>
+                <span className="text-xs bg-purple-100 text-special px-3 py-1 rounded-full font-medium">1 Page</span>
+                <span className="text-xs bg-purple-100 text-special px-3 py-1 rounded-full font-medium">Fast Delivery</span>
+                <span className="text-xs bg-purple-100 text-special px-3 py-1 rounded-full font-medium">Basic SEO</span>
               </div>
-              <Link 
-                href="/pricing" 
-                className="inline-flex items-center text-main font-medium group-hover:text-special transition-colors duration-300"
+              <Link
+                href="/pricing"
+                className="inline-flex items-center text-special font-semibold group-hover:text-purple-900 transition-colors duration-300"
               >
-                View Pricing 
-                <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                View Pricing
+                <svg className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </Link>
             </div>
-
-            {/* Multi-Page Website */}
-            <div className="group bg-gray-50 hover:bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-transparent hover:border-btn-active/20">
-              <div className="flex items-center justify-between mb-6">
-                <div className="w-12 h-12 bg-btn-active rounded-xl flex items-center justify-center">
-                  <svg className="w-6 h-6 text-btn" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+            {/* BUSINESS */}
+            <div className="group relative bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border-2 border-dashed border-purple-300/50">
+              <div className="relative flex items-center justify-between mb-6">
+                <div className="w-14 h-14 bg-[var(--text-special)] rounded-2xl flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
+                  <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <rect x="3" y="7" width="18" height="13" rx="2" strokeWidth={2} stroke="currentColor" fill="none"/>
+                    <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2" strokeWidth={2} stroke="currentColor" fill="none"/>
+                    <path d="M3 13h18" strokeWidth={2} stroke="currentColor" fill="none"/>
                   </svg>
                 </div>
-                <span className="text-special font-bold text-lg">From €900</span>
+                <span className="text-special font-bold text-xl">€750 setup</span>
               </div>
-              <h3 className="text-2xl font-bold text-main mb-3">Multi-Page Website</h3>
-              <p className="text-sec mb-6 leading-relaxed">
-                Complete business websites developed from the ground up with fully custom code, including multiple pages and a built-in content management system. Designed to deliver all the essential features that growing companies need to build and strengthen their online presence.
+              <h3 className="text-2xl font-extrabold text-gray-900 mb-3">BUSINESS</h3>
+              <p className="text-gray-600 mb-6 leading-relaxed text-sm">
+                Minimum 5 pages, visual identity, and basic SEO. Ideal for growing businesses.
               </p>
               <div className="flex flex-wrap gap-2 mb-6">
-                <span className="text-xs bg-btn-active/10 text-main px-3 py-1 rounded-full">CMS Included</span>
-                <span className="text-xs bg-btn-active/10 text-main px-3 py-1 rounded-full">Blog Ready</span>
-                <span className="text-xs bg-btn-active/10 text-main px-3 py-1 rounded-full">Scalable</span>
+                <span className="text-xs bg-purple-100 text-special px-3 py-1 rounded-full font-medium">5+ Pages</span>
+                <span className="text-xs bg-purple-100 text-special px-3 py-1 rounded-full font-medium">Visual Identity</span>
+                <span className="text-xs bg-purple-100 text-special px-3 py-1 rounded-full font-medium">Basic SEO</span>
               </div>
-              <Link 
-                href="/pricing" 
-                className="inline-flex items-center text-main font-medium group-hover:text-special transition-colors duration-300"
+              <a
+                href="/pricing"
+                className="inline-flex items-center text-special font-semibold group-hover:text-purple-900 transition-colors duration-300"
               >
-                View Pricing 
-                <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                View Pricing
+                <svg className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
-              </Link>
+              </a>
             </div>
-
-            {/* Ecommerce - Featured */}
-            <div className="group bg-gradient-to-br from-btn-active/5 to-btn-active/10 hover:from-btn-active/10 hover:to-btn-active/20 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-btn-active/30 relative">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                <span className="bg-btn-active text-btn px-4 py-1 rounded-full text-sm font-bold">Most Popular</span>
-              </div>
-              <div className="flex items-center justify-between mb-6 mt-2">
-                <div className="w-12 h-12 bg-btn-active rounded-xl flex items-center justify-center">
-                  <svg className="w-6 h-6 text-btn" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+            {/* PREMIUM */}
+            <div className="group relative bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500 border-2 border-purple-300/50 overflow-hidden">
+              <div className="relative flex items-center justify-between mb-6 mt-4">
+                <div className="w-14 h-14 bg-[var(--text-special)] rounded-2xl flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
+                  <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M3 17l3-9 6 6 6-6 3 9"
+                    />
+                    <circle cx="12" cy="6" r="2" fill="currentColor" />
                   </svg>
                 </div>
-                <span className="text-special font-bold text-lg">From €1500</span>
+                <span className="text-special font-bold text-xl">€1,790 setup</span>
               </div>
-              <h3 className="text-2xl font-bold text-main mb-3">Ecommerce Store</h3>
-              <p className="text-sec mb-6 leading-relaxed">
-                Full-featured online stores with secure payments, inventory management, and everything you need to sell products online and scale your business.
+              <h3 className="text-2xl font-extrabold text-gray-900 mb-3">PREMIUM</h3>
+              <p className="text-gray-600 mb-6 leading-relaxed text-sm">
+                10 pages, marketing campaigns, and monthly maintenance. For ambitious brands.
               </p>
               <div className="flex flex-wrap gap-2 mb-6">
-                <span className="text-xs bg-btn-active/20 text-main px-3 py-1 rounded-full">Secure Payments</span>
-                <span className="text-xs bg-btn-active/20 text-main px-3 py-1 rounded-full">Inventory</span>
-                <span className="text-xs bg-btn-active/20 text-main px-3 py-1 rounded-full">Analytics</span>
+                <span className="text-xs bg-purple-200 text-special px-3 py-1 rounded-full font-medium">10 Pages</span>
+                <span className="text-xs bg-purple-200 text-special px-3 py-1 rounded-full font-medium">Campaigns</span>
+                <span className="text-xs bg-purple-200 text-special px-3 py-1 rounded-full font-medium">Monthly Maintenance</span>
               </div>
-              <Link
-                href="/pricing" 
-                className="inline-flex items-center text-main font-medium group-hover:text-special transition-colors duration-300"
+              <a
+                href="/pricing"
+                className="inline-flex items-center text-special font-semibold group-hover:text-purple-900 transition-colors duration-300"
               >
-                View Pricing 
-                <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                View Pricing
+                <svg className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
-              </Link>
-            </div>
-          </div>
-
-          {/* Additional Services */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
-            {/* SaaS / Custom */}
-            <div className="group bg-gray-50 hover:bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-transparent hover:border-btn-active/20">
-              <div className="flex items-center justify-between mb-6">
-                <div className="w-12 h-12 bg-btn-active rounded-xl flex items-center justify-center">
-                  <svg className="w-6 h-6 text-btn" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                  </svg>
-                </div>
-                <span className="text-special font-bold text-lg">Custom Quote</span>
-              </div>
-              <h3 className="text-2xl font-bold text-main mb-3">SaaS & Custom Apps</h3>
-              <p className="text-sec mb-6 leading-relaxed">
-                Custom web applications and SaaS platforms built specifically for your business needs and requirements.
-              </p>
-              <Link
-                href="/pricing" 
-                className="inline-flex items-center text-main font-medium group-hover:text-special transition-colors duration-300"
-              >
-                View Pricing 
-                <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
-            </div>
-
-            {/* Custom Projects */}
-            <div className="group bg-gray-50 hover:bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-transparent hover:border-btn-active/20">
-              <div className="flex items-center justify-between mb-6">
-                <div className="w-12 h-12 bg-btn-active rounded-xl flex items-center justify-center">
-                  <svg className="w-6 h-6 text-btn" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                  </svg>
-                </div>
-                <span className="text-special font-bold text-lg">Enterprise</span>
-              </div>
-              <h3 className="text-2xl font-bold text-main mb-3">Complex Projects</h3>
-              <p className="text-sec mb-6 leading-relaxed">
-                Enterprise-level solutions with advanced features, integrations, and dedicated support for complex business requirements.
-              </p>
-              <Link
-                href="/pricing" 
-                className="inline-flex items-center text-main font-medium group-hover:text-special transition-colors duration-300"
-              >
-                View Pricing 
-                <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
+              </a>
             </div>
           </div>
 
           {/* Bottom CTA */}
           <div className="flex flex-col items-center justify-center text-center">
-            <p className="text-sec mb-6 text-lg">
+            <p className="text-sec mb-6 text-sm">
               Not sure which solution fits your needs?
             </p>
             <Link
@@ -632,7 +512,6 @@ export default function Home() {
               </div>
             </Link>
           </div>
-        </div>
        </section>
 
       {/* Testimonials Section */}
@@ -641,12 +520,12 @@ export default function Home() {
           {/* Header */}
           <div className="flex flex-col items-center justify-center text-center mb-16">
             <div className="flex flex-row gap-2 justify-center items-center mb-6">
-              <div className="w-5 h-5 rounded-[5px] flex items-center justify-center p-3 font-bold bg-btn-active text-btn">
+              <div className="w-5 h-5 rounded-[5px] flex items-center justify-center p-3 font-bold bg-btn-active text-btn text-sm">
                 5
               </div>
-              <p className="text-main">Client testimonials</p>
+              <p className="text-main text-sm">Client testimonials</p>
             </div>
-            <h2 className="text-main text-4xl sm:text-5xl md:text-7xl mb-6 flex flex-col items-center justify-center text-center">
+            <h2 className="text-main text-4xl sm:text-5xl md:text-6xl mb-6 flex flex-col items-center justify-center text-center">
               <span>
                 Don&rsquo;t take our <span className="text-special">word for it</span>.
               </span>
@@ -654,7 +533,7 @@ export default function Home() {
                 <span className="text-special">Trust our customers</span>
               </span>
             </h2>
-            <p className="text-sec max-w-2xl mx-auto text-base sm:text-lg">
+            <p className="text-sec max-w-2xl mx-auto text-base sm:text-sm">
               Over 200 successful projects delivered. Here&rsquo;s what our clients say about working with Masters Web for their web development needs.
             </p>
           </div>
@@ -814,7 +693,7 @@ export default function Home() {
 
           {/* Bottom CTA */}
           <div className="flex flex-col items-center justify-center text-center mt-16">
-            <p className="text-sec mb-6 text-lg">
+            <p className="text-sec mb-6 text-sm">
               Ready to join our satisfied clients?
             </p>
             <Link
@@ -836,16 +715,16 @@ export default function Home() {
       <section className="w-full bg-main py-16 px-4 sm:px-10">
         <div className="max-w-6xl mx-auto text-center">
         <div className="flex flex-row gap-2 justify-center items-center mb-6">
-              <div className="w-5 h-5 rounded-[5px] flex items-center justify-center p-3 font-bold bg-btn-active text-btn">
+              <div className="w-5 h-5 rounded-[5px] flex items-center justify-center p-3 font-bold bg-btn-active text-btn text-sm">
                 6
               </div>
-              <p className="text-main">Trusted by</p>
+              <p className="text-main tetx-sm">Trusted by</p>
             </div>
-          <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
             <span className="text-special">TRUSTED BY</span> FAST-GROWING <span className="text-special">STARTUPS</span> AND<br />
             BOLD <span className="text-special">ENTREPRENEURS</span>
           </h2>
-          <p className="text-sec text-sm sm:text-base max-w-4xl mx-auto mb-12">
+          <p className="text-sec text-sm sm:text-sm max-w-4xl mx-auto mb-12">
             Over 200 businesses have trusted Masters Web to build fast, scalable, and conversion-focused 
             websites. We partner with visionaries across Europe and beyond to turn ideas into digital reality 
             with clarity, structure, and speed.
@@ -934,16 +813,16 @@ export default function Home() {
             {/* Right Side - Text */}
             <div className="flex-1 text-center lg:text-right">
               <div className="flex flex-row gap-2 mb-6 justify-center lg:justify-end">
-                <div className="w-5 h-5 rounded-[5px] flex items-center justify-center p-3 font-bold bg-btn-active text-btn">7</div>
-                <p className="text-sec">Website Maintenance</p>
+                <div className="w-5 h-5 rounded-[5px] flex items-center justify-center p-3 font-bold bg-btn-active text-btn text-sm">7</div>
+                <p className="text-sec text-sm">Website Maintenance</p>
               </div>
               
-              <h2 className="text-main text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6">
+              <h2 className="text-main text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6">
                 <span className="text-special">KEEP</span> YOUR <span className="text-special">WEBSITE</span> FAST, SECURE,<br />
                 AND <span className="text-special">UP TO DATE</span>.
               </h2>
               
-              <p className="text-sec text-base sm:text-lg max-w-md mx-auto lg:mx-0 lg:ml-auto mb-8">
+              <p className="text-sec text-base sm:text-sm max-w-md mx-auto lg:mx-0 lg:ml-auto mb-8">
                 From technical updates to content changes, our maintenance plans ensure your website stays online, optimized, and ready to convert every day.
               </p>
               
@@ -1099,7 +978,7 @@ export default function Home() {
           <div className="w-5 h-5 rounded-[5px] flex items-center justify-center p-3 font-bold bg-btn-active text-btn">8</div>
           <p>Our Tech Stack</p>
           </div>
-        <h2 className="text-main text-4xl sm:text-5xl md:text-7xl text-center">We use <span className="text-special">modern</span>, <span className="text-special"> scalable</span>, and lightning-fast <span className="text-special"> technologies to build your product </span> the right way.</h2>
+        <h2 className="text-main text-4xl sm:text-5xl md:text-6xl text-center">We use <span className="text-special">modern</span>, <span className="text-special"> scalable</span>, and lightning-fast <span className="text-special"> technologies to build your product </span> the right way.</h2>
         <p className="text-sec max-w-xs sm:max-w-md md:max-w-[700px] text-center mx-auto">Built with the exact same tools used by top startups, agencies, and product teams to ship fast, scale efficiently, and stay ahead of the curve.</p>
         <Link href="/contact" className="btn-modern w-fit  flex items-center gap-5 min-h-[56px] mt-4" aria-label="Contact us for your web development project">
               <span className="btn-text-content">Contact us</span>

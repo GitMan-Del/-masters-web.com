@@ -20,7 +20,7 @@ export default function EmptyProjectCard({ onCreateProject }: EmptyProjectCardPr
 
       {/* Content */}
       <div className="text-center">
-        <h3 className="text-xl font-semibold text-gray-900 mb-2">
+        <h3 className="text-5xl font-semibold text-gray-900 mb-2">
           Create Your First Project
         </h3>
         <p className="text-gray-500 text-sm mb-6 leading-relaxed">
