@@ -279,7 +279,7 @@ export default function Home() {
             
             <h2 className="text-main text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6">
               WE <span className="text-special">DESIGN</span> AND BUILD FAST,
-              <span className="text-special">MODERN WEBSITES</span>, <br/> AND WE
+              <span className="text-special"> MODERN WEBSITES</span>, <br/> AND WE
               ALREADY DID IT.
             </h2>
             
@@ -299,10 +299,8 @@ export default function Home() {
 
           {/* Right Side - Project Cards */}
           <div className="relative">
-            {/* Mobile Layout - Vertical Stack */}
             <div className="flex md:flex-row flex-col items-center md:-space-x-10 max-w-full mx-auto">
               
-              {/* AutoBots Card - Mobile */}
               <div className="relative bg-gradient-to-br from-purple-500 to-purple-700 rounded-2xl p-4 text-white w-full max-w-xs transform rotate-2 hover:rotate-0 transition-all duration-300 shadow-lg">
                 <div className="bg-white rounded-xl p-2 mb-3 h-32 overflow-hidden">
                   <Image 
@@ -324,7 +322,6 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Rururier Card - Mobile */}
               <div className="relative bg-gradient-to-br from-pink-500 to-indigo-600 rounded-2xl p-4 text-white w-full max-w-xs transform -rotate-2 hover:rotate-0 transition-all duration-300 shadow-lg">
                 <div className="bg-white rounded-xl p-2 mb-3 h-32 overflow-hidden">
                   <Image 
