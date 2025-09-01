@@ -234,7 +234,7 @@ export default React.memo(function WebsitePerformanceContainer() {
             />
           </svg>
         </div>
-        <h3 className="text-2xl text-gray-900">Website Performance</h3>
+        <h3 className="text-xl text-gray-900">Website Performance</h3>
       </div>
 
       <div className="grid grid-cols-2 gap-6">
