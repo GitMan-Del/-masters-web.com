@@ -49,7 +49,7 @@ export default function ProjectCard({ project, lighthouseData }: ProjectCardProp
   const statusInfo = getStatusInfo(project.status);
 
   return (
-    <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 hover:shadow-lg transition-shadow duration-300">
+    <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 hover:shadow-lg transition-shadow duration-300 h-full">
       {/* Header with status indicator */}
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center space-x-3">

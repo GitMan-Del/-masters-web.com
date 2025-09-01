@@ -17,7 +17,7 @@ export default React.memo(function ProjectCardContainer({
   // Smaller skeleton loader
   if (loading) {
     return (
-      <div className="bg-white rounded-lg p-3 shadow-sm border border-gray-200">
+      <div className="bg-white rounded-lg p-3 shadow-sm border border-gray-200 h-full">
         <div className="animate-pulse">
           <div className="flex items-start justify-between mb-2">
             <div className="flex items-center space-x-2">
