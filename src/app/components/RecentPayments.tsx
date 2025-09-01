@@ -125,9 +125,9 @@ export default function RecentPayments() {
       <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4 sm:p-6">
         <div className="flex items-center gap-3 mb-6">
           <div className="p-2 bg-blue-50 rounded-lg">
-            <CreditCard className="w-5 h-5 text-blue-600" />
+            <CreditCard className="w-6 h-6 text-blue-600" />
           </div>
-          <h2 className="text-xl font-semibold text-gray-900">Recent Payments</h2>
+          <h2 className="text-md font-semibold text-gray-900">Total of:</h2>
         </div>
         <div className="space-y-3">
           {[...Array(3)].map((_, i) => (

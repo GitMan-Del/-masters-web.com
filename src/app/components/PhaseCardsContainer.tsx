@@ -192,7 +192,7 @@ export default React.memo(function PhaseCardsContainer() {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v6a2 2 0 002 2h2m0 0h2m0 0h2a2 2 0 002-2V7a2 2 0 00-2-2h-2m0 0V3m0 0h2m-2 0h-2" />
           </svg>
         </div>
-        <h3 className="text-5xl text-gray-900 uppercase">Project Phases</h3>
+        <h3 className="text-xl text-gray-900 uppercase">Project Phases</h3>
       </div>
       
       {/* Grid Layout - 4 columns for full width */}
