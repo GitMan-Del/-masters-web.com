@@ -133,7 +133,7 @@ function DashboardContent({
       )}
 
       {/* Main Content */}
-      <main className="p-3 lg:p-4 overflow-y-auto">
+      <main className="flex-1 p-3 lg:p-4 overflow-y-auto">
       {/* Warnning */}
       <div className="w-full h-fit p-4 bg-yellow-100 border-l-4 border-yellow-500 flex items-center mb-4">
         <span className="text-md flex flex-row gap-2 items-center text-yellow-900">
@@ -143,8 +143,7 @@ function DashboardContent({
           </p>
         </span>
       </div>
-      {/*  */}
-        <div className="flex-1 h-full mx-auto flex flex-col">
+        <div className=" h-full mx-auto flex flex-col">
           {/* Mobile Header */}
           <div className="lg:hidden mb-4 bg-white rounded-xl p-4 shadow-sm border border-gray-200">
             <div className="flex items-center justify-between mb-3">
@@ -233,7 +232,7 @@ function DashboardContent({
 
 
             <div className="w-full h-fit flex-col gap-10">
-              <div className="w-full max-h-[40rem] flex flex-row justify-center items-stretch gap-3">
+              <div className="w-full max-h-[40rem] flex flex-row gap-3">
               <ProjectCardContainer 
                   onCreateProject={handleCreateProject}
                 />
