@@ -6,7 +6,7 @@ interface EmptyProjectCardProps {
 
 export default function EmptyProjectCard({ onCreateProject }: EmptyProjectCardProps) {
   return (
-    <div className="bg-white rounded-xl p-6 shadow-sm border-2 border-dashed border-gray-300 hover:border-purple-400 transition-all duration-300 group cursor-pointer"
+    <div className="bg-white rounded-xl p-6 shadow-sm border-2 border-dashed border-gray-300 hover:border-purple-400 transition-all duration-300 group cursor-pointer h-full"
          onClick={onCreateProject}>
       
       {/* Icon */}
