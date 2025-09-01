@@ -175,7 +175,7 @@ function DashboardContent({
               <div className="flex gap-1">
                 <button 
                   onClick={handleRefreshDashboard}
-                  className="bg-gray-100 text-gray-700 px-2 py-2 rounded-lg text-sm hover:bg-white transition-colors"
+                  className="bg-gray-100 hover:text-white text-gray-700 px-2 py-2 rounded-lg text-sm hover:bg-white transition-colors"
                   title="Refresh"
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -208,7 +208,7 @@ function DashboardContent({
               <div className="flex gap-2">
                 <button 
                   onClick={handleRefreshDashboard}
-                  className="bg-gray-100 text-gray-700 px-3 py-2 rounded-lg text-sm hover:bg-white transition-colors"
+                  className="bg-gray-100 hover:text-white text-gray-700 px-3 py-2 rounded-lg text-sm hover:bg-white transition-colors"
                   title="Refresh dashboard data"
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
