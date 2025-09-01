@@ -25,8 +25,8 @@ export default function WebsitePerformance() {
         <svg className="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
           {/* Background circle */}
           <circle
-            cx="50"
-            cy="50"
+            cx="30"
+            cy="30"
             r={radius}
             stroke="#E5E7EB"
             strokeWidth="8"
@@ -34,8 +34,8 @@ export default function WebsitePerformance() {
           />
           {/* Progress circle */}
           <circle
-            cx="50"
-            cy="50"
+            cx="30"
+            cy="30"
             r={radius}
             stroke={color}
             strokeWidth="8"
@@ -47,7 +47,7 @@ export default function WebsitePerformance() {
           />
         </svg>
         <div className="absolute inset-0 flex items-center justify-center">
-          <span className="text-5xl font-bold text-gray-900">{score}</span>
+          <span className="text-xl font-bold text-gray-900">{score}</span>
         </div>
       </div>
     );
