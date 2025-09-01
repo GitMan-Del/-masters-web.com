@@ -133,7 +133,7 @@ function DashboardContent({
       )}
 
       {/* Main Content */}
-      <main className="flex-1 p-3 lg:p-4 overflow-y-auto">
+      <main className="p-3 lg:p-4 overflow-y-auto">
       {/* Warnning */}
       <div className="w-full h-fit p-4 bg-yellow-100 border-l-4 border-yellow-500 flex items-center mb-4">
         <span className="text-md flex flex-row gap-2 items-center text-yellow-900">
@@ -144,7 +144,7 @@ function DashboardContent({
         </span>
       </div>
       {/*  */}
-        <div className="h-full max-w-7xl mx-auto flex flex-col">
+        <div className="h-full mx-auto flex flex-col">
           {/* Mobile Header */}
           <div className="lg:hidden mb-4 bg-white rounded-xl p-4 shadow-sm border border-gray-200">
             <div className="flex items-center justify-between mb-3">
@@ -230,68 +230,31 @@ function DashboardContent({
             </div>
           </div>
 
+
+
+            <div className="w-full h-fit flex-col gap-5">
+              <div className="w-full h-full flex flex-row justify-center items-center">
+              <ProjectCardContainer 
+                  onCreateProject={handleCreateProject}
+                />
+               <WebsitePerformanceContainer />
+
+               <Suspense fallback={<div className="animate-pulse bg-gray-200 rounded-lg h-full"></div>}>
+                  <RecentPaymentsContainer />
+                </Suspense>
+              </div>
+              <Suspense fallback={<div className="animate-pulse bg-gray-200 rounded-lg h-20"></div>}>
+                  <PhaseCardsContainer />
+                </Suspense>
+            </div>
+
+
+
+
+
+
           {/* Main Dashboard Grid - Responsive Layout */}
-          <div className="flex-1 flex flex-col gap-3 lg:gap-4 min-h-0">
-            
-            {/* Mobile Layout - Single Column Stack */}
-            <div className="lg:hidden space-y-4">
-              {/* Project Card - Full width on mobile */}
-              <div className="h-auto">
-                <ProjectCardContainer 
-                  onCreateProject={handleCreateProject}
-                />
-              </div>
-
-              {/* Website Performance - Full width on mobile */}
-              <div className="h-auto">
-                <WebsitePerformanceContainer />
-              </div>
-
-              {/* Recent Payments - Scrollable on mobile */}
-              <div className="h-80 min-h-0">
-                <Suspense fallback={<div className="animate-pulse bg-gray-200 rounded-lg h-full"></div>}>
-                  <RecentPaymentsContainer />
-                </Suspense>
-              </div>
-
-              {/* Project Phases - Mobile optimized */}
-              <div className="h-fit">
-                <Suspense fallback={<div className="animate-pulse bg-gray-200 rounded-lg h-20"></div>}>
-                  <PhaseCardsContainer />
-                </Suspense>
-              </div>
-            </div>
-
-            {/* Desktop Layout - CSS Grid 9x5 */}
-            <div className="hidden lg:grid lg:grid-cols-9 lg:grid-rows-5 lg:gap-2 lg:h-full lg:min-h-0">
-              {/* div1 - Project Card */}
-              <div className="col-start-1 col-end-4 row-start-1 row-end-4">
-                <ProjectCardContainer 
-                  onCreateProject={handleCreateProject}
-                />
-              </div>
-
-              {/* div2 - Website Performance */}
-              <div className="col-start-4 col-end-7 row-start-1 row-end-4">
-                <WebsitePerformanceContainer />
-              </div>
-
-              {/* div3 - Recent Payments */}
-              <div className="col-start-7 col-end-10 row-start-1 row-end-4">
-                <Suspense fallback={<div className="animate-pulse bg-gray-200 rounded-lg h-full"></div>}>
-                  <RecentPaymentsContainer />
-                </Suspense>
-              </div>
-
-              {/* div4 - Project Phases */}
-              <div className="col-start-1 col-end-10 row-start-4 row-end-6">
-                <Suspense fallback={<div className="animate-pulse bg-gray-200 rounded-lg h-full"></div>}>
-                  <PhaseCardsContainer />
-                </Suspense>
-              </div>
-            </div>
-
-          </div>
+         
         </div>
       </main>
 
