@@ -56,7 +56,7 @@ export default function ChatSidebar() {
          </p>
 
         {/* Features List */}
-        <div className="space-y-3 mb-8 w-full max-w-xs">
+        <div className="space-y-3 w-full max-w-xs">
           <div className="flex items-center gap-3 text-sm">
             <div className="w-2 h-2 bg-green-500 rounded-full"></div>
             <span className="text-gray-700">Real-time messaging</span>
@@ -78,7 +78,7 @@ export default function ChatSidebar() {
 
 
         {/* Alternative Contact */}
-        <div className="mt-8 pt-6 border-t border-gray-200 w-full">
+        <div className="pt-6 border-t border-gray-200 w-full">
           <p className="text-xs text-gray-500 mb-3">Need help now?</p>
           <div className="space-y-2">
             <Link
