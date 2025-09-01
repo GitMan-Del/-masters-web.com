@@ -144,7 +144,7 @@ function DashboardContent({
         </span>
       </div>
       {/*  */}
-        <div className="h-full mx-auto flex flex-col">
+        <div className="flex-1 h-full mx-auto flex flex-col">
           {/* Mobile Header */}
           <div className="lg:hidden mb-4 bg-white rounded-xl p-4 shadow-sm border border-gray-200">
             <div className="flex items-center justify-between mb-3">
