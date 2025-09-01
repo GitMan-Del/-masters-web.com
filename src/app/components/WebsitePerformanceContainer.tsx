@@ -237,7 +237,7 @@ export default React.memo(function WebsitePerformanceContainer() {
         <h3 className="text-2xl text-gray-900">Website Performance</h3>
       </div>
 
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 gap-6">
         {performanceData.map((metric, index) => (
           <div
             key={index}
