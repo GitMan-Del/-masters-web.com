@@ -109,7 +109,7 @@ export default function Sidebar({ onCloseMobile, isMobile = false }: SidebarProp
               height={17} 
               className="h-4 w-auto"
             />
-            <span className="font-semibold text-md text-gray-900">Masters Web</span>
+            <span className="font-semibold text-sm text-gray-900">Masters Web</span>
           </div>
           {/* Close button for mobile */}
           {isMobile && (
