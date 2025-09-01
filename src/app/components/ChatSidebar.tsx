@@ -14,12 +14,12 @@ export default function ChatSidebar() {
     <div className="w-60 bg-white shadow-sm border-l border-gray-200 h-screen flex flex-col">
       {/* Header */}
       <div className="p-6 border-b border-gray-200 bg-gradient-to-br from-purple-50 to-blue-50">
-        <div className="flex items-center gap-3 mb-2">
+        <div className="flex items-center gap-3 ">
           <div className="p-2 bg-purple-100 rounded-lg">
             <MessageCircle className="w-5 h-5 text-purple-600" />
           </div>
-          <div>
-            <h3 className="text-lg font-semibold text-gray-900">Support Chat</h3>
+          <div className="flex flex-col gap-1 items-center">
+            <h3 className="text-md font-semibold text-gray-900">Support Chat</h3>
             <p className="text-xs text-gray-500">Live assistance</p>
           </div>
         </div>
@@ -29,10 +29,10 @@ export default function ChatSidebar() {
       <div className="flex-1 flex flex-col items-center justify-center p-6 text-center">
         {/* Main Icon */}
         <div className="relative mb-6">
-          <div className="w-20 h-20 bg-gradient-to-br from-purple-100 to-blue-100 rounded-full flex items-center justify-center mb-4">
+          <div className="w-10 h-10 bg-gradient-to-br from-purple-100 to-blue-100 rounded-full flex items-center justify-center mb-4">
             <MessageCircle className="w-10 h-10 text-purple-600" />
           </div>
-          <div className="absolute -top-2 -right-2">
+          <div className="absolute -top-3 -right-3">
             <div className="bg-yellow-100 border border-yellow-200 rounded-full p-1">
               <Clock className="w-4 h-4 text-yellow-600" />
             </div>
@@ -41,12 +41,12 @@ export default function ChatSidebar() {
 
         {/* Coming Soon Badge */}
         <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-100 to-blue-100 text-purple-700 px-4 py-2 rounded-full mb-6">
-          <Sparkles className="w-4 h-4" />
-          <span className="text-sm font-medium">Coming Soon</span>
+          <Sparkles className="w-2 h-2" />
+          <span className="text-xs font-medium">Coming Soon</span>
         </div>
 
         {/* Title */}
-        <h2 className="text-5xl font-bold text-gray-900 mb-3">
+        <h2 className="text-xl font-bold text-gray-900 mb-3">
           Live Support Chat
         </h2>
 
