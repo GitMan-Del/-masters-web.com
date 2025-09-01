@@ -11,7 +11,7 @@ interface PerformanceScore {
 }
 
 export default React.memo(function WebsitePerformanceContainer() {
-  const { projects, lighthouseData, loading, hasProjects, refreshData } = useDashboard();
+  const { projects, lighthouseData, loading, hasProjects, } = useDashboard();
 
   const projectUrl =
     hasProjects && projects.length > 0 && projects[0].website_url
@@ -275,22 +275,6 @@ export default React.memo(function WebsitePerformanceContainer() {
                 : "text-gray-400 cursor-not-allowed"
             }`}
           >
-            {projectUrl ? (
-              <button
-                onClick={() => {
-                  console.log(
-                    "Manual refresh triggered for URL:",
-                    projectUrl
-                  );
-                  refreshData();
-                }}
-                className="hover:text-purple-800 transition-colors hover:bg-transparent btn-no-animation"
-              >
-                Refresh data →
-              </button>
-            ) : (
-              "No URL available"
-            )}
           </p>
         </div>
       </div>
