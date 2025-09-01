@@ -169,20 +169,20 @@ function DashboardContent({
             {/* Mobile Dashboard Title */}
             <div className="flex items-center justify-between">
               <div>
-                <h1 className="text-5xl font-bold text-gray-900">Dashboard</h1>
+                <h1 className="text-md font-bold text-gray-900">Dashboard</h1>
                 <p className="text-xs text-gray-500">Project overview & analytics</p>
               </div>
               <div className="flex gap-1">
                 <button 
                   onClick={handleRefreshDashboard}
-                  className="bg-gray-100 text-gray-700 px-2 py-2 rounded-lg text-sm hover:bg-gray-200 transition-colors"
+                  className="bg-gray-100 text-gray-700 px-2 py-2 rounded-lg text-sm hover:bg-white transition-colors"
                   title="Refresh"
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                   </svg>
                 </button>
-                <button 
+                <button
                   onClick={handleCreateProject}
                   className="bg-purple-600 text-white px-3 py-2 rounded-lg text-sm hover:bg-purple-700 transition-colors"
                 >
@@ -208,7 +208,7 @@ function DashboardContent({
               <div className="flex gap-2">
                 <button 
                   onClick={handleRefreshDashboard}
-                  className="bg-gray-100 text-gray-700 px-3 py-2 rounded-lg text-sm hover:bg-gray-200 transition-colors"
+                  className="bg-gray-100 text-gray-700 px-3 py-2 rounded-lg text-sm hover:bg-white transition-colors"
                   title="Refresh dashboard data"
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -217,9 +217,9 @@ function DashboardContent({
                 </button>
                 <button 
                   onClick={handleCreateProject}
-                  className="bg-purple-600 text-white px-3 py-2 rounded-lg text-sm hover:bg-purple-700 transition-colors"
+                  className="bg-purple-600 text-white px-3 py-2 rounded-lg text-xs hover:bg-purple-700 transition-colors"
                 >
-                  <svg className="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-3 h-3 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
                   </svg>
                   New Project
