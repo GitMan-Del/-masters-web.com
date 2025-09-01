@@ -135,7 +135,7 @@ export default React.memo(function WebsitePerformanceContainer() {
 
   if (loading) {
     return (
-      <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 min-w-44">
+      <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 min-w-72">
         <div className="animate-pulse">
           <div className="flex items-center gap-2 mb-6">
             <div className="w-6 h-6 bg-gray-200 rounded-lg"></div>
@@ -160,7 +160,7 @@ export default React.memo(function WebsitePerformanceContainer() {
   // Show loading state while fetching Lighthouse data
   if (isLighthouseLoading) {
     return (
-      <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 min-w-44">
+      <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 min-w-72">
         <div className="flex items-center gap-2 mb-6">
           <div className="w-6 h-6 bg-blue-100 rounded-lg flex items-center justify-center">
             <svg
@@ -215,7 +215,7 @@ export default React.memo(function WebsitePerformanceContainer() {
   }
 
   return (
-    <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 h-full min-w-44">
+    <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 h-full min-w-72">
       <div className="flex items-center gap-2 mb-6">
         <div className="w-6 h-6 bg-blue-100 rounded-lg flex items-center justify-center">
           <svg
