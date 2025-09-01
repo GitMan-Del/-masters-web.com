@@ -11,7 +11,7 @@ export default function ChatSidebar() {
  
 
   return (
-    <div className="w-60 bg-white shadow-sm border-l border-gray-200 h-fit max-h-screen flex flex-col">
+    <div className="w-60 bg-white shadow-sm border-l border-gray-200 h-fit max-h-full  flex flex-col">
       {/* Header */}
       <div className="p-6 border-b border-gray-200 bg-gradient-to-br from-purple-50 to-blue-50">
         <div className="flex items-center gap-3 ">
