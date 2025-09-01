@@ -124,7 +124,7 @@ function DashboardContent({
           />
           
           {/* Sidebar */}
-          <div className={`relative flex flex-col w-64 bg-white shadow-xl transform transition-transform duration-300 ease-out ${
+          <div className={`relative flex flex-col w-fit bg-white shadow-xl transform transition-transform duration-300 ease-out ${
             isMobileSidebarOpen ? 'translate-x-0' : '-translate-x-full'
           }`}>
             <Sidebar onCloseMobile={() => setIsMobileSidebarOpen(false)} isMobile={true} />
