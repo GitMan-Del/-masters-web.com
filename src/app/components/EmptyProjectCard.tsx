@@ -11,8 +11,8 @@ export default function EmptyProjectCard({ onCreateProject }: EmptyProjectCardPr
       
       {/* Icon */}
       <div className="flex justify-center mb-4">
-        <div className="w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center group-hover:bg-purple-200 transition-colors">
-          <svg className="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center group-hover:bg-purple-200 transition-colors">
+          <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
           </svg>
         </div>
@@ -20,22 +20,22 @@ export default function EmptyProjectCard({ onCreateProject }: EmptyProjectCardPr
 
       {/* Content */}
       <div className="text-center">
-        <h3 className="text-5xl font-semibold text-gray-900 mb-2">
+        <h3 className="text-xl font-semibold text-gray-900 mb-2">
           Create Your First Project
         </h3>
-        <p className="text-gray-500 text-sm mb-6 leading-relaxed">
+        <p className="text-gray-500 text-xs mb-6 leading-relaxed">
           Start by adding a new project to view your progress and metrics in the dashboard.
         </p>
 
         {/* Features */}
         <div className="space-y-3 mb-6">
-          <div className="flex items-center text-sm text-gray-600">
+          <div className="flex items-center text-xs text-gray-600">
             <svg className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
             <span>Real-time progress monitoring</span>
           </div>
-          <div className="flex items-center text-sm text-gray-600">
+          <div className="flex items-center text-xs text-gray-600">
             <svg className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>

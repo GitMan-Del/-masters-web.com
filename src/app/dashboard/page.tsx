@@ -134,6 +134,7 @@ function DashboardContent({
 
       {/* Main Content */}
       <main className="flex-1 p-3 lg:p-4 overflow-y-auto">
+      {/* Warnning */}
       <div className="w-full h-fit p-4 bg-yellow-100 border-l-4 border-yellow-500 flex items-center mb-4">
         <span className="text-md flex flex-row gap-2 items-center text-yellow-900">
           <InfoIcon size={18} />
@@ -142,6 +143,7 @@ function DashboardContent({
           </p>
         </span>
       </div>
+      {/*  */}
         <div className="h-full max-w-7xl mx-auto flex flex-col">
           {/* Mobile Header */}
           <div className="lg:hidden mb-4 bg-white rounded-xl p-4 shadow-sm border border-gray-200">
@@ -299,7 +301,6 @@ function DashboardContent({
           <ChatSidebar />
         </Suspense>
       </div>
-
       {/* Create Project Modal */}
       <CreateProjectModal
         isOpen={isModalOpen}
