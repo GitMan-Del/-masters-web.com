@@ -97,7 +97,7 @@ export default function Sidebar({ onCloseMobile, isMobile = false }: SidebarProp
   }, [updateActiveIndicator]);
 
   return (
-    <div className="w-64 bg-white shadow-sm border-r border-gray-200 h-screen flex flex-col">
+    <div className="w-40 bg-white shadow-sm border-r border-gray-200 h-screen flex flex-col">
       {/* Logo */}
       <div className="p-6 border-b border-gray-200">
         <div className="flex items-center justify-between">
@@ -107,9 +107,9 @@ export default function Sidebar({ onCloseMobile, isMobile = false }: SidebarProp
               alt="Masters Web Logo"
               width={40} 
               height={17} 
-              className="h-6 w-auto"
+              className="h-4 w-auto"
             />
-            <span className="font-semibold text-lg text-gray-900">Masters Web</span>
+            <span className="font-semibold text-md text-gray-900">Masters Web</span>
           </div>
           {/* Close button for mobile */}
           {isMobile && (
@@ -149,7 +149,7 @@ export default function Sidebar({ onCloseMobile, isMobile = false }: SidebarProp
                   onClick={isMobile ? onCloseMobile : undefined}
                   className={`flex items-center space-x-3 px-3 py-2 rounded-lg transition-all duration-300 relative ${
                     isActive
-                      ? "bg-purple-50 text-purple-700 border border-purple-200 transform translate-x-1"
+                      ? "bg-purple-50 text-special border border-purple-200 transform translate-x-1"
                       : "text-gray-600 hover:bg-gray-50 hover:text-gray-900 hover:translate-x-0.5"
                   }`}
                 >
@@ -181,7 +181,7 @@ export default function Sidebar({ onCloseMobile, isMobile = false }: SidebarProp
       <div className="p-4 border-t border-gray-200">
         <div className="flex items-center space-x-3">
           <div className="relative">
-            <div className="w-12 h-12 rounded-full overflow-hidden bg-gray-300">
+            <div className="w-10 h-10 rounded-full overflow-hidden bg-gray-300">
               <Image 
                 src={session?.user?.image || "/daniel.png"} 
                 alt={session?.user?.name || "User"} 
@@ -191,11 +191,11 @@ export default function Sidebar({ onCloseMobile, isMobile = false }: SidebarProp
               />
             </div>
             {/* Green online indicator */}
-            <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white"></div>
+            <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-white"></div>
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-lg font-semibold text-gray-900 truncate">{session?.user?.name}</p>
-            <p className="text-sm text-gray-500 truncate">{session?.user?.email}</p>
+            <p className="text-md font-semibold text-gray-900 truncate">{session?.user?.name}</p>
+            <p className="text-xs text-gray-500 truncate">{session?.user?.email}</p>
           </div>
         </div>
         
