@@ -10,6 +10,7 @@ import CreateProjectModal from "../components/CreateProjectModal";
 import WebsitePerformanceContainer from "../components/WebsitePerformanceContainer";
 import Toast from "../components/Toast";
 import { DashboardProvider, useDashboard } from "../contexts/DashboardContext";
+import { InfoIcon } from "lucide-react";
 
 // Lazy load non-critical components with loading fallbacks
 const PhaseCardsContainer = lazy(() => import("../components/PhaseCardsContainer"));
@@ -107,6 +108,14 @@ function DashboardContent({
 
   return (
     <div className="h-screen bg-gray-50 flex overflow-hidden">
+      <div className="w-full h-fit p-4 bg-yellow-100 border-l-4 border-yellow-500 flex items-center mb-4">
+        <span className="text-md flex flex-row gap-2 items-center text-yellow-900">
+          <InfoIcon size={18} />
+          <p>
+            This page is currently being updated. We will be back soon with an improved experience. Thank you for your understanding!
+          </p>
+        </span>
+      </div>
       {/* Left Sidebar - Hidden on mobile */}
       <div className="hidden lg:block">
         <Sidebar />
