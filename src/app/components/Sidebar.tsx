@@ -97,7 +97,7 @@ export default function Sidebar({ onCloseMobile, isMobile = false }: SidebarProp
   }, [updateActiveIndicator]);
 
   return (
-    <div className="w-40 bg-white shadow-sm border-r border-gray-200 h-screen flex flex-col">
+    <div className="w-48 bg-white shadow-sm border-r border-gray-200 h-screen flex flex-col">
       {/* Logo */}
       <div className="p-6 border-b border-gray-200">
         <div className="flex items-center justify-between">
