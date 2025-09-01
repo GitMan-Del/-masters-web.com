@@ -93,8 +93,8 @@ export default React.memo(function WebsitePerformanceContainer() {
         <svg className="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
           {/* Background circle */}
           <circle
-            cx="50"
-            cy="50"
+            cx="30"
+            cy="30"
             r={radius}
             stroke="#E5E7EB"
             strokeWidth="8"
@@ -102,8 +102,8 @@ export default React.memo(function WebsitePerformanceContainer() {
           />
           {/* Progress circle */}
           <circle
-            cx="50"
-            cy="50"
+            cx="30"
+            cy="30"
             r={radius}
             stroke={color}
             strokeWidth="8"
@@ -115,7 +115,7 @@ export default React.memo(function WebsitePerformanceContainer() {
           />
         </svg>
         <div className="absolute inset-0 flex items-center justify-center">
-          <span className={`text-5xl font-bold ${hasProjects ? 'text-gray-900' : 'text-gray-400'}`}>
+          <span className={`text-xl font-bold ${hasProjects ? 'text-gray-900' : 'text-gray-400'}`}>
             {unit === 's' ? score : Math.round(score)}{unit || ''}
           </span>
         </div>
@@ -131,7 +131,7 @@ export default React.memo(function WebsitePerformanceContainer() {
             <div className="w-6 h-6 bg-gray-200 rounded-lg"></div>
             <div className="h-6 bg-gray-200 rounded w-48"></div>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-5">
             {[1, 2, 3, 4].map((index) => (
               <div key={index} className="flex flex-col items-center text-center">
                 <div className="w-24 h-24 bg-gray-200 rounded-full mb-3"></div>
@@ -155,12 +155,6 @@ export default React.memo(function WebsitePerformanceContainer() {
             </svg>
           </div>
           <h3 className="text-2xl text-gray-900">Website Performance</h3>
-          <div className="ml-auto">
-            <div className="flex items-center gap-2 text-blue-600">
-              <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-600"></div>
-              <span className="text-sm font-medium">Loading metrics...</span>
-            </div>
-          </div>
         </div>
         
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
