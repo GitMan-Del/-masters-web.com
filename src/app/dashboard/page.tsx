@@ -233,7 +233,7 @@ function DashboardContent({
 
 
             <div className="w-full h-fit flex-col gap-10">
-              <div className="w-full max-h-[40rem] flex flex-row justify-center items-start gap-3">
+              <div className="w-full max-h-[40rem] flex flex-row justify-center items-stretch gap-3">
               <ProjectCardContainer 
                   onCreateProject={handleCreateProject}
                 />
