@@ -58,7 +58,7 @@ export default function ProjectCard({ project, lighthouseData }: ProjectCardProp
           </div>
           <div>
             <div className="flex items-center space-x-2 mb-1">
-              <h3 className="text-2xl text-gray-900">{project.name}</h3>
+              <h3 className="text-xl text-gray-900">{project.name}</h3>
               <div className="flex items-center space-x-1">
                 <div className={`w-2 h-2 ${statusInfo.color} rounded-full animate-pulse`}></div>
                 <span className={`text-xs ${statusInfo.text} font-medium`}>{statusInfo.label}</span>
@@ -76,7 +76,7 @@ export default function ProjectCard({ project, lighthouseData }: ProjectCardProp
         </div>
         
         <div className="text-right">
-          <div className="text-lg font-bold text-green-600">
+          <div className="text-md font-bold text-green-600">
             {project.project_value ? `€${project.project_value.toLocaleString()}` : '€0'}
           </div>
           <div className="text-xs text-gray-500">Project Value</div>
@@ -84,7 +84,7 @@ export default function ProjectCard({ project, lighthouseData }: ProjectCardProp
       </div>
       
       {/* Project Description */}
-      <p className="text-sm text-gray-600 leading-relaxed mb-4">
+      <p className="text-xs text-gray-600 leading-relaxed mb-4">
         {project.description || 'No description available for this project.'}
       </p>
 
@@ -113,8 +113,8 @@ export default function ProjectCard({ project, lighthouseData }: ProjectCardProp
       {/* Progress and Timeline */}
       <div className="mb-4">
         <div className="flex items-center justify-between mb-2">
-          <span className="text-sm font-medium text-gray-700">Project Progress</span>
-          <span className="text-sm font-bold text-green-600">{project.progress}%</span>
+          <span className="text-xs font-medium text-gray-700">Project Progress</span>
+          <span className="text-xs font-bold text-green-600">{project.progress}%</span>
         </div>
         <div className="w-full bg-gray-200 rounded-full h-2">
           <div 
@@ -138,7 +138,7 @@ export default function ProjectCard({ project, lighthouseData }: ProjectCardProp
               href={project.website_url} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="bg-black text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-800 transition-colors flex items-center gap-2"
+              className="bg-black text-white px-4 py-2 rounded-lg text-xs font-medium hover:bg-gray-800 transition-colors flex items-center gap-2"
             >
               <svg
                 className="w-4 h-4"
@@ -163,7 +163,7 @@ export default function ProjectCard({ project, lighthouseData }: ProjectCardProp
           ) : (
             <button 
               disabled
-              className="bg-gray-300 text-gray-500 px-4 py-2 rounded-lg text-sm font-medium cursor-not-allowed flex items-center gap-2"
+              className="bg-gray-300 text-gray-500 px-4 py-2 rounded-lg text-xs font-medium cursor-not-allowed flex items-center gap-2"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-2M7 7l10 10M17 7l-10 10" />
@@ -173,7 +173,7 @@ export default function ProjectCard({ project, lighthouseData }: ProjectCardProp
           )}
           <Link
             href="tel:336594692" 
-            className="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-200 hover:text-black transition-colors flex items-center gap-2"
+            className="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg text-xs font-medium hover:bg-gray-200 hover:text-black transition-colors flex items-center gap-2"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 8V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2h14a2 2 0 002-2v-1M21 8l-9 6-9-6" />
@@ -182,20 +182,22 @@ export default function ProjectCard({ project, lighthouseData }: ProjectCardProp
           </Link>
         </div>
         
+        
+      </div>
+
+      {/* Project Info */}
+      <div className="mt-4 pt-4 border-t border-gray-200 flex flex-row justify-between">
+        <div className="flex items-center space-x-2">
+          <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+          <span className="text-xs text-gray-600">Creat: {formatDate(project.created_at)}</span>
+        </div>
+
         <div className="flex items-center space-x-2">
           <div className="flex -space-x-2">
             <Image src="/Logo.svg" alt="Daniel" width={24} height={24} className="w-6 h-6 rounded-full border-2 border-white" />
             <Image src="/Logo_colaborator.png" alt="Partener" width={24} height={24} className="w-6 h-6 rounded-full border-2 border-white" />
           </div>
           <span className="text-xs text-gray-500">Team</span>
-        </div>
-      </div>
-
-      {/* Project Info */}
-      <div className="mt-4 pt-4 border-t border-gray-200">
-        <div className="flex items-center space-x-2">
-          <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-          <span className="text-xs text-gray-600">Creat: {formatDate(project.created_at)}</span>
         </div>
       </div>
     </div>
