@@ -127,7 +127,7 @@ export default function RecentPayments() {
           <div className="p-2 bg-blue-50 rounded-lg">
             <CreditCard className="w-6 h-6 text-blue-600" />
           </div>
-          <h2 className="text-md font-semibold text-gray-900">Total of:</h2>
+          <h2 className="text-md font-semibold text-gray-900">.....</h2>
         </div>
         <div className="space-y-3">
           {[...Array(3)].map((_, i) => (
@@ -173,7 +173,7 @@ export default function RecentPayments() {
             <CreditCard className="w-5 h-5 text-blue-600" />
           </div>
           <div>
-            <h2 className="text-lg font-semibold text-gray-900">Recent Payments</h2>
+            <h2 className="text-lg font-semibold text-gray-900">Total of:</h2>
             <p className="text-sm text-gray-500">{payments.length} transactions</p>
           </div>
         </div>
