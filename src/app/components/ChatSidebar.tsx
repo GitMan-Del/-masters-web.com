@@ -11,7 +11,7 @@ export default function ChatSidebar() {
  
 
   return (
-    <div className="w-60 bg-white shadow-sm border-l border-gray-200 h-fit max-h-full  flex flex-col">
+    <div className="w-60 bg-white shadow-sm border-l border-gray-200 h-screen  flex flex-col">
       {/* Header */}
       <div className="p-6 border-b border-gray-200 bg-gradient-to-br from-purple-50 to-blue-50">
         <div className="flex items-center gap-3 ">
@@ -26,9 +26,9 @@ export default function ChatSidebar() {
       </div>
 
       {/* Coming Soon Content */}
-      <div className="flex-1 flex flex-col items-center justify-center p-6 text-center">
+      <div className="flex-1 flex flex-col items-center justify-center p-6 text-center gap-3">
         {/* Main Icon */}
-        <div className="relative mb-6">
+        <div className="relative ">
           <div className="w-10 h-10 bg-gradient-to-br from-purple-100 to-blue-100 rounded-full flex items-center justify-center mb-4">
             <MessageCircle className="w-10 h-10 text-purple-600" />
           </div>
@@ -51,25 +51,25 @@ export default function ChatSidebar() {
         </h2>
 
         {/* Description */}
-                 <p className="text-gray-600 text-sm leading-relaxed mb-8 max-w-xs">
+                 <p className="text-gray-600 text-xs leading-relaxed max-w-xs">
            We&apos;re building an amazing support experience for you. Get instant help from our expert team with real-time chat, file sharing, and quick responses.
          </p>
 
         {/* Features List */}
         <div className="space-y-3 w-full max-w-xs">
-          <div className="flex items-center gap-3 text-sm">
+          <div className="flex items-center gap-3 text-xs">
             <div className="w-2 h-2 bg-green-500 rounded-full"></div>
             <span className="text-gray-700">Real-time messaging</span>
           </div>
-          <div className="flex items-center gap-3 text-sm">
+          <div className="flex items-center gap-3 text-xs">
             <div className="w-2 h-2 bg-green-500 rounded-full"></div>
             <span className="text-gray-700">File & image sharing</span>
           </div>
-          <div className="flex items-center gap-3 text-sm">
+          <div className="flex items-center gap-3 text-xs">
             <div className="w-2 h-2 bg-green-500 rounded-full"></div>
             <span className="text-gray-700">Quick response times</span>
           </div>
-          <div className="flex items-center gap-3 text-sm">
+          <div className="flex items-center gap-3 text-xs">
             <div className="w-2 h-2 bg-green-500 rounded-full"></div>
             <span className="text-gray-700">Expert technical support</span>
           </div>
