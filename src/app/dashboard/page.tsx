@@ -233,28 +233,24 @@ function DashboardContent({
 
 
             <div className="w-full h-fit flex-col gap-5">
-              <div className="w-full h-full flex flex-row justify-center items-center">
+              <div className="w-full max-h-[40rem] flex flex-row justify-center items-start gap-3">
               <ProjectCardContainer 
                   onCreateProject={handleCreateProject}
                 />
+               
                <WebsitePerformanceContainer />
 
                <Suspense fallback={<div className="animate-pulse bg-gray-200 rounded-lg h-full"></div>}>
                   <RecentPaymentsContainer />
                 </Suspense>
               </div>
+              <div className="w-full">
               <Suspense fallback={<div className="animate-pulse bg-gray-200 rounded-lg h-20"></div>}>
                   <PhaseCardsContainer />
                 </Suspense>
+              </div>
             </div>
 
-
-
-
-
-
-          {/* Main Dashboard Grid - Responsive Layout */}
-         
         </div>
       </main>
 
