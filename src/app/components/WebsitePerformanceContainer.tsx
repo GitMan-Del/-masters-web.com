@@ -30,8 +30,6 @@ export default React.memo(function WebsitePerformanceContainer() {
         { label: "Accessibility", score: 0, color: "#E5E7EB" },
         { label: "Best Practices", score: 0, color: "#E5E7EB" },
         { label: "SEO", score: 0, color: "#E5E7EB" },
-        { label: "Uptime", score: 0, color: "#E5E7EB", unit: "%" },
-        { label: "Load Time", score: 0, color: "#E5E7EB", unit: "s" },
       ];
     }
 
