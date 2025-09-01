@@ -162,14 +162,11 @@ export default function Sidebar({ onCloseMobile, isMobile = false }: SidebarProp
                     alt={item.label}
                     width={20} 
                     height={20} 
-                    className="w-5 h-5 relative z-20"
+                    className="w-3 h-3 relative z-20"
                   />
                   <span className="font-medium relative z-20">{item.label}</span>
                   
-                  {/* Subtle glow effect for active item */}
-                  {isActive && (
-                    <div className="absolute right-3 w-2 h-2 bg-purple-500 rounded-full animate-pulse"></div>
-                  )}
+               
                 </Link>
               </li>
             );
