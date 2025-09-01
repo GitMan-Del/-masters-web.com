@@ -57,7 +57,7 @@ export default function ProjectCard({ project, lighthouseData }: ProjectCardProp
             <span className="text-white font-bold text-lg">{getInitials(project.name)}</span>
           </div>
           <div>
-            <div className="flex items-center space-x-2 mb-1">
+            <div className="flex flex-col items-center space-x-2">
               <h3 className="text-xl text-gray-900">{project.name}</h3>
               <div className="flex items-center space-x-1">
                 <div className={`w-2 h-2 ${statusInfo.color} rounded-full animate-pulse`}></div>
