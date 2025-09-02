@@ -136,7 +136,7 @@ function DashboardContent({
       <main className="flex-1 p-3 lg:p-4 overflow-y-auto">
       {/* Warnning */}
       <div className="w-full h-fit p-4 bg-yellow-100 border-l-4 border-yellow-500 flex items-center mb-4">
-        <span className="text-md flex flex-row gap-2 items-center text-yellow-900">
+        <span className="text-sm flex flex-row gap-2 items-center text-yellow-900">
           <InfoIcon size={18} />
           <p>
             This page is currently being updated. We will be back soon with an improved experience. Thank you for your understanding!
