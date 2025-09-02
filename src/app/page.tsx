@@ -7,19 +7,19 @@ import Link from "next/link";
 export default function Home() {
 
   const cards1 = [
-    { id: 1, src: "/1.png", alt: "Local Services website preview showing business optimization", height: 220 },
-    { id: 2, src: "/2.png", alt: "SaaS application interface with modern dashboard design", height: 340 },
-    { id: 3, src: "/3.png", alt: "Gaming website with immersive design and interactive elements", height: 260 },
-    { id: 4, src: "/4.png", alt: "Online Services platform with clean workflow automation", height: 180 },
-    { id: 5, src: "/5.png", alt: "E-commerce store with fast loading and secure payments", height: 320 },
+    { id: 1, src: "/1.png", alt: "Local Services website preview showing business optimization", height: 200 },
+    { id: 2, src: "/2.png", alt: "SaaS application interface with modern dashboard design", height: 200 },
+    { id: 3, src: "/3.png", alt: "Gaming website with immersive design and interactive elements", height: 200 },
+    { id: 4, src: "/4.png", alt: "Online Services platform with clean workflow automation", height: 200 },
+    { id: 5, src: "/5.png", alt: "E-commerce store with fast loading and secure payments", height: 200 },
   ];
   
   const cards2 = [
-    { id: 6, src: "/6.png", alt: "Portfolio website showcasing creative work and skills", height: 300 },
-    { id: 7, src: "/2.png", alt: "SaaS platform with scalable architecture", height: 180 },
-    { id: 8, src: "/3.png", alt: "Interactive gaming website with modern UI", height: 400 },
-    { id: 9, src: "/2.png", alt: "Business dashboard with data visualization", height: 220 },
-    { id: 10, src: "/1.png", alt: "Local business website with conversion optimization", height: 250 },
+    { id: 6, src: "/6.png", alt: "Portfolio website showcasing creative work and skills", height: 200 },
+    { id: 7, src: "/2.png", alt: "SaaS platform with scalable architecture", height: 200 },
+    { id: 8, src: "/3.png", alt: "Interactive gaming website with modern UI", height: 200 },
+    { id: 9, src: "/2.png", alt: "Business dashboard with data visualization", height: 200 },
+    { id: 10, src: "/1.png", alt: "Local business website with conversion optimization", height: 200 },
   ];
 
   return (
