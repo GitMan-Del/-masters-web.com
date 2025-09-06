@@ -38,7 +38,7 @@ export default function Home() {
                 </div>
               <p className="text-sm">Construit avec soin et rapidité</p>
             </div>
-              <h1 className="text-main text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
+              <h1 className="text-main text-4xl sm:text-5xl md:text-6xl font-bold ">
                 <span className="text-special">Chaque projet est </span>
               différent. Mais l&apos;objectif est 
                 <span className="text-special"> toujours </span>
@@ -277,7 +277,7 @@ export default function Home() {
               <p className="text-sec text-sm">Types de projets que nous pouvons construire</p>
             </div>
             
-            <h2 className="text-main text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6">
+            <h2 className="text-main text-4xl sm:text-5xl md:text-5xl font-bold leading-tight mb-6">
               NOUS <span className="text-special">CONCEVONS</span> ET CONSTRUISONS RAPIDEMENT,
               <span className="text-special"> DES SITES WEB MODERNES</span>, <br/> ET NOUS
               L&apos;AVONS DÉJÀ FAIT.

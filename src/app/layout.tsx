@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Koulen, Poppins } from "next/font/google";
+import { Londrina_Solid, Poppins } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./components/siverside/Providers";
 
-const koulen = Koulen({
+const koulen = Londrina_Solid({
   variable: "--font-koulen",
-  subsets: ["khmer"],
+  subsets: ["latin"],
   weight: "400",
   display: "swap"
 });
