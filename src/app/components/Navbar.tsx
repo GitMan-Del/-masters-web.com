@@ -8,9 +8,9 @@ import { usePathname } from "next/navigation";
 import SignInClient from "./siverside/SignInClient";
 
 const navLinks = [
-  { name: "Home", href: "/" },
-  { name: "Process", href: "#process" },
-  { name: "Projects", href: "#projects" },
+  { name: "Accueil", href: "/" },
+  { name: "Processus", href: "#process" },
+  { name: "Projets", href: "#projects" },
   { name: "Stack", href: "#stack" },
   { name: "Contact", href: "/contact" },
 ];
@@ -102,7 +102,7 @@ export default function NavBar() {
           <button
             className="md:hidden flex items-center justify-center p-3 rounded-full bg-btn text-btn min-w-[48px] min-h-[48px] hover:scale-110 hover:rotate-180 transition-all duration-300 ease-in-out"
             onClick={() => setOpen(true)}
-            aria-label="Open menu"
+            aria-label="Ouvrir le menu"
           >
             <Menu color="white" className="w-6 h-6" />
           </button>
@@ -144,7 +144,7 @@ export default function NavBar() {
           <button
             className="p-3 rounded-full bg-btn text-btn min-w-[48px] min-h-[48px] flex items-center justify-center hover:scale-105 transition-transform duration-200"
             onClick={() => setOpen(false)}
-            aria-label="Close menu"
+            aria-label="Fermer le menu"
           >
             <X color="white" className="w-5 h-5" />
           </button>

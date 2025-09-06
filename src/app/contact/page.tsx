@@ -16,8 +16,8 @@ export default function Contact() {
       id: 1,
       rating: 5,
       name: "Camille Dufresne",
-      occupation: "startup founder",
-      testimonial: "Super fast delivery and clear communication. I got exactly what I needed.",
+      occupation: "fondatrice de startup",
+      testimonial: "Livraison ultra-rapide et communication claire. J'ai obtenu exactement ce dont j'avais besoin.",
       height: 220
     },
     {
@@ -25,31 +25,31 @@ export default function Contact() {
       rating: 5,
       name: "Jason Lee",
       occupation: "CTO @ FinSync",
-      testimonial: "Masters Web helped us launch in under 5 days. Design is clean and fast.",
+      testimonial: "Masters Web nous a aidés à lancer en moins de 5 jours. Le design est propre et rapide.",
       height: 340
     },
     {
       id: 3,
       rating: 5,
       name: "Sophie Laurent",
-      occupation: "Brand Manager",
-      testimonial: "No fluff, no drag-and-drop mess. Just real code and real results.",
+      occupation: "Responsable de Marque",
+      testimonial: "Pas de superflu, pas de désordre de glisser-déposer. Juste du vrai code et de vrais résultats.",
       height: 260
     },
     {
       id: 4,
       rating: 5,
       name: "Daniel Kim",
-      occupation: "Product Owner",
-      testimonial: "Our SaaS dashboard looks and performs better than we imagined.",
+      occupation: "Propriétaire de Produit",
+      testimonial: "Notre tableau de bord SaaS a l'air et fonctionne mieux que nous l'avions imaginé.",
       height: 180
     },
     {
       id: 5,
       rating: 5,
       name: "Louis",
-      occupation: "eCommerce owner",
-      testimonial: "Clean design, great structure, fast delivery — highly recommend.",
+      occupation: "propriétaire eCommerce",
+      testimonial: "Design propre, excellente structure, livraison rapide — je recommande vivement.",
       height: 320
     }
   ];
@@ -107,7 +107,7 @@ export default function Contact() {
 
   return (
     <>
-      <Link href="#main-content" className="skip-link">Skip to main content</Link>
+      <Link href="#main-content" className="skip-link">Passer au contenu principal</Link>
       <div className="w-full min-h-fit mx-auto flex flex-col justify-center p-0 m-0 text-main">
         {/* Hero Section */}
         <header id="home" className="w-full h-screen flex flex-col md:flex-row items-center justify-between relative bg-main">
@@ -118,41 +118,41 @@ export default function Contact() {
                 <div className="w-5 h-5 rounded-[5px] flex items-center justify-center p-3 font-bold bg-btn-active" aria-hidden="true">
                   <span className="text-btn">1</span>
                 </div>
-                <p>Let&apos;s talk about your project</p>
+                <p>Parlons de votre projet</p>
               </div>
               <h1 className="text-main text-2xl sm:text-5xl md:text-5xl font-bold leading-tight">
-                <span className="text-special">LET&apos;S TALK </span>
-                ABOUT YOUR NEXT WEBSITE BUILT
-                <span className="text-special"> FAST</span>, DESIGNED TO PERFORM, AND 
-                <span className="text-special"> DELIVERED WITH CARE</span>.
+                <span className="text-special">PARLONS </span>
+                DE VOTRE PROCHAIN SITE WEB CONSTRUIT
+                <span className="text-special"> RAPIDEMENT</span>, CONÇU POUR PERFORMER, ET 
+                <span className="text-special"> LIVRÉ AVEC SOIN</span>.
               </h1>
-              <p className="text-sec max-w-xs sm:max-w-md md:max-w-2xl text-base sm:text-lg mx-auto md:mx-0">Whether it&apos;s a landing page, SaaS platform, or something custom, we&apos;ll help you launch smarter. Get in touch today.</p>
+              <p className="text-sec max-w-xs sm:max-w-md md:max-w-2xl text-base sm:text-lg mx-auto md:mx-0">Que ce soit une page d&apos;atterrissage, une plateforme SaaS ou quelque chose de personnalisé, nous vous aiderons à lancer plus intelligemment. Contactez-nous aujourd&apos;hui.</p>
               <div className="flex flex-col sm:flex-row gap-5 items-center mt-6">
               <Link
                 href="https://wa.me/33659514692"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-modern w-full sm:w-auto flex items-center gap-5 min-h-[56px]"
-                aria-label="Contact us on WhatsApp"
+                aria-label="Contactez-nous sur WhatsApp"
               >
-                <span className="btn-text-content">Contact us on WhatsApp</span>
+                <span className="btn-text-content">Contactez-nous sur WhatsApp</span>
                 <span className="inline-block w-2" aria-hidden="true"></span>
                 <div className="btn-circle">
                   <span>→</span>
                 </div>
               </Link>
-                <div className="flex flex-row items-center justify-center -space-x-3 sm:-space-x-5 mt-4 sm:mt-0" role="group" aria-label="Team members">
+                <div className="flex flex-row items-center justify-center -space-x-3 sm:-space-x-5 mt-4 sm:mt-0" role="group" aria-label="Membres de l'équipe">
                   <div className="w-14 h-14 sm:w-12 sm:h-12 rounded-full bg-btn shadow-2xs">
-                    <Image src="/daniel.png" alt="Daniel - Web Developer at Masters Web" width={148} height={148} className="object-cover w-full h-full rounded-full shadow-2xs hover:scale-110 transition-all duration-300 hover:cursor-pointer hover:z-20 cursor-pointer" />
+                    <Image src="/daniel.png" alt="Daniel - Développeur Web chez Masters Web" width={148} height={148} className="object-cover w-full h-full rounded-full shadow-2xs hover:scale-110 transition-all duration-300 hover:cursor-pointer hover:z-20 cursor-pointer" />
                   </div>
                   <div className="w-14 h-14 sm:w-12 sm:h-12 rounded-full bg-btn shadow-2xs">
-                    <Image src="/Delia.png" alt="Delia - Designer at Masters Web" width={148} height={148} className="object-cover w-full h-full rounded-full shadow-2xs hover:scale-110 transition-all duration-300 hover:cursor-pointer hover:z-20 cursor-pointer" />
+                    <Image src="/Delia.png" alt="Delia - Designer chez Masters Web" width={148} height={148} className="object-cover w-full h-full rounded-full shadow-2xs hover:scale-110 transition-all duration-300 hover:cursor-pointer hover:z-20 cursor-pointer" />
                 </div>
                   <div className="w-14 h-14 sm:w-12 sm:h-12 rounded-full bg-btn shadow-2xs">
-                    <Image src="/roxi.png" alt="Roxi - Frontend Developer at Masters Web" width={148} height={148} className="object-cover w-full h-full rounded-full shadow-2xs hover:scale-110 transition-all duration-300 hover:cursor-pointer hover:z-20 cursor-pointer" />
+                    <Image src="/roxi.png" alt="Roxi - Développeuse Frontend chez Masters Web" width={148} height={148} className="object-cover w-full h-full rounded-full shadow-2xs hover:scale-110 transition-all duration-300 hover:cursor-pointer hover:z-20 cursor-pointer" />
                 </div>
                   <div className="w-14 h-14 sm:w-12 sm:h-12 rounded-full bg-btn shadow-2xs">
-                    <Image src="/david.png" alt="David - Backend Developer at Masters Web" width={148} height={148} className="object-cover w-full h-full rounded-full shadow-2xs hover:scale-110 transition-all duration-300 hover:cursor-pointer hover:z-20 cursor-pointer" />
+                    <Image src="/david.png" alt="David - Développeur Backend chez Masters Web" width={148} height={148} className="object-cover w-full h-full rounded-full shadow-2xs hover:scale-110 transition-all duration-300 hover:cursor-pointer hover:z-20 cursor-pointer" />
                 </div>
                 </div>
               </div>
@@ -161,15 +161,15 @@ export default function Contact() {
             <div className="flex flex-row gap-3 md:gap-8 mb-8 z-50 w-full justify-start md:justify-start overflow-x-auto no-scrollbar py-2 px-4 md:px-0">
               <div className="min-w-[80px] bg-white/80 rounded-xl shadow p-3 flex flex-col items-center justify-center flex-shrink-0">
                 <div className="text-5xl sm:text-2xl md:text-2xl font-black text-main">+150</div>
-                <div className="max-w-[300px] text-sec text-xs sm:text-sm text-center mt-1">We&apos;re contacted daily for web projects, redesigns, and ongoing support. We&apos;re responsive, clear, and always ready to help.</div>
+                <div className="max-w-[300px] text-sec text-xs sm:text-sm text-center mt-1">Nous sommes contactés quotidiennement pour des projets web, des refontes et un support continu. Nous sommes réactifs, clairs et toujours prêts à aider.</div>
           </div> 
               <div className="min-w-[80px] bg-white/80 rounded-xl shadow p-3 flex flex-col items-center justify-center flex-shrink-0">
                 <div className="text-5xl sm:text-2xl md:text-2xl font-black text-main">1h Avg.</div>
-                <div className="max-w-[300px] text-sec text-xs sm:text-sm text-center mt-1">We always respond quickly, no matter how you contact us. Your time is important to us.</div>
+                <div className="max-w-[300px] text-sec text-xs sm:text-sm text-center mt-1">Nous répondons toujours rapidement, peu importe comment vous nous contactez. Votre temps est important pour nous.</div>
             </div>
               <div className="min-w-[80px] bg-white/80 rounded-xl shadow p-3 flex flex-col items-center justify-center flex-shrink-0">
                 <div className="text-5xl sm:text-2xl md:text-2xl font-black text-main">3.</div>
-                <div className="max-w-[300px] text-sec text-xs sm:text-sm text-center mt-1">Call or email, pick what suits you best, and get a fast reply.</div>
+                <div className="max-w-[300px] text-sec text-xs sm:text-sm text-center mt-1">Appelez ou envoyez un email, choisissez ce qui vous convient le mieux et obtenez une réponse rapide.</div>
             </div>
             </div>
             <div className="w-10 h-10 items-center justify-center rounded-full bg-transparent border border-[var(--text-main)] absolute bottom-5 right-1/2 p-3 hidden md:flex">

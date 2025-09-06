@@ -20,15 +20,15 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   metadataBase: new URL('https://masters-web.com'),
   title: { 
-    default: 'Masters Web - Modern Websites Delivered Fast, Designed to Perform', 
+    default: 'Masters Web - Sites Web Modernes Livrés Rapidement, Conçus pour Perform', 
     template: '%s | Masters Web' 
   },
-  description: 'Masters Web builds fast, modern websites with clean design and scalable code. We create high-performance web experiences for businesses: landing pages, SaaS platforms, e-commerce, and custom web applications.',
+  description: 'Masters Web construit des sites web rapides et modernes avec un design propre et un code évolutif. Nous créons des expériences web haute performance pour les entreprises : pages d\'atterrissage, plateformes SaaS, e-commerce et applications web personnalisées.',
   keywords: [
-    'web development', 'modern websites', 'web design', 'frontend development',
-    'react development', 'nextjs development', 'responsive design', 'SEO optimization',
-    'fast websites', 'web applications', 'custom websites', 'business websites',
-    'landing pages', 'e-commerce development', 'SaaS development', 'portfolio websites'
+    'développement web', 'sites web modernes', 'design web', 'développement frontend',
+    'développement react', 'développement nextjs', 'design responsive', 'optimisation SEO',
+    'sites web rapides', 'applications web', 'sites web personnalisés', 'sites web d\'entreprise',
+    'pages d\'atterrissage', 'développement e-commerce', 'développement SaaS', 'sites web portfolio'
   ],
   authors: [{ name: 'Masters Web', url: 'https://masters-web.com' }],
   creator: 'Masters Web',
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  category: 'Web Development',
+  category: 'Développement Web',
   classification: 'Business',
   alternates: {
     canonical: 'https://masters-web.com',
@@ -47,8 +47,8 @@ export const metadata: Metadata = {
     }
   },
   openGraph: {
-    title: 'Masters Web - Modern Websites Delivered Fast, Designed to Perform',
-    description: 'Masters Web builds fast, modern websites with clean design and scalable code. We create high-performance web experiences for businesses: landing pages, SaaS platforms, e-commerce, and custom web applications.',
+    title: 'Masters Web - Sites Web Modernes Livrés Rapidement, Conçus pour Perform',
+    description: 'Masters Web construit des sites web rapides et modernes avec un design propre et un code évolutif. Nous créons des expériences web haute performance pour les entreprises : pages d\'atterrissage, plateformes SaaS, e-commerce et applications web personnalisées.',
     url: 'https://masters-web.com',
     siteName: 'Masters Web',
     images: [
@@ -56,25 +56,25 @@ export const metadata: Metadata = {
         url: '/og.png',
         width: 1200,
         height: 630,
-        alt: 'Masters Web - Modern Websites Delivered Fast, Designed to Perform',
+        alt: 'Masters Web - Sites Web Modernes Livrés Rapidement, Conçus pour Perform',
         type: 'image/png',
       },
     ],
-    locale: 'en-US, ro-RO',
+    locale: 'fr-FR, en-US',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
     site: '@mastersweb',
     creator: '@mastersweb',
-    title: 'Masters Web - Modern Websites Delivered Fast',
-    description: 'Masters Web builds fast, modern websites with clean design and scalable code. We create high-performance web experiences for businesses.',
+    title: 'Masters Web - Sites Web Modernes Livrés Rapidement',
+    description: 'Masters Web construit des sites web rapides et modernes avec un design propre et un code évolutif. Nous créons des expériences web haute performance pour les entreprises.',
     images: [
       {
         url: '/og.png',
         width: 1200,
         height: 630,
-        alt: 'Masters Web - Modern Websites Delivered Fast, Designed to Perform',
+        alt: 'Masters Web - Sites Web Modernes Livrés Rapidement, Conçus pour Perform',
         type: 'image/png',
       },
     ],
@@ -117,7 +117,7 @@ const structuredData = {
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "Masters Web",
-  "description": "Masters Web builds fast, modern websites with clean design and scalable code. We create high-performance web experiences for businesses.",
+  "description": "Masters Web construit des sites web rapides et modernes avec un design propre et un code évolutif. Nous créons des expériences web haute performance pour les entreprises.",
   "url": "https://masters-web.com",
   "logo": "https://masters-web.com/Logo.svg",
   "contactPoint": {
@@ -131,8 +131,8 @@ const structuredData = {
   ],
   "offers": {
     "@type": "Offer",
-    "category": "Web Development Services",
-    "description": "Custom website development, web applications, e-commerce solutions, and digital marketing services."
+    "category": "Services de Développement Web",
+    "description": "Développement de sites web personnalisés, applications web, solutions e-commerce et services de marketing numérique."
   },
   "aggregateRating": {
     "@type": "AggregateRating",
@@ -153,7 +153,7 @@ const structuredData = {
         "ratingValue": "5",
         "bestRating": "5"
       },
-      "reviewBody": "Masters Web delivered exactly what we needed. Fast, professional, and the website performs beautifully. Highly recommend!",
+      "reviewBody": "Masters Web a livré exactement ce dont nous avions besoin. Rapide, professionnel et le site web fonctionne magnifiquement. Je recommande vivement !",
       "datePublished": "2024-01-15"
     },
     {
@@ -167,7 +167,7 @@ const structuredData = {
         "ratingValue": "5",
         "bestRating": "5"
       },
-      "reviewBody": "Outstanding work on our e-commerce platform. The team was responsive and delivered on time with excellent results.",
+      "reviewBody": "Travail exceptionnel sur notre plateforme e-commerce. L'équipe était réactive et a livré à temps avec d'excellents résultats.",
       "datePublished": "2024-01-10"
     },
     {
@@ -181,7 +181,7 @@ const structuredData = {
         "ratingValue": "5",
         "bestRating": "5"
       },
-      "reviewBody": "Professional service from start to finish. Our new website is fast, modern, and exactly what we envisioned.",
+      "reviewBody": "Service professionnel du début à la fin. Notre nouveau site web est rapide, moderne et exactement ce que nous avions imaginé.",
       "datePublished": "2024-01-05"
     }
   ]
@@ -189,7 +189,7 @@ const structuredData = {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en">
+    <html lang="fr">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="theme-color" content="#ffffff" />

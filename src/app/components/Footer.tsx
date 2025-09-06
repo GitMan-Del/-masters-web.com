@@ -35,13 +35,13 @@ export default function Footer() {
             </div>
           </div>
           <p className="text-sec text-sm leading-relaxed max-w-xs">
-            Need a modern, fast website? We build custom websites with clean design and scalable tech. From idea to launch stress-free.
+            Besoin d&apos;un site web moderne et rapide ? Nous construisons des sites web personnalisés avec un design propre et une technologie évolutive. De l&apos;idée au lancement sans stress.
           </p>
           <div className="flex gap-3 mt-2">
             <Link
               href="https://www.instagram.com/masterswebcom/" 
               className="bg-social-btn p-2 rounded-full hover-social-btn transition"
-              aria-label="Visit MastersWeb on Instagram"
+              aria-label="Visitez MastersWeb sur Instagram"
             >
               <Instagram className="w-5 h-5 text-main hover:text-btn-text transition" />
             </Link>
@@ -49,10 +49,10 @@ export default function Footer() {
         </div>
         {/* Quick Links */}
         <div>
-          <h3 className="text-lg mb-3">Quick Links</h3>
+          <h3 className="text-lg mb-3">Liens Rapides</h3>
           <ul className="flex flex-col gap-2 text-sec text-sm">
-            <li><a onClick={() => handleLinkClick('#home')} className="hover:text-special transition cursor-pointer">Home</a></li>
-            <li><a onClick={() => handleLinkClick('#process')} className="hover:text-special transition cursor-pointer">Process</a></li>
+            <li><a onClick={() => handleLinkClick('#home')} className="hover:text-special transition cursor-pointer">Accueil</a></li>
+            <li><a onClick={() => handleLinkClick('#process')} className="hover:text-special transition cursor-pointer">Processus</a></li>
             <li><a onClick={() => handleLinkClick('#services')} className="hover:text-special transition cursor-pointer">Services</a></li>
             <li><a onClick={() => handleLinkClick('#stack')} className="hover:text-special transition cursor-pointer">Stack</a></li>
             <li><Link href="/contact" className="hover:text-special transition cursor-pointer">Contact</Link></li>
@@ -71,14 +71,14 @@ export default function Footer() {
         </div>
         {/* Working hours */}
         <div className="flex flex-col gap-3">
-          <h3 className="text-lg mb-3 flex items-center gap-2"><Clock className="w-5 h-5 text-special" />Working hours</h3>
-          <div className="text-main text-2xl font-bold">Nonstop</div>
-          <div className="text-sec text-sm">We are available whenever you need us. Reach out anytime!</div>
+          <h3 className="text-lg mb-3 flex items-center gap-2"><Clock className="w-5 h-5 text-special" />Heures de Travail</h3>
+          <div className="text-main text-2xl font-bold">Non-stop</div>
+          <div className="text-sec text-sm">Nous sommes disponibles quand vous avez besoin de nous. Contactez-nous à tout moment !</div>
         </div>
       </div>
       {/* Bottom Bar */}
       <div className="mt-12 border-t border-btn/30 pt-4 text-xs text-sec text-center">
-        © 2025 MastersWeb. All rights reserved.
+        © 2025 MastersWeb. Tous droits réservés.
       </div>
     </footer>
   );

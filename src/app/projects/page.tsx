@@ -43,11 +43,11 @@ export default function ProjectsPage() {
         setProjects(data.projects || []);
         setError(null);
       } else {
-        setError('Failed to fetch projects');
+        setError('Échec du chargement des projets');
       }
     } catch (err) {
       console.error('Error fetching projects:', err);
-      setError('Error loading projects');
+      setError('Erreur lors du chargement des projets');
     } finally {
       setLoading(false);
     }
@@ -69,25 +69,25 @@ export default function ProjectsPage() {
         // Remove project from local state
         setProjects(prev => prev.filter(p => p.id !== projectId));
         setToast({
-          message: 'Project deleted successfully!',
+          message: 'Projet supprimé avec succès !',
           type: 'success',
           show: true
         });
       } else {
         const error = await response.json();
         setToast({
-          message: `Delete error: ${error.error || 'Unknown error'}`,
+          message: `Erreur de suppression : ${error.error || 'Erreur inconnue'}`,
           type: 'error',
           show: true
         });
       }
     } catch (error) {
       console.error('Error deleting project:', error);
-      setToast({
-        message: 'Error deleting project',
-        type: 'error',
-        show: true
-      });
+        setToast({
+          message: 'Erreur lors de la suppression du projet',
+          type: 'error',
+          show: true
+        });
     } finally {
       setDeletingId(null);
       setShowDeleteConfirm(null);
@@ -95,7 +95,7 @@ export default function ProjectsPage() {
   };
 
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('ro-RO', {
+    return new Date(dateString).toLocaleDateString('fr-FR', {
       year: 'numeric',
       month: 'long',
       day: 'numeric'
@@ -104,12 +104,12 @@ export default function ProjectsPage() {
 
   const getStatusBadge = (status: string) => {
     const badges = {
-      planning: { color: 'bg-blue-100 text-blue-800', text: 'Planificare' },
-      development: { color: 'bg-yellow-100 text-yellow-800', text: 'Dezvoltare' },
-      testing: { color: 'bg-purple-100 text-purple-800', text: 'Testare' },
-      deployment: { color: 'bg-orange-100 text-orange-800', text: 'Deployment' },
-      completed: { color: 'bg-green-100 text-green-800', text: 'Completat' },
-      maintenance: { color: 'bg-gray-100 text-gray-800', text: 'Mentenanță' }
+      planning: { color: 'bg-blue-100 text-blue-800', text: 'Planification' },
+      development: { color: 'bg-yellow-100 text-yellow-800', text: 'Développement' },
+      testing: { color: 'bg-purple-100 text-purple-800', text: 'Test' },
+      deployment: { color: 'bg-orange-100 text-orange-800', text: 'Déploiement' },
+      completed: { color: 'bg-green-100 text-green-800', text: 'Terminé' },
+      maintenance: { color: 'bg-gray-100 text-gray-800', text: 'Maintenance' }
     };
     
     const badge = badges[status as keyof typeof badges] || badges.planning;
@@ -127,7 +127,7 @@ export default function ProjectsPage() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 mx-auto mb-4"></div>
-          <p className="text-gray-600 text-sm sm:text-base">Loading projects...</p>
+          <p className="text-gray-600 text-sm sm:text-base">Chargement des projets...</p>
         </div>
       </div>
     );
@@ -160,8 +160,8 @@ export default function ProjectsPage() {
           {/* Mobile Header with Hamburger */}
           <div className="lg:hidden flex items-center justify-between mb-6">
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">My Projects</h1>
-              <p className="text-gray-600 text-sm mt-1">Manage all your projects</p>
+              <h1 className="text-2xl font-bold text-gray-900">Mes Projets</h1>
+              <p className="text-gray-600 text-sm mt-1">Gérez tous vos projets</p>
             </div>
             <button
               onClick={() => setIsMobileSidebarOpen(true)}
@@ -176,8 +176,8 @@ export default function ProjectsPage() {
 
           {/* Desktop Header */}
           <div className="hidden lg:block mb-8">
-            <h1 className="text-5xl font-bold text-gray-900">My Projects</h1>
-            <p className="text-gray-600 mt-2">Manage all your projects</p>
+            <h1 className="text-5xl font-bold text-gray-900">Mes Projets</h1>
+            <p className="text-gray-600 mt-2">Gérez tous vos projets</p>
           </div>
 
           {/* Error State */}
@@ -188,7 +188,7 @@ export default function ProjectsPage() {
                 onClick={fetchProjects}
                 className="mt-2 text-red-600 hover:text-red-800 font-medium"
               >
-                Încearcă din nou
+                Réessayer
               </button>
             </div>
           )}
@@ -201,13 +201,13 @@ export default function ProjectsPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                 </svg>
               </div>
-              <h3 className="text-lg sm:text-5xl font-medium text-gray-900 mb-2">You don&apos;t have any projects yet</h3>
-              <p className="text-gray-500 mb-4 text-sm sm:text-base px-4">Create your first project to get started.</p>
+              <h3 className="text-lg sm:text-5xl font-medium text-gray-900 mb-2">Vous n&apos;avez pas encore de projets</h3>
+              <p className="text-gray-500 mb-4 text-sm sm:text-base px-4">Créez votre premier projet pour commencer.</p>
               <button 
                 onClick={() => router.push('/dashboard')}
                 className="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors text-sm sm:text-base"
               >
-                Go to Dashboard
+                Aller au Tableau de Bord
               </button>
             </div>
           ) : (
@@ -228,21 +228,21 @@ export default function ProjectsPage() {
                     {/* Mobile Info Grid */}
                     <div className="space-y-3 text-sm mb-4">
                       <div className="flex justify-between">
-                        <span className="font-medium text-gray-500">Type:</span>
-                        <span className="text-gray-900">{project.project_type || 'Not specified'}</span>
+                        <span className="font-medium text-gray-500">Type :</span>
+                        <span className="text-gray-900">{project.project_type || 'Non spécifié'}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="font-medium text-gray-500">Value:</span>
+                        <span className="font-medium text-gray-500">Valeur :</span>
                         <span className="text-gray-900">
-                          {project.project_value ? `€${project.project_value.toLocaleString()}` : 'Not specified'}
+                          {project.project_value ? `€${project.project_value.toLocaleString()}` : 'Non spécifiée'}
                         </span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="font-medium text-gray-500">Progress:</span>
+                        <span className="font-medium text-gray-500">Progrès :</span>
                         <span className="text-gray-900">{project.progress}%</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="font-medium text-gray-500">Created:</span>
+                        <span className="font-medium text-gray-500">Créé :</span>
                         <span className="text-gray-900">{formatDate(project.created_at)}</span>
                       </div>
                     </div>
@@ -263,7 +263,7 @@ export default function ProjectsPage() {
                           )}
                           {project.website_url && (
                             <Link href={project.website_url} target="_blank" rel="noopener noreferrer" className="block text-purple-600 hover:text-purple-800">
-                              🌐 Website
+                              🌐 Site Web
                             </Link>
                           )}
                         </div>
@@ -279,14 +279,14 @@ export default function ProjectsPage() {
                       {deletingId === project.id ? (
                         <>
                           <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-red-600"></div>
-                          Deleting...
+                          Suppression...
                         </>
                       ) : (
                         <>
                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                           </svg>
-                          Delete Project
+                          Supprimer le Projet
                         </>
                       )}
                     </button>
@@ -307,24 +307,24 @@ export default function ProjectsPage() {
                         
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
                           <div>
-                            <span className="font-medium text-gray-500">Project Type:</span>
-                            <p className="text-gray-900">{project.project_type || 'Not specified'}</p>
+                            <span className="font-medium text-gray-500">Type de Projet :</span>
+                            <p className="text-gray-900">{project.project_type || 'Non spécifié'}</p>
                           </div>
                           
                           <div>
-                            <span className="font-medium text-gray-500">Value:</span>
+                            <span className="font-medium text-gray-500">Valeur :</span>
                             <p className="text-gray-900">
-                              {project.project_value ? `€${project.project_value.toLocaleString()}` : 'Not specified'}
+                              {project.project_value ? `€${project.project_value.toLocaleString()}` : 'Non spécifiée'}
                             </p>
                           </div>
                           
                           <div>
-                            <span className="font-medium text-gray-500">Progress:</span>
+                            <span className="font-medium text-gray-500">Progrès :</span>
                             <p className="text-gray-900">{project.progress}%</p>
                           </div>
                           
                           <div>
-                            <span className="font-medium text-gray-500">Created:</span>
+                            <span className="font-medium text-gray-500">Créé :</span>
                             <p className="text-gray-900">{formatDate(project.created_at)}</p>
                           </div>
                         </div>
@@ -344,7 +344,7 @@ export default function ProjectsPage() {
                               )}
                               {project.website_url && (
                                 <Link href={project.website_url} target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-800">
-                                  🌐 Website
+                                  🌐 Site Web
                                 </Link>
                               )}
                             </div>
@@ -362,14 +362,14 @@ export default function ProjectsPage() {
                           {deletingId === project.id ? (
                             <>
                               <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-red-600"></div>
-                              Deleting...
+                              Suppression...
                             </>
                           ) : (
                             <>
                               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                               </svg>
-                              Delete
+                              Supprimer
                             </>
                           )}
                         </button>
@@ -387,22 +387,22 @@ export default function ProjectsPage() {
       {showDeleteConfirm && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-xl p-4 sm:p-6 w-full max-w-md mx-4">
-            <h3 className="text-lg sm:text-5xl font-semibold text-gray-900 mb-4">Delete Confirmation</h3>
+            <h3 className="text-lg sm:text-5xl font-semibold text-gray-900 mb-4">Confirmation de Suppression</h3>
             <p className="text-gray-600 mb-6 text-sm sm:text-base">
-              Are you sure you want to delete this project? This action cannot be undone.
+              Êtes-vous sûr de vouloir supprimer ce projet ? Cette action ne peut pas être annulée.
             </p>
             <div className="flex flex-col sm:flex-row justify-end gap-3">
               <button
                 onClick={() => setShowDeleteConfirm(null)}
                 className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors order-2 sm:order-1"
               >
-                Cancel
+                Annuler
               </button>
               <button
                 onClick={() => handleDeleteProject(showDeleteConfirm)}
                 className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors order-1 sm:order-2"
               >
-                Delete
+                Supprimer
               </button>
             </div>
           </div>

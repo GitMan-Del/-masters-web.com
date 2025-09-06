@@ -24,12 +24,12 @@ export default function Sidebar({ onCloseMobile, isMobile = false }: SidebarProp
   const navItems = useMemo(() => [
     { 
       icon: "/home-agreement 1.svg", 
-      label: "Dashboard", 
+      label: "Tableau de Bord", 
       href: "/dashboard"
     },
     { 
       icon: "/plus 1.svg", 
-      label: "Projects", 
+      label: "Projets", 
       href: "/projects"
     }
   ], []);

@@ -40,7 +40,7 @@ export default function Dashboard() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading...</p>
+          <p className="text-gray-600">Chargement...</p>
         </div>
       </div>
     );
@@ -139,7 +139,7 @@ function DashboardContent({
         <span className="text-sm flex flex-row gap-2 items-center text-yellow-900">
           <InfoIcon size={18} />
           <p>
-            This page is currently being updated. We will be back soon with an improved experience. Thank you for your understanding!
+            Cette page est actuellement en cours de mise à jour. Nous serons bientôt de retour avec une expérience améliorée. Merci pour votre compréhension !
           </p>
         </span>
       </div>
@@ -170,14 +170,14 @@ function DashboardContent({
             {/* Mobile Dashboard Title */}
             <div className="flex items-center justify-between">
               <div>
-                <h1 className="text-xl font-bold text-gray-900">Dashboard</h1>
-                <p className="text-xs text-gray-500">Project overview & analytics</p>
+                <h1 className="text-xl font-bold text-gray-900">Tableau de Bord</h1>
+                <p className="text-xs text-gray-500">Aperçu du projet et analyses</p>
               </div>
               <div className="flex gap-1">
                 <button 
                   onClick={handleRefreshDashboard}
                   className="bg-gray-100 hover:text-white text-gray-700 px-2 py-2 rounded-lg text-sm hover:bg-white transition-colors"
-                  title="Refresh"
+                  title="Actualiser"
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
@@ -200,17 +200,17 @@ function DashboardContent({
             <div className="flex items-center justify-between">
               <div>
                 <nav className="flex text-xs text-gray-500 mb-1">
-                  <span>Dashboard</span>
+                  <span>Tableau de Bord</span>
                   <span className="mx-1">/</span>
-                  <span className="text-gray-900">Overview</span>
+                  <span className="text-gray-900">Aperçu</span>
                 </nav>
-                <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
+                <h1 className="text-2xl font-bold text-gray-900">Tableau de Bord</h1>
               </div>
               <div className="flex gap-2">
                 <button 
                   onClick={handleRefreshDashboard}
                   className="bg-gray-100 hover:text-white text-gray-700 px-3 py-2 rounded-lg text-sm hover:bg-white transition-colors"
-                  title="Refresh dashboard data"
+                  title="Actualiser les données du tableau de bord"
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
@@ -223,7 +223,7 @@ function DashboardContent({
                   <svg className="w-3 h-3 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
                   </svg>
-                  New Project
+                  Nouveau Projet
                 </button>
               </div>
             </div>
@@ -269,7 +269,7 @@ function DashboardContent({
 
       {/* Beta Toast */}
       <Toast
-        message="🚀 App is in BETA! Currently you can create only 1 project per account. Full functionality will be available soon!"
+        message="🚀 L&apos;application est en BÊTA ! Actuellement, vous ne pouvez créer qu&apos;un seul projet par compte. Toute la fonctionnalité sera bientôt disponible !"
         type="warning"
         isVisible={showBetaToast}
         onClose={() => setShowBetaToast(false)}

@@ -43,6 +43,9 @@ export default auth((req) => {
   return NextResponse.next()
 })
 
+
+
+
 // Configurația pentru care rute să ruleze middleware-ul
 export const config = {
   matcher: [
