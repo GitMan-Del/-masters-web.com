@@ -9,18 +9,12 @@ const lighthouseCache = new Map<string, { data: LighthouseMetrics; timestamp: nu
 const CACHE_DURATION = 60 * 60 * 1000; // 1 oră în ms
 
 export async function GET(request: NextRequest) {
-  console.log('🚀 Lighthouse API called');
   
   try {
     const session = await auth();
-    console.log('👤 Session check:', {
-      exists: !!session,
-      userEmail: session?.user?.email,
-      userId: session?.user?.id
-    });
+   
     
     if (!session?.user?.email) {
-      console.log('❌ No session - returning 401');
       return NextResponse.json({ 
         error: 'Unauthorized',
         details: 'No valid session found'
@@ -29,11 +23,9 @@ export async function GET(request: NextRequest) {
 
     const { searchParams } = new URL(request.url);
     const websiteUrl = searchParams.get('url');
-    console.log('🌐 Website URL from request:', websiteUrl);
 
     // Dacă nu există URL, returnează toate valorile la 0
     if (!websiteUrl) {
-      console.log('⚠️ No URL provided - returning zero metrics');
       const emptyMetrics: LighthouseMetrics = {
         performance: 0,
         accessibility: 0,
@@ -51,18 +43,12 @@ export async function GET(request: NextRequest) {
     // Verifică cache-ul
     const cached = lighthouseCache.get(websiteUrl);
     if (cached && Date.now() - cached.timestamp < CACHE_DURATION) {
-      console.log('✅ Returning cached Lighthouse data for:', websiteUrl);
       return NextResponse.json({ metrics: cached.data });
     }
 
-    console.log('📡 Fetching new Lighthouse data for:', websiteUrl);
 
     // Verifică dacă API key-ul există
-    console.log('🔑 Google API Key check:', {
-      hasKey: !!GOOGLE_API_KEY,
-      keyLength: GOOGLE_API_KEY?.length || 0,
-      keyStart: GOOGLE_API_KEY?.substring(0, 10) || 'none'
-    });
+   
     
     if (!GOOGLE_API_KEY) {
       console.error('❌ Google PageSpeed API key not configured');
@@ -74,10 +60,8 @@ export async function GET(request: NextRequest) {
 
     // Face request la Google PageSpeed Insights API
     const apiUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(websiteUrl)}&key=${GOOGLE_API_KEY}&category=performance&category=accessibility&category=best-practices&category=seo&strategy=desktop`;
-    console.log('📡 Making Google API request to:', apiUrl.replace(GOOGLE_API_KEY, '[API_KEY_HIDDEN]'));
     
     const response = await fetch(apiUrl);
-    console.log('📊 Google API response status:', response.status, response.ok);
     
     if (!response.ok) {
       console.error('🚨 Google API error:', response.status, response.statusText);
@@ -91,18 +75,9 @@ export async function GET(request: NextRequest) {
     }
 
     const data: GoogleLighthouseResponse = await response.json();
-    console.log('✅ Lighthouse API response received');
-    console.log('📊 Raw Google API data:', JSON.stringify(data, null, 2));
 
     // Procesează datele Lighthouse
-    console.log('🔍 Processing Lighthouse data:', {
-      performanceScore: data.lighthouseResult.categories.performance?.score,
-      accessibilityScore: data.lighthouseResult.categories.accessibility?.score,
-      bestPracticesScore: data.lighthouseResult.categories['best-practices']?.score,
-      seoScore: data.lighthouseResult.categories.seo?.score,
-      firstContentfulPaint: data.lighthouseResult.audits['first-contentful-paint']?.numericValue,
-      largestContentfulPaint: data.lighthouseResult.audits['largest-contentful-paint']?.numericValue
-    });
+  
     
     const metrics: LighthouseMetrics = {
       performance: Math.round((data.lighthouseResult.categories.performance?.score || 0) * 100),
@@ -122,7 +97,6 @@ export async function GET(request: NextRequest) {
       timestamp: Date.now()
     });
 
-    console.log('✅ Processed Lighthouse metrics:', metrics);
     return NextResponse.json({ metrics });
 
   } catch (error) {

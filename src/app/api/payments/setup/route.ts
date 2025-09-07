@@ -10,19 +10,16 @@ export async function POST() {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    console.log('🔧 Setting up payments table...');
 
     // Check if payments table exists by trying to select from it
-    const { data, error: checkError } = await supabaseAdmin
+    const { error: checkError } = await supabaseAdmin
      
       .from('payments')
       .select('count')
       .limit(1);
-    console.log(data);
 
     if (checkError && checkError.code === '42P01') {
       // Table doesn't exist (error code 42P01 = relation does not exist)
-      console.log('❌ Payments table does not exist. Please create it manually in Supabase.');
       
       return NextResponse.json({
         success: false,
@@ -40,7 +37,6 @@ export async function POST() {
       );
     } else {
       // Table exists, test insert capability
-      console.log('✅ Payments table exists. Testing insert...');
       
       const testPayment = {
         user_id: session.user.email,
@@ -75,10 +71,8 @@ export async function POST() {
           .from('payments')
           .delete()
           .eq('stripe_payment_id', testPayment.stripe_payment_id);
-        console.log('✅ Test payment cleaned up');
       }
 
-      console.log('✅ Payments table is working correctly');
       return NextResponse.json({
         success: true,
         message: 'Payments table is working correctly',

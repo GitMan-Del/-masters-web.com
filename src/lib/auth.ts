@@ -2,13 +2,6 @@ import NextAuth from "next-auth"
 import Google from "next-auth/providers/google"
 import { supabaseAdmin } from "./supabase"
 
-// Debug logging for environment variables
-console.log('🔐 Auth Config Debug:')
-console.log('AUTH_GOOGLE_ID exists:', !!process.env.AUTH_GOOGLE_ID)
-console.log('AUTH_GOOGLE_SECRET exists:', !!process.env.AUTH_GOOGLE_SECRET)
-console.log('AUTH_SECRET exists:', !!process.env.AUTH_SECRET)
-console.log('NEXTAUTH_URL:', process.env.NEXTAUTH_URL)
-
 export const { handlers, signIn, signOut, auth } = NextAuth({
   secret: process.env.AUTH_SECRET,
   providers: [
@@ -26,18 +19,15 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       // Returned value indicates whether the user is authenticated
       return !!auth
     },
-    async redirect({ url, baseUrl }) {
-      console.log('🔄 Redirect callback:', { url, baseUrl })
-      
+    async redirect({ url, baseUrl }) {      
       // If it's a relative path, allow it
       if (url.startsWith("/")) {
-        console.log('✅ Relative URL, redirecting to:', `${baseUrl}${url}`)
         return `${baseUrl}${url}`
       }
       
       // If it's the same origin, allow it
       if (new URL(url).origin === baseUrl) {
-        console.log('✅ Same origin, allowing:', url)
+       
         return url
       }
       
@@ -46,22 +36,18 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       try {
         const host = new URL(url).hostname
         if (allowedHosts.includes(host)) {
-          console.log('✅ Allowed host, allowing:', url)
           return url
         }
       } catch (error) {
-        console.log('⚠️ Invalid URL, using fallback')
       }
       
       // Default fallback to dashboard for successful logins
-      console.log('🔄 Default fallback to dashboard')
       return `${baseUrl}/dashboard`
     },
-    async signIn({ user, account, profile }) {
-      console.log('🔑 SignIn callback:', { user, account: account?.provider, profile })
+    async signIn({ user }) {
       
       try {
-        const { data, error } = await supabaseAdmin
+        const { error } = await supabaseAdmin
           .from('users')
           .upsert([
             {
@@ -72,20 +58,16 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             },
           ]);
         if (error) console.error('❌ Supabase insert error:', error);
-        console.log('✅ User upserted successfully:', { data, error });
         return true;
       } catch (error) {
         console.error('❌ SignIn error:', error);
         return true; // Still allow sign in even if database insert fails
       }
     },
-    async session({ session, token }) {
-        console.log('📋 Session callback:', { session: !!session, token: !!token })
+    async session({ session }) {
       // Pass any additional data to the session if needed
       return session
     },
-
-    
 
   },
   session: {

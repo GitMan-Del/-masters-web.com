@@ -19,7 +19,6 @@ export default function Sidebar({ onCloseMobile, isMobile = false }: SidebarProp
   const navRef = useRef<HTMLUListElement>(null);
   const [activeIndicator, setActiveIndicator] = useState({ top: 0, height: 0, opacity: 0 });
 
-  console.log(session);
 
   const navItems = useMemo(() => [
     { 

@@ -67,7 +67,6 @@ export default function CreateProjectModal({
     e.preventDefault();
     setLoading(true);
 
-    console.log('Submitting form data:', formData);
 
     try {
       // Check if projects already exist
@@ -89,8 +88,6 @@ export default function CreateProjectModal({
         body: JSON.stringify(formData),
       });
 
-      console.log('Response status:', response.status);
-      console.log('Response ok:', response.ok);
       
       if (response.ok) {
         // Reset form

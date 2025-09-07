@@ -289,7 +289,7 @@ export default function PricingPage() {
                     <p className="text-sm text-sec">Obtenez un devis personnalisé</p>
                   </div>
                   <Link
-                    href="tel:336594692"
+                    href="tel:33698777116"
                     className="btn-modern flex items-center gap-3 sm:gap-5 min-h-[48px] sm:min-h-[56px] w-full sm:w-auto justify-center sm:justify-start"
                     aria-label="Appelez-nous pour les tarifs de projet personnalisé"
                   >

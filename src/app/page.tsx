@@ -24,7 +24,6 @@ export default function Home() {
 
   return (
     <>
-      <Link href="#main-content" className="skip-link">Passer au contenu principal</Link>
       <AuthErrorToast />
       <div className="w-full min-h-fit mx-auto flex flex-col justify-center p-0 m-0 text-main">
         {/* Hero Section */}
@@ -228,7 +227,7 @@ export default function Home() {
 
       {/* Process Steps */}
       <section className="w-full h-fit bg-main text-main p-4 sm:p-10 text-center items-center justify-center">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 w-full max-w-5xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 w-full max-w-5xl mx-auto items-center">
           <div className="flex flex-col gap-2 text-center hover:scale-110 duration-200 hover:cursor-pointer cursor-pointer bg-white/80 rounded-xl p-4">
             <h2 className="text-5xl sm:text-5xl md:text-5xl font-black font-poppins">01</h2>
             <p className="text-xl sm:text-2xl font-semibold font-poppins">Découverte</p>
@@ -271,13 +270,13 @@ export default function Home() {
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
           
           {/* Left Side - Text */}
-          <div className="text-center lg:text-left min-w-md">
+          <div className="text-center lg:text-left md:min-w-md w-full">
             <div className="flex flex-row gap-2 mb-6 justify-center lg:justify-start">
               <div className="w-5 h-5 rounded-[5px] flex items-center justify-center p-3 font-bold bg-btn-active text-btn text-sm">3</div>
               <p className="text-sec text-sm">Types de projets que nous pouvons construire</p>
             </div>
             
-            <h2 className="text-main text-4xl sm:text-5xl md:text-5xl font-bold leading-tight mb-6">
+            <h2 className="text-main text-4xl sm:text-5xl md:text-5xl font-bold mb-6">
               NOUS <span className="text-special">CONCEVONS</span> ET CONSTRUISONS RAPIDEMENT,
               <span className="text-special"> DES SITES WEB MODERNES</span>, <br/> ET NOUS
               L&apos;AVONS DÉJÀ FAIT.
@@ -299,9 +298,9 @@ export default function Home() {
 
           {/* Right Side - Project Cards */}
           <div className="relative">
-            <div className="flex md:flex-row flex-col items-center md:-space-x-10 max-w-full mx-auto">
+            <div className="flex md:flex-row flex-col items-center md:-space-x-40 max-w-full mx-auto">
               
-              <div className="relative bg-gradient-to-br from-purple-500 to-purple-700 rounded-2xl p-4 text-white w-full max-w-xs transform rotate-2 hover:rotate-0 transition-all duration-300 shadow-lg">
+              <div className="relative bg-gradient-to-br from-purple-500 to-purple-700 rounded-2xl p-4 text-white w-[90%] md:w-fit transform rotate-2 hover:rotate-0 transition-all duration-300 shadow-lga">
                 <div className="bg-white rounded-xl p-2 mb-3 h-32 overflow-hidden">
                   <Image 
                     src="/og-image.png" 
@@ -313,7 +312,7 @@ export default function Home() {
                 </div>
                 <h3 className="text-lg font-bold mb-2">AutoBots</h3>
                 <p className="text-purple-100 text-xs mb-3 leading-relaxed">
-                  AutoBots offre aux entreprises locales des superpouvoirs qui automatisent les réservations, les messages et...
+                  AutoBots offre aux entreprises locales des superpouvoirs <br/> qui automatisent...
                 </p>
                 <div className="text-white text-xs font-medium hover:underline cursor-pointer">
                 <Link target="_blank" href="https://autobots-three.vercel.app/">
@@ -322,7 +321,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="relative bg-gradient-to-br from-pink-500 to-indigo-600 rounded-2xl p-4 text-white w-full max-w-xs transform -rotate-2 hover:rotate-0 transition-all duration-300 shadow-lg">
+              <div className="relative bg-gradient-to-br from-pink-500 to-indigo-600 rounded-2xl p-4 text-white transform w-[90%] md:w-fit -rotate-2 hover:rotate-0 transition-all duration-300 shadow-lga">
                 <div className="bg-white rounded-xl p-2 mb-3 h-32 overflow-hidden">
                   <Image 
                     src="/opengraf-image.png" 
@@ -334,7 +333,7 @@ export default function Home() {
                 </div>
                 <h3 className="text-lg font-bold mb-2">AnimeAstral</h3>
                 <p className="text-pink-100 text-xs mb-3 leading-relaxed">
-                  AnimeAstral est votre passerelle vers le streaming d&apos;anime gratuit. Profitez d&apos;une énorme bibliothèque de titres d&apos;anime, tous gratuits, avec une interface propre et moderne.
+                  AnimeAstral est votre passerelle vers le streaming d&apos;anime gratuit. <br /> Profitez d&apos;une...
                 </p>
                 <div className="text-white text-xs font-medium hover:underline cursor-pointer">
                 <Link target="_blank" href="https://animeastral.com/">
@@ -344,7 +343,7 @@ export default function Home() {
               </div>
 
               {/* InvityHub Card - Mobile */}
-              <div className="relative bg-gradient-to-br from-gray-800 to-black rounded-2xl p-4 text-white w-full max-w-xs transform rotate-2 hover:rotate-0 transition-all duration-300 shadow-lg">
+              <div className="relative bg-gradient-to-br from-gray-800 to-black rounded-2xl p-4 text-white w-[90%] md:w-fit transform rotate-2 hover:rotate-0 transition-all duration-300 shadow-lg ">
                 <div className="bg-white rounded-xl p-2 mb-3 h-32 overflow-hidden">
                   <Image 
                     src="/landing-page.png" 
@@ -814,7 +813,7 @@ export default function Home() {
                 <p className="text-sec text-sm">Maintenance de Site Web</p>
               </div>
               
-              <h2 className="text-main text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6">
+              <h2 className="text-main text-4xl sm:text-5xl md:text-6xl font-bold  mb-6">
                 <span className="text-special">GARDEZ</span> VOTRE <span className="text-special">SITE WEB</span> RAPIDE, SÉCURISÉ,<br />
                 ET <span className="text-special">À JOUR</span>.
               </h2>

@@ -1,17 +1,6 @@
 @import "tailwindcss";
 
 /* Skip link for screen readers */
-.skip-link {
-  position: absolute;
-  top: -40px;
-  left: 6px;
-  background: var(--text-special);
-  color: white;
-  padding: 8px;
-  text-decoration: none;
-  border-radius: 4px;
-  z-index: 100;
-}
 
 
 :root {

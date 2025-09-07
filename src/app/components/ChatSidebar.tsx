@@ -1,12 +1,10 @@
 "use client";
 
-import { useSession } from "next-auth/react";
 import { MessageCircle, Clock, Sparkles, } from "lucide-react";
 import Link from "next/link";
 
 export default function ChatSidebar() {
-  const { data: session } = useSession();
-  console.log(session);
+ 
 
  
 

@@ -6,7 +6,6 @@ import { CreateProjectData } from '@/lib/types';
 // GET - Obține toate proiectele utilizatorului
 export async function GET() {
   const session = await auth();
-  console.log('Session:', session);
   
   if (!session?.user?.email) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -34,21 +33,16 @@ export async function GET() {
 // POST - Creează un proiect nou
 export async function POST(request: NextRequest) {
   const session = await auth();
-  console.log('POST Session:', session);
-  console.log('Session user email:', session?.user?.email);
   
   if (!session?.user?.email) {
-    console.log('No user email in session - returning 401');
     return NextResponse.json({ error: 'Unauthorized - No user email in session' }, { status: 401 });
   }
 
   try {
     const body: CreateProjectData = await request.json();
-    console.log('Request body:', body);
     
     // Validez câmpurile obligatorii
     if (!body.name || body.name.trim() === '') {
-      console.log('Project name is missing');
       return NextResponse.json({ error: 'Project name is required' }, { status: 400 });
     }
 
@@ -65,7 +59,6 @@ export async function POST(request: NextRequest) {
       estimated_completion_date: body.estimated_completion_date || null,
     };
 
-    console.log('Project data to insert:', projectData);
 
     const { data: project, error } = await supabaseAdmin
       .from('projects')
@@ -82,7 +75,6 @@ export async function POST(request: NextRequest) {
       }, { status: 500 });
     }
 
-    console.log('Project created successfully:', project);
     return NextResponse.json({ project }, { status: 201 });
   } catch (error) {
     console.error('Catch block error:', error);

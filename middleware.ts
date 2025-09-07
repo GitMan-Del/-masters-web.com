@@ -5,8 +5,6 @@ export default auth((req) => {
   const { nextUrl } = req
   const isLoggedIn = !!req.auth
   
-  console.log('🔐 Middleware - Path:', nextUrl.pathname)
-  console.log('🔐 Middleware - Is logged in:', isLoggedIn)
 
   // Rutele care necesită autentificare
   const protectedRoutes = [
@@ -23,7 +21,6 @@ export default auth((req) => {
 
   // Dacă ruta este protejată și user-ul nu este autentificat
   if (isProtectedRoute && !isLoggedIn) {
-    console.log('❌ Access denied - Redirecting to login')
     
     // Pentru API routes, returnează 401
     if (nextUrl.pathname.startsWith('/api/')) {
@@ -39,7 +36,6 @@ export default auth((req) => {
     return NextResponse.redirect(redirectUrl)
   }
 
-  console.log('✅ Access granted')
   return NextResponse.next()
 })
 

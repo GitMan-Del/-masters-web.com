@@ -26,13 +26,11 @@ export function DashboardProvider({ children }: { children: React.ReactNode }) {
     try {
       // Use working lighthouse API
       const apiUrl = `/api/lighthouse?url=${encodeURIComponent(url)}`;
-      console.log('⚡ DashboardContext fetching lighthouse data from:', apiUrl);
       
       const response = await fetch(apiUrl);
       
       if (response.ok) {
         const data = await response.json();
-        console.log('✅ DashboardContext received lighthouse data');
         setLighthouseData(data.metrics);
       } else {
         console.error('❌ Lighthouse API response not OK:', response.status);
@@ -74,7 +72,6 @@ export function DashboardProvider({ children }: { children: React.ReactNode }) {
 
     try {
       setLoading(true);
-      console.log('⚡ DashboardContext fetching projects...');
       
       const response = await fetch('/api/projects');
       
@@ -83,14 +80,12 @@ export function DashboardProvider({ children }: { children: React.ReactNode }) {
         const fetchedProjects = data.projects || [];
         setProjects(fetchedProjects);
         setError(null);
-        console.log('✅ Projects loaded:', fetchedProjects.length);
         
         // Set loading to false immediately after projects are loaded
         setLoading(false);
         
         // Fetch lighthouse data in background (non-blocking)
         if (fetchedProjects.length > 0 && fetchedProjects[0].website_url) {
-          console.log('🔧 Starting background lighthouse fetch...');
           // Don't await - let it run in background
           fetchLighthouseData(fetchedProjects[0].website_url);
         } else {

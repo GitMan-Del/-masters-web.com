@@ -9,8 +9,7 @@ export async function POST(request: NextRequest) {
     const body = await request.text();
     const signature = request.headers.get('stripe-signature');
 
-    console.log('🔔 Webhook received with signature:', !!signature);
-    console.log('📅 Timestamp:', new Date().toISOString());
+   
 
     if (!signature) {
       console.error('❌ Missing stripe-signature header');
@@ -23,20 +22,16 @@ export async function POST(request: NextRequest) {
     // Validează webhook-ul
     const event = validateStripeWebhook(Buffer.from(body), signature);
 
-    console.log('✅ Stripe webhook received:', event.type);
-    console.log('📄 Event data keys:', Object.keys(event.data.object));
+    
     
     // Log doar pentru checkout.session.completed să nu spam consola
     if (event.type === 'checkout.session.completed') {
-      console.log('🔍 Checkout session object:', JSON.stringify(event.data.object, null, 2));
     }
 
     // Procesează evenimentele relevante
     switch (event.type) {
       case 'checkout.session.completed':
-        console.log('🎯 PROCESSING checkout.session.completed...');
         await handleCheckoutSessionCompleted(event.data.object as Stripe.Checkout.Session);
-        console.log('✅ FINISHED processing checkout.session.completed');
         break;
       
       case 'payment_intent.succeeded':
@@ -56,7 +51,6 @@ export async function POST(request: NextRequest) {
         break;
       
       default:
-        console.log(`Unhandled event type: ${event.type}`);
     }
 
     return NextResponse.json({ received: true });
@@ -70,26 +64,9 @@ export async function POST(request: NextRequest) {
   }
 }
 
-async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session) {
-  console.log('🛒 ========== HANDLING CHECKOUT SESSION ==========');
-  console.log('🆔 Session ID:', session.id);
-  console.log('📧 Customer email:', session.customer_email);
-  console.log('🏷️ Session metadata:', JSON.stringify(session.metadata, null, 2));
-  console.log('💰 Amount total:', session.amount_total);
-  console.log('💱 Currency:', session.currency);
-  console.log('🔗 Payment intent:', session.payment_intent);
-  console.log('📋 Mode:', session.mode);
-  console.log('🔍 FULL SESSION DATA:', JSON.stringify(session, null, 2));
-  
+async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session) {  
   const userEmail = session.customer_email || session.metadata?.user_email || session.customer_details?.email;
   const paymentType = session.metadata?.payment_type as 'one_time' | 'monthly_maintenance';
-  
-  console.log('📧 EMAIL SOURCES:');
-  console.log('  - customer_email:', session.customer_email);
-  console.log('  - metadata.user_email:', session.metadata?.user_email);
-  console.log('  - customer_details.email:', session.customer_details?.email);
-  console.log('👤 EXTRACTED User email:', userEmail);
-  console.log('💳 EXTRACTED Payment type:', paymentType);
   
   if (!userEmail) {
     console.error('❌ NO USER EMAIL FOUND!');
@@ -106,15 +83,11 @@ async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session) 
     return;
   }
   
-  console.log('✅ Both email and payment type found, proceeding...');
 
   // Pentru plăți one-time
   if (paymentType === 'one_time') {
-    console.log('🎯 Processing ONE-TIME payment...');
-    console.log('🔗 Payment intent exists:', !!session.payment_intent);
     
     if (session.payment_intent) {
-      console.log('💾 Calling savePaymentToDatabase...');
       await savePaymentToDatabase({
         user_email: userEmail,
         payment_type: paymentType,
@@ -126,7 +99,6 @@ async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session) 
         description: session.metadata?.description,
         metadata: session.metadata as Record<string, string | number | boolean> | undefined,
       });
-      console.log('✅ savePaymentToDatabase completed');
     } else {
       console.error('❌ No payment_intent found for one-time payment!');
     }
@@ -149,21 +121,18 @@ async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session) 
 }
 
 async function handlePaymentSucceeded(paymentIntent: Stripe.PaymentIntent) {
-  console.log('Processing payment succeeded:', paymentIntent.id);
   
   // Actualizează statusul plății dacă există deja în baza de date
   await updatePaymentStatus(paymentIntent.id, 'completed');
 }
 
 async function handlePaymentFailed(paymentIntent: Stripe.PaymentIntent) {
-  console.log('Processing payment failed:', paymentIntent.id);
   
   // Actualizează statusul plății
   await updatePaymentStatus(paymentIntent.id, 'failed');
 }
 
 async function handleInvoicePaymentSucceeded(invoice: Stripe.Invoice) {
-  console.log('Processing invoice payment succeeded:', invoice.id);
   
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   if ((invoice as any).subscription && invoice.customer_email) {
@@ -186,7 +155,6 @@ async function handleInvoicePaymentSucceeded(invoice: Stripe.Invoice) {
 }
 
 async function handleInvoicePaymentFailed(invoice: Stripe.Invoice) {
-  console.log('Processing invoice payment failed:', invoice.id);
   
   if (invoice.customer_email) {
     await savePaymentToDatabase({
@@ -219,16 +187,9 @@ async function savePaymentToDatabase(paymentData: {
   metadata?: Record<string, string | number | boolean>;
 }) {
   try {
-    console.log('💾 Attempting to save payment to database:', {
-      user_email: paymentData.user_email,
-      payment_type: paymentData.payment_type,
-      stripe_payment_id: paymentData.stripe_payment_id,
-      amount: paymentData.amount,
-      currency: paymentData.currency,
-      status: paymentData.status
-    });
+  
 
-    const { data, error } = await supabaseAdmin
+    const {  error } = await supabaseAdmin
       .from('payments')
       .insert([
         {
@@ -249,7 +210,6 @@ async function savePaymentToDatabase(paymentData: {
       console.error('❌ Error saving payment to database:', error);
       console.error('❌ Error details:', JSON.stringify(error, null, 2));
     } else {
-      console.log('✅ Payment saved successfully:', data);
     }
   } catch (error) {
     console.error('❌ Exception in savePaymentToDatabase:', error);
@@ -261,7 +221,7 @@ async function updatePaymentStatus(
   status: 'pending' | 'completed' | 'failed' | 'refunded'
 ) {
   try {
-    const { data, error } = await supabaseAdmin
+    const { error } = await supabaseAdmin
       .from('payments')
       .update({ status })
       .eq('stripe_payment_id', stripePaymentId);
@@ -269,7 +229,6 @@ async function updatePaymentStatus(
     if (error) {
       console.error('Error updating payment status:', error);
     } else {
-      console.log('Payment status updated:', data);
     }
   } catch (error) {
     console.error('Error in updatePaymentStatus:', error);
