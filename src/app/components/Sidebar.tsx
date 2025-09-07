@@ -23,7 +23,7 @@ export default function Sidebar({ onCloseMobile, isMobile = false }: SidebarProp
   const navItems = useMemo(() => [
     { 
       icon: "/home-agreement 1.svg", 
-      label: "Tableau de Bord", 
+      label: "Aperçu", 
       href: "/dashboard"
     },
     { 
