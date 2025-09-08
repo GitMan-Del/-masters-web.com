@@ -168,9 +168,9 @@ export default function ProjectsPage() {
               className="p-2 rounded-lg border border-gray-300 bg-white hover:bg-gray-50"
             >
               <div className="flex flex-col gap-1">
-                <div className="w-full h-1 bg-black hover:bg-white"></div>
-                <div className="w-full h-1 bg-black hover:bg-white"></div>
-                <div className="w-full h-1 bg-black hover:-bg-white"></div>
+                <div className="w-3 h-1 bg-black hover:bg-white rounded-full"></div>
+                <div className="w-3 h-1 bg-black hover:bg-white rounded-full"></div>
+                <div className="w-3 h-1 bg-black hover:-bg-white rounded-full"></div>
               </div>
             </button>
           </div>
