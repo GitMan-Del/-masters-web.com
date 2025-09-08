@@ -273,7 +273,7 @@ export default function Home() {
           <div className="text-center lg:text-left md:min-w-md w-full">
             <div className="flex flex-row gap-2 mb-6 justify-center lg:justify-start">
               <div className="w-5 h-5 rounded-[5px] flex items-center justify-center p-3 font-bold bg-btn-active text-btn text-sm">3</div>
-              <p className="text-sec text-sm">Types de projets que nous pouvons construire</p>
+              <p className="text-sec text-sm w-fit">Types de projets que nous pouvons construire</p>
             </div>
             
             <h2 className="text-main text-4xl sm:text-5xl md:text-5xl font-bold mb-6">
