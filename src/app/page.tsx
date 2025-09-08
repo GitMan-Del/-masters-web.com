@@ -396,7 +396,7 @@ export default function Home() {
           {/* Plans Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto px-4 py-16">
             {/* SIMPLE */}
-            <div className="group relative bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-purple-200/50 overflow-hidden">
+            <div className="group relative bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 border-2 border-purple-300/50 overflow-hidden">
               <div className="relative flex items-center justify-between mb-6">
                 <div className="w-14 h-14 bg-[var(--text-special)] rounded-2xl flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
                   <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
