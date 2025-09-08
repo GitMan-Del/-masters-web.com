@@ -149,7 +149,7 @@ export default function ProjectsPage() {
       {isMobileSidebarOpen && (
         <div className="fixed inset-0 z-50 lg:hidden">
           <div className="fixed inset-0 bg-black/50" onClick={() => setIsMobileSidebarOpen(false)}></div>
-          <div className="fixed left-0 top-0 h-full w-64 bg-white">
+          <div className="fixed left-0 top-0 h-full w-fit bg-white">
             <Sidebar />
           </div>
         </div>
