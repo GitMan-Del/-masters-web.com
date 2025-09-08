@@ -128,7 +128,7 @@ export default function Contact() {
               <p className="text-sec max-w-xs sm:max-w-md md:max-w-2xl text-base sm:text-lg mx-auto md:mx-0">Que ce soit une page d&apos;atterrissage, une plateforme SaaS ou quelque chose de personnalisé, nous vous aiderons à lancer plus intelligemment. Contactez-nous aujourd&apos;hui.</p>
               <div className="flex flex-col sm:flex-row gap-5 items-center mt-6">
               <Link
-                href="https://wa.me/33659514692"
+                href="https://wa.me/33698777116"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-modern w-full sm:w-auto flex items-center gap-5 min-h-[56px]"
