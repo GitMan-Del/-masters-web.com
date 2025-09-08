@@ -403,7 +403,7 @@ export default function Home() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                   </svg>
                 </div>
-                <span className="text-special font-bold text-xl">€200 installation</span>
+                <span className="text-special font-bold text-xl">€400 installation</span>
               </div>
               <h3 className="text-2xl font-extrabold text-gray-900 mb-3">SIMPLE</h3>
               <p className="text-gray-600 mb-6 leading-relaxed text-sm">
@@ -434,7 +434,7 @@ export default function Home() {
                     <path d="M3 13h18" strokeWidth={2} stroke="currentColor" fill="none"/>
                   </svg>
                 </div>
-                <span className="text-special font-bold text-xl">€750 installation</span>
+                <span className="text-special font-bold text-xl">€1,000 installation</span>
               </div>
               <h3 className="text-2xl font-extrabold text-gray-900 mb-3">BUSINESS</h3>
               <p className="text-gray-600 mb-6 leading-relaxed text-sm">
@@ -469,7 +469,7 @@ export default function Home() {
                     <circle cx="12" cy="6" r="2" fill="currentColor" />
                   </svg>
                 </div>
-                <span className="text-special font-bold text-xl">€1,790 installation</span>
+                <span className="text-special font-bold text-xl">€2,000 installation</span>
               </div>
               <h3 className="text-2xl font-extrabold text-gray-900 mb-3">PREMIUM</h3>
               <p className="text-gray-600 mb-6 leading-relaxed text-sm">
