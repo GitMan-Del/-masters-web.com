@@ -10,6 +10,41 @@ interface CreateProjectModalProps {
   onShowBetaToast: () => void; // Nou prop pentru a afișa toast-ul
 }
 
+// Franceză + Română pentru dashboard
+const translations = {
+  title: "Créer un nouveau projet",
+  name: "Nom du projet *",
+  namePlaceholder: "ex: Site Web AutoBots",
+  description: "Description",
+  descriptionPlaceholder: "Brève description du projet...",
+  email: "Email de contact",
+  emailPlaceholder: "client@example.com",
+  phone: "Téléphone de contact",
+  phonePlaceholder: "+40 700 000 000",
+  website: "URL du site web",
+  websitePlaceholder: "https://example.com",
+  type: "Type de projet",
+  typePlaceholder: "Sélectionnez le type de projet",
+  value: "Valeur du projet (€)",
+  valuePlaceholder: "5000",
+  date: "Date estimée d'achèvement",
+  cancel: "Annuler",
+  create: "Créer le projet",
+  creating: "Création...",
+  // Project types
+  projectTypes: [
+    'Site web d\'entreprise',
+    'E-commerce',
+    'Plateforme SaaS',
+    'Application mobile',
+    'Application web',
+    'Page d\'atterrissage',
+    'Portfolio',
+    'Blog',
+    'Autres'
+  ]
+};
+
 export default function CreateProjectModal({ 
   isOpen, 
   onClose, 
@@ -30,17 +65,7 @@ export default function CreateProjectModal({
 
   const [loading, setLoading] = useState(false);
 
-  const projectTypes = [
-    'Website Corporativ',
-    'E-commerce',
-    'SaaS Platform', 
-    'Mobile App',
-    'Web App',
-    'Landing Page',
-    'Portfolio',
-    'Blog',
-    'Altele'
-  ];
+  const projectTypes = translations.projectTypes;
 
   const handleInputChange = (field: string, value: string | number | string[] | undefined) => {
     setFormData(prev => ({
@@ -67,7 +92,6 @@ export default function CreateProjectModal({
     e.preventDefault();
     setLoading(true);
 
-
     try {
       // Check if projects already exist
       const hasExistingProjects = await checkExistingProjects();
@@ -88,7 +112,6 @@ export default function CreateProjectModal({
         body: JSON.stringify(formData),
       });
 
-      
       if (response.ok) {
         // Reset form
         setFormData({
@@ -107,11 +130,11 @@ export default function CreateProjectModal({
         const error = await response.json();
         console.error('API Error:', error);
         console.error('Response status:', response.status);
-        alert(`Error ${response.status}: ${error.error || 'An error occurred'}`);
+        alert(`Erreur ${response.status}: ${error.error || 'Une erreur est survenue'}`);
       }
     } catch (error) {
       console.error('Error creating project:', error);
-      alert('An error occurred while creating the project');
+      alert('Une erreur est survenue lors de la création du projet');
     } finally {
       setLoading(false);
     }
@@ -123,7 +146,7 @@ export default function CreateProjectModal({
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-2xl p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold text-gray-900">Create New Project</h2>
+          <h2 className="text-2xl font-bold text-gray-900">{translations.title}</h2>
           <button 
             onClick={onClose}
             className="text-gray-400 hover:text-gray-600 transition-colors"
@@ -135,10 +158,10 @@ export default function CreateProjectModal({
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Nume Proiect - Required */}
+          {/* Nom du projet - Required */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Nume Proiect *
+              {translations.name}
             </label>
             <input
               type="text"
@@ -146,77 +169,77 @@ export default function CreateProjectModal({
               value={formData.name}
               onChange={(e) => handleInputChange('name', e.target.value)}
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent text-gray-900 placeholder-gray-400"
-              placeholder="ex: Website AutoBots"
+              placeholder={translations.namePlaceholder}
             />
           </div>
 
-          {/* Descriere */}
+          {/* Description */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Descriere
+              {translations.description}
             </label>
             <textarea
               value={formData.description}
               onChange={(e) => handleInputChange('description', e.target.value)}
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent text-gray-900 placeholder-gray-400"
-              placeholder="Descrierea scurtă a proiectului..."
+              placeholder={translations.descriptionPlaceholder}
               rows={3}
             />
           </div>
 
-          {/* Contact Email */}
+          {/* Email de contact */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Email Contact
+              {translations.email}
             </label>
             <input
               type="email"
               value={formData.contact_email}
               onChange={(e) => handleInputChange('contact_email', e.target.value)}
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent text-gray-900 placeholder-gray-400"
-              placeholder="client@example.com"
+              placeholder={translations.emailPlaceholder}
             />
           </div>
 
-          {/* Contact Phone */}
+          {/* Téléphone de contact */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Telefon Contact
+              {translations.phone}
             </label>
             <input
               type="tel"
               value={formData.contact_phone}
               onChange={(e) => handleInputChange('contact_phone', e.target.value)}
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent text-gray-900 placeholder-gray-400"
-              placeholder="+40 700 000 000"
+              placeholder={translations.phonePlaceholder}
             />
           </div>
 
-          {/* Website URL */}
+          {/* URL du site web */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              URL Website
+              {translations.website}
             </label>
             <input
               type="url"
               value={formData.website_url}
               onChange={(e) => handleInputChange('website_url', e.target.value)}
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent text-gray-900 placeholder-gray-400"
-              placeholder="https://example.com"
+              placeholder={translations.websitePlaceholder}
             />
           </div>
 
-          {/* Project Type */}
+          {/* Type de projet */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Tipul Proiectului
+              {translations.type}
             </label>
             <select
               value={formData.project_type}
               onChange={(e) => handleInputChange('project_type', e.target.value)}
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent text-gray-900"
             >
-              <option value="">Selectează tipul proiectului</option>
+              <option value="">{translations.typePlaceholder}</option>
               {projectTypes.map((type) => (
                 <option key={type} value={type}>
                   {type}
@@ -225,10 +248,10 @@ export default function CreateProjectModal({
             </select>
           </div>
 
-          {/* Project Value */}
+          {/* Valeur du projet */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Valoare Proiect (€)
+              {translations.value}
             </label>
             <input
               type="number"
@@ -237,14 +260,14 @@ export default function CreateProjectModal({
               value={formData.project_value || ''}
               onChange={(e) => handleInputChange('project_value', e.target.value ? Number(e.target.value) : undefined)}
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent text-gray-900 placeholder-gray-400"
-              placeholder="5000"
+              placeholder={translations.valuePlaceholder}
             />
           </div>
 
-          {/* Estimated Completion Date */}
+          {/* Date estimée d'achèvement */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Data Estimată de Finalizare
+              {translations.date}
             </label>
             <input
               type="date"
@@ -261,7 +284,7 @@ export default function CreateProjectModal({
               onClick={onClose}
               className="px-6 py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors"
             >
-              Cancel
+              {translations.cancel}
             </button>
             <button
               type="submit"
@@ -274,7 +297,7 @@ export default function CreateProjectModal({
                   <path className="opacity-75" fill="currentColor" d="m4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
               )}
-              <span>{loading ? 'Creating...' : 'Create Project'}</span>
+              <span>{loading ? translations.creating : translations.create}</span>
             </button>
           </div>
         </form>
